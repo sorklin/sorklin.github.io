@@ -1414,6 +1414,7 @@ body {
 }
 .footer-credit {
     position: fixed;
+    visibility: hidden;
     z-index: 2147483647;
     top: auto;
     right: 12px;
