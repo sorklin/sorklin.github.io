@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Rolling Thunder (Namco 1986) running in the browser on a WebAssembly build of MAME 0.277.">
+<title>Rolling Thunder — Namco 1986, playable in the browser</title>
+<style>
+  :root {
+    --bg:#0b0d13; --panel:#141826; --ink:#e8ecf6; --dim:#93a0bd;
+    --accent:#ff7b24; --accent2:#24c1ff; --line:#262d42;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); }
+  body {
+    font:14px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:16px 12px 44px;
+  }
+  header { text-align:center; margin-bottom:12px; }
+  h1 {
+    margin:0; font-size:clamp(22px,5vw,38px); letter-spacing:.12em; font-weight:800;
+    background:linear-gradient(180deg,#ffd9a0,var(--accent) 55%,#b3411a);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .sub { color:var(--dim); font-size:11px; letter-spacing:.16em; text-transform:uppercase; margin-top:4px; }
+  .wrap { width:100%; max-width:1080px; }
+  .bar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:10px; }
+  button, select, input[type=range] {
+    background:#1b2132; color:var(--ink); border:1px solid #384362; border-radius:8px;
+    padding:6px 10px; font:inherit; cursor:pointer;
+  }
+  button:hover { border-color:var(--accent); }
+  button.primary { border-color:var(--accent); background:#2a1a10; }
+  #status { font:12px ui-monospace,Menlo,monospace; color:var(--dim); margin-left:auto; }
+  #status b { color:var(--accent2); font-weight:600; }
+  .layout { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:14px; }
+  @media (max-width:920px) { .layout { grid-template-columns:minmax(0,1fr); } }
+  #stage { position:relative; background:#000; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  #canvas { display:block; width:100%; aspect-ratio:8/7; background:#000; image-rendering:pixelated; }
+  #stage:fullscreen #canvas { width:auto; height:100vh; margin:0 auto; }
+  #overlay {
+    position:absolute; inset:0; display:flex; flex-direction:column; gap:10px;
+    align-items:center; justify-content:center; background:rgba(5,7,12,.9); cursor:pointer; text-align:center;
+  }
+  #overlay.hidden { display:none; }
+  /* The log is collected always but shown only on request (?log=1 or the Log button):
+     during play it is noise, and its content is only interesting when something
+     goes wrong - which is exactly when it must be recoverable. */
+  #log.hidden { display:none; }
+  #overlay .big { font-size:20px; letter-spacing:.1em; color:var(--accent); }
+  #overlay .small { color:var(--dim); font-size:12px; max-width:420px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  .card h2 { margin:0 0 8px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent2); }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  td { padding:2px 0; vertical-align:top; }
+  td:first-child { color:var(--dim); white-space:nowrap; padding-right:10px; }
+  kbd {
+    display:inline-block; min-width:16px; padding:1px 5px; border-radius:4px; background:#222a3d;
+    border:1px solid #384362; border-bottom-width:2px; font:11px/1.4 ui-monospace,Menlo,monospace; text-align:center;
+  }
+  .pad { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; max-width:190px; margin:6px auto 0; }
+  .pad button { padding:12px 0; font-size:16px; }
+  .pad .sp { visibility:hidden; }
+  .row2 { display:flex; gap:6px; margin-top:8px; }
+  .row2 button { flex:1; }
+  #log {
+    height:150px; overflow:auto; background:#06080d; border:1px solid var(--line); border-radius:8px;
+    padding:8px; font:11px/1.45 ui-monospace,Menlo,monospace; white-space:pre-wrap; word-break:break-word;
+  }
+  details { margin-top:10px; }
+  summary { cursor:pointer; color:var(--dim); font-size:12px; }
+  footer { margin-top:16px; color:#59647f; font-size:11px; text-align:center; max-width:820px; }
+  a { color:#7f8db0; }
+  .touchhint { color:var(--dim); font-size:11px; text-align:center; margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>ROLLING THUNDER</h1>
+    <div class="sub">Namco · 1986 · Namco System 86 · MAME compiled to WebAssembly</div>
+  </header>
+
+  <div class="bar">
+    <button id="btn-full">Fullscreen</button>
+    <button id="btn-reset" title="F3 in MAME">Reset</button>
+    <button id="btn-pause">Pause</button>
+    <button id="btn-state">Save state</button>
+    <button id="btn-load">Load state</button>
+    <button id="btn-log" title="Show/hide the diagnostic log (?log=1)">Log</button>
+    <button id="btn-copylog" title="Copy the collected log to the clipboard">Copy log</button>
+    <label style="display:flex;align-items:center;gap:6px">Vol
+      <input id="vol" type="range" min="0" max="1" step="0.05" value="0.8" />
+    </label>
+    <label>Engine
+      <select id="engine-select">
+        <option value="wasm">MAME/WASM (built here)</option>
+        <option value="emulatorjs">MAME 2003-Plus (EmulatorJS)</option>
+      </select>
+    </label>
+    <span id="status">starting…</span>
+  </div>
+
+  <div class="layout">
+    <div>
+      <div id="stage">
+        <canvas id="canvas" width="512" height="448" tabindex="0"></canvas>
+        <div id="overlay">
+          <div class="big">CLICK TO INSERT COIN</div>
+          <div class="small">
+            Browsers only allow sound after you interact with the page, so click here (or press any key).
+            Then press <kbd>5</kbd> for a coin and <kbd>1</kbd> to start.
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <h2>Touch controls</h2>
+        <div class="pad">
+          <button class="sp"></button><button data-key="ArrowUp">▲</button><button class="sp"></button>
+          <button data-key="ArrowLeft">◀</button><button data-key="ArrowDown">▼</button><button data-key="ArrowRight">▶</button>
+        </div>
+        <div class="row2">
+          <button data-key="ControlLeft">SHOT</button>
+          <button data-key="AltLeft">BTN 2</button>
+        </div>
+        <div class="row2">
+          <button data-key="Digit5">COIN</button>
+          <button data-key="Digit1">START</button>
+          <button data-key="F3" title="MAME hard reset">RESET</button>
+          <button data-key="Tab" title="MAME on-screen menu">MENU</button>
+        </div>
+        <div class="touchhint">These buttons also work with a mouse. A gamepad works too — MAME picks it up.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Keyboard</h2>
+        <table>
+          <tr><td>Move / aim</td><td><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td></tr>
+          <tr><td>Shot (btn 1)</td><td><kbd>Ctrl</kbd> · <kbd>J</kbd> · <kbd>Z</kbd></td></tr>
+          <tr><td>Button 2</td><td><kbd>Alt</kbd> · <kbd>K</kbd> · <kbd>X</kbd></td></tr>
+          <tr><td>Coin</td><td><kbd>5</kbd></td></tr>
+          <tr><td>Start</td><td><kbd>1</kbd></td></tr>
+          <tr><td>2-player keys</td><td><kbd>I</kbd><kbd>J</kbd><kbd>K</kbd><kbd>U</kbd> stick, <kbd>F</kbd>/<kbd>G</kbd> buttons</td></tr>
+          <tr><td>MAME menu</td><td><kbd>Tab</kbd> (DIP switches, graphics options)</td></tr>
+        </table>
+        <div class="touchhint">
+          Rolling Thunder uses a <b>4-way</b> stick: walk with ←/→, aim with ↑/↓.
+          Insert a coin (<kbd>5</kbd>), then start (<kbd>1</kbd>).
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h2>Cabinet DIPs</h2>
+        <table>
+          <tr><td>Difficulty</td><td>Easy / Normal (SWB:4)</td></tr>
+          <tr><td>Lives</td><td>3 or 5 (SWB:1)</td></tr>
+          <tr><td>Timer</td><td>120 s or 150 s (SWB:3)</td></tr>
+          <tr><td>Cheats</td><td>Invulnerability, Freeze, Level Select</td></tr>
+        </table>
+        <div class="touchhint">Change them with <kbd>Tab</kbd> → <b>Cabinet DIP Switches</b>.</div>
+      </div>
+
+      <details class="card" style="margin-top:12px" open>
+        <summary>Emulator log / diagnostics</summary>
+        <div id="log" class="hidden" style="margin-top:8px"></div>
+      </details>
+    </div>
+  </div>
+
+  <footer>
+    ROM set <code>rthunder</code> (Rolling Thunder rev 3) — 28 files, each verified against MAME's
+    <code>ROM_START(rthunder)</code> by size and CRC32. The emulator core and all assets are served from
+    this folder, so the page runs offline. One sound MCU (<code>hd637a01x0p.e3</code>) has never been
+    dumped, so a few PCM effects may be missing — that is a limitation of the dump, not of this build.
+  </footer>
+</div>
+
+<script>
+// ==== Sorklin build source — edit these two lines only =====================
+// The ~57 MB build (wasm core + arcade ROM) is deliberately NOT in this repo.
+// The page looks for it in this order:
+//   1. ./assets/        → staged by:  node scripts/package-rthunder.mjs --install-local
+//   2. RT_REMOTE_BASE   → anything that sends `Access-Control-Allow-Origin: *`
+// If neither is set you get a friendly panel rather than a black canvas.
+//
+// WHY NOT A PRIVATE GITHUB REPO?  Verified 2026-09-28: raw.githubusercontent.com
+// answers the CORS preflight for an Authorization header with 403 and no ACAO, so
+// a browser can never attach a token to these reads. Public raw URLs work (they
+// send ACAO:*); a private repo only works behind a proxy that holds the token —
+// see the site README for a ~15-line Cloudflare Worker that does exactly that.
+const RT_REMOTE_BASE = "";   // e.g. "https://build.sorklin.com/rthunder/" — keep the trailing slash
+const RT_FORCE_REMOTE = new URLSearchParams(location.search).has("remote");
+// ===========================================================================
+// Patched-from /work/rthunder/app/index.html (generated copy — upstream
+// features left alone). Every build-asset path (wasm/, roms/, emulatorjs/) is
+// resolved through RT_URL() against a base chosen once, at boot.
+const RT_IS_FILE = location.protocol === "file:";
+const RT_LOCAL_BASE = "assets/";
+let RT_BASE = RT_IS_FILE ? "" : null;   // "" keeps every URL exactly as upstream
+let RT_CRC = null;                      // path → crc32, populated from manifest.json
+const RT_URL = (p) => (RT_BASE === null ? (RT_IS_FILE ? "" : RT_REMOTE_BASE) : RT_BASE) + p;
+
+// CRC32 (same polynomial the packer uses) — catches truncated/corrupted downloads,
+// which in wasm land otherwise present as a silent black canvas.
+const RT_CRC_TABLE = (() => {
+  const t = new Uint32Array(256);
+  for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; }
+  return t;
+})();
+function rtCrc32(bytes) {
+  let c = -1;
+  for (let i = 0; i < bytes.length; i++) c = RT_CRC_TABLE[(c ^ bytes[i]) & 0xff] ^ (c >>> 8);
+  return (c ^ -1) >>> 0;
+}
+const rtHex = (n) => "0x" + (n >>> 0).toString(16).padStart(8, "0");
+
+// Reads <base>manifest.json written by scripts/package-rthunder.mjs. Absent
+// manifest = no checksums, which is allowed; a corrupt one is just ignored.
+async function rtLoadManifest() {
+  try {
+    const r = await fetch(RT_URL("manifest.json"), { cache: "no-store" });
+    if (!r.ok) return null;
+    const j = await r.json();
+    if (!j || !Array.isArray(j.files)) return null;
+    RT_CRC = {};
+    j.files.forEach((f) => { if (f && f.path && f.crc32) RT_CRC[f.path] = parseInt(f.crc32, 16) >>> 0; });
+    logLine("build", ["build manifest:", j.files.length, "files,", j.totalBytes, "bytes,", "generated", j.generated]);
+    return j;
+  } catch (e) {
+    logLine("build", ["no usable manifest.json at", RT_URL("manifest.json"), String((e && e.message) || e)]);
+    return null;
+  }
+}
+
+// Compare bytes we read ourselves against the manifest. Files the glue loads
+// internally (the .wasm) are outside our control and are simply not listed.
+function rtCheck(path, bytes) {
+  if (!RT_CRC) return true;
+  const want = RT_CRC[path];
+  if (want === undefined) return true;
+  const got = rtCrc32(bytes);
+  if (got === want) { logLine("build", ["crc32 ok:", path, rtHex(got)]); return true; }
+  window.__RT_CORRUPT = path + " checksum mismatch — expected " + rtHex(want) + ", got " + rtHex(got);
+  logLine("build", ["CRC32 MISMATCH", path, "expected " + rtHex(want), "got " + rtHex(got)]);
+  return false;
+}
+
+async function rtResolveBase() {
+  if (RT_BASE !== null) return RT_BASE;
+  if (RT_IS_FILE) return (RT_BASE = "");                    // (1) file:// path untouched
+  if (!RT_FORCE_REMOTE) {                                   // (2) 30-byte same-origin probe
+    try {
+      const r = await fetch(RT_LOCAL_BASE + "boot-probe.txt", { cache: "no-store" });
+      if (r.ok && (await r.text()).trim() === "rolling-thunder-file-probe-v1") {
+        RT_BASE = RT_LOCAL_BASE;
+        logLine("build", ["using local build copy at", RT_LOCAL_BASE]);
+        await rtLoadManifest();
+        return RT_BASE;
+      }
+    } catch { /* no local full-fidelity copy here */ }
+  }
+  if (!RT_REMOTE_BASE) { RT_BASE = RT_LOCAL_BASE; rtNotPublished("RT_REMOTE_BASE is empty and no local assets/ exist"); return RT_BASE; }
+  RT_BASE = RT_REMOTE_BASE;                                 // (3) your own CORS-enabled origin
+  logLine("build", ["using remote build at", RT_REMOTE_BASE]);
+  await rtLoadManifest();
+  return RT_BASE;
+}
+
+function rtNotPublished(reason) {
+  if (window.__RT_NOPUBLISH) return true;
+  window.__RT_NOPUBLISH = true;   // fallBack() honours this: no fallback-core storm
+  const where = RT_REMOTE_BASE ? "at <code>" + RT_REMOTE_BASE + "</code>" : "and <code>RT_REMOTE_BASE</code> is empty";
+  say("<b>game build not reachable</b> — nothing playable " + where + ".<br>"
+    + "Stage it locally (from the repo root), then reload:<br>"
+    + "<code>node scripts/package-rthunder.mjs --install-local</code><br>"
+    + "…or point <code>RT_REMOTE_BASE</code> at a server that sends <code>Access-Control-Allow-Origin: *</code>.<br>"
+    + "<span style='opacity:.7'>reason: " + reason + "</span>");
+  logLine("build", ["game build unreachable", "reason: " + reason,
+    "local: node scripts/package-rthunder.mjs --install-local",
+    "remote: set RT_REMOTE_BASE in play/index.html to a CORS-enabled origin"]);
+  try { setLogVisible(true); } catch (err) { /* page still starting */ }
+  return true;
+}
+// ------------------------------------------------- file:// support (Firefox) --
+// Firefox forbids fetch() on file:// *and* binary XMLHttpRequest (responseType
+// "arraybuffer" is rejected outright), but it does allow text XHR inside the
+// document's own folder tree.  So read bytes with the classic
+// "charset=x-user-defined" trick (one character per byte) and make both XHR and
+// fetch behave as if binary reads worked — EmulatorJS and the Emscripten glue
+// both rely on them.  Chrome blocks file:// reads of any kind: serve it there.
+if (location.protocol === "file:") {
+  const origFetch = window.fetch ? window.fetch.bind(window) : null;
+  // Assets published as <script>-loadable base64 (app/assets/, see tools/make_assetjs.mjs).
+  const rtKey = (u) => String(u).split("?")[0].split("#")[0]
+    .replace(/^file:\/*/, "").replace(/^[A-Za-z]:[\\/]/, "")
+    .replace(/^.*?\/app\//, "").replace(/^\.\//, "").replace(/^\//, "");
+  const B64 = (() => { const t = new Uint8Array(128); const a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"; for (let i = 0; i < 64; i++) t[a.charCodeAt(i)] = i; return t; })();
+  const b64bytes = (s) => {
+    let n = s.length; while (n > 0 && s.charCodeAt(n - 1) === 61) n--;
+    const out = new Uint8Array((n * 3) >> 2);
+    let o = 0, acc = 0, bits = 0;
+    for (let i = 0; i < n; i++) {
+      acc = (acc << 6) | B64[s.charCodeAt(i)];
+      bits += 6;
+      if (bits >= 8) { bits -= 8; out[o++] = (acc >> bits) & 0xff; }
+    }
+    return o === out.length ? out : out.subarray(0, o);
+  };
+  const decoded = new Map();
+  window.__rtBytes = (key) => {
+    const rec = window.__RT_B64 && window.__RT_B64[key];
+    if (typeof rec !== "string") return null;
+    if (!decoded.has(key)) decoded.set(key, b64bytes(rec));
+    return decoded.get(key);
+  };
+  window.__rtNeed = async (keys) => {
+    if (!window.__RT_ASSETS) { try { await loadScript("assets/manifest.js"); } catch { return; } }
+    window.__RT_LOADED = window.__RT_LOADED || {};
+    for (const k of keys) {
+      const g = window.__RT_ASSETS && window.__RT_ASSETS[k] && window.__RT_ASSETS[k].group;
+      if (!g || window.__RT_LOADED[g]) continue;
+      window.__RT_LOADED[g] = true;
+      try { await loadScript("assets/" + g); } catch { window.__RT_LOADED[g] = false; }
+    }
+  };
+  const rtResp = (bytes, url) => {
+    const buf = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
+    const asText = () => new TextDecoder().decode(buf);
+    return {
+      ok: true, status: 200, url, headers: { get: () => null },
+      arrayBuffer: async () => buf, bytes: async () => new Uint8Array(buf),
+      blob: async () => new Blob([buf]), clone() { return rtResp(bytes, url); },
+      text: async () => asText(), json: async () => JSON.parse(asText()),
+    };
+  };
+  const XP = XMLHttpRequest.prototype;
+  const origOpen = XP.open, origSend = XP.send;
+  const dType = Object.getOwnPropertyDescriptor(XP, "responseType");
+  const dResp = Object.getOwnPropertyDescriptor(XP, "response");
+  const dStat = Object.getOwnPropertyDescriptor(XP, "status");
+  const isLocal = (u) => !/^[a-z][a-z0-9+.-]*:/i.test(u) || /^file:/i.test(u);
+  const toBytes = (str) => {
+    const out = new Uint8Array(str.length);
+    for (let i = 0; i < str.length; i++) out[i] = str.charCodeAt(i) & 0xff;
+    return out;
+  };
+  XP.open = function (method, url, async, ...rest) {
+    this.__url = String(url);
+    this.__file = isLocal(this.__url);
+    this.__want = "";
+    this.__bytes = null;
+    this.__data = null;
+    return origOpen.call(this, method, url, async === undefined ? true : async, ...rest);
+  };
+  XP.send = function (...rest) {
+    if (this.__file) {
+      const bytes = window.__rtBytes(rtKey(this.__url));
+      if (bytes) {
+        this.__data = bytes;
+        setTimeout(() => {
+          const fire = (type) => { try { this.dispatchEvent(new Event(type)); } catch {} };
+          fire("readystatechange"); fire("load");
+          if (typeof this.onload === "function") { try { this.onload(new Event("load")); } catch {} }
+          fire("loadend");
+        }, 0);
+        return;
+      }
+      try { this.overrideMimeType("text/plain; charset=x-user-defined"); } catch {}
+    }
+    return origSend.apply(this, rest);
+  };
+  const synth = (self) => self.__data !== null && self.__data !== undefined;
+  const dRdy = Object.getOwnPropertyDescriptor(XP, "readyState");
+  Object.defineProperty(XP, "readyState", {
+    configurable: true, enumerable: dRdy.enumerable,
+    get() { return synth(this) ? 4 : dRdy.get.call(this); },
+  });
+  const dTxt = Object.getOwnPropertyDescriptor(XP, "responseText");
+  Object.defineProperty(XP, "responseText", {
+    configurable: true, enumerable: dTxt ? dTxt.enumerable : true,
+    get() { return synth(this) ? new TextDecoder().decode(this.__data) : (dTxt ? dTxt.get.call(this) : ""); },
+  });
+  Object.defineProperty(XP, "responseType", {
+    configurable: true, enumerable: dType.enumerable,
+    get() { return this.__file ? this.__want : dType.get.call(this); },
+    set(v) { this.__want = v; dType.set.call(this, this.__file ? "" : v); },
+  });
+  Object.defineProperty(XP, "response", {
+    configurable: true, enumerable: dResp.enumerable,
+    get() {
+      if (synth(this)) {
+        const b = this.__data;
+        const ab = b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength);
+        return this.__want === "blob" ? new Blob([b])
+          : (this.__want === "" || this.__want === "text") ? new TextDecoder().decode(b) : ab;
+      }
+      if (!this.__file || !this.__want || this.__want === "" || this.__want === "text") return dResp.get.call(this);
+      if (!this.__bytes) this.__bytes = toBytes(this.responseText || "");
+      return this.__want === "arraybuffer" ? this.__bytes.buffer
+        : this.__want === "blob" ? new Blob([this.__bytes]) : this.__bytes;
+    },
+  });
+  Object.defineProperty(XP, "status", {
+    configurable: true, enumerable: dStat.enumerable,
+    get() { const s = dStat.get.call(this); return this.__file && s === 0 ? 200 : s; },
+  });
+  const mkResp = (xhr, url) => {
+    const r = xhr.response;
+    const buf = r instanceof ArrayBuffer ? r : (r && r.buffer instanceof ArrayBuffer ? r.buffer : new ArrayBuffer(0));
+    const asText = () => new TextDecoder().decode(buf);
+    return {
+      ok: xhr.status === 0 || (xhr.status >= 200 && xhr.status < 300),
+      status: xhr.status || 200,
+      url,
+      headers: { get: () => null },
+      arrayBuffer: async () => buf,
+      bytes: async () => new Uint8Array(buf),
+      blob: async () => new Blob([buf]),
+      clone() { return mkResp(xhr, url); },
+      text: async () => asText(),
+      json: async () => JSON.parse(asText()),
+    };
+  };
+  window.fetch = function (input, init) {
+    const url = typeof input === "string" ? input : (input && input.url) || String(input);
+    if (/^https?:/i.test(url)) return origFetch ? origFetch(input, init) : Promise.reject(new Error("no fetch"));
+    const have = window.__rtBytes(rtKey(url));
+    if (have) return Promise.resolve(rtResp(have, url));
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      try {
+        xhr.open(((init && init.method) || "GET").toUpperCase(), url, true);
+        xhr.responseType = "arraybuffer";
+        xhr.onload = () => resolve(mkResp(xhr, url));
+        xhr.onerror = () => reject(new Error("file:// read blocked or missing: " + url));
+        xhr.send(null);
+      } catch (e) { reject(e); }
+    });
+  };
+  window.__readLocal = (url) => window.fetch(url).then((r) => r.arrayBuffer()).then((b) => new Uint8Array(b));
+} else {
+  window.__readLocal = null;
+}
+
+// ---------------------------------------------------------------- fps pacing --
+// MAME's emscripten loop steps the machine by one 16.7ms frame per callback and
+// assumes the callback source is a 60Hz requestAnimationFrame.  Both halves of
+// that assumption are wrong in real browsers: where vsync is missing Firefox can
+// fire rAF ~1500 times/s (measured — the machine then runs 25x real time and the
+// browser kills the tab), and in other environments rAF never fires at all, so
+// the emulator never executes a frame.  Drive it from timers instead: that is
+// exactly Emscripten's own fps-based main-loop mode, and it paces the emulator
+// to real time regardless of vsync.  ?maxfps=N (0 = use native rAF).
+const RT_BUILD = "2025-09-23 02:45z quiet-log";
+// ------------------------------------------------------------- audio latency --
+// Emscripten's SDL audio shim builds a ScriptProcessorNode with a fixed 4096-sample
+// buffer (85ms at 48kHz) and runs its callback on the MAIN THREAD - the same thread
+// the emulator is using at ~12ms/frame. Late callbacks make that queue grow, which
+// is why audio drifts further behind the picture the longer you play, and why MAME's
+// -audio_latency changed nothing: it only sizes MAME's own request, not this node.
+// Clamping the node's buffer is NOT the lever: at 512 samples (10.7ms) the main
+// thread cannot service the callback between 12ms emulator frames, and Firefox
+// responds by growing the ring - which is pure stutter.  Measured, not guessed.
+// So leave Emscripten's 4096 alone by default; ?audiobuf=N is kept as a knob.
+// What actually shortens the delay is bounding jsmame_web_audio's staging ring,
+// below (?audioq=).  Main-thread slack (?maxfps, ?frameskip) made no difference,
+// measured - the backlog is structural, not scheduling.
+const RT_AUDIOBUF = (() => {
+  const v = parseInt(new URLSearchParams(location.search).get("audiobuf") || "4096", 10);
+  return [256, 512, 1024, 2048, 4096].includes(v) ? v : 4096;
+})();
+// jsmame_web_audio holds up to 22050 frames (~0.46s) in its staging ring and nothing
+// ever drains a backlog, so whatever queues early stays queued all session - that is
+// the quarter-to-half-second action-to-sound delay.  Cap it in frames: ?audioq=2048
+// is ~43ms; ?audioq=0 restores the original unbounded behaviour (MAME's own default
+// cap in js_sound.js is 4096 frames ~ 85ms).
+{
+  const q = parseInt(new URLSearchParams(location.search).get("audioq") || "0", 10) || 0;
+  if (q) window.RT_AUDIO_MAX_QUEUED = q;
+}
+(() => {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC || !AC.prototype.createScriptProcessor) return;
+  const orig = AC.prototype.createScriptProcessor;
+  AC.prototype.createScriptProcessor = function (bufferSize, inChannels, outChannels) {
+    const want = bufferSize || RT_AUDIOBUF;
+    const size = Math.min(RT_AUDIOBUF, want);
+    let node;
+    try { node = orig.call(this, size, inChannels, outChannels); }
+    catch (e) { node = orig.call(this, want, inChannels, outChannels); }
+    window.__RT_AUDIO = { wanted: want, got: node.bufferSize || size, rate: this.sampleRate, ctx: this, t0: performance.now() / 1000 };
+    logLine("audio", "ScriptProcessor buffered at " + (node.bufferSize || size) + " samples ("
+      + (((node.bufferSize || size) / this.sampleRate) * 1000).toFixed(1) + "ms) at " + this.sampleRate + "Hz"
+      + (want !== size ? " (shim asked for " + want + ")" : ""));
+    return node;
+  };
+  // Report queue depth: the backlog inside jsmame_web_audio's staging ring, which is
+  // the delay the player hears.  (Comparing currentTime to the wall clock was useless
+  // for this - that clock is the hardware reference and looks steady no matter how
+  // much is queued.)
+  setInterval(() => {
+    const a = window.__RT_AUDIO;
+    if (!a || !a.ctx) return;
+    const q = window.__RT_AUDIO_DEPTH;
+    logLine("audio", "queue " + (q === undefined ? "n/a" : q + " frames = " + ((q / a.rate) * 1000).toFixed(0) + "ms")
+      + " (cap " + (window.RT_AUDIO_MAX_QUEUED || 8192) + " frames), underruns " + (window.__RT_AUDIO_UNDERRUNS | 0));
+  }, 5000);
+})();
+{
+  const qs = new URLSearchParams(location.search);
+  const engine = qs.get("engine") || "wasm";
+  const MAXFPS = qs.has("maxfps") ? Number(qs.get("maxfps")) : 60;
+  if (engine === "wasm" && MAXFPS > 0) {
+    const minMs = 1000 / MAXFPS;
+    let last = performance.now(), delivered = 0, windowStart = performance.now();
+    window.__RT_MAXFPS = MAXFPS;
+    window.__RT_RAF_RATE = 0;
+    window.requestAnimationFrame = function (cb) {
+      const delay = Math.max(0, last + minMs - performance.now());
+      return setTimeout(() => {
+        const t = performance.now();
+        delivered++; last = t;
+        // A wasm trap (out-of-bounds / unreachable) thrown out of the emulator's
+        // frame callback takes the tab — and in a single-process browser the whole
+        // browser — down with no error event at all. Catch it here, once, where the
+        // stack is still honest.
+        try { cb(t); }
+        catch (e) {
+          const frames = String((e && e.stack) || "").split("\n").map((s) => s.trim()).filter(Boolean).slice(0, 12);
+          logLine("trap", ["frame callback died: " + String((e && e.message) || e).slice(0, 200)].concat(frames));
+          window.__RT_TRAP = { message: String((e && e.message) || e), frames: frames };
+          if (!window.__RT_TRAP_STOPPED) {
+            window.__RT_TRAP_STOPPED = true;
+            say("<b>wasm trap</b> — " + String((e && e.message) || e));
+            fallBack("wasm trap: " + String((e && e.message) || e));
+          }
+        }
+      }, delay);
+    };
+    setInterval(() => {
+      const dt = (performance.now() - windowStart) / 1000;
+      if (dt > 0.5) { window.__RT_RAF_RATE = Math.round(delivered / dt); delivered = 0; windowStart = performance.now(); }
+    }, 1000);
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const s = document.getElementById("status");
+    if (s) s.dataset.build = RT_BUILD;
+    console.log("[rt] build", RT_BUILD, "engine", engine, "maxfps", MAXFPS);
+  });
+}
+
+// ------------------------------------------------------------------ basics --
+const QS = new URLSearchParams(location.search);
+const VERIFY = QS.get("verify") === "1";
+let ENGINE = QS.get("engine") || "wasm";
+const canvas = document.getElementById("canvas");
+const statusEl = document.getElementById("status");
+const logEl = document.getElementById("log");
+const overlay = document.getElementById("overlay");
+
+function say(html) { statusEl.innerHTML = html; }
+const LOG_LINES = [];            // collected whether or not the panel is visible
+const LOG_MAX = 2000;
+function logLine(kind, args) {
+  const line = `[${kind}] ${Array.from(args).map(a => typeof a === "object" ? JSON.stringify(a) : String(a)).join(" ")}`;
+  LOG_LINES.push(line.slice(0, 4000));
+  if (LOG_LINES.length > LOG_MAX) LOG_LINES.splice(0, LOG_LINES.length - LOG_MAX);
+  // Only paint while visible: repainting a hidden panel on every line is pure cost,
+  // and this runs on the same thread as the emulator.
+  if (!logEl.classList.contains("hidden")) {
+    logEl.textContent = LOG_LINES.join("\n") + "\n";
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+  if (VERIFY) fetch("/log", { method: "POST", body: `page|${line}` }).catch(() => {});
+}
+for (const kind of ["log", "warn", "error"]) {
+  const orig = console[kind].bind(console);
+  console[kind] = (...a) => { logLine(kind, a); orig(...a); };
+}
+window.addEventListener("unhandledrejection", (e) => {
+  // Emscripten re-throws exceptions from user callbacks (the main loop among
+  // them) out of a timer/promise, so a wasm trap can surface here, not "error".
+  const r = e.reason;
+  const frames = String((r && r.stack) || "").split("\n").map((s) => s.trim()).filter(Boolean).slice(0, 14);
+  logLine("trap", [String((r && r.message) || r).slice(0, 300)].concat(frames));
+  window.__RT_TRAP = { message: String((r && r.message) || r), frames: frames };
+  e.preventDefault();
+});
+window.addEventListener("error", (e) => {
+  const err = e.error;
+  // A wasm trap ("index out of bounds", "unreachable") is fatal to the core, so
+  // surface as much of the stack as we can — with the -g2 name section these
+  // frames carry MAME function names.
+  const frames = String(err && err.stack || "")
+    .split("\n").map((s) => s.trim()).filter(Boolean).slice(0, 14);
+  logLine("window.error", [e.message].concat(frames.length ? frames : [e.filename, String(e.lineno)]));
+  window.__RT_TRAP = { message: e.message, frames: frames };
+});
+
+// ------------------------------------------- unified input injection layer --
+// Both engines read keys from DOM events, so extra bindings and the on-screen
+// pad are implemented by re-dispatching events with the key we want.
+const ALIASES = {
+  KeyW: "ArrowUp", KeyA: "ArrowLeft", KeyS: "ArrowDown", KeyD: "ArrowRight",
+  KeyZ: "ControlLeft", KeyJ: "ControlLeft", KeyX: "AltLeft", KeyK: "AltLeft",
+};
+function dispatchKey(code, down) {
+  const init = { code, key: code, bubbles: true, cancelable: true };
+  const ev = new KeyboardEvent(down ? "keydown" : "keyup", init);
+  (canvas.parentNode ? canvas : document).dispatchEvent(ev);
+  if (ev.target !== document) document.dispatchEvent(ev);
+}
+function foldKeyboard(down) {
+  return (e) => {
+    const to = ALIASES[e.code];
+    if (!to) return;
+    const t = e.target || {};
+    if (/INPUT|SELECT|TEXTAREA|BUTTON/.test(t.tagName || "")) return;
+    e.preventDefault();
+    if (!down || !e.repeat) dispatchKey(to, down);
+  };
+}
+window.addEventListener("keydown", foldKeyboard(true), true);
+window.addEventListener("keyup", foldKeyboard(false), true);
+// touch / mouse pads
+document.querySelectorAll("[data-key]").forEach((btn) => {
+  const code = btn.dataset.key;
+  const set = (down) => (e) => { e.preventDefault(); dispatchKey(code, down); };
+  btn.addEventListener("pointerdown", set(true));
+  btn.addEventListener("pointerup", set(false));
+  btn.addEventListener("pointerleave", set(false));
+  btn.addEventListener("pointercancel", set(false));
+});
+
+// -------------------------------------------------------------- UI buttons --
+// Log panel: quiet by default, opened by ?log=1 or the Log button. Lines are always
+// collected (LOG_LINES), so opening it mid-run shows the whole session - including
+// whatever just went wrong, which is the only time it matters.
+const logPanel = document.getElementById("log");
+const setLogVisible = (on) => {
+  logPanel.classList.toggle("hidden", !on);
+  if (on) { logPanel.textContent = LOG_LINES.join("\n") + "\n"; logPanel.scrollTop = logPanel.scrollHeight; }
+};
+document.getElementById("btn-log").onclick = () => setLogVisible(logPanel.classList.contains("hidden"));
+document.getElementById("btn-copylog").onclick = (e) => {
+  const text = LOG_LINES.join("\n");
+  const btn = e.target;
+  // file:// is not a secure context, so navigator.clipboard is usually missing;
+  // a temporary textarea + execCommand still works there.
+  const area = document.createElement("textarea");
+  area.value = text;
+  area.style.position = "fixed"; area.style.opacity = "0";
+  document.body.appendChild(area);
+  area.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+  area.remove();
+  btn.textContent = ok ? "Copied " + LOG_LINES.length + " lines" : "copy failed";
+  if (!ok) prompt("Copy the log:", text.slice(0, 20000));
+  setTimeout(() => { btn.textContent = "Copy log"; }, 2000);
+};
+if (QS.get("log")) setLogVisible(true);
+
+document.getElementById("btn-full").onclick = () => {
+  const el = document.getElementById("stage");
+  if (document.fullscreenElement) document.exitFullscreen();
+  else el.requestFullscreen().catch(() => {});
+};
+overlay.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  canvas.focus();
+  // give the audio graph a nudge now that we have a user gesture
+  try { window.jsmame_set_mastervolume && window.jsmame_set_mastervolume(Number(document.getElementById("vol").value)); } catch {}
+  try { window.EJS_emulator?.resumeAudio?.(); } catch {}
+});
+window.addEventListener("keydown", () => overlay.classList.add("hidden"), { once: true });
+document.getElementById("vol").oninput = (e) => {
+  const v = Number(e.target.value);
+  try { window.jsmame_set_mastervolume && window.jsmame_set_mastervolume(v); } catch {}
+  try { if (window.EJS_emulator) EJS_emulator.gameManager.setVolume?.(v); } catch {}
+};
+
+// ------------------------------------------------------------- engine: wasm --
+const MAME_ARGS = [
+  "rthunder",
+  "-rompath", "/roms",
+  "-window",
+  "-keepaspect",
+  "-skip_gameinfo",
+  "-nomouse",
+  "-resolution", "512x448",
+];
+// ?verbose=1 → MAME's -verbose chatter (it is a lot of lines, off by default).
+// ?safe=1   → no sound and no WebGL, for browsers that choke on either.
+// ?paused=1 → start paused: the screen is drawn but no CPU runs (sharp tool for
+//             telling "the machine hangs" apart from "the GPU path hangs").
+if (QS.get("verbose")) MAME_ARGS.push("-verbose");
+// MAME's -audio_latency (ms) is what it asks SDL_OpenAudio for as a buffer size;
+// the WebAudio sink in Emscripten has its own floor, but asking for less also cuts
+// MAME's own queueing.  ?audiolat=16 restores MAME's default if it ever misbehaves.
+// Do NOT shrink MAME's request by default.  Asking for -audio_latency 4 makes MAME
+// size its own buffers for 192 samples while the Emscripten shim hands it a 4096
+// ScriptProcessorNode, and the mismatch showed up audibly: "a bit behind" became a
+// quarter second.  So MAME's default stands unless ?audiolat= asks for something.
+if (QS.get("audiolat")) MAME_ARGS.push("-audio_latency", QS.get("audiolat"));
+// ?frameskip=1 - MAME emulates at full speed but only draws every other frame.
+// It is the cheapest way to buy the main thread back from the GPU path, which is
+// what Firefox's audio ring is actually waiting behind.
+if (QS.get("frameskip")) MAME_ARGS.push("-frameskip", QS.get("frameskip"));
+if (QS.get("safe")) { MAME_ARGS.push("-sound", "dummy"); QS.set("sdlsoft", "1"); }
+if (QS.get("paused")) MAME_ARGS.push("-pause");
+// ?mameargs=-sound%20dummy,-video%20soft  — extra/diagnostic options (space separated)
+if (QS.get("mameargs")) {
+  for (const a of QS.get("mameargs").split(/[,.\s]+/).map((s) => s.trim()).filter(Boolean)) MAME_ARGS.push(a);
+}
+// ?luaprobe=1 — diagnostic: run a Lua script inside MAME that reports emulated time.
+const LUA_PROBE = `
+local n = 0
+manager:install(function()
+  n = n + 1
+  if n % 120 == 0 then
+    local ok, as = pcall(function() return manager:machine().time:as_attoseconds() end)
+    print("LUAPROBE frame=" .. n .. " attoseconds=" .. tostring(ok and as or ("ERR " .. tostring(as))))
+  end
+end, "machine_run_frame")
+print("LUAPROBE script loaded")
+`;
+
+async function loadScript(src) {
+  await new Promise((ok, err) => {
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = ok;
+    s.onerror = () => err(new Error("failed to load " + src));
+    document.head.appendChild(s);
+  });
+}
+
+async function startWasm() {
+  await rtResolveBase();
+  if (location.protocol === "file:") {
+    logLine("engine", ["opened with file:// — loading assets from app/assets/*.js",
+      "(Firefox blocks fetch/XHR on file://, only <script> tags get through)"]);
+    await window.__rtNeed(["boot-probe.txt", "wasm/rthunder.wasm", "roms/rthunder.zip", "wasm/uismall.bdf"]);
+    const p = window.__rtBytes("boot-probe.txt");
+    logLine("engine", ["asset registry:", p ? "ok — " + Object.keys(window.__RT_B64 || {}).length + " payloads" : "FAILED (assets/ missing? run tools/make_assetjs.mjs)"]);
+    // This build's INCOMING_MODULE_JS_API does not list wasmBinary, so the glue has
+    // to fetch the binary — which our fetch/XHR shim answers from the registry.
+    const w = window.__rtBytes("wasm/rthunder.wasm");
+    logLine("engine", ["wasm payload:", w ? w.length + " bytes" : "MISSING"]);
+  }
+  say("downloading ROM…");
+  let romResp;
+  try {
+    romResp = await fetch(RT_URL("roms/rthunder.zip"));
+  } catch (e) {
+    rtNotPublished("rom fetch threw: " + e.message);
+    throw e;
+  }
+  if (!romResp.ok) {
+    rtNotPublished("rom fetch status " + romResp.status);
+    throw new Error("rom fetch failed (" + romResp.status + ")");
+  }
+  const rom = new Uint8Array(await romResp.arrayBuffer());
+  // MAME's in-game UI (Tab menu) draws with this bitmap font.
+  const font = await fetch(RT_URL("wasm/uismall.bdf")).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+  say("starting MAME/wasm…");
+  const t0 = performance.now();
+  window.Module = {
+    canvas,
+    arguments: MAME_ARGS,
+    noInitialRun: false,
+    // ?sdlsoft=1 → SDL's CPU renderer instead of GLES2 (diagnostic / fallback)
+    print: (t) => console.log(t),
+    printErr: (t) => console.warn(t),
+    locateFile: (p) => RT_URL("wasm/" + p),
+    preRun: [function () {
+      FS.mkdirTree("/roms");
+      FS.writeFile("/roms/rthunder.zip", rom);
+      FS.mkdirTree("/states");
+      FS.mkdirTree("/nvram");
+      FS.mkdirTree("/snapshot");   // so MAME's F12 screenshot works
+      if (font) FS.writeFile("/uismall.bdf", new Uint8Array(font));
+      if (QS.get("luaprobe")) {
+        FS.writeFile("/probe.lua", LUA_PROBE);
+        MAME_ARGS.push("-autoboot_script", "/probe.lua");
+        logLine("fs", ["lua probe installed"]);
+      }
+      logLine("fs", ["rom mounted", rom.length, "bytes", font ? "+ ui font" : ""]);
+      if (QS.get("sdlsoft")) {
+        // SDL_RenderDriver hint has to be in the process environment before main().
+        try {
+          const r = _setenv("SDL_RENDER_DRIVER", "software", 1);
+          logLine("env", ["SDL_RENDER_DRIVER=software setenv→", r]);
+        } catch (e) {
+          logLine("env", ["setenv unavailable:", String(e).slice(0, 80)]);
+        }
+      }
+    }],
+    onRuntimeInitialized: function () {
+      logLine("wasm", ["runtime ready in " + Math.round(performance.now() - t0) + " ms"]);
+    },
+    onAbort: (w) => { window.__RT_EXIT = "abort"; logLine("abort", [w]); fallBack("aborted: " + String(w).slice(0, 80)); },
+    onExit: (code) => {
+      window.__RT_EXIT = code;
+      logLine("exit", ["mame exited with " + code]);
+      if (code !== 0) fallBack("exited with code " + code);
+      else say("<b>exited</b> (code 0) — see the log below");
+    },
+    quit: (code) => logLine("exit", ["mame quit " + code]),
+  };
+  await loadScript(RT_URL("wasm/rthunder.js")).catch((e) => {
+    rtNotPublished("wasm glue load failed: " + e.message);
+    throw e;
+  });
+  window.__RT_STARTED = Date.now();
+  say("<b>running</b> — MAME/wasm (rthunder rev 3)");
+  window.JSMAME_READY = true;
+}
+
+// ------------------------------------------------------- engine: EmulatorJS --
+async function startEmulatorJS() {
+  await rtResolveBase();
+  if (location.protocol === "file:") {
+    say("loading fallback core from local assets…");
+    await window.__rtNeed(["roms/legacy/rthunder.zip", "emulatorjs/data/emulator.min.js",
+      "emulatorjs/data/localization/en-US.json", "emulatorjs/data/compression/extractzip.js",
+      "emulatorjs/data/cores/reports/mame2003_plus.json", "emulatorjs/data/cores/mame2003_plus-wasm.data",
+      "emulatorjs/data/cores/mame2003_plus-legacy-wasm.data"]);
+    const n = Object.keys(window.__RT_B64 || {}).filter((k) => k.startsWith("emulatorjs") || k.startsWith("roms/legacy")).length;
+    logLine("engine", ["fallback core assets:", n, "payloads from app/assets/legacy.js"]);
+  }
+  window.EJS_pathtodata = RT_URL("emulatorjs/data/");
+  window.EJS_player = "#game";
+  window.EJS_core = QS.get("core") || "mame2003_plus";
+  window.EJS_gameUrl = RT_URL("roms/legacy/rthunder.zip");   // 0.37b15 file naming
+  window.EJS_gameName = "rthunder";
+  window.EJS_startOnLoaded = true;
+  window.EJS_threads = false;
+  window.EJS_backgroundBlur = false;
+  window.EJS_volume = 0.8;
+  window.EJS_defaultOptions = {
+    mame2003_skip_disclaimer: "enabled", mame2003_skip_warnings: "enabled",
+    mame2003_plus_skip_disclaimer: "enabled", mame2003_plus_skip_warnings: "enabled",
+  };
+  const mount = document.createElement("div");
+  mount.id = "game";
+  mount.style.cssText = "position:absolute;inset:0";
+  document.getElementById("stage").appendChild(mount);
+  canvas.style.display = "none";
+  window.EJS_onGameStart = () => {
+    say("<b>running</b> — " + window.EJS_core + " (EmulatorJS)");
+    window.__RT_STARTED = Date.now();
+  };
+  await loadScript(RT_URL("emulatorjs/data/loader.js"));
+}
+
+let fellBack = false;
+async function fallBack(reason) {
+  if (fellBack || ENGINE === "emulatorjs") return;
+  if (window.__RT_NOPUBLISH) { logLine("engine", ["fallback skipped — game build not published at " + RT_BASE]); return; }
+  // A machine that is demonstrably executing frames must never be replaced
+  // because a heuristic timed out. Only a real failure — trap, exit, abort —
+  // counts; that is what __RT_TRAP/__RT_EXIT are for. (An earlier watchdog
+  // misjudged a healthy 60fps machine and covered it with the fallback core.)
+  if ((window.__RT_FRAMES | 0) > 60 && !window.__RT_TRAP && !window.__RT_EXIT) {
+    logLine("engine", "keeping wasm engine — " + (window.__RT_FRAMES | 0) + " frames at emutime "
+      + (window.__RT_EMUTIME || 0).toFixed(1) + "s; ignored fallback request: " + reason);
+    return;
+  }
+  window.__RT_FALLBACK = reason;
+  if (QS.get("nofallback")) {
+    logLine("engine", ["wasm engine stopped: " + reason, "(?nofallback=1 — leaving this canvas visible)"]);
+    say("<b>stopped:</b> " + reason);
+    return;
+  }
+  fellBack = true;
+  logLine("engine", ["wasm build unusable (" + reason + ") — switching to the fallback core"]);
+  // The panel is hidden during play; a real failure is exactly when it should appear.
+  try { setLogVisible(true); } catch (err) { /* page still starting */ }
+  say("wasm build failed — starting MAME 2003-Plus");
+  // Dim rather than hide: hiding destroys the evidence of how far the emulator
+  // got, which is the one thing we need when it fails.
+  canvas.style.opacity = "0.25";
+  overlay.classList.add("hidden");
+  ENGINE = "emulatorjs";
+  try {
+    await startEmulatorJS();
+  } catch (e) {
+    say("<b>error</b> — " + e.message);
+  }
+}
+
+async function boot() {
+  document.getElementById("engine-select").value = ENGINE;
+  document.getElementById("engine-select").onchange = (e) => {
+    location.search = QS.toString().replace(/engine=[^&]*/g, "") + "&engine=" + e.target.value;
+  };
+  logLine("page", ["build " + RT_BUILD, "engine=" + ENGINE, "maxfps=" + (window.__RT_MAXFPS ?? "off")]);
+  let rateReports = 0;
+  const rateTimer = setInterval(() => {
+    if (!window.__RT_RAF_RATE) return;
+    logLine("video", ["rAF ≈ " + window.__RT_RAF_RATE + "/s (cap " + window.__RT_MAXFPS + ")",
+      "mame frames=" + (window.__RT_FRAMES | 0) + " emutime=" + (window.__RT_EMUTIME || 0).toFixed(1) + "s"]);
+    if (++rateReports >= 3) clearInterval(rateTimer);
+  }, 5000);
+  // If the wasm core never produces a machine, don't leave the user staring at
+  // a dead canvas — the fallback core is good enough to play.
+  const watchdog = setTimeout(() => {
+    if (ENGINE === "emulatorjs") return;
+    // __RT_MAME_LOOP / __RT_FRAMES are set by MAME itself (EM_ASM in
+    // emscripten_main_loop). The old test used window.JSMAME.get_machine(), an
+    // export this build does not have, so it always concluded "never started".
+    const started = (window.__RT_FRAMES | 0) > 0 || window.__RT_MAME_LOOP || window.JSMAME?.get_machine?.();
+    if (started)
+      logLine("engine", "watchdog: machine running — " + (window.__RT_FRAMES | 0) + " frames");
+    else
+      fallBack("machine never started");
+  }, 30000);
+  // Warn (never auto-switch) if the canvas stays completely black: with a live
+  // machine that is usually a GPU/driver quirk, and the fallback core is a click away.
+  // Sampled at ~4 Hz so this diagnostic can never add load of its own.
+  if (ENGINE === "wasm") {
+    const t0 = performance.now();
+    let frames = 0, nonBlack = 0;
+    const t = document.createElement("canvas");
+    t.width = 32; t.height = 28;
+    const cx = t.getContext("2d", { willReadFrequently: true });
+    const tick = () => {
+      frames++;
+      if (frames % 15 === 0) {
+        try {
+          cx.drawImage(canvas, 0, 0, 32, 28);
+          const d = cx.getImageData(0, 0, 32, 28).data;
+          let sum = 0;
+          for (let i = 0; i < d.length; i += 4) sum += d[i] + d[i + 1] + d[i + 2];
+          if (sum > 0) nonBlack++;
+        } catch { nonBlack++; }          // can't sample → don't cry wolf
+      }
+      if (performance.now() - t0 < 12000) requestAnimationFrame(tick);
+      else if (nonBlack === 0 && window.JSMAME?.get_machine?.()) {
+        logLine("video", ["canvas stayed black for 12s on this GPU — try the fallback core",
+          "([?engine=emulatorjs] or pick it in the engine menu)",
+          "state: rAF≈" + window.__RT_RAF_RATE + "/s, machine=" + (window.JSMAME.get_machine() ? "alive" : "null")]);
+        say("running, but nothing visible on this GPU — <a href='?engine=emulatorjs'>try the fallback core</a>");
+      }
+    };
+    requestAnimationFrame(tick);
+  }
+  try {
+    if (ENGINE === "wasm") {
+      await startWasm();
+    } else {
+      await startEmulatorJS();
+    }
+  } catch (err) {
+    logLine("engine", [ENGINE + " failed: " + err.message]);
+    if (ENGINE === "wasm") {
+      clearTimeout(watchdog);
+      await fallBack(err.message);
+    } else {
+      say("<b>error</b> — " + err.message);
+    }
+  }
+}
+boot();
+
+// ----------------------------------------------------------- state + reset --
+document.getElementById("btn-reset").onclick = () => {
+  if (window.JSMAME && window.JSMAME.hard_reset) { JSMAME.hard_reset(); logLine("mame", ["hard reset"]); }
+  else if (window.EJS_emulator?.gameManager) EJS_emulator.gameManager.restartGame?.();
+};
+document.getElementById("btn-pause").onclick = () => {
+  if (window.EJS_emulator?.pauseEmulator) EJS_emulator.pauseEmulator();
+  else logLine("ui", ["pause: use the MAME menu (Tab) for this engine"]);
+};
+async function saveStateWasm() {
+  JSMAME.save("/states/slot0.state");
+  const bytes = FS.readFile("/states/slot0.state");
+  const blob = new Blob([bytes], { type: "application/octet-stream" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "rthunder.state";
+  a.click();
+  logLine("state", ["saved " + bytes.length + " bytes"]);
+}
+async function loadStateWasm() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".state";
+  input.onchange = async () => {
+    const buf = new Uint8Array(await input.files[0].arrayBuffer());
+    FS.writeFile("/states/slot0.state", buf);
+    JSMAME.load("/states/slot0.state");
+    logLine("state", ["loaded " + buf.length + " bytes"]);
+  };
+  input.click();
+}
+document.getElementById("btn-state").onclick = () => {
+  if (window.JSMAME?.save) saveStateWasm().catch((e) => logLine("state", ["save failed: " + e.message]));
+  else if (window.EJS_emulator?.state?.saveState) EJS_emulator.state.saveState();
+};
+document.getElementById("btn-load").onclick = () => {
+  if (window.JSMAME?.load) loadStateWasm().catch((e) => logLine("state", ["load failed: " + e.message]));
+  else if (window.EJS_emulator?.state?.loadState) EJS_emulator.state.loadState();
+};
+
+// ------------------------------------------------------- verify harness ----
+if (VERIFY) {
+  let frames = 0, fpsAt = performance.now();
+  const tick = () => {
+    frames++;
+    const t = performance.now();
+    if (t - fpsAt > 1000) { logLine("fps", [Math.round(frames * 1000 / (t - fpsAt))]); frames = 0; fpsAt = t; }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+
+  const grab = () => new Promise((res) => {
+    const src = document.querySelector("#game canvas") || canvas;
+    let best = null, attempts = 0;
+    const tryFrame = () => {
+      const c = document.createElement("canvas");
+      c.width = 256; c.height = 224;
+      const ctx = c.getContext("2d", { willReadFrequently: true });
+      try { ctx.drawImage(src, 0, 0, 256, 224); } catch (e) { return res(null); }
+      const d = ctx.getImageData(0, 0, 256, 224).data;
+      let lit = 0, sum = 0;
+      for (let i = 0; i < d.length; i += 16) { const v = d[i] + d[i + 1] + d[i + 2]; sum += v; if (v > 24) lit++; }
+      if (!best || lit > best.lit) best = { lit, sum, png: c.toDataURL("image/png") };
+      if (best.lit > 400 || attempts++ > 6) res(best);
+      else requestAnimationFrame(tryFrame);
+    };
+    requestAnimationFrame(tryFrame);
+  });
+
+  (async () => {
+    for (let i = 0; i < 8; i++) {
+      await new Promise((r) => setTimeout(r, 3000));
+      const shot = await grab();
+      if (!shot) { logLine("verify", ["no canvas yet"]); continue; }
+      const blob = await (await fetch(shot.png)).blob();
+      await fetch(`/upload?name=shot-${String(i).padStart(2, "0")}.png`, { method: "POST", body: blob }).catch(() => {});
+      logLine("verify", [`shot ${i} lit=${shot.lit} sum=${shot.sum}`]);
+      if (i === 2) {
+        for (const code of ["Digit5", "Digit1"]) {
+          dispatchKey(code, true); await new Promise((r) => setTimeout(r, 250)); dispatchKey(code, false);
+          await new Promise((r) => setTimeout(r, 400));
+        }
+        logLine("verify", ["sent coin+start"]);
+      }
+    }
+    logLine("verify", ["done"]);
+  })();
+}
+</script>
+</body>
+</html>

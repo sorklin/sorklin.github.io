@@ -1,0 +1,18 @@
+# Rolling Thunder build payloads (staged by scripts/package-rthunder.mjs)
+projects/rthunder/play/assets/
+dist/
+node_modules/
+.DS_Store
+
+# local junk
+Thumbs.db
+desktop.ini
+*.log
+.idea/
+.vscode/
+serve.cmd
+serve.mjs
+serve.ps1
+
+# optional local copy of the pre-redesign Webflow export
+legacy-site/

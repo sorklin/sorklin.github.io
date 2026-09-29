@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyber Risk Quantification — The Sorklin Group</title>
+<meta name="description" content="Cyber risk quantification in financial terms: named scenarios, calibrated ranges, Monte Carlo simulation, loss exceedance curves and control ROI — run in the Axio360 platform.">
+<meta property="og:title" content="Cyber Risk Quantification — The Sorklin Group">
+<meta property="og:description" content="Turn cyber risk into a number your board can fund against.">
+<meta name="theme-color" content="#05070b">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.sorklin.com/cyber-risk-quant/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+        <path class="curve" d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"><span></span></button>
+    <div class="nav-links">
+      <a href="/cyber-risk-quant/">Risk Quant</a>
+      <a href="/cyber-security/">Security</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About</a>
+      <a class="nav-cta li" href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a><span class="sep">/</span><span>Cyber Risk Quant</span></div>
+      <div class="hero-grid" style="align-items:start">
+        <div>
+          <p class="kicker">Cyber Risk Quantification</p>
+          <h1 class="display">
+            <span class="line">If you can't express it</span>
+            <span class="line">in dollars, you're</span>
+            <span class="line">still <span class="grad" data-scramble>guessing</span>.</span>
+          </h1>
+          <p class="lede">
+            <span data-joke>“High risk, red box” is not a decision — it's a colour someone picked on a Tuesday.
+              I spent years building probabilistic models of what could actually go wrong, running them tens of
+              thousands of times and handing over the distribution. Then I helped build the product that does it faster,
+              so the argument can be about numbers instead of adjectives — in rooms I'm not always standing in.</span>
+            <span data-corp>A decade of probabilistic cyber risk models — named scenarios, calibrated estimates and
+              Monte Carlo simulation — reported in financial terms that support funding, insurance and board
+              decisions. That practice is now built into a platform other practitioners run themselves.</span>
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#fill">How the number gets built <span class="arrow">→</span></a>
+            <a class="btn btn-ghost" href="#axio">How it became a product</a>
+          </div>
+        </div>
+
+        <!-- The signature artefact: a loss exceedance curve, drawn on load. -->
+        <figure class="panel chart reveal" style="margin:0">
+          <figcaption class="mono dim" style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px">
+            Loss exceedance curve · illustrative
+          </figcaption>
+          <svg class="draw" viewBox="0 0 520 300" role="img" aria-label="A loss exceedance curve falling from left to right">
+            <g stroke="rgba(255,255,255,.12)" stroke-width="1">
+              <line x1="54" y1="20" x2="54" y2="256"/>
+              <line x1="54" y1="256" x2="504" y2="256"/>
+              <line x1="54" y1="206" x2="504" y2="206" stroke-dasharray="3 5"/>
+              <line x1="54" y1="156" x2="504" y2="156" stroke-dasharray="3 5"/>
+              <line x1="54" y1="106" x2="504" y2="106" stroke-dasharray="3 5"/>
+              <line x1="279" y1="20" x2="279" y2="256" stroke-dasharray="3 5"/>
+            </g>
+            <path d="M54,52 C150,58 200,120 279,166 C360,214 420,238 504,248 L504,256 L54,256 Z"
+                  fill="url(#fill)" stroke="none" opacity="0" class="fade"/>
+            <path d="M54,52 C150,58 200,120 279,166 C360,214 420,238 504,248"
+                  pathLength="1" fill="none" stroke="#5de1ff" stroke-width="2.6" stroke-linecap="round" class="glow"/>
+            <circle cx="279" cy="166" r="4.5" fill="#ffb454" opacity="0" class="fade d3"/>
+            <g font-family="ui-monospace,monospace" font-size="10.5" fill="#6a7786">
+              <text x="20" y="252">0</text>
+              <text x="20" y="110">$$</text>
+              <text x="252" y="276">1-in-20</text>
+              <text x="430" y="276">1-in-500</text>
+              <text x="60" y="40" fill="#93a1b3">annualised loss</text>
+            </g>
+            <defs>
+              <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(93,225,255,.26)"/>
+                <stop offset="100%" stop-color="rgba(93,225,255,0)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <p class="dim mono" style="font-size:12px;margin-top:12px" data-joke>
+            The honest version of a risk register: a curve, not a colour. Yes, people do prefer it once they've seen it.
+          </p>
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════ before / after ══ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">What changes</p>
+        <h2 class="title">Same risks. Different sentences.</h2>
+        <p>The findings don't change much. What changes is whether anyone can act on them.</p>
+      </div>
+      <div class="panel reveal" style="padding:8px 0;overflow:hidden">
+        <table class="spec">
+          <thead>
+            <tr><th style="width:44%">What the report usually says</th><th>What a quantified model says</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>“Ransomware: High risk”</td><td>“Ransomware: $1.8M expected annual loss, $6.4M at the 95th percentile.”</td></tr>
+            <tr><td>“Improve third-party assurance”</td><td>“The backup vendor drives 38% of modeled loss; tightening that contract is the cheapest curve movement available.”</td></tr>
+            <tr><td>“We need more security budget”</td><td>“These three controls cost $210k and remove $1.1M of expected annual loss. Here is the curve both ways.”</td></tr>
+            <tr><td>“Our premium went up 30%”</td><td>“The premium is 2.1× the modeled retained loss above your deductible. Here's what to negotiate with.”</td></tr>
+            <tr><td>“We're compliant”</td><td>“Compliant, and still exposed at 1-in-8 for the scenario that actually keeps you awake. Both facts are in the table.”</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ what i do ══ -->
+  <section class="section tight">
+    <div class="wrap">
+      <div class="grid c2" style="gap:34px;align-items:start">
+        <div class="reveal">
+          <p class="kicker">The work itself</p>
+          <h2 class="title">Not a workshop about feelings.</h2>
+          <ul class="ticks">
+            <li><b>Scenario construction.</b> Named, bounded, plausible loss events — ransomware, BEC,
+              cloud misconfiguration, third-party outage, data spill — each with a cost anatomy.</li>
+            <li><b>Calibration.</b> Getting ranges out of the people who actually run the systems,
+              with enough scepticism built in that the numbers survive the next audit.</li>
+            <li><b>Simulation.</b> Monte Carlo over those ranges: expected annual loss, percentile points,
+              and the tail where the real arguments live.</li>
+            <li><b>Control ROI.</b> Which mitigations move which part of the curve, and what they cost to get there.</li>
+            <li><b>Insurance alignment.</b> Modeled loss versus your limits, retention and premium —
+              so the renewal conversation has arithmetic in it.</li>
+            <li><b>Board readout.</b> One page, one curve, three decisions. Long version stays in the appendix where it belongs.</li>
+          </ul>
+        </div>
+        <div class="reveal" data-delay="120">
+          <div class="panel ink" style="margin-bottom:16px">
+            <h3>Deliverables</h3>
+            <ul class="dashes">
+              <li>Quantified scenario register, owned and re-runnable</li>
+              <li>Portfolio and per-scenario exceedance curves</li>
+              <li>Ranked control set with cost / curve-movement pairs</li>
+              <li>Executive page + defensible model backing</li>
+              <li>A refresh cadence, because a 2024 number is a 2024 weather report</li>
+            </ul>
+          </div>
+          <div class="callout" data-joke>
+            <span class="ico">[i]</span>
+            <div>Every model is wrong. The job is to make yours wrong in a way that's useful —
+              and, ideally, cheaper than the incident it's predicting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ axio ══ -->
+  <section class="section" id="axio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">Where the work happens</p>
+        <h2 class="title">Axio360 — where the practice became a product.</h2>
+        <p>I do product management at <a href="https://axio.com/" rel="noopener" target="_blank">Axio</a> and head the
+          quantitative risk modelling team: VP of Product Management, Quantification Modeling, and product owner of the
+          quantification capability inside
+          <a href="https://axio.com/axio360-platform/" rel="noopener" target="_blank">Axio360</a>. Which means I decide
+          what the platform does with an assessment, a scenario, a model and the insurance conversation that follows
+          — a decision engine rather than four spreadsheets with four different owners. There was a stretch when
+          this was me, a spreadsheet and a week. It is now a team's work — product management, modelling,
+          engineering — that lets any practitioner skip both.</p>
+      </div>
+
+      <div class="grid c2" style="gap:28px;align-items:start">
+        <div class="reveal">
+          <div class="panel">
+            <h3>The job, honestly described</h3>
+            <ul class="ticks">
+              <li><b>Owning the quantification capability</b> — the roadmap, the models, and the definition of
+                good — settled before any of it ships.</li>
+              <li><b>Assessments</b> against the models that matter — NIST CSF 2.0, C2M2, CIS 18 —
+                so the control baseline is evidence, not opinion.</li>
+              <li><b>Scenario collections</b> built from the catalog and shaped to the actual environment,
+                with susceptibility set by people who know the estate.</li>
+              <li><b>Estimated values</b> under the hood — server counts, forensic rates, dwell and recovery time —
+                because a curve is only as good as the numbers feeding it.</li>
+              <li><b>Catalogs and bespoke models</b> — industry-specific and AI-curated content, plus the modelling
+                team I head, which builds the ones no catalog covers.</li>
+              <li><b>Impact distributions &amp; exceedance curves</b>, per scenario and across the whole collection.</li>
+              <li><b>Quadrant breakdowns</b>: first-party versus third-party, financial versus physical.
+                Most organisations discover their biggest exposure is in the quadrant they weren't funding.</li>
+              <li><b>Assessment ↔ scenario linkage</b>, so a control gap traces to a number and a number traces back to a gap.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reveal" data-delay="110">
+          <div class="panel ink">
+            <h3>Read the source</h3>
+            <ul class="dashes" style="margin-bottom:22px">
+              <li><a href="https://axio.com/crq/" rel="noopener" target="_blank">Cyber Risk Quantification at Axio</a> — what CRQ is meant to produce.</li>
+              <li><a href="https://axio.com/axio360-platform/" rel="noopener" target="_blank">The Axio360 platform</a> — assessment, quantification, risk transfer, board reporting.</li>
+              <li><a href="https://axio.com/insights/air-announcement/" rel="noopener" target="_blank">Axio AIR</a> — quantifying AI risk specifically, which is where my two halves meet.</li>
+              <li><a href="https://axio.com/insights/" rel="noopener" target="_blank">Axio insights</a> — the long-form version of most of this page.</li>
+            </ul>
+            <div class="callout info">
+              <span class="ico">[i]</span>
+              <div>Disclosure, deliberately kept outside the joke toggle: I am an Axio employee and I own the
+                product this section praises. The quantification is real; the bias is disclosed. Everything else on
+                this domain — the opinions, the side projects, the broken CSS — is mine alone.</div>
+            </div>
+            <p class="dim mono" style="font-size:12px;margin-top:18px">
+              The method survives leaving the platform; the convenience does not.
+              Put it in a spreadsheet if the room insists — the spreadsheet will simply lie more slowly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ what this is not ══ -->
+  <section class="section tight">
+    <div class="wrap">
+      <div class="grid c2" style="gap:28px;align-items:start">
+        <div class="reveal">
+          <p class="kicker">Ground rules</p>
+          <h2 class="title">What this is not.</h2>
+          <ul class="dashes">
+            <li>A 5×5 heat map with a red box in the corner. I will not be drawing one.</li>
+            <li>A fear-and-uncertainty sales deck for a product I don't sell.</li>
+            <li>A compliance exercise. Compliance is a floor, occasionally a ceiling; it is rarely a risk profile.</li>
+            <li>A false-precision parade. You'll get ranges and percentiles, not “$4,382,911.62”.</li>
+          </ul>
+        </div>
+        <div class="reveal" data-delay="110">
+          <p class="kicker">How it goes</p>
+          <h2 class="title">The method, step by step.</h2>
+          <div class="steps" style="grid-template-columns:1fr">
+            <div class="step"><h3>Kick-off &amp; asset scoping</h3><p>One call, one list: what would genuinely hurt, and what it costs per day.</p></div>
+            <div class="step"><h3>Calibration sessions</h3><p>Structured estimation with the people who own the systems. Short, explicit, occasionally argumentative.</p></div>
+            <div class="step"><h3>Model &amp; simulate</h3><p>Scenarios built and run in Axio360; sensitivities checked before anyone sees a headline.</p></div>
+            <div class="step"><h3>Readout</h3><p>The curve, the movement options, and what I'd fund if it were my company — which, structurally, it is.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="wrap">
+      <div class="panel ink reveal" style="text-align:center">
+        <p class="kicker" style="justify-content:center">Start here</p>
+        <h2 class="title" style="font-size:clamp(24px,3vw,36px)">Bring one scenario. Leave with a number.</h2>
+        <p class="dim" style="max-width:52ch;margin-inline:auto">The fastest way to find out whether quantification is worth it
+          is to quantify the thing you already argue about every quarter.</p>
+        <div class="cta-row" style="justify-content:center;margin-top:24px">
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Say something on LinkedIn</a>
+          <a class="btn btn-ghost" href="/cyber-security/">Or the assessments first</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/" style="margin-bottom:14px">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+            <path d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+        </a>
+        <p class="foot-blurb" data-joke>A private company of exactly one, measuring the unfashionable kind of risk
+          and shipping the tooling to keep up with it.</p>
+        <p class="foot-blurb" data-corp>The personal site of Brendan Fitzpatrick: cyber risk quantification, security assessment and applied AI engineering.</p>
+        <p class="foot-blurb dim mono" style="font-size:12.5px">Reachable on <a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a> &mdash; the only address here that is definitely real.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="/cyber-risk-quant/">Cyber Risk Quant</a></li>
+          <li><a href="/cyber-security/">Cyber Security</a></li>
+          <li><a href="/cyber-risk-quant/#axio">Axio360 work</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="/projects/dnd-shop/" target="_blank" rel="noopener">D&amp;D Item Ledger</a></li>
+          <li><a href="/projects/rthunder/">Rolling Thunder</a></li>
+          <li><a href="/projects/sorkgpt/" target="_blank" rel="noopener">SorkGPT</a></li>
+          <li><a href="/projects/">All projects</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+              <li><a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+      <li><a href="https://axio.com/" rel="noopener" target="_blank">Axio</a></li>
+          <li><a href="https://axio.com/axio360-platform/" rel="noopener" target="_blank">Axio360 platform</a></li>
+          <li><a href="https://github.com/sorklin" rel="noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 The Sorklin Group · Built by hand and by model, argued with by me, deployed by <span class="accent">git push</span></span>
+      <span class="corp-note">Corporate mode active. The jokes are still in the source.</span>
+      <button type="button" data-corporate-toggle>Make it more corporate</button>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

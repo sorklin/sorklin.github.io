@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Projects &amp; Other Dangerous Ideas — The Sorklin Group</title>
+<meta name="description" content="Hosted projects from The Sorklin Group: the D&D Item Ledger, Rolling Thunder running on WebAssembly MAME, and SorkGPT — a chat front-end for self-hosted models.">
+<meta property="og:title" content="AI Projects — The Sorklin Group">
+<meta property="og:description" content="Apps, emulators and experiments — all hosted, all on hardware I can unplug.">
+<meta name="theme-color" content="#05070b">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.sorklin.com/projects/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+        <path class="curve" d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"><span></span></button>
+    <div class="nav-links">
+      <a href="/cyber-risk-quant/">Risk Quant</a>
+      <a href="/cyber-security/">Security</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About</a>
+      <a class="nav-cta li" href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a><span class="sep">/</span><span>Projects</span></div>
+      <p class="kicker">AI projects &amp; other dangerous ideas</p>
+      <h1 class="display">
+        <span class="line">Everything here is</span>
+        <span class="line"><span class="grad" data-scramble>hosted</span>, and none of it</span>
+        <span class="line">phones home.</span>
+      </h1>
+      <p class="lede">
+        <span data-joke>Static pages on GitHub Pages, models on my own metal, data in your browser unless you
+          tell it otherwise. Statuses below are honest rather than flattering — “in development” means exactly that.</span>
+        <span data-corp>A portfolio of applied work: single-file applications, WebAssembly emulation and a
+          self-hosted model interface. Each entry states its current maturity plainly.</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════ shipped ══ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">Live now</p>
+        <h2 class="title">Open them. They work.</h2>
+      </div>
+
+      <div class="grid c2">
+        <a class="card tint-amber reveal" href="/projects/dnd-shop/" target="_blank" rel="noopener">
+          <div class="card-index">Single-file app <span class="badge live" style="margin-left:6px">Live</span></div>
+          <h3>D&amp;D Item Ledger</h3>
+          <p>A complete campaign economy in one HTML file: catalog values, what the party actually paid,
+            multiplicative scalers for location and relationship and condition, and a sale price that
+            reflects which shopkeeper is holding the purse.</p>
+          <p class="card-note">Offline-first · <b>IndexedDB</b> or a real JSON file on disk · LLM-assisted item descriptions · exports</p>
+          <span class="card-link">Open the ledger <span class="arrow">→</span></span>
+        </a>
+
+        <a class="card tint-cyan reveal" data-delay="80" href="/projects/rthunder/">
+          <div class="card-index">WebAssembly emulation <span class="badge live" style="margin-left:6px">Live</span></div>
+          <h3>Rolling Thunder</h3>
+          <p>Namco's 1986 arcade cabinet, playable in a browser tab: MAME 0.277's Namco System 86 driver
+            compiled to WebAssembly with Emscripten. Exact ROM match, real save states, DIP switches, the lot.</p>
+          <p class="card-note">Built from source · <b>56 MB wasm</b> served separately · <b>no plugins, no ads, no 1996</b></p>
+          <span class="card-link">Insert coin <span class="arrow">→</span></span>
+        </a>
+
+        <a class="card tint-violet reveal" href="/projects/sorkgpt/" target="_blank" rel="noopener">
+          <div class="card-index">Chat interface <span class="badge dev" style="margin-left:6px">In development</span></div>
+          <h3>SorkGPT</h3>
+          <p>A clean, fast chat front-end for the models running on Spark-I-Tron 6000 — sessions, model picker,
+            streaming answers. The interface is built; the wire to the machine is the next job.</p>
+          <p class="card-note">Self-hosted models · <b>going family-only</b> once it's useful · honest stub, no fake answers</p>
+          <span class="card-link">Try the stub <span class="arrow">→</span></span>
+        </a>
+
+        <div class="card reveal" data-delay="80">
+          <div class="card-index">This website <span class="badge live" style="margin-left:6px">Live</span></div>
+          <h3>www.sorklin.com</h3>
+          <p>Hand-written HTML and CSS. No framework, no build step, no cookie banner, no analytics script
+            watching you read about risk quantification. The jokes are hand-written too.</p>
+          <p class="card-note">Deployed by <b>git push</b> · renders offline-ish · try the corporate mode in the footer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ in the workshop ══ -->
+  <section class="section tight" id="workshop">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">In the workshop</p>
+        <h2 class="title">Half-built, deliberately unhidden.</h2>
+        <p>These exist as sketches and stubbornness. Listed here so I can't pretend they're further along than they are.</p>
+      </div>
+      <div class="grid c3">
+        <div class="card reveal">
+          <div class="card-index">Risk tooling <span class="badge soon" style="margin-left:6px">Sketch</span></div>
+          <h3>Exceedance curve explainer</h3>
+          <p>An interactive page that teaches a board member to read a loss exceedance curve in four minutes,
+            with the axes draggable so the shape stops being abstract.</p>
+        </div>
+        <div class="card reveal" data-delay="70">
+          <div class="card-index">Risk tooling <span class="badge soon" style="margin-left:6px">Sketch</span></div>
+          <h3>Scenario drafting copilot</h3>
+          <p>Turn a plain-English worry — “our payroll vendor got ransomed” — into a bounded,
+            cost-annotated scenario ready to drop into a model.</p>
+        </div>
+        <div class="card reveal" data-delay="140">
+          <div class="card-index">Household <span class="badge soon" style="margin-left:6px">Sketch</span></div>
+          <h3>The family gate</h3>
+          <p>The auth wall that turns SorkGPT from “a page on the internet” into
+            “the thing only my family can open”. First on the list, last to be finished — as always.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════ how it's run ══ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="panel reveal">
+        <div class="two-col">
+          <div>
+            <p class="kicker">House rules</p>
+            <h2 class="title">How this lot is put together.</h2>
+            <ul class="ticks">
+              <li><b>Static first.</b> Pages on GitHub Pages. If a project needs a server, that's a decision I have to defend.</li>
+              <li><b>Your data stays put.</b> Local-first storage — IndexedDB or a file you own. Nothing leaves the browser unless you point it at something.</li>
+              <li><b>Models on my hardware.</b> Self-hosted by default. Someone else's pricing page shouldn't be a dependency.</li>
+              <li><b>Big binaries live elsewhere.</b> The 56 MB emulator core ships from a separate repo so this site stays a git clone away, not a wait.</li>
+            </ul>
+          </div>
+          <div class="panel ink">
+            <h3>Under the hood</h3>
+            <p class="dim mono" style="font-size:13px;line-height:2">
+              HTML · CSS · vanilla JS<br>
+              no framework · no bundler<br>
+              Emscripten 6.0.10 · MAME 0.277<br>
+              IndexedDB · File System Access API<br>
+              OpenAI-compatible chat wire<br>
+              deployed by <span class="accent">git push</span>
+            </p>
+            <p class="dim mono" style="font-size:12.5px;margin-top:16px;line-height:2">
+              <a href="https://github.com/sorklin/sorklin.github.io" rel="noopener" target="_blank">Site source ↗</a><br>
+              <a href="/projects/dnd-shop/README.md">D&amp;D Item Ledger — full manual ↗</a><br>
+              <a href="/projects/rthunder/BUILD-NOTES.md">Rolling Thunder — build notes ↗</a>
+            </p>
+            <p class="dim" style="font-size:13.5px;margin-top:14px" data-joke>
+              The site ships in the time it takes to type a commit message.
+              That is either liberating or a warning, depending on the commit.
+            </p>
+            <p class="dim" style="font-size:13.5px;margin-top:10px" data-joke>
+              A good deal of the typing here was done by a model I supervise. The architecture, the opinions
+              and the blame are mine alone.
+            </p>
+            <p class="dim" style="font-size:13.5px;margin-top:10px" data-corp>
+              Built with assistance from large language models. Architecture, review and accountability are human.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="wrap">
+      <div class="callout info reveal" data-joke>
+        <span class="ico">[i]</span>
+        <div>Want one of these built for your problem?
+          That's a normal thing to <a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank">ask for</a>.
+          The arcade cabinet, less so.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/" style="margin-bottom:14px">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+            <path d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+        </a>
+        <p class="foot-blurb" data-joke>A private company of exactly one, measuring the unfashionable kind of risk
+          and shipping the tooling to keep up with it.</p>
+        <p class="foot-blurb" data-corp>The personal site of Brendan Fitzpatrick: cyber risk quantification, security assessment and applied AI engineering.</p>
+        <p class="foot-blurb dim mono" style="font-size:12.5px">Reachable on <a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a> &mdash; the only address here that is definitely real.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="/cyber-risk-quant/">Cyber Risk Quant</a></li>
+          <li><a href="/cyber-security/">Cyber Security</a></li>
+          <li><a href="/cyber-risk-quant/#axio">Axio360 work</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="/projects/dnd-shop/" target="_blank" rel="noopener">D&amp;D Item Ledger</a></li>
+          <li><a href="/projects/rthunder/">Rolling Thunder</a></li>
+          <li><a href="/projects/sorkgpt/" target="_blank" rel="noopener">SorkGPT</a></li>
+          <li><a href="/projects/">All projects</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+              <li><a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+      <li><a href="https://axio.com/" rel="noopener" target="_blank">Axio</a></li>
+          <li><a href="https://axio.com/axio360-platform/" rel="noopener" target="_blank">Axio360 platform</a></li>
+          <li><a href="https://github.com/sorklin" rel="noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 The Sorklin Group · Built by hand and by model, argued with by me, deployed by <span class="accent">git push</span></span>
+      <span class="corp-note">Corporate mode active. The jokes are still in the source.</span>
+      <button type="button" data-corporate-toggle>Make it more corporate</button>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

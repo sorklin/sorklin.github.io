@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rolling Thunder — MAME compiled to WebAssembly — The Sorklin Group</title>
+<meta name="description" content="Rolling Thunder (Namco, 1986) playable in the browser: MAME 0.277's Namco System 86 driver compiled to WebAssembly with Emscripten. Exact ROM match, save states, DIP switches.">
+<meta property="og:title" content="Rolling Thunder in your browser — The Sorklin Group">
+<meta property="og:description" content="MAME 0.277, compiled to WebAssembly. Namco System 86, 1986, in a tab.">
+<meta name="theme-color" content="#05070b">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.sorklin.com/projects/rthunder/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+        <path class="curve" d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"><span></span></button>
+    <div class="nav-links">
+      <a href="/cyber-risk-quant/">Risk Quant</a>
+      <a href="/cyber-security/">Security</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About</a>
+      <a class="nav-cta li" href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a><span class="sep">/</span><a href="/projects/">Projects</a><span class="sep">/</span><span>Rolling Thunder</span></div>
+      <p class="kicker">WebAssembly emulation <span class="badge live" style="margin-left:8px">Live</span></p>
+      <h1 class="display">
+        <span class="line">Rolling Thunder.</span>
+        <span class="line">Namco, <span class="grad" data-scramble>1986</span>, in a tab.</span>
+      </h1>
+      <p class="lede">
+        <span data-joke>MAME 0.277's Namco System 86 driver, compiled to WebAssembly with Emscripten on my own machine.
+          Exact ROM match, real save states, the Tab menu, DIP switches — the whole cabinet, minus the coin slot
+          and the carpet that arcade carpet is famous for.</span>
+        <span data-corp>A browser build of the 1986 arcade title, running the reference MAME driver compiled to
+          WebAssembly. No plugins, no ads, no external services.</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/projects/rthunder/play/" target="_blank" rel="noopener">▶ Insert coin <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#controls">Controls</a>
+        <a class="btn btn-ghost" href="#build">How it's built</a>
+      </div>
+      <p class="dim mono reveal" style="margin-top:20px;font-size:12.5px">
+        First load pulls a ~56 MB WebAssembly core — it's a whole arcade emulator, not a thumbnail. Be patient once.
+      </p>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════ controls ══ -->
+  <section class="section" id="controls">
+    <div class="wrap">
+      <div class="two-col">
+        <div class="reveal">
+          <p class="kicker">Controls</p>
+          <h2 class="title">Keyboard, obviously.</h2>
+          <div class="panel" style="padding:8px 0;overflow:hidden">
+            <table class="spec">
+              <thead><tr><th>Action</th><th>Keys</th></tr></thead>
+              <tbody>
+                <tr><td>Move / aim</td><td>Arrow keys, or <b>W A S D</b></td></tr>
+                <tr><td>Shot (button 1)</td><td><b>Ctrl</b>, <b>J</b> or <b>Z</b></td></tr>
+                <tr><td>Button 2</td><td><b>Alt</b>, <b>K</b> or <b>X</b></td></tr>
+                <tr><td>Insert coin</td><td><b>5</b> — yes, actually press it</td></tr>
+                <tr><td>Start</td><td><b>1</b></td></tr>
+                <tr><td>Player 2</td><td><b>I J K U</b> + <b>F</b> / <b>G</b></td></tr>
+                <tr><td>MAME menu (DIPs, graphics)</td><td><b>Tab</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="dim mono" style="font-size:12.5px;margin-top:14px" data-joke>
+            The <b>5</b> key is the one people miss. The cabinet wants a coin; the cabinet always wins.
+          </p>
+        </div>
+
+        <div class="reveal" data-delay="110">
+          <p class="kicker">Build notes</p>
+          <h2 class="title">What's actually running.</h2>
+          <ul class="ticks">
+            <li><b>Driver:</b> <span class="mono">src/mame/namco/namcos86.cpp</span>, machine <span class="mono">rthunder</span> — “Rolling Thunder (rev 3)”.</li>
+            <li><b>Emulator:</b> MAME 0.277, compiled to WebAssembly with Emscripten — not a reimplementation, not a JS port.</li>
+            <li><b>ROM set:</b> all 28 files verified byte-for-byte and CRC-for-CRC against MAME master's <span class="mono">ROM_START(rthunder)</span>.</li>
+            <li><b>Runtime:</b> ROM mounted into the in-memory filesystem at boot; save states, NVRAM and F12 screenshots all work.</li>
+            <li><b>Single-threaded</b> on purpose — no cross-origin isolation headers needed, so it runs on plain static hosting.</li>
+          </ul>
+          <div class="callout info" style="margin-top:20px" data-joke>
+            <span class="ico">[i]</span>
+            <div>Why this exists: it's the same muscle as the day job — take something complicated and opaque,
+              compile it down until you can observe it, and make the numbers legible. One of those numbers is a high score.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ build ══ -->
+  <section class="section tight" id="build">
+    <div class="wrap">
+      <div class="panel ink reveal">
+        <div class="two-col">
+          <div>
+            <p class="kicker">Where the 56 MB lives</p>
+            <h2 class="title">This repo stays light on purpose.</h2>
+            <p class="dim">A 56 MB WebAssembly binary has no business living in a website repo, and the ROM sitting next to it
+              has no business being public at all. So the play page resolves its assets at boot — a local copy first,
+              then whatever origin you point it at — and says so plainly when neither exists.</p>
+            <ol class="dashes" style="list-style:none;padding:0;margin:0;display:grid;gap:14px">
+              <li><b>Local, full-fidelity</b> — stage the build next to the page (git-ignored, never committed):
+                <div class="mono" style="margin-top:8px;color:var(--cyan)">node scripts/package-rthunder.mjs --install-local</div>
+                then <span class="mono">node serve.mjs</span> and open <a href="/projects/rthunder/play/" target="_blank" rel="noopener">the game</a>.</li>
+              <li><b>Anywhere else</b> — stage it, publish the folder to an origin that sends
+                <span class="mono">Access-Control-Allow-Origin: *</span>, and set <span class="mono">RT_REMOTE_BASE</span>
+                at the top of <span class="mono">play/index.html</span>:
+                <div class="mono" style="margin-top:8px;color:var(--cyan)">node scripts/package-rthunder.mjs</div></li>
+            </ol>
+          </div>
+          <div>
+            <div class="callout todo" style="margin-bottom:16px">
+              <span class="ico">[!]</span>
+              <div><b>Keep the build repo private.</b> The emulator is mine; the arcade ROM is licensed to somebody else
+                and is deliberately absent from this website repository.
+                And a private repo can't be read straight from a browser:
+                <span class="mono">raw.githubusercontent.com</span> answers the CORS preflight for an
+                <span class="mono">Authorization</span> header with 403 — verified, not assumed.
+                The <span class="mono">README</span> has a 15-line Cloudflare Worker that holds the token and adds the
+                CORS header, which is the tidy way to make this public-without-being-public.</div>
+            </div>
+            <div class="callout" data-joke>
+              <span class="ico">[i]</span>
+              <div><span class="mono">?remote=1</span> skips the local probe; <span class="mono">?sdlsoft=1</span>
+                drops to SDL's software renderer if your GPU driver is being creative. Diagnostics for a man who shipped
+                an emulator and wants to know why it didn't start.</div>
+            </div>
+            <p class="dim mono" style="font-size:12px;margin-top:16px">
+              <a href="/projects/rthunder/play/" target="_blank" rel="noopener">Direct link to the game →</a> · fullscreen, sound on.<br>
+              <a href="/projects/rthunder/BUILD-NOTES.md">Build notes — how MAME got compiled (markdown) →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="wrap">
+      <div class="callout info reveal">
+        <span class="ico">[→]</span>
+        <div>Back to the <a href="/projects/">projects menu</a>, where there is also a spreadsheet about dragons.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/" style="margin-bottom:14px">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+            <path d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+        </a>
+        <p class="foot-blurb" data-joke>A private company of exactly one, measuring the unfashionable kind of risk
+          and shipping the tooling to keep up with it.</p>
+        <p class="foot-blurb" data-corp>The personal site of Brendan Fitzpatrick: cyber risk quantification, security assessment and applied AI engineering.</p>
+        <p class="foot-blurb dim mono" style="font-size:12.5px">Reachable on <a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a> &mdash; the only address here that is definitely real.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="/cyber-risk-quant/">Cyber Risk Quant</a></li>
+          <li><a href="/cyber-security/">Cyber Security</a></li>
+          <li><a href="/cyber-risk-quant/#axio">Axio360 work</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="/projects/dnd-shop/" target="_blank" rel="noopener">D&amp;D Item Ledger</a></li>
+          <li><a href="/projects/rthunder/">Rolling Thunder</a></li>
+          <li><a href="/projects/sorkgpt/" target="_blank" rel="noopener">SorkGPT</a></li>
+          <li><a href="/projects/">All projects</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+              <li><a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+      <li><a href="https://axio.com/" rel="noopener" target="_blank">Axio</a></li>
+          <li><a href="https://axio.com/axio360-platform/" rel="noopener" target="_blank">Axio360 platform</a></li>
+          <li><a href="https://github.com/sorklin" rel="noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 The Sorklin Group · Built by hand and by model, argued with by me, deployed by <span class="accent">git push</span></span>
+      <span class="corp-note">Corporate mode active. The jokes are still in the source.</span>
+      <button type="button" data-corporate-toggle>Make it more corporate</button>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

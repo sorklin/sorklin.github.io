@@ -1,0 +1,20 @@
+<!doctype html><meta charset=utf-8><title>wasm probe</title><body><pre id=out>…</pre>
+<script>
+const out = (m) => { console.log(m); document.getElementById('out').textContent += m + "\n"; };
+(async () => {
+  try {
+    const t0 = performance.now();
+    const buf = await (await fetch('wasm/rthunder.wasm')).arrayBuffer();
+    out('fetch ' + buf.byteLength + ' bytes in ' + Math.round(performance.now() - t0) + 'ms');
+    const t1 = performance.now();
+    const mod = await WebAssembly.compile(buf);
+    out('compile in ' + Math.round(performance.now() - t1) + 'ms, imports=' + WebAssembly.Module.imports(mod).length);
+    const io = {};
+    for (const i of WebAssembly.Module.imports(mod)) { (io[i.module] ||= {})[i.name] = () => 0; }
+    const t2 = performance.now();
+    const inst = await WebAssembly.instantiate(mod, io);
+    out('instantiate in ' + Math.round(performance.now() - t2) + 'ms, exports=' + Object.keys(inst.exports).length);
+    out('DONE');
+  } catch (e) { out('ERROR ' + e.message); }
+})();
+</script>

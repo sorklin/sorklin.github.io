@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SorkGPT — self-hosted model interface — The Sorklin Group</title>
+<meta name="description" content="SorkGPT: a chat interface for the models running on Spark-I-Tron 6000. Interface built, endpoint pending — an honest stub.">
+<meta name="theme-color" content="#05070b">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.sorklin.com/projects/sorkgpt/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/chat.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+        <path class="curve" d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>SorkGPT<small>Spark-I-Tron 6000 · self-hosted</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"><span></span></button>
+    <div class="nav-links">
+      <a href="/projects/">Projects</a>
+      <a href="/cyber-risk-quant/">Risk Quant</a>
+      <a href="/about/">About</a>
+      <a class="nav-cta open-settings" href="#settings">Settings</a>
+    </div>
+  </div>
+</nav>
+
+<main class="chat-shell">
+
+  <aside class="chat-side">
+    <div class="side-top">
+      <button class="new-chat">+ New conversation</button>
+    </div>
+    <div class="side-label">Conversations</div>
+    <div class="sessions"></div>
+    <div class="side-foot">
+      <div class="endpoint-chip"><i></i><span>Spark-I-Tron 6000 · link down</span></div>
+      <button class="link open-settings">Endpoint &amp; model settings</button>
+      <button class="link" id="wipe">Delete all local conversations</button>
+      <p class="dim mono" style="font-size:11px;line-height:1.6;margin:4px 0 0">
+        Everything stays in this browser. Nothing is sent anywhere — there's nowhere to send it yet.
+      </p>
+    </div>
+  </aside>
+
+  <section class="chat-main">
+    <div class="stub-banner">
+      <b>Stub · honest</b>
+      <span>The interface is finished; the wire to Spark-I-Tron 6000 isn't. Until it is, answers come from a clearly-labelled demo brain, not a model.</span>
+      <button class="btn btn-ghost open-settings" type="button">Wire it up</button>
+    </div>
+
+    <div class="thread">
+      <div class="thread-inner"></div>
+    </div>
+
+    <div class="composer-wrap">
+      <div class="composer">
+        <textarea id="input" rows="1" placeholder="Ask SorkGPT something — or just test the interface; it's all that's live right now"></textarea>
+        <div class="composer-bar">
+          <span class="mono dim" id="cfg-model-chip" style="font-size:12px">spark-i-tron-6000</span>
+          <span class="mono dim" style="font-size:11px;opacity:.7">simulated answers</span>
+          <button id="send" type="button">Send <span class="arrow">↑</span></button>
+        </div>
+      </div>
+      <div class="hint">
+        <span><b>Enter</b> send · <b>Shift+Enter</b> newline</span>
+        <span>No model attached · responses are simulated</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="scrim"></div>
+
+<aside class="drawer" role="dialog" aria-label="SorkGPT settings" aria-modal="true">
+  <header>
+    <h3>Endpoint &amp; model</h3>
+    <button class="close" type="button" aria-label="Close settings">×</button>
+  </header>
+  <div class="body">
+    <div class="callout info" style="margin-bottom:22px">
+      <span class="ico">[!]</span>
+      <div>These settings live in <b>your browser only</b>. When this becomes family-only, the gate goes on a server in
+        front of Spark-I-Tron 6000 — never in this file. Anything a browser can hold, a curious kid can read.</div>
+    </div>
+
+    <div class="field">
+      <label for="cfg-url">Base URL</label>
+      <input id="cfg-url" type="url" placeholder="https://spark-i-tron-6000.lan/proxy" autocomplete="off" spellcheck="false">
+      <div class="help">OpenAI-compatible: the client posts to <code>&lt;base&gt;/v1/chat/completions</code> and probes
+        <code>&lt;base&gt;/v1/models</code>. It must send CORS headers for <code>www.sorklin.com</code> — a bare model
+        server won't, which is why a small proxy sits in front.</div>
+    </div>
+
+    <div class="field">
+      <label for="cfg-key">API key (optional)</label>
+      <input id="cfg-key" type="password" placeholder="leave blank until there's something to authenticate to" autocomplete="off">
+      <div class="help">Stored in localStorage on this device. Fine for a personal tool, not fine for anything shared.</div>
+    </div>
+
+    <div class="field">
+      <label for="cfg-model">Model</label>
+      <input id="cfg-model" list="model-hints" type="text" placeholder="spark-i-tron-6000" autocomplete="off" spellcheck="false">
+      <datalist id="model-hints"></datalist>
+      <div class="help">Free text — type whatever Spark-I-Tron 6000 actually answers to. The list is a guess about the future.</div>
+    </div>
+
+    <div class="field">
+      <label for="cfg-temp">Temperature</label>
+      <input id="cfg-temp" type="text" value="0.7" autocomplete="off">
+      <div class="help">0.0 = careful, 1.0 = creative, 1.4 = someone else's problem.</div>
+    </div>
+
+    <div class="field">
+      <label for="cfg-system">System prompt</label>
+      <textarea id="cfg-system" spellcheck="false"></textarea>
+      <div class="help">Sent as the first message on every request.</div>
+    </div>
+
+    <div class="field">
+      <button class="btn btn-ghost" id="cfg-test" type="button">Test connection</button>
+      <div class="help" id="cfg-result" style="min-height:20px"></div>
+    </div>
+  </div>
+  <footer>
+    <button class="btn btn-primary" id="cfg-save" type="button">Save</button>
+    <button class="btn btn-ghost" type="button" onclick="document.querySelector('.drawer').classList.remove('open');document.querySelector('.scrim').classList.remove('open')">Cancel</button>
+  </footer>
+</aside>
+
+<script src="/assets/js/chat.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

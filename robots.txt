@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# GitHub Pages 404 handler
+Sitemap: https://www.sorklin.com/sitemap.xml
