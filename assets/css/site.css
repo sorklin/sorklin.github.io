@@ -308,6 +308,30 @@ svg { display: block; }
   .hero-grid { grid-template-columns: 1fr; }
 }
 
+/* The hero copy column is roughly half the page, but .display sizes itself from
+   the viewport — so the authored line breaks in a hero headline wrap early and
+   the next line lands out of step with them. Size it from the column instead. */
+.hero-copy { container-type: inline-size; }
+.hero-copy .display { font-size: clamp(30px, 8.2cqw, 60px); }
+@supports not (font-size: 1cqw) {
+  .hero-copy .display { font-size: clamp(30px, 4.4vw, 58px); }
+}
+/* Too narrow for three authored lines to stay honest: let it flow and balance. */
+@media (max-width: 560px) {
+  .hero-copy .display .line { display: inline; }
+  .hero-copy .display { text-wrap: balance; }
+}
+
+/* The home hero's terminal must not wrap its own output: a shell that breaks a
+   command across lines reads as a broken site, and the longest line here is 59
+   characters. So the terminal takes the wider column, and the type steps down
+   before the text ever has to break. */
+.hero-grid--term { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); }
+.hero-grid--term .terminal { font-size: clamp(11.5px, 1.02vw, 13px); }
+@media (max-width: 980px) {
+  .hero-grid--term { grid-template-columns: 1fr; }
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -421,7 +445,7 @@ svg { display: block; }
   text-transform: uppercase;
 }
 .terminal-body { padding: 16px 18px 20px; min-height: 268px; }
-.terminal-body .ln { white-space: pre-wrap; word-break: break-word; }
+.terminal-body .ln { white-space: pre-wrap; overflow-wrap: break-word; }
 .terminal-body .cmd { color: var(--ink); }
 .terminal-body .cmd::before { content: "$ "; color: var(--cyan); }
 .terminal-body .ok { color: var(--green); }
