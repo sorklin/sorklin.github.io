@@ -1,5 +1,7 @@
-# Rolling Thunder build payloads (staged by scripts/package-rthunder.mjs)
-projects/rthunder/play/assets/
+# Rolling Thunder build payloads are COMMITTED (since 2026-10): the site ships
+# the full build so every client can play, not just the machine that staged it.
+# Re-stage after a rebuild with:  node scripts/package-rthunder.mjs --install-local
+# dist/ is the separate-origin staging folder and stays ignored.
 dist/
 node_modules/
 .DS_Store
@@ -10,9 +12,6 @@ desktop.ini
 *.log
 .idea/
 .vscode/
-serve.cmd
-serve.mjs
-serve.ps1
 
 # optional local copy of the pre-redesign Webflow export
 legacy-site/

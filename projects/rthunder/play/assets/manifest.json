@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "generated": "2026-10-04T14:12:36.554Z",
+  "files": [
+    {
+      "path": "wasm/rthunder.js",
+      "size": 520323,
+      "crc32": "0xf2267f7d"
+    },
+    {
+      "path": "wasm/rthunder.wasm",
+      "size": 55834303,
+      "crc32": "0xdee199ba"
+    },
+    {
+      "path": "wasm/uismall.bdf",
+      "size": 127585,
+      "crc32": "0xef56ccf2"
+    },
+    {
+      "path": "roms/rthunder.zip",
+      "size": 353743,
+      "crc32": "0x7f8ad5cf"
+    },
+    {
+      "path": "roms/legacy/rthunder.zip",
+      "size": 353757,
+      "crc32": "0x73ebe8f9"
+    },
+    {
+      "path": "boot-probe.txt",
+      "size": 30,
+      "crc32": "0x90c8184d"
+    },
+    {
+      "path": "emulatorjs/data/compression/extract7z.js",
+      "size": 280155,
+      "crc32": "0x01702347"
+    },
+    {
+      "path": "emulatorjs/data/compression/extractzip.js",
+      "size": 196199,
+      "crc32": "0xbe45a724"
+    },
+    {
+      "path": "emulatorjs/data/cores/mame2003-legacy-wasm.data",
+      "size": 5030690,
+      "crc32": "0xa36d1e2d"
+    },
+    {
+      "path": "emulatorjs/data/cores/mame2003-wasm.data",
+      "size": 5031434,
+      "crc32": "0xab443303"
+    },
+    {
+      "path": "emulatorjs/data/cores/mame2003_plus-legacy-wasm.data",
+      "size": 5388568,
+      "crc32": "0xf574fdc6"
+    },
+    {
+      "path": "emulatorjs/data/cores/mame2003_plus-wasm.data",
+      "size": 5391355,
+      "crc32": "0x080b7f6a"
+    },
+    {
+      "path": "emulatorjs/data/cores/reports/mame2003.json",
+      "size": 263,
+      "crc32": "0x079bffb6"
+    },
+    {
+      "path": "emulatorjs/data/cores/reports/mame2003_plus.json",
+      "size": 127,
+      "crc32": "0xda936b9d"
+    },
+    {
+      "path": "emulatorjs/data/emulator.min.css",
+      "size": 25630,
+      "crc32": "0x0a7a5e17"
+    },
+    {
+      "path": "emulatorjs/data/emulator.min.js",
+      "size": 426343,
+      "crc32": "0xf642d9bc"
+    },
+    {
+      "path": "emulatorjs/data/loader.js",
+      "size": 7594,
+      "crc32": "0xa55cceb5"
+    },
+    {
+      "path": "emulatorjs/data/localization/en-US.json",
+      "size": 9825,
+      "crc32": "0x2950113a"
+    },
+    {
+      "path": "emulatorjs/data/localization/it-IT.json",
+      "size": 8721,
+      "crc32": "0xd249d841"
+    },
+    {
+      "path": "emulatorjs/data/localization/pt-BR.json",
+      "size": 13209,
+      "crc32": "0xef8d016a"
+    },
+    {
+      "path": "emulatorjs/data/localization/zh-CN.json",
+      "size": 10521,
+      "crc32": "0x78d41b70"
+    },
+    {
+      "path": "emulatorjs/data/src/GameManager.js",
+      "size": 19048,
+      "crc32": "0xf4e19bc6"
+    },
+    {
+      "path": "emulatorjs/data/src/compression.js",
+      "size": 6409,
+      "crc32": "0x5215088c"
+    },
+    {
+      "path": "emulatorjs/data/src/emulator.js",
+      "size": 341775,
+      "crc32": "0xa2635c4d"
+    },
+    {
+      "path": "emulatorjs/data/src/gamepad.js",
+      "size": 6054,
+      "crc32": "0x4c2b2b9e"
+    },
+    {
+      "path": "emulatorjs/data/src/nipplejs.js",
+      "size": 20259,
+      "crc32": "0x5333d7f9"
+    },
+    {
+      "path": "emulatorjs/data/src/shaders.js",
+      "size": 139565,
+      "crc32": "0xd1638170"
+    },
+    {
+      "path": "emulatorjs/data/src/socket.io.min.js",
+      "size": 46831,
+      "crc32": "0xed8292cc"
+    },
+    {
+      "path": "emulatorjs/data/src/storage.js",
+      "size": 4600,
+      "crc32": "0xbef7e8de"
+    }
+  ],
+  "totalBytes": 79594916
+}

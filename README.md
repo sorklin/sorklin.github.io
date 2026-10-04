@@ -23,12 +23,28 @@ powershell -ExecutionPolicy Bypass -File .\serve.ps1
 ```
 
 It opens <http://localhost:8080/> in your browser. `-Port 9000` for another port, `-NoOpen` to keep
-the browser shut. `Ctrl-C` (or closing the window) stops it. To play Rolling Thunder without copying
-~54 MB into this repo:
+the browser shut. `Ctrl-C` (or closing the window) stops it. Rolling Thunder loads from the committed
+build in `projects/rthunder/play/assets/` — nothing extra to point at. To preview a *different* build
+without staging it over the committed one:
 
 ```
 .\serve.ps1 -Assets D:\work\rthunder\app
 ```
+
+### Other devices on the network
+
+Both servers bind **every interface**, so a phone, a tablet or another PC on the same network can
+open the site — and play Rolling Thunder — at `http://<this-pc's-LAN-IP>:8080/`. The exact URLs are
+printed at startup.
+
+- `serve.mjs` (Node) can always do this; no admin rights involved.
+- `serve.ps1` can too, but Windows (http.sys) lets a standard account bind `localhost` and nothing
+  else. If the all-interfaces bind is refused it falls back to localhost-only and prints the
+  one-time fix, run as Administrator once:
+  `netsh http add urlacl url=http://+:8080/ user=DOMAIN\user`
+- If a device still cannot connect, it is the Windows Firewall prompt — allow the port
+  (`New-NetFirewallRule -DisplayName 'Sorklin site' -Direction Inbound -LocalPort 8080 -Protocol TCP -Action Allow`).
+- `-LocalOnly` restores the old localhost-only behaviour.
 
 Why a server at all: every page references `/assets/css/site.css` from the **root**, which is exactly
 right for `www.sorklin.com` (the site sits at the domain root). Double-clicking `index.html` cannot
@@ -36,8 +52,9 @@ resolve that — on `file://` a leading `/` means your drive root, so you get an
 server only has to answer root-absolute URLs the way the real domain does.
 
 `serve.ps1` serves `index.html` for directories, sends `application/wasm` (Python's `http.server`
-does **not**, and the emulator cares), never caches HTML, and returns the styled `404.html`. Like
-`serve.mjs`, it is dev tooling: GitHub Pages never sees it.
+does **not**, and the emulator cares), never caches HTML, and returns the styled `404.html`. Both
+servers ship in the repo so anyone can run the project after a clone; GitHub Pages also serving them
+as static files is harmless.
 
 ### If you have Node
 
@@ -67,7 +84,8 @@ the CNAME is right, and that nothing from the old Webflow export crept back in. 
 Worth running as a pre-push habit; it takes about half a second.
 
 The two warnings it will always print are on purpose: `projects/rthunder/play/probe.html` is a vendored
-developer diagnostic and needs neither a viewport nor a description.
+developer diagnostic and needs neither a viewport nor a description, and the committed 55 MB
+`rthunder.wasm` triggers GitHub's own "over 50 MB" push nag (it is accepted; the hard limit is 100 MB).
 
 ---
 
@@ -83,6 +101,7 @@ projects/dnd-shop/README.md    the ledger's own manual, vendored from the dnd pr
 projects/rthunder/index.html   Rolling Thunder project page
 projects/rthunder/BUILD-NOTES.md   how the MAME→WebAssembly build was made (vendored)
 projects/rthunder/play/        the actual game page (patched upstream build)
+projects/rthunder/play/assets/ the committed build: wasm core, ROM set, EmulatorJS fallback
 projects/sorkgpt/index.html SorkGPT stub (sidebar, thread, composer, settings drawer)
 about/index.html               about + the contact block
 404.html                       GitHub Pages 404
@@ -139,36 +158,41 @@ GitHub Pages serves the push within a minute or two (Settings → Pages → Bran
 ## Rolling Thunder
 
 The play page is real: MAME 0.277's Namco System 86 driver compiled to WebAssembly, ROM mounted in the
-in-memory filesystem, save states and DIP switches working. What is **not** in this repo is the ~54 MB
-of build payload (56 MB `rthunder.wasm` + glue + font + ROM + probe) — a website repo is the wrong place
-for it, and the ROM belongs to Namco, not to me.
+in-memory filesystem, save states and DIP switches working. **And the build ships with the site**:
+`projects/rthunder/play/assets/` holds the whole payload — the 56 MB `rthunder.wasm`, the glue and
+bitmap font, the ROM set, and the EmulatorJS fallback runtime — committed next to the page. The site
+is self-contained: GitHub Pages serves the game to anyone, the local servers serve it to the LAN, and
+the page CRC-verifies every file against `manifest.json` before it will boot one (a silently truncated
+download otherwise shows up as a black canvas and a very bad afternoon).
 
 At boot the page resolves assets in this order:
 
-1. `./assets/` next to the page — staged by `node scripts/package-rthunder.mjs --install-local`
-   (git-ignored; this is the "just let me play it" path)
-2. `RT_REMOTE_BASE` at the top of `projects/rthunder/play/index.html` — any origin that sends
-   `Access-Control-Allow-Origin: *`
-3. neither → a panel saying exactly what's missing and the command that fixes it
+1. `./assets/` next to the page — the committed copy (the normal path, works on every host)
+2. `?remote=1`, or `RT_REMOTE_BASE` at the top of `projects/rthunder/play/index.html` — any origin that
+   sends `Access-Control-Allow-Origin: *` (handy for testing a different build without staging it)
 
-`node scripts/package-rthunder.mjs` also writes `manifest.json` (path, size, CRC32 per file). The play
-page reads it and refuses to boot if the ROM it downloads doesn't match the manifest — a silently
-truncated download otherwise shows up as a black canvas and a very bad afternoon.
+Re-staging after a rebuild of the core:
 
-### Making it playable from the internet (optional)
+```
+node scripts/package-rthunder.mjs --install-local --src D:\work\rthunder\app
+```
 
-Keep the build repository **private** — it contains a licensed arcade ROM.
+That walks the source app folder, copies `wasm/`, `roms/` (including the 0.37b15-named legacy zip),
+`emulatorjs/` and the boot probe into `play/assets/`, and rewrites `manifest.json` with size + CRC32
+per file. Commit the result and push — the site is playable everywhere again.
 
-A browser cannot read a private GitHub repo directly: `raw.githubusercontent.com` answers the CORS
-preflight for an `Authorization` header with `403` (verified 2026-09-28), so a token can never be attached
-from the page. Put a ~15-line Cloudflare Worker in front — it holds the token as a secret and adds the CORS
-header. Full worker code is in the "Hosting it publicly" section of `README.md` for the game build folder,
-and the shape is identical to the one above.
+### Why the build lives in the repo now
+
+It used not to: the payload lived outside the site, because a website repo seemed the wrong place for
+56 MB, and the plan was a private build repo fronted by a token-holding Cloudflare Worker — a browser
+cannot read a private repo's raw URLs at all (`raw.githubusercontent.com` 403s the CORS preflight for
+an `Authorization` header, verified 2026-09-28, so a token can never be attached from the page).
+Shipping the files here deletes the whole dance: one repo, one push, playable on any client. The
+arcade ROM's copyright belongs to its owner; it is included so the project runs — that decision is
+this site owner's, and the emulator itself is home-grown.
 
 ### Known limits of this copy
 
-- The `?engine=emulatorjs` fallback can't start from a staged build (the packer doesn't ship the EmulatorJS
-  core or `roms/legacy/`); it runs from the original `app/` folder or a `file://` build.
 - `?verify=1` POSTs to the upstream `app/server.js`, which Pages doesn't have.
 - `probe.html` is a development page for the original folder; it will 404 its own fetch here.
 

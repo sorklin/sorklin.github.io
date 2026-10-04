@@ -28,9 +28,10 @@ const htmlFiles = files.filter((f) => f.endsWith(".html"));
 console.log("\n  Sorklin site check\n  " + "─".repeat(40));
 
 /* 1. required pieces ---------------------------------------------------- */
-// serve.ps1 / serve.cmd / serve.mjs are deliberately NOT listed: they are local
-// preview tooling, not site content, and may be gitignored. Section 5b still
-// validates them whenever they are present in the working tree.
+// serve.ps1 / serve.cmd / serve.mjs are validated separately (5b) rather than
+// listed here, so the checker still runs on a tree where they have not been
+// checked out yet. They are committed, like everything else someone needs to
+// run the project.
 const localOnly = ["serve.ps1", "serve.cmd", "serve.mjs"].filter((f) => !existsSync(path.join(ROOT, f)));
 const required = [
   "index.html", "404.html", "CNAME", "README.md", "robots.txt", "sitemap.xml",
@@ -144,10 +145,15 @@ if (existsSync(cmdPath)) {
 }
 
 /* 6. size report -------------------------------------------------------- */
+// The Rolling Thunder payload is COMMITTED on purpose (projects/rthunder/play/assets/):
+// the site ships its own build so every client can play. GitHub's per-file hard
+// limit is 100 MB (files over 50 MB get a push warning but are accepted), so those
+// are the thresholds that matter now.
 const bytes = files.reduce((a, f) => a + statSync(f).size, 0);
 const biggest = files.map((f) => [statSync(f).size, path.relative(ROOT, f)]).sort((a, b) => b[0] - a[0])[0];
 console.log(`\n  repo (working tree): ${(bytes / 1024).toFixed(0)} KiB · largest file ${biggest[1]} at ${(biggest[0] / 1024).toFixed(0)} KiB`);
-if (biggest[0] > 25 * 1024 * 1024) bad("a file over 25 MB is in the repo — big binaries belong elsewhere");
+if (biggest[0] > 100 * 1024 * 1024) bad("a file over 100 MB is in the repo — GitHub's per-file hard limit blocks the push");
+else if (biggest[0] > 50 * 1024 * 1024) warn(`${biggest[1]} is over 50 MB — GitHub accepts it but will nag on push; expect a slow one`);
 
 console.log("\n  " + "─".repeat(40));
 console.log(errors ? `  ${errors} error(s), ${warnings} warning(s)\n`

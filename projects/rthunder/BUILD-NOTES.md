@@ -1,8 +1,8 @@
-> **Vendored copy**, from the build workspace. The ~54 MB of build payload
-> (`wasm/rthunder.wasm`, glue, font, ROM) is not on this site — see the
-> `README.md` at the repository root for how the play page finds them.
-> A longer, messier build log (`NOTES.md`, rootless MAME→WebAssembly in a
-> container) lives in the source project and is worth a read if you like that
+> **Vendored copy**, from the build workspace. The build payload now ships with the site —
+> `play/assets/` (staged by `scripts/package-rthunder.mjs --install-local`, committed) — so the play
+> page is self-contained on any host. This document is about how the build was *made*; the repository
+> root's `README.md` is about how it is *served*. A longer, messier build log (`NOTES.md`, rootless
+> MAME→WebAssembly in a container) lives in the source project and is worth a read if you like that
 > sort of thing.
 
 # Rolling Thunder (Namco, 1986) — playable in the browser

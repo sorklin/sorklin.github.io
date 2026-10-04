@@ -179,17 +179,22 @@
 
 <script>
 // ==== Sorklin build source — edit these two lines only =====================
-// The ~57 MB build (wasm core + arcade ROM) is deliberately NOT in this repo.
-// The page looks for it in this order:
-//   1. ./assets/        → staged by:  node scripts/package-rthunder.mjs --install-local
-//   2. RT_REMOTE_BASE   → anything that sends `Access-Control-Allow-Origin: *`
-// If neither is set you get a friendly panel rather than a black canvas.
+// The build (wasm core + arcade ROM + EmulatorJS fallback runtime) SHIPS in this
+// repo, under ./assets/ next to this page — staged by
+//   node scripts/package-rthunder.mjs --install-local
+// and committed, so the page is self-contained on any host: GitHub Pages, a LAN
+// preview, or any static server that sends the right MIME for .wasm. Every build
+// asset URL is resolved through RT_URL() against a base chosen once, at boot:
+//   1. ./assets/        → the committed copy (normal path)
+//   2. ?remote=1, or RT_REMOTE_BASE → an override origin that sends
+//      `Access-Control-Allow-Origin: *` (handy to test a different build)
+// If neither exists you get a friendly panel rather than a black canvas.
 //
-// WHY NOT A PRIVATE GITHUB REPO?  Verified 2026-09-28: raw.githubusercontent.com
-// answers the CORS preflight for an Authorization header with 403 and no ACAO, so
-// a browser can never attach a token to these reads. Public raw URLs work (they
-// send ACAO:*); a private repo only works behind a proxy that holds the token —
-// see the site README for a ~15-line Cloudflare Worker that does exactly that.
+// WHY SHIP IT IN-REPO? Because the alternative was worse: a browser cannot read a
+// private GitHub repo at all (raw.githubusercontent.com answers the CORS preflight
+// for an Authorization header with 403 — verified 2026-09-28 — so a token can never
+// be attached from the page; the workaround was a token-holding proxy). One repo,
+// one push, playable everywhere, is the whole trick.
 const RT_REMOTE_BASE = "";   // e.g. "https://build.sorklin.com/rthunder/" — keep the trailing slash
 const RT_FORCE_REMOTE = new URLSearchParams(location.search).has("remote");
 // ===========================================================================
@@ -273,7 +278,8 @@ function rtNotPublished(reason) {
   window.__RT_NOPUBLISH = true;   // fallBack() honours this: no fallback-core storm
   const where = RT_REMOTE_BASE ? "at <code>" + RT_REMOTE_BASE + "</code>" : "and <code>RT_REMOTE_BASE</code> is empty";
   say("<b>game build not reachable</b> — nothing playable " + where + ".<br>"
-    + "Stage it locally (from the repo root), then reload:<br>"
+    + "The build ships in this repo under <code>projects/rthunder/play/assets/</code> — if it was deleted, restore it, "
+    + "or re-stage it (from the repo root) and reload:<br>"
     + "<code>node scripts/package-rthunder.mjs --install-local</code><br>"
     + "…or point <code>RT_REMOTE_BASE</code> at a server that sends <code>Access-Control-Allow-Origin: *</code>.<br>"
     + "<span style='opacity:.7'>reason: " + reason + "</span>");

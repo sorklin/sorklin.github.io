@@ -11,11 +11,14 @@
 //     it and refuses to boot a file whose checksum doesn't match (silently
 //     corrupted or truncated downloads are the classic "why is it black").
 //
-// Publishing shape (read this before you push anything):
-//   dist/rthunder-build/  →  contents go into a repo of their own,
-//                            https://github.com/<you>/rthunder-build
-//   ⚠ That repo contains a commercially licensed arcade ROM. Make it PRIVATE
-//     and set RT_BUILD_TOKEN in play/index.html — see the site README.
+// Since 2026-10 the staged payload is COMMITTED under projects/rthunder/play/assets/,
+// so the site is self-contained and the game works for every client (GitHub Pages,
+// LAN preview, any static server). `--install-local` is the normal path;
+// dist/rthunder-build/ remains for publishing the build on a separate origin:
+//   dist/rthunder-build/  →  any host that sends Access-Control-Allow-Origin: *,
+//                            then set RT_REMOTE_BASE in play/index.html.
+//   ⚠ The payload contains an arcade ROM copyrighted by its owner. It ships here
+//     so the project runs; treat redistribution as your own decision, not mine.
 //
 // Zero dependencies, ESM, Windows-safe: node:path / node:fs only, nothing is
 // shelled out, and D:\work\rthunder\app style paths work natively.
@@ -35,8 +38,17 @@ const FILES = [
   path.join("wasm", "rthunder.wasm"),
   path.join("wasm", "uismall.bdf"),
   path.join("roms", "rthunder.zip"),
+  path.join("roms", "legacy", "rthunder.zip"),  // 0.37b15 names — fetched by the EmulatorJS fallback
   "boot-probe.txt",
 ];
+
+// Whole trees copied verbatim (every file inside is hashed into the manifest).
+// emulatorjs/ is the ?engine=emulatorjs fallback runtime; without it that engine
+// cannot start from a staged build.
+const DIRS = ["emulatorjs"];
+
+// Junk that must never travel with a staged tree.
+const SKIP_NAMES = new Set([".DS_Store", "Thumbs.db", "desktop.ini", ".git"]);
 
 const args = process.argv.slice(2);
 const getOpt = (name, fallback) => {
@@ -73,6 +85,17 @@ const human = (n) =>
     : n >= 1 << 10 ? (n / (1 << 10)).toFixed(1) + " KiB"
       : n + " B";
 
+async function listFiles(dir) {
+  const out = [];
+  for (const e of await fsp.readdir(dir, { withFileTypes: true })) {
+    if (SKIP_NAMES.has(e.name)) continue;
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) out.push(...await listFiles(p));
+    else if (e.isFile()) out.push(p);
+  }
+  return out;
+}
+
 async function main() {
   console.log("\n  Rolling Thunder build packer");
   console.log("  ─────────────────────────────────────────────");
@@ -108,6 +131,40 @@ async function main() {
     console.log(`  ✓ ${label.padEnd(24)} ${human(size).padStart(10)}   crc32 0x${crc.toString(16).padStart(8, "0")}`);
   }
 
+// Whole trees (the EmulatorJS fallback runtime): copy every file, hash each one.
+// Guard: a mirrored download can leave a 404 HTML page where an asset belongs
+// (the source build's cores/*-wasm.js are exactly that — and EmulatorJS 4 loads
+// the whole core from the -wasm.data bundle anyway, so those .js files are
+// 3.x-era leftovers no 4.x runtime ever fetches). Never stage a stub.
+for (const dirName of DIRS) {
+    const srcDir = path.join(SRC, dirName);
+    if (!existsSync(srcDir)) {
+      console.warn(`  ! SKIP   ${dirName}/ tree not found in source (the fallback engine will not run)`);
+      missing++;
+      continue;
+    }
+    for (const from of await listFiles(srcDir)) {
+      const rel = path.relative(srcDir, from);
+      const to = path.join(OUT, dirName, rel);
+      const head = Buffer.alloc(512);
+      const fh = await fsp.open(from, "r");
+      const { bytesRead } = await fh.read(head, 0, 512, 0);
+      await fh.close();
+      if (/^\s*<(!doctype|html)/i.test(head.toString("latin1", 0, bytesRead))) {
+        console.warn(`  ! SKIP   ${[dirName, ...rel.split(path.sep)].join("/")} — HTML error page in the source, not a real asset (EmulatorJS 4 loads cores from the -wasm.data bundle; this .js is a 3.x-era leftover)`);
+        continue;
+      }
+      const size = statSync(from).size;
+      const crc = await crc32(from);
+      await fsp.mkdir(path.dirname(to), { recursive: true });
+      await fsp.copyFile(from, to);
+      total += size; copied++;
+      const label = [dirName, ...rel.split(path.sep)].join("/");
+      manifest.files.push({ path: label, size, crc32: "0x" + crc.toString(16).padStart(8, "0") });
+      console.log(`  ✓ ${label.padEnd(24)} ${human(size).padStart(10)}   crc32 0x${crc.toString(16).padStart(8, "0")}`);
+    }
+  }
+
   manifest.totalBytes = total;
   await fsp.writeFile(path.join(OUT, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
   console.log(`  ✓ ${"manifest.json".padEnd(24)} ${human(statSync(path.join(OUT, "manifest.json")).size).padStart(10)}`);
@@ -122,16 +179,15 @@ async function main() {
   if (INSTALL_LOCAL) {
     console.log("  ─ Serve the site and the game will find these files and load from them:");
     console.log("      node serve.mjs        →  http://127.0.0.1:8080/projects/rthunder/play/\n");
-    console.log("  (This folder is git-ignored. It is a preview copy, not something you commit.)\n");
+    console.log("  (This folder is COMMITTED to the repo — that is what makes the site");
+    console.log("   self-contained for GitHub Pages and for any other client. Re-run this");
+    console.log("   script whenever you rebuild the core, then git add + push.)\n");
   } else {
     console.log("  ─ Publish the contents of dist/rthunder-build/ somewhere that sends CORS:*:");
-    console.log("      a private GitHub repo + the tiny worker in the README (recommended)");
-    console.log("      or any bucket / web server where you control the response headers");
+    console.log("      any bucket / web server where you control the response headers");
     console.log("    then set RT_REMOTE_BASE at the top of projects/rthunder/play/index.html.\n");
-    console.log("  ⚠  That folder contains a commercially licensed arcade ROM. Keep the repo PRIVATE.");
-    console.log("     A browser cannot send a GitHub token to raw.githubusercontent (its CORS preflight");
-    console.log("     answers 403), so 'public raw URL' and 'private repo' are not the same path —");
-    console.log("     a ~15-line Cloudflare Worker bridges them. See README → Rolling Thunder.\n");
+    console.log("  ⚠  That folder contains an arcade ROM copyrighted by its owner. You have");
+    console.log("     decided shipping it is fine — just know what the folder is.\n");
     console.log("  ─ Or skip publishing and just preview it here:");
     console.log("      node scripts/package-rthunder.mjs --install-local");
     console.log("      node serve.mjs   →  http://127.0.0.1:8080/projects/rthunder/play/\n");

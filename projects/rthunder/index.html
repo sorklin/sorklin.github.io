@@ -121,30 +121,31 @@
         <div class="two-col">
           <div>
             <p class="kicker">Where the 56 MB lives</p>
-            <h2 class="title">This repo stays light on purpose.</h2>
-            <p class="dim">A 56 MB WebAssembly binary has no business living in a website repo, and the ROM sitting next to it
-              has no business being public at all. So the play page resolves its assets at boot — a local copy first,
-              then whatever origin you point it at — and says so plainly when neither exists.</p>
+            <h2 class="title">In this repo. On purpose.</h2>
+            <p class="dim">The whole build — the 56 MB WebAssembly core, the ROM set and the EmulatorJS fallback —
+              is committed under <span class="mono">projects/rthunder/play/assets/</span>, so the play page is
+              self-contained: GitHub Pages, a laptop, a phone on the LAN — any static server that sends the right
+              MIME for <span class="mono">.wasm</span> will do. The page still resolves its assets at boot and
+              verifies each file by CRC32 before it will boot it.</p>
             <ol class="dashes" style="list-style:none;padding:0;margin:0;display:grid;gap:14px">
-              <li><b>Local, full-fidelity</b> — stage the build next to the page (git-ignored, never committed):
-                <div class="mono" style="margin-top:8px;color:var(--cyan)">node scripts/package-rthunder.mjs --install-local</div>
+              <li><b>Ships with the site</b> — <span class="mono">play/assets/</span> is committed; a first visit
+                pulls the core once, after that it is just the browser cache.</li>
+              <li><b>Re-staging (after a rebuild)</b> — point the packer at a build and commit the result:
+                <div class="mono" style="margin-top:8px;color:var(--cyan)">node scripts/package-rthunder.mjs --install-local --src D:\work\rthunder\app</div>
                 then <span class="mono">node serve.mjs</span> and open <a href="/projects/rthunder/play/" target="_blank" rel="noopener">the game</a>.</li>
-              <li><b>Anywhere else</b> — stage it, publish the folder to an origin that sends
+              <li><b>Separate origin (optional)</b> — publish <span class="mono">dist/rthunder-build/</span> anywhere that sends
                 <span class="mono">Access-Control-Allow-Origin: *</span>, and set <span class="mono">RT_REMOTE_BASE</span>
-                at the top of <span class="mono">play/index.html</span>:
+                at the top of <span class="mono">play/index.html</span> to test it:
                 <div class="mono" style="margin-top:8px;color:var(--cyan)">node scripts/package-rthunder.mjs</div></li>
             </ol>
           </div>
           <div>
             <div class="callout todo" style="margin-bottom:16px">
               <span class="ico">[!]</span>
-              <div><b>Keep the build repo private.</b> The emulator is mine; the arcade ROM is licensed to somebody else
-                and is deliberately absent from this website repository.
-                And a private repo can't be read straight from a browser:
-                <span class="mono">raw.githubusercontent.com</span> answers the CORS preflight for an
-                <span class="mono">Authorization</span> header with 403 — verified, not assumed.
-                The <span class="mono">README</span> has a 15-line Cloudflare Worker that holds the token and adds the
-                CORS header, which is the tidy way to make this public-without-being-public.</div>
+              <div><b>The ROM is not mine.</b> The emulator is; the arcade ROM's copyright belongs to its owner.
+                The full set is provided here so the project actually runs for anyone who opens the site —
+                every file is CRC-verified against MAME's <span class="mono">ROM_START(rthunder)</span> at boot,
+                so a truncated download refuses to start instead of showing a black canvas.</div>
             </div>
             <div class="callout" data-joke>
               <span class="ico">[i]</span>
