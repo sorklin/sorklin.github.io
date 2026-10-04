@@ -14,7 +14,14 @@ No framework, no build step, no dependencies. Plain HTML + CSS + vanilla JS, com
 
 ## Run it locally
 
-**No Node on this machine? Use PowerShell — it ships with Windows.** Nothing to install.
+**Visitors never run any of this.** A browser tab is the entire requirement: the emulator is
+WebAssembly running *in the page*, so Windows, macOS, Linux, Android and iPad all play it straight
+off the published site — nothing to install, nothing to execute. The servers below exist only for
+whoever is hosting a preview on their own machine, and they are per-OS: `serve.ps1` / `serve.cmd`
+are Windows conveniences (PowerShell and `.cmd` don't exist on macOS/Linux — that is fine, they are
+never downloaded by a visitor); on a Mac or any other OS, use the Node server instead: `node serve.mjs`.
+
+**No Node on this Windows machine? Use PowerShell — it ships with Windows.** Nothing to install.
 
 Double-click **`serve.cmd`**, or from PowerShell in this folder:
 
