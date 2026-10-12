@@ -114,7 +114,10 @@
       var dec = (el.getAttribute("data-dec") || 0) | 0;
       var prefix = el.getAttribute("data-prefix") || "";
       var suffix = el.getAttribute("data-suffix") || "";
-      if (reduced || isNaN(to)) { el.textContent = prefix + to.toFixed(dec) + suffix; return; }
+      // A non-numeric data-count is not a count-up target (some pages use the
+      // attribute as a plain label) — leave its text alone rather than write NaN.
+      if (isNaN(to)) return;
+      if (reduced) { el.textContent = prefix + to.toFixed(dec) + suffix; return; }
       var t0 = performance.now(), dur = 1250;
       var step = function (now) {
         var p = Math.min(1, (now - t0) / dur);
@@ -190,6 +193,67 @@
     // duplicate the strip so the -50% translate loops seamlessly
     track.innerHTML += track.innerHTML;
   }
+
+  /* ------------------------------------------------------ daily brief -- */
+  // Homepage strip: upgrade the static fallback link with the latest
+  // headlines once /news/news.json loads. Silent on any failure — the
+  // fallback link is the whole feature when the feed is missing. Feed
+  // content goes in via textContent/attributes only.
+  // Linking: "The Daily Brief" (static) goes to the page; each headline
+  // goes to that story's OWN entry on /news/ — anchor #story-<date>-<n>,
+  // the id the news renderer assigns from the same feed file (n = 1-based
+  // position in that day's items, skipping malformed ones — which is why
+  // the index is captured before filtering); "Today's briefing" jumps to
+  // the top of the newest day's entry (#day-<date>), today's date if the
+  // feed already carries it. These are internal navigations — the
+  // new-tab house rule applies to publisher links on the news page only.
+  (function briefStrip() {
+    var strip = $("[data-brief-strip]");
+    var holder = $("[data-brief-items]");
+    if (!holder || typeof window.fetch !== "function") return;
+    var more = strip ? strip.querySelector(".brief-strip-more") : null;
+    fetch("/news/news.json", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (data) {
+        var days = data && Array.isArray(data.days) ? data.days : [];
+        var day = null;
+        for (var i = 0; i < days.length; i++) {
+          var d = days[i];
+          if (d && Array.isArray(d.items) && (!day || String(d.date) > String(day.date))) day = d;
+        }
+        var picked = [];
+        if (day) {
+          for (var j = 0; j < day.items.length && picked.length < 3; j++) {
+            var it = day.items[j];
+            if (it && /^https?:\/\//i.test(String(it.url || ""))) picked.push({ it: it, n: j + 1 });
+          }
+        }
+        if (!picked.length) return; // keep the static fallback links
+        if (more) {
+          var now = new Date();
+          var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+          var iso = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+          var hasToday = days.some(function (x) { return x && x.date === iso; });
+          more.setAttribute("href", "/news/#day-" + (hasToday ? iso : day.date));
+        }
+        holder.textContent = "";
+        picked.forEach(function (e) {
+          var a = document.createElement("a");
+          a.className = "brief-strip-item";
+          a.href = "/news/#story-" + day.date + "-" + e.n; // the story's entry on the page
+          a.title = String(e.it.title || "");
+          if (e.it.source) {
+            var src = document.createElement("span");
+            src.className = "src";
+            src.textContent = String(e.it.source) + " ·";
+            a.appendChild(src);
+          }
+          a.appendChild(document.createTextNode(" " + String(e.it.title || "")));
+          holder.appendChild(a);
+        });
+      })
+      .catch(function () { /* feed missing or bad: static fallback stays */ });
+  })();
 
   /* -------------------------------------------------- corporate mode -- */
   var corpBtn = $("[data-corporate-toggle]");

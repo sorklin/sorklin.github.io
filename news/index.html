@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Daily Brief — AI &amp; Security News — The Sorklin Group</title>
+  <meta name="description" content="A daily briefing of AI-security and general security news: short summaries linked to the original reporting, published every morning on sorklin.com.">
+  <meta property="og:title" content="The Daily Brief — The Sorklin Group">
+  <meta property="og:description" content="The day in AI security and regular security news, summarised and linked to the original publishers. Updated every morning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sorklin.com/news/">
+  <meta name="theme-color" content="#05070b">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://www.sorklin.com/news/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+        <path class="curve" d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation"><span></span></button>
+    <div class="nav-links">
+      <a href="/cyber-risk-quant/">Risk Quant</a>
+      <a href="/cyber-security/">Security</a>
+      <a href="/projects/">Projects</a>
+      <a href="/news/">News</a>
+      <a href="/about/">About</a>
+      <a class="nav-cta li" href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <header class="page-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a><span class="sep">/</span><span>Daily Brief</span></div>
+      <p class="kicker">The Daily Brief</p>
+      <h1 class="display">
+        <span class="line">AI &amp; security,</span>
+        <span class="line">every <span class="grad" data-scramble>morning</span>.</span>
+      </h1>
+      <p class="lede">
+        <span data-joke>One sweep of the wire each morning — a few honest sentences per story, linked to whoever
+          did the real reporting.</span>
+        <span data-corp>A daily digest of AI and cybersecurity stories — short summaries linking to the original
+          publishers.</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#brief">Read the latest briefing <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#about-feed">How this feed is made</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════ brief ══ -->
+  <section class="section" id="brief">
+    <div class="wrap">
+      <div class="news-controls" id="news-controls" hidden>
+        <div class="news-tabs" role="group" aria-label="Filter stories by topic">
+          <button type="button" class="news-tab" data-filter="all" aria-pressed="true">All<span class="n"></span></button>
+          <button type="button" class="news-tab" data-filter="ai" aria-pressed="false">AI Security<span class="n"></span></button>
+          <button type="button" class="news-tab" data-filter="security" aria-pressed="false">Security<span class="n"></span></button>
+        </div>
+        <span class="news-updated dim mono" id="news-updated"></span>
+      </div>
+
+      <!-- The renderer builds every headline, summary and link from
+           /news/news.json — the file the daily writer process maintains.
+           Until JavaScript runs, this stays a loading note. -->
+      <div id="brief-list" class="news-list" aria-live="polite">
+        <p class="dim mono news-loading">Loading the briefing…</p>
+      </div>
+
+      <div class="news-more-row">
+        <button type="button" class="btn btn-ghost" id="news-more" hidden>Load older briefings <span class="arrow">↓</span></button>
+      </div>
+
+      <noscript>
+        <div class="callout" style="margin-top:20px">
+          <span class="ico">[!]</span>
+          <div>The briefing is rendered in your browser from a small JSON file — with JavaScript off there is
+            nothing to read here. The raw feed lives at <a href="/news/news.json">/news/news.json</a>.</div>
+        </div>
+      </noscript>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ under the hood ══ -->
+  <section class="section" id="about-feed">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker">Under the hood</p>
+        <h2 class="title">How the brief gets made.</h2>
+        <p>
+          <span data-joke>No newsroom was harmed — or, strictly speaking, involved. Here is the whole machine,
+            with the cover off.</span>
+          <span data-corp>An overview of how this feed is produced, organised and attributed.</span>
+        </p>
+      </div>
+
+      <div class="grid c3">
+        <article class="card tint-cyan reveal">
+          <div class="card-index">01 / Process</div>
+          <h3>How this is made</h3>
+          <p>Filed every morning by an unattended process — no editorial hours, no embargo gossip, no byline
+            to protect.</p>
+          <ul class="dashes">
+            <li>Every summary links to the <b>original publisher</b>, in a new tab, so this page never loses
+              your place.</li>
+            <li>Entries stay roughly <b>90 days</b>, then the archive quietly forgets them.</li>
+            <li>Behind it sits one plain <b>JSON file</b> — no cookies, no trackers, nothing calling home.</li>
+          </ul>
+        </article>
+
+        <article class="card tint-violet reveal" data-delay="90">
+          <div class="card-index">02 / Taxonomy</div>
+          <h3>Two tags. That's the whole taxonomy.</h3>
+          <p><span class="badge ai">AI Security</span> — AI as the target, the weapon or the incident:
+            model breaches, prompt injection, AI-powered attacks, and the policy arriving late.</p>
+          <p style="margin-top:10px"><span class="badge info">Security</span> — “regular” security, the rest
+            of the wire: breaches, CVEs, ransomware, advisories, and the policy that follows them.</p>
+          <p class="card-note" data-joke>Anything that is both gets filed under whichever tag was louder that
+            morning.</p>
+          <p class="card-note" data-corp>Stories spanning both topics are filed under their dominant theme.</p>
+        </article>
+
+        <article class="card tint-amber reveal" data-delay="180">
+          <div class="card-index">03 / Attribution</div>
+          <h3>Linked articles</h3>
+          <p data-joke>Third-party content: their facts, their typos, their blame. Summary judgement is the
+            only part that's mine.</p>
+          <p data-corp>Summaries are generated automatically. Linked articles belong to, and are the
+            responsibility of, their publishers.</p>
+          <p class="card-note">The <b>↗</b> on a link means it opens in a new tab — this page keeps your place.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════ footer ══ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/" style="margin-bottom:14px">
+          <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+            <rect x="2" y="2" width="28" height="28" rx="9" stroke-opacity=".3" stroke-width="1.5"/>
+            <path d="M7 10c5.5 0 6.5 13 18 13" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="7" cy="10" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>The Sorklin Group<small>Cyber risk · Security · AI</small></span>
+        </a>
+        <p class="foot-blurb" data-joke>A private company of exactly one, measuring the unfashionable kind of risk
+          and shipping the tooling to keep up with it.</p>
+        <p class="foot-blurb" data-corp>The personal site of Brendan Fitzpatrick: cyber risk quantification, security assessment and applied AI engineering.</p>
+        <p class="foot-blurb dim mono" style="font-size:12.5px">Reachable on <a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a> &mdash; the only address here that is definitely real.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="/cyber-risk-quant/">Cyber Risk Quant</a></li>
+          <li><a href="/cyber-security/">Cyber Security</a></li>
+          <li><a href="/news/">Daily Brief</a></li>
+          <li><a href="/cyber-risk-quant/#axio">Axio360 work</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul>
+          <li><a href="/projects/dnd-shop/" target="_blank" rel="noopener">D&amp;D Item Ledger</a></li>
+          <li><a href="/projects/rthunder/">Rolling Thunder</a></li>
+          <li><a href="/projects/sorkgpt/">SorkGPT</a></li>
+          <li><a href="/projects/">All projects</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+              <li><a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></li>
+      <li><a href="https://axio.com/" rel="noopener" target="_blank">Axio</a></li>
+          <li><a href="https://axio.com/axio360-platform/" rel="noopener" target="_blank">Axio360 platform</a></li>
+          <li><a href="https://github.com/sorklin" rel="noopener" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 The Sorklin Group · Built by hand and by model, argued with by me, deployed by <span class="accent">git push</span></span>
+      <span class="corp-note">Corporate mode active. The jokes are still in the source.</span>
+      <button type="button" data-corporate-toggle>Make it more corporate</button>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/news.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

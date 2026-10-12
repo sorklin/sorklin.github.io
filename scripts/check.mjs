@@ -39,7 +39,7 @@ const required = [
   "cyber-risk-quant/index.html", "cyber-security/index.html", "projects/index.html",
   "projects/dnd-shop/index.html", "projects/rthunder/index.html",
   "projects/rthunder/play/index.html", "projects/sorkgpt/index.html",
-  "about/index.html",
+  "about/index.html", "news/index.html",
 ];
 const missing = required.filter((r) => !existsSync(path.join(ROOT, r)));
 if (missing.length) missing.forEach((m) => bad("missing required file: " + m));
@@ -142,6 +142,76 @@ if (existsSync(cmdPath)) {
   const s = readFileSync(cmdPath, "latin1");
   if (!/-ExecutionPolicy\s+Bypass/.test(s)) bad("serve.cmd: no -ExecutionPolicy Bypass, so double-clicking refuses to run serve.ps1");
   if (!/serve\.ps1/.test(s)) bad("serve.cmd: does not reference serve.ps1");
+}
+
+/* 5c. the daily brief feed ---------------------------------------------- */
+// /news/ is written daily by a separate process through news/news.json (the
+// contract lives in news/README.md). Validate that machine contract here so
+// a bad write is caught pre-push instead of on the page.
+const newsJsonPath = path.join(ROOT, "news", "news.json");
+if (!existsSync(newsJsonPath)) {
+  warn("news/news.json absent — the Daily Brief has nothing to render");
+} else {
+  try {
+    const feed = JSON.parse(readFileSync(newsJsonPath, "utf8"));
+    if (typeof feed !== "object" || feed === null || Array.isArray(feed)) throw new Error("root must be an object");
+    if (feed.version !== 2) {
+      throw new Error("version must be 2 (schema v2: each item carries tldr plus optional details[] and links[] — see news/README.md)");
+    }
+    if (feed.updated !== null && !/^\d{4}-\d{2}-\d{2}$/.test(String(feed.updated))) {
+      throw new Error("updated must be null or YYYY-MM-DD");
+    }
+    if (!Array.isArray(feed.days)) throw new Error("days must be an array");
+    const seen = new Set();
+    let itemCount = 0, prev = null;
+    feed.days.forEach((d, i) => {
+      if (!d || typeof d !== "object" || Array.isArray(d)) throw new Error(`days[${i}] must be an object`);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(String(d.date || ""))) throw new Error(`days[${i}].date must be YYYY-MM-DD`);
+      if (seen.has(d.date)) throw new Error(`duplicate day ${d.date}`);
+      seen.add(d.date);
+      if (prev && d.date > prev) throw new Error("days must be newest-first (dates descending)"); // ISO strings sort
+      prev = d.date;
+      if (!Array.isArray(d.items)) throw new Error(`days[${i}].items must be an array`);
+      d.items.forEach((it, j) => {
+        if (!it || typeof it !== "object") throw new Error(`days[${i}].items[${j}] must be an object`);
+        if (typeof it.title !== "string" || !it.title.trim()) throw new Error(`days[${i}].items[${j}].title missing`);
+        if (typeof it.url !== "string" || !/^https?:\/\//i.test(it.url)) {
+          throw new Error(`days[${i}].items[${j}].url must be an absolute http(s) URL`);
+        }
+        if (it.tldr === undefined || it.tldr === null) warn(`days[${i}].items[${j}] has no tldr (it shows collapsed under the title)`);
+        else if (typeof it.tldr !== "string") throw new Error(`days[${i}].items[${j}].tldr must be a string`);
+        if (typeof it.summary !== "string" || !it.summary.trim()) warn(`days[${i}].items[${j}] has no summary`);
+        if (typeof it.source !== "string" || !it.source.trim()) warn(`days[${i}].items[${j}] has no source name`);
+        if (it.details !== undefined && !Array.isArray(it.details)) throw new Error(`days[${i}].items[${j}].details must be an array of strings`);
+        it.details?.forEach((x, k) => {
+          if (typeof x !== "string" || !x.trim()) throw new Error(`days[${i}].items[${j}].details[${k}] must be a non-empty string`);
+        });
+        if (it.links !== undefined && !Array.isArray(it.links)) throw new Error(`days[${i}].items[${j}].links must be an array`);
+        it.links?.forEach((l, k) => {
+          if (!l || typeof l !== "object") throw new Error(`days[${i}].items[${j}].links[${k}] must be an object`);
+          if (typeof l.url !== "string" || !/^https?:\/\//i.test(l.url)) {
+            throw new Error(`days[${i}].items[${j}].links[${k}].url must be an absolute http(s) URL`);
+          }
+          if (typeof l.label !== "string" || !l.label.trim()) warn(`days[${i}].items[${j}].links[${k}] has no label (the raw URL shows instead)`);
+        });
+        if (it.category !== "security" && it.category !== "ai") {
+          warn(`days[${i}].items[${j}].category "${it.category}" is not security|ai — it renders under a neutral "News" tag`);
+        }
+        itemCount++;
+      });
+    });
+    if (feed.days.length > 90) warn(`feed holds ${feed.days.length} days — the writer process trims to 90 (news/README.md)`);
+    good(`daily brief feed OK: ${feed.days.length} day(s), ${itemCount} item(s)`);
+    // The new-tab rule is enforced in the renderer; make sure it stayed there.
+    const newsJsPath = path.join(ROOT, "assets", "js", "news.js");
+    if (existsSync(newsJsPath) && !/_blank/.test(readFileSync(newsJsPath, "utf8"))) {
+      bad("assets/js/news.js: the renderer no longer opens publisher links in a new tab");
+    } else {
+      good("publisher links open in a new tab (renderer enforces _blank)");
+    }
+  } catch (e) {
+    bad("news/news.json: " + e.message);
+  }
 }
 
 /* 6. size report -------------------------------------------------------- */

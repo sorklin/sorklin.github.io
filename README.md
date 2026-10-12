@@ -102,6 +102,10 @@ developer diagnostic and needs neither a viewport nor a description, and the com
 index.html                     home
 cyber-risk-quant/index.html    quantification: the argument, the work, the Axio360 section
 cyber-security/index.html      assessments, frameworks, what you get
+news/index.html                the Daily Brief: daily AI + security news section
+news/news.json                 the feed file — written daily by a separate process
+news/README.md                 the writer contract for that process (schema, rules)
+news/AGENT-INSTRUCTIONS.md     the step-by-step runbook for the writing agent
 projects/index.html            the projects menu + workshop sketches
 projects/dnd-shop/index.html   D&D Item Ledger (vendored single-file app)
 projects/dnd-shop/README.md    the ledger's own manual, vendored from the dnd project
@@ -126,6 +130,30 @@ The nav and footer are **duplicated HTML in each page** — deliberate. This is 
 templating and no build step; injecting them with JavaScript would give search engines and no-JS
 visitors an empty page. If you change a nav item, change it in all pages
 (`grep -l "nav-links" *.html */index.html */*/index.html` finds them).
+
+---
+
+## The Daily Brief (`/news/`)
+
+A dedicated, **machine-written** section: the latest AI and security news, one
+entry per day, each entry a list of short summaries linking to the original
+publishers. The daily writer process — whatever builds it, on whatever
+schedule — touches exactly one file: `news/news.json`. **Full contract:
+`news/README.md`** (schema, ordering, the 90-day trim, validation).
+`node scripts/check.mjs` validates the feed shape, so a malformed daily write
+is caught before a push, not on the page.
+
+Design in one paragraph: the writer prepends a day object to `news/news.json`,
+the renderer (`assets/js/news.js`) fetches it client-side and builds the page
+with `textContent` only (a hostile/malformed feed cannot inject markup), and
+every publisher link is forced to `target="_blank" rel="noopener noreferrer"`
+in one place. The homepage carries a small strip at the top — pinned below the
+nav as the page scrolls — that upgrades itself with the latest headlines when
+the feed loads and silently falls back to a plain link when it doesn't.
+Strip links stay on-site: each headline opens that story's entry on `/news/`
+(`#story-<date>-<n>`), and "Today's briefing" jumps to the top of the newest
+day's entry (`#day-<date>`); only the news page itself links out to
+publishers.
 
 ---
 
