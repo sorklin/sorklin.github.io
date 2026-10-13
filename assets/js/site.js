@@ -274,6 +274,34 @@
     corpBtn.addEventListener("click", function () { apply(!document.body.classList.contains("corporate")); });
   }
 
+  /* ------------------------------------------------------ theme cycle -- */
+  // Four looks, one stylesheet. The footer button cycles them; an inline
+  // snippet in every page head restores the saved theme before first paint
+  // (this module then syncs the label). Midnight = no data-theme attribute.
+  var THEMES = ["midnight", "daylight", "arcade", "press"];
+  var THEME_LABELS = { midnight: "Midnight", daylight: "Daylight", arcade: "Arcade", press: "Press" };
+  var THEME_META = { midnight: "#05070b", daylight: "#f7f8fa", arcade: "#fff9ef", press: "#fdf1e3" };
+  var themeBtn = $("[data-theme-cycle]");
+  var htmlEl = document.documentElement;
+  if (themeBtn && htmlEl) {
+    var applyTheme = function (t) {
+      if (t === "midnight") htmlEl.removeAttribute("data-theme");
+      else htmlEl.setAttribute("data-theme", t);
+      var meta = $('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", THEME_META[t] || THEME_META.midnight);
+      themeBtn.textContent = "Theme: " + THEME_LABELS[t];
+      try { localStorage.setItem("sorklin:theme", t); } catch (e) {}
+    };
+    var currentTheme = htmlEl.getAttribute("data-theme") || "midnight";
+    if (THEMES.indexOf(currentTheme) === -1) currentTheme = "midnight";
+    applyTheme(currentTheme);
+    themeBtn.addEventListener("click", function () {
+      var now = htmlEl.getAttribute("data-theme") || "midnight";
+      if (THEMES.indexOf(now) === -1) now = "midnight";
+      applyTheme(THEMES[(THEMES.indexOf(now) + 1) % THEMES.length]);
+    });
+  }
+
   /* --------------------------------------------------- ambient field -- */
   var cv = $("#field");
   if (cv && !reduced) {

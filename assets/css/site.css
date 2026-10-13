@@ -416,7 +416,9 @@ svg { display: block; }
 
 /* ------------------------------------------------------------ terminal -- */
 .terminal {
-  border: 1px solid var(--line);
+  /* Pinned: the terminal is a dark screen in every theme — its text palette
+     never follows the theme tokens, so it stays readable everywhere. */
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--r);
   background: linear-gradient(180deg, rgba(16, 23, 36, 0.92), rgba(8, 11, 17, 0.94));
   box-shadow: 0 34px 80px -30px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -430,7 +432,7 @@ svg { display: block; }
   align-items: center;
   gap: 8px;
   padding: 11px 14px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.025);
 }
 .terminal-bar i { width: 10px; height: 10px; border-radius: 50%; background: #2a333f; }
@@ -440,23 +442,23 @@ svg { display: block; }
 .terminal-bar span {
   margin-left: 6px;
   font-size: 11px;
-  color: var(--dim-2);
+  color: #6a7787;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 .terminal-body { padding: 16px 18px 20px; min-height: 268px; }
 .terminal-body .ln { white-space: pre-wrap; overflow-wrap: break-word; }
-.terminal-body .cmd { color: var(--ink); }
-.terminal-body .cmd::before { content: "$ "; color: var(--cyan); }
-.terminal-body .ok { color: var(--green); }
-.terminal-body .warn { color: var(--amber); }
-.terminal-body .out { color: var(--dim); }
-.terminal-body .key { color: var(--violet); }
+.terminal-body .cmd { color: #e9eef5; }
+.terminal-body .cmd::before { content: "$ "; color: #5de1ff; }
+.terminal-body .ok { color: #7ee787; }
+.terminal-body .warn { color: #ffb454; }
+.terminal-body .out { color: #93a1b3; }
+.terminal-body .key { color: #b085f5; }
 .terminal-body .caret {
   display: inline-block;
   width: 8px; height: 15px;
   vertical-align: -2px;
-  background: var(--cyan);
+  background: #5de1ff;
   animation: blink 1.05s steps(2, start) infinite;
 }
 @keyframes blink { to { visibility: hidden; } }
@@ -1132,3 +1134,141 @@ figure.chart { margin: 0; }
   .ticker-track { animation: none; }
   #field { display: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   THEME SYSTEM — four looks, one stylesheet.
+   Midnight (the original) is the default: no data-theme attribute needed.
+   The footer's theme button sets data-theme on <html>; an inline snippet in
+   each page head restores the saved theme before first paint. All four
+   themes render the exact same HTML — this section only swaps tokens and
+   adds a few scoped flourishes. Corporate mode (body.corporate) still wins
+   over any theme's accent tokens, by design.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Daylight — light & professional ──────────────────────────────────── */
+[data-theme="daylight"] {
+  --bg: #f7f8fa;
+  --bg-2: #eff1f4;
+  --panel: #ffffff;
+  --panel-2: #ffffff;
+  --line: #dfe4ec;
+  --line-2: #c3ccd9;
+  --ink: #17233b;
+  --dim: #4a5872;
+  --dim-2: #8593aa;
+  --cyan: #1f5aa8;
+  --violet: #6d5bd0;
+  --amber: #b45309;
+  --green: #15803d;
+  --red: #b91c1c;
+  --grad: linear-gradient(118deg, #1f5aa8, #274690);
+  --grad-soft: linear-gradient(118deg, rgba(31, 90, 168, 0.1), rgba(109, 91, 208, 0.1));
+}
+[data-theme="daylight"] body { background: linear-gradient(180deg, #ffffff, #f7f8fa 320px); }
+[data-theme="daylight"] .site-nav, [data-theme="daylight"] .site-nav.stuck { background: rgba(255, 255, 255, 0.92); }
+[data-theme="daylight"] .nav-toggle { background: rgba(255, 255, 255, 0.97); box-shadow: 0 24px 60px rgba(23, 35, 59, 0.18); }
+[data-theme="daylight"] .nav-links a:hover, [data-theme="daylight"] .btn-ghost:hover { background: rgba(23, 35, 59, 0.06); }
+[data-theme="daylight"] .btn-primary { color: #ffffff; box-shadow: 0 10px 30px -14px rgba(31, 90, 168, 0.55); }
+[data-theme="daylight"] .card { background: #ffffff; box-shadow: 0 1px 2px rgba(23, 35, 59, 0.05), 0 1px 3px rgba(23, 35, 59, 0.08); }
+[data-theme="daylight"] .card:hover { box-shadow: 0 12px 32px -14px rgba(23, 35, 59, 0.25); }
+[data-theme="daylight"] .card::before { display: none; }
+[data-theme="daylight"] .news-item { background: #ffffff; }
+[data-theme="daylight"] .panel { background: #ffffff; box-shadow: 0 1px 2px rgba(23, 35, 59, 0.05), 0 1px 3px rgba(23, 35, 59, 0.08); }
+[data-theme="daylight"] .panel.ink { background: #ffffff; border-color: var(--line); }
+[data-theme="daylight"] .stat { background: #ffffff; box-shadow: 0 1px 2px rgba(23, 35, 59, 0.05), 0 1px 3px rgba(23, 35, 59, 0.08); }
+[data-theme="daylight"] .step { background: #ffffff; }
+[data-theme="daylight"] .news-tab[aria-pressed="true"] { background: #e8eefc; }
+[data-theme="daylight"] .site-foot { background: #eff1f4; }
+[data-theme="daylight"] .brief-strip { background: rgba(255, 255, 255, 0.94); }
+[data-theme="daylight"] #field { display: none; }
+
+/* ── Arcade — funky & fun ─────────────────────────────────────────────── */
+[data-theme="arcade"] {
+  --bg: #fff9ef;
+  --bg-2: #fff3dd;
+  --panel: #fffdf8;
+  --panel-2: #fff8ec;
+  --line: #e8dcc4;
+  --line-2: #1c150e;
+  --ink: #1c150e;
+  --dim: #5c5142;
+  --dim-2: #97896f;
+  --cyan: #e11d48;
+  --violet: #5b4bc4;
+  --amber: #c2410c;
+  --green: #0e8a5f;
+  --red: #d92d20;
+  --grad: linear-gradient(100deg, #ff4d6d, #6c5ce7);
+  --grad-soft: linear-gradient(100deg, rgba(255, 77, 109, 0.12), rgba(108, 92, 231, 0.12));
+}
+[data-theme="arcade"] body { background: repeating-linear-gradient(45deg, rgba(255, 77, 109, 0.035) 0 14px, transparent 14px 28px), var(--bg); }
+[data-theme="arcade"] .card, [data-theme="arcade"] .news-item, [data-theme="arcade"] .panel, [data-theme="arcade"] .panel.ink, [data-theme="arcade"] .stat, [data-theme="arcade"] .step, [data-theme="arcade"] .news-details { background: var(--panel); border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+[data-theme="arcade"] .card:hover { box-shadow: 7px 7px 0 var(--ink); transform: translateY(-3px); }
+[data-theme="arcade"] .card::before, [data-theme="arcade"] .news-item::before { display: none; }
+[data-theme="arcade"] .news-tabs { background: var(--panel); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+[data-theme="arcade"] .news-tab[aria-pressed="true"] { background: var(--cyan); color: #fffdf8; }
+[data-theme="arcade"] .news-date { border-bottom-color: var(--ink); }
+[data-theme="arcade"] .news-date-tag { background: var(--panel); color: var(--ink); border: 2px solid var(--ink); box-shadow: 2px 2px 0 var(--ink); }
+[data-theme="arcade"] .site-nav, [data-theme="arcade"] .site-nav.stuck { background: rgba(255, 249, 239, 0.94); }
+[data-theme="arcade"] .nav-toggle { background: rgba(255, 249, 239, 0.97); box-shadow: 0 24px 60px rgba(28, 21, 14, 0.18); }
+[data-theme="arcade"] .nav-links a:hover, [data-theme="arcade"] .btn-ghost:hover { background: rgba(28, 21, 14, 0.06); }
+[data-theme="arcade"] .btn { border-radius: 10px; }
+[data-theme="arcade"] .btn-primary { color: #fffdf8; box-shadow: 3px 3px 0 var(--ink); }
+[data-theme="arcade"] .btn-ghost { border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+[data-theme="arcade"] .btn-primary:hover, [data-theme="arcade"] .btn-ghost:hover { box-shadow: 5px 5px 0 var(--ink); }
+[data-theme="arcade"] .site-foot { background: var(--bg-2); }
+[data-theme="arcade"] .brief-strip { background: var(--panel); border-bottom: 2px solid var(--ink); }
+[data-theme="arcade"] .callout { border: 2px solid var(--ink); border-left-width: 6px; box-shadow: 4px 4px 0 var(--ink); background: #fff2cc; }
+[data-theme="arcade"] .card-index { color: var(--violet); }
+[data-theme="arcade"] .news-tldr .lbl, [data-theme="arcade"] .news-sub { color: var(--cyan); }
+[data-theme="arcade"] .news-dive-link { color: var(--cyan); font-weight: 600; }
+[data-theme="arcade"] #field { display: none; }
+
+/* ── Press — editorial newsprint (my pick) ────────────────────────────── */
+[data-theme="press"] {
+  --bg: #fdf1e3;
+  --bg-2: #fae9d4;
+  --panel: #fff8ec;
+  --panel-2: #fff3e0;
+  --line: #e3d2b8;
+  --line-2: #c9b28d;
+  --ink: #201a12;
+  --dim: #5f5344;
+  --dim-2: #94836c;
+  --cyan: #0f5499;
+  --violet: #8a4b0f;
+  --amber: #b45309;
+  --green: #2f6b3a;
+  --red: #b91c1c;
+  --grad: linear-gradient(100deg, #0f5499, #8a4b0f);
+  --grad-soft: linear-gradient(100deg, rgba(15, 84, 153, 0.1), rgba(138, 75, 15, 0.1));
+  --r-sm: 0px;
+  --r: 0px;
+  --r-lg: 0px;
+  --sans: "Newsreader", Georgia, "Times New Roman", serif;
+}
+[data-theme="press"] .display, [data-theme="press"] .title, [data-theme="press"] .card h3, [data-theme="press"] .news-date-d { font-family: var(--sans); font-weight: 600; letter-spacing: -.01em; }
+[data-theme="press"] .btn { border-radius: 0; font-family: var(--body); }
+[data-theme="press"] .badge { border-radius: 0; }
+[data-theme="press"] .display .grad { background: none; color: var(--cyan); font-style: italic; -webkit-background-clip: initial; background-clip: initial; }
+[data-theme="press"] .kicker { font-variant: all-small-caps; letter-spacing: .22em; text-transform: none; color: #8a4b0f; }
+[data-theme="press"] .kicker::before { background: #8a4b0f; }
+[data-theme="press"] .card-index, [data-theme="press"] .news-tldr .lbl, [data-theme="press"] .news-sub, [data-theme="press"] .news-dive-link { color: #8a4b0f; }
+[data-theme="press"] .card, [data-theme="press"] .news-item, [data-theme="press"] .panel, [data-theme="press"] .panel.ink, [data-theme="press"] .stat, [data-theme="press"] .step, [data-theme="press"] .news-details { background: transparent; border-radius: 0; box-shadow: none; }
+[data-theme="press"] .card { border: 0; border-top: 3px solid var(--ink); padding-left: 0; padding-right: 0; }
+[data-theme="press"] .news-item { border: 0; border-top: 1px solid var(--ink); padding-left: 18px; }
+[data-theme="press"] .news-item.type-dive { border-top: 3px solid var(--amber); }
+[data-theme="press"] .news-item::before { display: none; }
+[data-theme="press"] .news-date { border-bottom-color: var(--ink); }
+[data-theme="press"] .news-date-tag { border-radius: 0; background: var(--ink); color: var(--bg); }
+[data-theme="press"] .news-tabs { border: 0; border-bottom: 1px solid var(--ink); border-radius: 0; background: transparent; }
+[data-theme="press"] .news-tab[aria-pressed="true"] { background: transparent; color: var(--ink); border-bottom: 3px solid var(--cyan); border-radius: 0; }
+[data-theme="press"] .site-nav, [data-theme="press"] .site-nav.stuck { background: rgba(253, 241, 227, 0.94); }
+[data-theme="press"] .nav-toggle { background: rgba(253, 241, 227, 0.97); box-shadow: 0 24px 60px rgba(32, 26, 18, 0.18); }
+[data-theme="press"] .nav-links a:hover, [data-theme="press"] .btn-ghost:hover { background: rgba(32, 26, 18, 0.06); }
+[data-theme="press"] .btn-primary { background: var(--ink); color: var(--bg); box-shadow: none; }
+[data-theme="press"] .stat .n { background: none; color: var(--ink); font-family: var(--sans); }
+[data-theme="press"] .site-foot { background: var(--bg-2); }
+[data-theme="press"] .brief-strip { background: rgba(255, 248, 236, 0.94); }
+[data-theme="press"] #field { display: none; }
+[data-theme="press"] #dd-summary::first-letter { float: left; font-family: var(--sans); font-size: 3.1em; line-height: 0.82; padding: 4px 10px 0 0; font-weight: 600; color: var(--cyan); }
