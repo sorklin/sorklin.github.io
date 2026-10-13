@@ -1,7 +1,162 @@
 {
   "version": 3,
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "days": [
+    {
+      "date": "2026-10-13",
+      "items": [
+        {
+          "category": "ai",
+          "title": "Anthropic MCP Python SDK flaw (7.5): OAuth fallback let a malicious MCP server impersonate the identity provider.",
+          "tldr": "per Security Brief (single source — verify against Anthropic's advisory/GitHub release), Cycode disclosed a high-severity account-takeover flaw in Anthropic's MCP Python SDK, versions 1.9.1 through 2.1.1: when a server returned a 404 to a discovery request, the SDK fell back to an older method and accepted login configuration from the server without verifying it matched the expected identity provider — letting a malicious MCP server intercept the client secret, authorization code, and PKCE proof key while the victim saw a genuine Google, Okta, or Azure AD login page; fixed in mcp 2.2.0 (2.x) and 1.30.0 (1.x) via coordinated disclosure, with client-secret rotation advised.",
+          "source": "Security Brief",
+          "url": "https://securitybrief.news/story/anthropic-mcp-sdk-flaw-lets-attackers-hijack-logins",
+          "summary": "Cycode disclosed the flaw Oct 12, ~5:03 PM ET. The mechanism: when an MCP server returned a 404 to a discovery request, the SDK fell back to an older method and accepted login configuration from the server without verifying it matched the expected identity provider — and while versions 2.0.0–2.1.1 had issuer checks on the modern path, those checks were missing from the fallback path and a separate 403-redirect path. The result: an attacker controlling an MCP server could intercept the client secret, authorization code, and PKCE proof key and obtain a valid access token — while the victim saw a genuine Google, Okta, or Azure AD login page — and machine-to-machine flows (client-credentials, private-key-JWT) were exposed with no user interaction. The fix ships in mcp 2.2.0 (2.x) and 1.30.0 (1.x) via coordinated disclosure through Anthropic's security process — though the fix versions are per Security Brief, so confirm against Anthropic's advisory or GitHub release before relying on them. Cycode also advises rotating client secrets and revoking tokens where untrusted servers were involved; researcher Seth Robbins frames the foothold risk as lasting \"as long as the client secret isn't rotated.\" No exploitation has been reported.",
+          "details": [
+            "What/where: a high-severity (CVSS 7.5) account-takeover vulnerability in Anthropic's MCP Python SDK, versions 1.9.1 through 2.1.1, in the OAuth authentication flow. Disclosed Oct 12, ~5:03 PM ET (21:03 UTC).",
+            "Mechanism: when a server returned a 404 to a discovery request, the SDK fell back to an older method and accepted login configuration from the server without verifying it matched the expected identity provider — versions 2.0.0–2.1.1 had issuer checks on the modern path but not on the fallback path or a separate 403-redirect path.",
+            "Impact: an attacker controlling an MCP server could intercept the client secret, authorization code, and PKCE proof key and obtain a valid access token — while the victim saw a genuine Google, Okta, or Azure AD login page; machine-to-machine flows (client-credentials, private-key-JWT) were exposed with no user interaction.",
+            "Fix: mcp 2.2.0 (2.x) and 1.30.0 (1.x), via coordinated disclosure through Anthropic's security process — fix versions per Security Brief; verify against Anthropic's advisory/GitHub release before relying on them.",
+            "Advice: rotate client secrets and revoke tokens where untrusted servers were involved; Cycode's Seth Robbins frames the foothold risk as lasting \"as long as the client secret isn't rotated.\"",
+            "Caveats: single source (Security Brief); no exploitation reported."
+          ],
+          "links": [
+            {
+              "label": "Security Brief — Anthropic MCP SDK flaw lets attackers hijack logins (single source returned)",
+              "url": "https://securitybrief.news/story/anthropic-mcp-sdk-flaw-lets-attackers-hijack-logins"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Ahold Delhaize takes systems offline after a cyberattack — five US banner websites down, ordering suspended.",
+          "tldr": "Dutch-Belgian grocery giant Ahold Delhaize confirmed a \"cybersecurity incident\" in its network and took systems offline \"to help protect them\" — the websites of Food Lion, Hannaford, Stop & Shop, and both Giant Food banners are down, and online grocery ordering and deliveries are suspended across Ahold Delhaize USA's five banners; the cause is unconfirmed, there is no restoration timeline, and no ransomware claim has surfaced in returned coverage.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/retail-giant-ahold-delhaize-takes-systems-offline-after-cyberattack/",
+          "summary": "Announced Monday Oct 12, ~2:08 PM ET (Daily Voice), with follow-on coverage Oct 13 (SecurityWeek, 5:37 AM ET): Dutch-Belgian grocery giant Ahold Delhaize confirmed a \"cybersecurity incident\" in its network and took systems offline \"to help protect them.\" The websites of Food Lion, Hannaford, Stop & Shop, and both Giant Food banners were taken down, and online grocery ordering and deliveries were suspended across Ahold Delhaize USA's five US banners. Open questions: the cause is unconfirmed — no ransomware claim has surfaced in the returned coverage — and there is no restoration timeline. Given the company's substantial US operations, watch for an SEC 8-K.",
+          "details": [
+            "Who/what: Ahold Delhaize — the Dutch-Belgian grocery giant, one of the world's largest food retailers — confirmed a \"cybersecurity incident\" in its network and took systems offline \"to help protect them.\" Announced Monday Oct 12, ~2:08 PM ET (Daily Voice); follow-on coverage Oct 13 (SecurityWeek, 5:37 AM ET).",
+            "Impact: the websites of Food Lion, Hannaford, Stop & Shop, and both Giant Food banners were taken down, and online grocery ordering and deliveries were suspended across Ahold Delhaize USA's five US banners.",
+            "Open questions: cause unconfirmed — no ransomware claim surfaced in returned coverage; no restoration timeline; watch for an SEC 8-K given the company's US operations."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — Retail giant Ahold Delhaize takes systems offline after cyberattack",
+              "url": "https://www.bleepingcomputer.com/news/security/retail-giant-ahold-delhaize-takes-systems-offline-after-cyberattack/"
+            },
+            {
+              "label": "SecurityWeek — Cyberattack prompts Ahold Delhaize to disconnect systems (Oct 13, 5:37 AM ET)",
+              "url": "https://www.securityweek.com/cyberattack-prompts-ahold-delhaize-to-disconnect-systems/"
+            },
+            {
+              "label": "Supermarket News — Ahold Delhaize shuts down websites after cybersecurity issue",
+              "url": "https://www.supermarketnews.com/company-news/ahold-delhaize-shuts-down-websites-after-cybersecurity-issue"
+            },
+            {
+              "label": "Grocery Dive — Ahold Delhaize ADUSA cybersecurity",
+              "url": "https://www.grocerydive.com/news/ahold-delhaize-adusa-cybersecurity/832734/"
+            },
+            {
+              "label": "Daily Voice — Cyber attack: Giant, Food Lion, Stop & Shop websites down (first report, Oct 12)",
+              "url": "https://dailyvoice.com/article/cyber-attack-giant-food-lion-stop-shop-websites-down/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Ledger confirms a cellular \"spy chip\" implant in resold wallets transmitted wallet keys — $86M+ stolen.",
+          "tldr": "hardware-wallet maker Ledger says a covert cellular \"spy chip\" inside devices sold by reseller CryptoBilis transmitted wallet keys over the mobile network — tied to more than $86 million stolen from hundreds of users in a hardware supply-chain attack on reseller-sold devices rather than ones bought from Ledger directly; Ledger's full findings are pending, and whether other resellers or channels were affected is unknown.",
+          "source": "CoinDesk",
+          "url": "https://www.coindesk.com/tech/2026/10/13/ledger-says-spy-chip-inside-cryptobilis-ledger-devices-transmitted-wallet-keys-over-mobile-network",
+          "summary": "Hardware-wallet maker Ledger says a covert cellular \"spy chip\" implant inside Ledger devices sold by reseller CryptoBilis transmitted wallet keys over the mobile network — a hardware supply-chain attack on devices bought through the reseller rather than from Ledger directly. The confirmation was reported Oct 13, ~5:15 AM ET (CoinDesk, \"4 hours ago\" at search time); the underlying tampering reports and the $86M+ stolen from hundreds of users total circulated Oct 12–13. Caveats: Ledger's full findings are pending (the returned snippets are partial on scope), the $86M figure originates in theft reports Ledger is investigating, and whether other resellers or channels were affected is unknown.",
+          "details": [
+            "What: Ledger says a covert cellular \"spy chip\" implant inside Ledger devices sold by reseller CryptoBilis transmitted wallet keys over the mobile network — a hardware supply-chain attack on devices bought through the reseller rather than from Ledger directly.",
+            "Impact: more than $86 million stolen from hundreds of users. The underlying tampering reports and the $86M total circulated Oct 12–13; Ledger's confirmation was reported Oct 13, ~5:15 AM ET (CoinDesk, \"4 hours ago\" at search time).",
+            "Open questions: Ledger's full findings are pending (returned snippets are partial on scope); whether other resellers or channels were affected is unknown; the $86M figure originates in theft reports Ledger is investigating."
+          ],
+          "links": [
+            {
+              "label": "CoinDesk — Ledger says spy chip inside CryptoBilis Ledger devices transmitted wallet keys over mobile network (primary in-window)",
+              "url": "https://www.coindesk.com/tech/2026/10/13/ledger-says-spy-chip-inside-cryptobilis-ledger-devices-transmitted-wallet-keys-over-mobile-network"
+            },
+            {
+              "label": "The Verge — Ledger wallet tampering suspected after reports of crypto thefts",
+              "url": "https://www.theverge.com/tech/1009294/ledger-wallet-tampering-suspected-after-reports-of-crypto-thefts"
+            },
+            {
+              "label": "Bitbo — Ledger wallet implant thefts",
+              "url": "https://bitbo.io/news/ledger-wallet-implant-thefts/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "French supermarket cyberattack hit the cold chain: freezers defrosted to 122°F, fires across ~150 stores.",
+          "tldr": "hackers targeted Intermarché and Cooperative U stores in France, causing refrigerators to defrost, food to spoil, heat to reach 122°F, and fires to spark across a reported ~150 stores — a physical-impact attack on food infrastructure, first reported by Reuters on Oct 12 and confirmed in CNBC's Oct 13 follow-up.",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/french-supermarket-chain-intermarche-hit-by-cyberattack-150-stories-targeted-2026-10-12/",
+          "summary": "(Missed by the Oct 12 edition's scan — Reuters reported it Oct 12, 6:57 AM ET, inside that edition's window.) Hackers targeted Intermarché and Cooperative U stores in France, causing refrigerators to defrost, food to spoil, heat to reach 122°F, and fires to spark across a reported ~150 stores — a physical-impact attack on food infrastructure rather than a data-theft incident. CNBC's Oct 13 follow-up confirms the fridges/refrigeration detail, the ~150-store count, the fires, and the 122°F temperature. The returned coverage does not state the attack method or any attribution.",
+          "details": [
+            "What: hackers targeted Intermarché and Cooperative U stores in France, causing refrigerators to defrost, food to spoil, heat to reach 122°F, and fires to spark across a reported ~150 stores — a physical-impact attack on food infrastructure.",
+            "Timing/flag: first reported by Reuters Oct 12, 6:57 AM ET — inside the Oct 12 brief's window but missed by its scan; CNBC's Oct 13 follow-up confirms the fridges/refrigeration detail, the ~150-store count, the fires, and the 122°F temperature.",
+            "Note: the returned coverage does not state the attack method or any attribution."
+          ],
+          "links": [
+            {
+              "label": "Reuters — French supermarket chain Intermarché hit by cyberattack, 150 stores targeted (Oct 12)",
+              "url": "https://www.reuters.com/business/retail-consumer/french-supermarket-chain-intermarche-hit-by-cyberattack-150-stories-targeted-2026-10-12/"
+            },
+            {
+              "label": "CNBC — France supermarket hack: cyberattack fridges fires (Oct 13)",
+              "url": "https://www.cnbc.com/2026/10/13/france-supermarket-hack-cyberattack-fridges-fires.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "\"The Gentlemen\" ransomware gang claims a MoneyGram breach — leak-site notice Oct 12; MoneyGram has not confirmed.",
+          "tldr": "\"The Gentlemen\" ransomware group claimed an attack on MoneyGram — one of the world's largest payment networks, serving ~60M active users — via an Oct 12 leak-site entry threatening to release stolen data unless the company enters negotiations; MoneyGram has not confirmed an incident, no SEC filing has surfaced, and the data volume and the gang's evidence are unpublished — treat as a claim, not a confirmed breach.",
+          "source": "Cybernews",
+          "url": "https://cybernews.com/security/moneygram-data-breach-ransomware-claim/",
+          "summary": "The Gentlemen ransomware group claimed an attack on MoneyGram — one of the world's largest payment networks, serving ~60M active users — via an Oct 12 leak-site entry threatening to release stolen data unless the company enters negotiations. MoneyGram has not confirmed an incident. The same gang's Oct 12 wave also claimed KFC, with a Deloitte entry logged Oct 9 (ransomware.live), and Breachsense lists data-security vendor BigID as claimed by \"TheGentlemen\" with a discovery date of Oct 12 (quick hit 2). Caveats: no confirmation or SEC filing from MoneyGram in the returned coverage; the data volume and the gang's evidence are unpublished — treat this as a claim, not a breach.",
+          "details": [
+            "The claim: the \"Gentlemen\" ransomware group claimed an attack on MoneyGram — one of the world's largest payment networks, serving ~60M active users — via an Oct 12 leak-site entry threatening to release stolen data unless the company enters negotiations (notice posted Oct 12 per multiple outlets; PYMNTS ~8:10 PM ET Oct 12). MoneyGram has not confirmed an incident.",
+            "Same wave: the gang's Oct 12 wave also claimed KFC; a Deloitte entry was logged Oct 9 (ransomware.live); Breachsense lists data-security vendor BigID as claimed by \"TheGentlemen,\" discovered Oct 12 (see quick hit 2).",
+            "Caveats: no confirmation or SEC filing from MoneyGram in the returned coverage; the data volume and the gang's evidence are unpublished — treat as a claim, not a confirmed breach."
+          ],
+          "links": [
+            {
+              "label": "Cybernews — MoneyGram data breach ransomware claim (primary of those returned)",
+              "url": "https://cybernews.com/security/moneygram-data-breach-ransomware-claim/"
+            },
+            {
+              "label": "TechNadu — The Gentleman hacking group claims MoneyGram, Deloitte and KFC data breaches",
+              "url": "https://www.technadu.com/the-gentleman-hacking-group-claims-moneygram-deloitte-and-kfc-data-breaches/641577/"
+            },
+            {
+              "label": "Computing.co.uk — MoneyGram targeted: Gentlemen ransomware data breach",
+              "url": "https://www.computing.co.uk/news/2026/security/moneygram-targeted-gentlemen-ransomware-data-breach"
+            },
+            {
+              "label": "Security Magazine — Did MoneyGram get hacked? Ransomware gang claims it did",
+              "url": "https://www.securitymagazine.com/articles/102638-did-moneygram-get-hacked-ransomware-gang-claims-it-did"
+            },
+            {
+              "label": "PYMNTS — Ransomware gang claims MoneyGram data theft",
+              "url": "https://www.pymnts.com/cybersecurity/2026/ransomware-gang-claims-moneygram-data-theft/"
+            },
+            {
+              "label": "DeXpose — TheGentlemen ransomware attack on MoneyGram",
+              "url": "https://www.dexpose.io/thegentlemen-ransomware-attack-on-moneygram/"
+            },
+            {
+              "label": "The IT Nerd — MoneyGram hack claimed by The Gentleman: 60M customers at risk",
+              "url": "https://itnerd.blog/2026/10/12/moneygram-hack-claimed-by-the-gentleman-60m-customers-at-risk/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-12",
       "items": [
