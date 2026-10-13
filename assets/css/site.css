@@ -1014,8 +1014,55 @@ figure.chart { margin: 0; }
 }
 .news-state h3 { font-size: 18px; color: var(--ink); margin-bottom: 8px; }
 .news-state .btn { margin-top: 14px; }
-.news-more-row { display: flex; justify-content: center; margin-top: 26px; }
+.news-more-row { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 26px; }
 .news-more-row .btn[hidden] { display: none; }
+.news-shown { font-size: 12px; }
+.news-shown[hidden] { display: none; }
+
+/* -- deep dives: card variant + generated article page ------------------- */
+.badge.dive { color: var(--amber); }
+.news-item.type-dive { border-color: rgba(255, 180, 84, 0.35); }
+.news-item.type-dive::before { background: var(--amber); opacity: 0.8; }
+.news-item.type-dive:hover { border-color: rgba(255, 180, 84, 0.6); }
+.news-dive-cta { margin-top: 12px; }
+.news-dive-link {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+  text-decoration: none;
+}
+.news-dive-link .arrow { display: inline-block; margin-left: 6px; transition: transform 0.2s var(--ease); }
+.news-dive-link:hover { color: var(--ink); }
+.news-dive-link:hover .arrow { transform: translateX(3px); }
+
+/* the deep-dive article page (/news/deep-dive/) — standfirst spans the page */
+.dd-display { font-size: clamp(27px, 3.8vw, 46px) !important; }
+#dd-summary { max-width: none; }
+.dd-tldr {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  max-width: none;
+  margin: 0 0 16px;
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.dd-tldr[hidden] { display: none; }
+.dd-tldr .lbl {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.dd-block { margin-bottom: 26px; }
+.dd-facts { margin-top: 12px; }
+.dd-facts li { font-size: 14.5px; line-height: 1.65; }
+.dd-sources { margin-top: 12px; }
+.dd-sources li { font-size: 14.5px; }
 
 /* -- homepage strip: latest headlines, pinned below the nav -------------- */
 .brief-strip {

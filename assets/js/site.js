@@ -225,7 +225,11 @@
         if (day) {
           for (var j = 0; j < day.items.length && picked.length < 3; j++) {
             var it = day.items[j];
-            if (it && /^https?:\/\//i.test(String(it.url || ""))) picked.push({ it: it, n: j + 1 });
+            // Publisher stories carry a url; deep-dive cards carry a slug —
+            // both render in the feed with #story- anchors.
+            var isDive = it && it.type === "deep-dive" && /^[a-z0-9][a-z0-9-]*$/.test(String(it.slug || ""));
+            var isStory = it && /^https?:\/\//i.test(String(it.url || ""));
+            if (isDive || isStory) picked.push({ it: it, n: j + 1 });
           }
         }
         if (!picked.length) return; // keep the static fallback links

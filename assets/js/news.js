@@ -22,12 +22,13 @@
   var list = document.getElementById("brief-list");
   if (!list) return;
 
-  var PAGE = 7; // day-groups revealed per "load older" click
+  var BUDGET = 15; // stories shown before "Load older briefings" — the knob
+                  // for "how much stays on the main page"
   var state = {
     days: [],        // normalised feed, newest first
     updated: null,   // ISO date string of the newest day
     filter: "all",   // all | security | ai
-    shown: PAGE,     // how many day-groups are currently rendered
+    shown: BUDGET,   // how many matching stories are currently rendered
     counts: { all: 0, security: 0, ai: 0 }
   };
 
@@ -97,11 +98,26 @@
       var clean = [];
       for (var j = 0; j < items.length; j++) {
         var it = items[j] || {};
+        var type = it.type === "deep-dive" ? "deep-dive" : "story";
+        var slug = String(it.slug || "").trim();
         var url = String(it.url || "");
-        if (!/^https?:\/\//i.test(url)) continue; // never render a non-web link
+        var hasUrl = /^https?:\/\//i.test(url);
+        // A deep-dive card links to its own page (slug-based) instead of a
+        // publisher URL; a story without a web link cannot be rendered.
+        if (type === "deep-dive") {
+          if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) continue;
+        } else if (!hasUrl) {
+          continue;
+        }
         clean.push({
+          type: type,
+          slug: slug,
+          // The item's position in the RAW file — anchors (#story-<date>-<n>)
+          // and the homepage strip are computed from the feed file itself, so
+          // dropping malformed items must not shift later stories' anchors.
+          feedIndex: j,
           title: String(it.title || "").trim() || "(untitled)",
-          url: url,
+          url: hasUrl ? url : "",
           source: String(it.source || "").trim(),
           tldr: String(it.tldr || "").trim(),
           summary: String(it.summary || "").trim(),
@@ -121,7 +137,14 @@
   }
 
   function matches(item) {
-    return state.filter === "all" || item.category === state.filter;
+    if (state.filter === "all") return true;
+    if (state.filter === "dive") return item.type === "deep-dive";
+    return item.category === state.filter;
+  }
+
+  /* Human label for a FILTER value (not a category badge — use catLabel). */
+  function filterLabel(f) {
+    return f === "ai" ? "AI Security" : f === "security" ? "Security" : f === "dive" ? "Deep dives" : null;
   }
 
   function catLabel(c) {
@@ -155,12 +178,55 @@
   var BADGE = { security: "badge info", ai: "badge ai", news: "badge soon" };
   var TINT = { security: "", ai: "tint-ai", news: "tint-news" };
 
+  /* A deep dive lives on its own generated page; the card is just the door. */
+  function diveUrl(item) {
+    return "/news/deep-dive/?s=" + encodeURIComponent(item.slug);
+  }
+
+  function diveHeadlineLink(item) {
+    // Internal navigation — same tab, no rel, no ↗ (the CTA row sells the click).
+    var a = el("a", "news-headline-link", item.title);
+    a.href = diveUrl(item);
+    return a;
+  }
+
+  function diveCardNode(item, art) {
+    var meta = el("div", "news-meta");
+    meta.appendChild(el("span", "badge dive", "Deep dive"));
+    meta.appendChild(el("span", BADGE[item.category] || BADGE.news, catLabel(item.category)));
+    if (item.source) meta.appendChild(el("span", "news-src", item.source));
+    art.appendChild(meta);
+
+    var h = el("h3", "news-headline");
+    h.appendChild(diveHeadlineLink(item));
+    art.appendChild(h);
+
+    if (item.tldr) {
+      var t = el("p", "news-tldr");
+      t.appendChild(el("span", "lbl", "TL;DR"));
+      t.appendChild(el("span", null, item.tldr));
+      art.appendChild(t);
+    }
+
+    var cta = el("div", "news-dive-cta");
+    var a = el("a", "news-dive-link", "Read the deep dive");
+    a.href = diveUrl(item);
+    var arr = el("span", "arrow", "→");
+    arr.setAttribute("aria-hidden", "true");
+    a.appendChild(arr);
+    cta.appendChild(a);
+    art.appendChild(cta);
+    return art;
+  }
+
   function articleNode(item, date, idx) {
-    var art = el("article", "news-item " + (TINT[item.category] || ""));
+    var art = el("article", "news-item " + (item.type === "deep-dive" ? "type-dive" : (TINT[item.category] || "")));
     // Anchor target for deep links (homepage strip): /news/#story-<date>-<n>
     // where <n> is the story's 1-based position in the feed's items array —
     // computed from the file, so the strip and this page always agree.
     art.id = "story-" + date + "-" + (idx + 1);
+
+    if (item.type === "deep-dive") return diveCardNode(item, art);
 
     var meta = el("div", "news-meta");
     meta.appendChild(el("span", BADGE[item.category] || BADGE.news, catLabel(item.category)));
@@ -221,28 +287,6 @@
     return art;
   }
 
-  function dayNode(day, count) {
-    var sec = el("section", "news-day");
-    // Anchor target for deep links (homepage strip): /news/#day-<date>
-    sec.id = "day-" + day.date;
-    var head = el("div", "news-date");
-    head.appendChild(el("h2", "news-date-d", dayLabel(day.date)));
-    var tag = relativeTag(day.date);
-    if (tag) head.appendChild(el("span", "news-date-tag", tag));
-    head.appendChild(el("span", "news-date-count", count + (count === 1 ? " story" : " stories")));
-    sec.appendChild(head);
-    var wrap = el("div", "news-items");
-    for (var i = 0; i < day.items.length; i++) {
-      var it = day.items[i];
-      // idx i is the story's position in the feed FILE (not the filtered
-      // sequence), so anchors stay in sync with the homepage strip even when
-      // the renderer drops malformed items.
-      if (matches(it)) wrap.appendChild(articleNode(it, day.date, i));
-    }
-    sec.appendChild(wrap);
-    return sec;
-  }
-
   function stateNode(title, body, retry) {
     var box = el("div", "news-state");
     box.appendChild(el("h3", null, title));
@@ -258,31 +302,81 @@
 
   /* ----------------------------------------------------------- rendering -- */
 
+  function totalMatching() {
+    var n = 0;
+    for (var i = 0; i < state.days.length; i++)
+      for (var j = 0; j < state.days[i].items.length; j++)
+        if (matches(state.days[i].items[j])) n++;
+    return n;
+  }
+
   function render() {
     list.textContent = "";
+    var total = totalMatching();
 
-    var visibleDays = [];
-    for (var i = 0; i < state.days.length; i++) {
-      var n = 0;
-      for (var j = 0; j < state.days[i].items.length; j++) if (matches(state.days[i].items[j])) n++;
-      if (n > 0) visibleDays.push({ day: state.days[i], count: n });
-    }
-
-    if (!visibleDays.length) {
+    if (total === 0) {
       list.appendChild(stateNode(
-        state.filter === "all" ? "No briefings yet" : "Nothing filed under " + catLabel(state.filter) + " in the archive",
+        state.filter === "all" ? "No briefings yet" : "Nothing filed under " + (filterLabel(state.filter) || "this filter") + " in the archive",
         state.filter === "all"
           ? "The feed is live but empty. The first briefing lands with the next daily run — the page fills itself when it does."
           : "Switch back to All — the other tag has stories in this window."
       ));
+      var more0 = $("#news-more");
+      if (more0) more0.hidden = true;
+      var shown0 = $("#news-shown");
+      if (shown0) shown0.hidden = true;
       return;
     }
 
-    var page = visibleDays.slice(0, state.shown);
-    for (var k = 0; k < page.length; k++) list.appendChild(dayNode(page[k].day, page[k].count));
+    // Render newest-first until the story budget is spent. A day that
+    // straddles the line shows its leading stories; the rest arrive with the
+    // next "Load older briefings" click.
+    var rendered = 0;
+    for (var i = 0; i < state.days.length && rendered < state.shown; i++) {
+      var day = state.days[i];
+      var dayTotal = 0, j;
+      for (j = 0; j < day.items.length; j++) if (matches(day.items[j])) dayTotal++;
+      if (dayTotal === 0) continue;
+
+      var showCount = Math.min(dayTotal, state.shown - rendered);
+      var sec = el("section", "news-day");
+      // Anchor target for deep links (homepage strip): /news/#day-<date>
+      sec.id = "day-" + day.date;
+      var head = el("div", "news-date");
+      head.appendChild(el("h2", "news-date-d", dayLabel(day.date)));
+      var tag = relativeTag(day.date);
+      if (tag) head.appendChild(el("span", "news-date-tag", tag));
+      head.appendChild(el("span", "news-date-count",
+        showCount === dayTotal
+          ? dayTotal + (dayTotal === 1 ? " story" : " stories")
+          : showCount + " of " + dayTotal + " stories"));
+      sec.appendChild(head);
+
+      var wrap = el("div", "news-items");
+      var shownHere = 0;
+      for (j = 0; j < day.items.length && shownHere < showCount; j++) {
+        var it = day.items[j];
+        if (!matches(it)) continue;
+        // The anchor index is the story's position in the feed FILE
+        // (preserved through normalisation), so dropped items never shift
+        // later anchors.
+        wrap.appendChild(articleNode(it, day.date, it.feedIndex != null ? it.feedIndex : j));
+        shownHere++;
+      }
+      sec.appendChild(wrap);
+      list.appendChild(sec);
+      rendered += showCount;
+    }
 
     var more = $("#news-more");
-    if (more) more.hidden = visibleDays.length <= state.shown;
+    if (more) more.hidden = rendered >= total;
+    var shownLine = $("#news-shown");
+    if (shownLine) {
+      shownLine.hidden = false;
+      shownLine.textContent = rendered >= total
+        ? "Showing all " + total + " matching stories"
+        : "Showing the latest " + rendered + " of " + total + " matching stories";
+    }
   }
 
   function renderCounts() {
@@ -301,12 +395,14 @@
   }
 
   function recomputeCounts() {
-    var c = { all: 0, security: 0, ai: 0 };
+    var c = { all: 0, security: 0, ai: 0, dive: 0 };
     for (var i = 0; i < state.days.length; i++) {
       for (var j = 0; j < state.days[i].items.length; j++) {
-        var cat = state.days[i].items[j].category;
+        var it = state.days[i].items[j];
+        var cat = it.category;
         c.all++;
         if (c[cat] != null) c[cat]++;
+        if (it.type === "deep-dive") c.dive++;
       }
     }
     state.counts = c;
@@ -319,7 +415,7 @@
     tabs[t].addEventListener("click", function () {
       var btn = this;
       state.filter = btn.getAttribute("data-filter") || "all";
-      state.shown = PAGE;
+      state.shown = BUDGET;
       for (var i = 0; i < tabs.length; i++) tabs[i].setAttribute("aria-pressed", tabs[i] === btn ? "true" : "false");
       render();
     });
@@ -328,22 +424,29 @@
   var moreBtn = $("#news-more");
   if (moreBtn) {
     moreBtn.addEventListener("click", function () {
-      state.shown += PAGE;
+      state.shown += BUDGET;
       render();
     });
   }
 
-  /* Deep links from the homepage strip (#story-… / #day-…) land on a story;
-     pop its accordion open so the reader arrives at the whole entry, not a
-     collapsed card. Runs after each render and on in-page hash changes. */
-  function openTargetDetails() {
+  /* Deep links from the homepage strip (#story-… / #day-…) may point past
+     the story budget — expand the window until the target exists (or
+     everything is rendered), then pop its accordion open so the reader
+     arrives at the whole entry. Runs after each render and on hash changes. */
+  function settleTarget() {
     if (!location.hash) return;
-    var t = document.getElementById(location.hash.slice(1));
+    var id = location.hash.slice(1);
+    var guard = 40;
+    while (!document.getElementById(id) && state.shown < totalMatching() && guard-- > 0) {
+      state.shown += BUDGET;
+      render();
+    }
+    var t = document.getElementById(id);
     if (!t) return;
     var d = t.tagName === "DETAILS" ? t : t.querySelector("details");
     if (d) d.open = true;
   }
-  window.addEventListener("hashchange", openTargetDetails);
+  window.addEventListener("hashchange", settleTarget);
 
   /* --------------------------------------------------------------- load -- */
 
@@ -361,13 +464,13 @@
         var feed = normalise(raw);
         state.days = feed.days;
         state.updated = feed.updated;
-        state.shown = PAGE;
+        state.shown = BUDGET;
         recomputeCounts();
         renderCounts();
         var controls = $("#news-controls");
         if (controls) controls.hidden = false;
         render();
-        openTargetDetails();
+        settleTarget();
       })
       .catch(function (err) {
         list.textContent = "";

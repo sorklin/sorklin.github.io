@@ -20,7 +20,7 @@ runbook aimed at the writing agent, see `AGENT-INSTRUCTIONS.md`.**
 
 ```json
 {
-  "version": 2,
+  "version": 3,
   "updated": "2026-10-11",
   "days": [
     {
@@ -86,7 +86,7 @@ does.
 
 | Field | Type | Rules |
 |---|---|---|
-| `version` | number | Always `2`. Bump only if the shape changes — and then update the renderer. |
+| `version` | number | Always `3`. Bump only if the shape changes — and then update the renderer. |
 | `updated` | string \| null | `YYYY-MM-DD` of the newest day, or `null` while the feed is empty. |
 | `days` | array | **Newest day first.** Each entry is one calendar day. |
 | `days[].date` | string | `YYYY-MM-DD`. One entry per date — never two. |
@@ -161,6 +161,17 @@ of this document is the design contract and the reasoning behind it.
   JSON; this section is a reading convenience, not an archive of record.
 - **The 90-day trim** is a writer responsibility, not a renderer one — the
   checker warns if the file outgrows it.
+- **Deep dives are two-file.** A deep dive is long-form agent research, far
+  too big for an expandable card, so the feed carries only a small card
+  (`type: "deep-dive"` + `slug` + title/`tldr`/`source` — no body) under its
+  day, and the full text lives in `news/deep-dives.json`: an append-only
+  library (`version: 1`, `dives[]` with the full `tldr`/`summary`/
+  `details`/`links`) that the 90-day trim never touches. The viewer page
+  `/news/deep-dive/?s=<slug>` renders the body client-side from that
+  library under the same textContent-only safety rules; a missing slug or
+  file renders a readable error state with a way back. The checker
+  cross-validates: every feed card's slug must exist in the library.
+  **The deep-dive agent's runbook is `DEEP-DIVE-INSTRUCTIONS.md`.**
 
 ## Ideas deliberately left out (rough-out scope)
 

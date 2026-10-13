@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "dives": [
+    {
+      "slug": "yandex-bot-traffic",
+      "date": "2026-10-12",
+      "category": "security",
+      "title": "Yandex data-center strikes collapsed bot traffic — but it was Yandex's own crawlers, not propaganda bots",
+      "tldr": "The drop is real — automated HTTP traffic from Yandex's own networks fell to ~0.4% of its two-week peak per Cloudflare Radar, and ~94% below the September baseline on Oct 11 per one independent analysis — but the viral \"Russian propaganda bots disappeared\" claim isn't supported: the measured traffic is dominated by Yandex's own search crawlers going dark with its data centers.",
+      "summary": "The Oct 8–11 Ukrainian drone strikes on three Yandex data centers (Sasovo, Kaluga, and — new since our Oct 10 edition — Vladimir) did produce a near-total collapse in automated traffic from Yandex's own networks: Cloudflare Radar data showed bot requests from Yandex's autonomous system falling to ~0.4% of its two-week peak, with an independent analysis putting Oct 11 traffic ~94% below the September baseline and NetBlocks separately measuring Yandex Cloud at 30% of normal. But the viral claim that this means \"Russian propaganda bots disappeared\" — echoed by Zelenskyy on Oct 12 — is not supported: the measured traffic is dominated by Yandex's own search crawlers going dark with its data centers, tracked influence networks were reportedly unaffected, and the specific AfD/MAGA claims trace to an unsourced graphic that a German fact-check found plotted future dates. Yandex has not confirmed the fate of its three AI-training supercomputers (two of which were in the burned Sasovo site); services are only partially restored — Alice, Search, Maps, Taxi, and Mail are \"gradually returning,\" with no timeline for full recovery of payments — and one report suggests replacement hardware could take six months under sanctions. Confidence: the outage and traffic collapse — high; supercomputer loss, attribution, and any election effect — unproven.",
+      "source": "Sorklin Research",
+      "details": [
+        "CONFIRMED — the strikes (multi-source, incl. primaries): Sasovo (Ryazan region) — drone strike and fire overnight Oct 7–8, \"completely shut down\" per Yandex's own Oct 9 statement; Kaluga (Grabtsevo industrial park — Yandex's largest, 130,000 m², >3,800 racks, 63 MW design) — struck Oct 9, \"several modules completely disabled\" per Reuters; Vladimir — struck overnight Oct 10–11 and \"completely suspended\" per the service alert quoted by RTÉ. Yandex has two further large Moscow-region sites (Mytishchi, Ivanteevka) that were not hit. Ukraine has not officially claimed the strikes; Zelenskyy called the campaign a \"mirror\" response to Russian strikes on Ukrainian data centers (six or more sites, 8+ operators, ~100,000 households offline). Caveat: some outlets' day attributions conflict (UA.NEWS swaps the Sasovo/Kaluga dates; Minusumin dates Kaluga Oct 10) — Yandex's own statement and the BBC/CNBC timeline are the reference.",
+        "CONFIRMED — the outage (multi-source): 84+ Yandex Cloud services offline, including the YandexGPT API, Compute Cloud, Object Storage, and Managed Kubernetes; the ru-central1-b zone (Sasovo) fully unavailable, with customers told to move workloads (VK Cloud, Selectel, K2Cloud taking clients); spillover outages at Russian Railways, T-Bank, Ozon, Wildberries, 1C, Dodo, Magnit, Fix Price, taxi/banking apps, and media (RIA Novosti/Vesti/Interfax via an \"infrastructure partner\"), plus some abroad (Kazakhstan, Serbia, Belarus, Armenia); Kaluga's governor reported nine people injured in the city's infrastructure attack (no Yandex staff hurt anywhere); Yandex shares fell ~4% on MOEX (per Minusumin — whose \"three supercomputers destroyed\" framing outruns the sourcing). Restoration: Alice, Search, Maps, Taxi, and Mail \"gradually returning\" from Yandex's Oct 11 afternoon update, prioritizing the most-used services, with no timeline for full recovery of payments (fintech chief Pirogov); Xinhua (Oct 12) concurs services are \"gradually returning to normal after a large-scale outage.\"",
+        "CONFIRMED — the traffic collapse (three instruments, three different numbers): (1) Cloudflare Radar, relayed by Tom's Hardware: bot traffic from Yandex's network (AS13238) fell to ~0.4% of the maximum HTTP request count of the prior two weeks, first dropping to ~57% of peak on Oct 8 (the Sasovo strike); (2) Valdrans' independent analysis of four weeks of hourly Radar data against a Sept 14–30 baseline: ~25% down Oct 8 (Sasovo), ~35% Oct 9–10 (Kaluga), ~94% Oct 11 (Vladimir), with human-classified traffic −90% and Yandex Cloud −82% on Oct 11; (3) NetBlocks: network traffic at 30% of normal for Yandex Cloud and 63% for Yandex LLC (baseline unreported). The two series \"use different units and different baselines\" (theclarity.today). The drop began with the first strike and deepened with each one; as of the latest readings traffic had \"recovered only slightly,\" and one analyst documented an earlier, unrelated dip on Oct 1 (traffic halved, recovered in two days) — evidence the series is volatile even without strikes.",
+        "CONFIRMED — what the \"bot traffic\" metric actually is: Cloudflare defines bot traffic as any non-human HTTP request (bot score 1–29 = likely automated); ~99.6% of requests from AS13238 are classified automated in normal times, and a large share is Yandex's own search crawlers. Per antibot4navalny — a long-running tracker of state-sponsored propaganda networks — the Cloudflare chart \"is really about automated web crawlers operated by Yandex accessing the web… It's not connected to 'bots' posting on social media\" (The Verge; also RFE/RL: \"It measures automated requests to websites (of any kind, among which social media share is negligible)\"). XenoSpectrum (quoted by RFE/RL): the Radar data \"shows neither the volume of Internet traffic across Russia nor the number of messages posted on any particular social network.\" And Cloudflare cannot attribute traffic to buildings: \"Radar cannot show which buildings were responsible, or prove the strikes caused every part of the decline. But the timing matches the reported attacks day by day\" (Valdrans); the Cloudflare Outage Center page returned by the search names no Yandex facility.",
+        "REPORTED — single source / thin (plausible, not established): the ~94%, −90%, and −82% figures rest on Valdrans' own analysis (one analyst; consistent with the 0.4% relay but an independent read). All three supercomputers inoperable — Defense Express's claim, relayed by implicator.ai; Yandex has not confirmed any supercomputer condition (Sasovo housed two — Chervonenkis and Lyapunov, Nvidia A100-based; Chervonenkis 21.53 FP64 PFLOPS, 19th on the Nov 2021 Top500 — Vladimir houses the third, Galushkin; T-Invariant's assessment: all three \"may have been knocked out\"; \"destroyed\" framings, e.g. Minusumin, outrun the sourcing). Fire Point, maker of the FP-1 drone, says its drones carried out the Vladimir and Kaluga strikes (manufacturer's claim via Reuters/implicator.ai; Defense Express adds an FP-1 for Sasovo). \"Six months to replace\" the drone-damaged equipment — Ukrainska Pravda, Oct 12, single source (\"has still failed to restore normal operation of its cloud platform\"); Yandex's own Oct 9 position: \"very difficult to say\" when the equipment will be back up and running; Tom's Hardware projects future training would move to Chinese infrastructure (its projection, unverified).",
+        "UNVERIFIED / CONTRADICTED — do not present as fact: (1) that the collapsed traffic was pro-Kremlin social-media/troll bots — contradicted (the metric is dominated by Yandex's own crawlers; the social-media mechanism doesn't connect: \"nothing still prevents the hypothetical Russian bots from using X, Quora, or Reddit… All the Russians need is a Western VPN\" — a widely-amplified rebuttal quoted by Tom's Hardware; EUalive's sources add sophisticated influence operations are unlikely to rely primarily on Yandex's domestic infrastructure and are redundant across platforms/providers; informat.ro: \"a technical disruption, not the disappearance of an operation that can move between platforms and providers\"); (2) the viral \"AfD bot activity fell 86%\" graphic — no data source, no list of accounts, no platform name or counting methodology, plotted points through Oct 15 despite being published Oct 11, and Rohtext's cross-check of German-language X posts found no AfD-unique decline (AfD −19.3% vs CDU −17.8%, SPD −36.8%, Greens −28.6% — a general weekend dip); FactCheckRadar classified the strikes→AfD link as unsubstantiated; (3) the Maltese Herald's propaganda-drop report — it \"linked only one X post as support\" (an account called TheOhioRob) and gave no dataset or account counts (Trestlewire); (4) any effect on the November US midterms — pure speculation in social posts, no returned source offers evidence; (5) that influence operations ran on the struck Yandex infrastructure at all — no published evidence either way (Trestlewire: \"Nothing published shows it either way\"; one security-news site asserts Yandex \"hosts significant infrastructure for such operations\" but offers no evidence); (6) a global or Russia-wide \"bot traffic\" decline — no returned source shows any change; the data describe one company's networks (\"One provider, not global traffic\" — the deep dive). Accounts that monitor coordinated inauthentic behavior stated the networks they track were not disrupted (EUalive), and outside Yandex's own networks \"Russian bot/crawler traffic overall continues to be about the same as normal\" (The Verge).",
+        "How the claim escalated (context): a Bluesky/Reddit observation (\"Russian disinformation bot traffic nearly eliminated overnight\") → the Tom's Hardware headline → viral graphics claiming an 86% drop in AfD-related bot activity and the disappearance of MAGA/Reform-UK bots, with suggestions of impact on the November US midterms → Zelenskyy's Oct 12 statement at the Warsaw Security Forum: after the strikes \"it suddenly became a little easier to breathe on many social media platforms… there was less hate, less division and fewer provocations because there were fewer bots\" (RFE/RL — reported alongside researchers calling the evidence weak; no returned source endorses it as proven). Tom's Hardware itself quietly walked back its headline — the URL still reads \"russian-disinformation-bot-traffic-nearly-eliminated-overnight,\" but neither the current headline nor the text uses that word (Trestlewire). Synthesis pieces converge: Mezha — \"the data do not support the claim that Russian political bots were wiped out\"; informat.ro — the 0.4% \"does not amount to 'stopping Russian trolls'\"; EUalive — \"any reduction in election-related meddling would require separate, verifiable evidence… that has not yet been publicly established.\" The AfD/MAGA/Reform-UK user reports remain \"user observations and media interpretations of a technical chart\" (Mezha)."
+      ],
+      "links": [
+        {
+          "label": "Tom's Hardware — Russian \"disinformation bot traffic\" relay of the Cloudflare Radar chart (primary relay; headline since walked back)",
+          "url": "https://www.tomshardware.com/tech-industry/data-centers/russian-disinformation-bot-traffic-nearly-eliminated-overnight-after-ukraine-drone-strikes-cripple-multiple-of-russias-google-data-centers-ukraine-intensifies-bombing-of-yandex-data-centers-in-response-to-moscows-strikes-on-kyiv-data-centers"
+        },
+        {
+          "label": "RFE/RL — Zelenskyy says Yandex strikes crippled pro-Kremlin bots, but tech experts call evidence weak (primary for the quote and the pushback)",
+          "url": "https://www.rferl.org/a/zelenskyy-says-yandex-strikes-crippled-pro-kremlin-bots-but-tech-experts-call-evidence-weak/33875054.html"
+        },
+        {
+          "label": "Yandex — company statement, Oct 9 (primary — Sasovo/Kaluga condition)",
+          "url": "https://yandex.com/company/news/2026-10-09"
+        },
+        {
+          "label": "Reuters — Yandex says second data centre hit by drone attack (primary wire for the Kaluga strike)",
+          "url": "https://www.reuters.com/world/europe/russias-yandex-says-second-data-centre-hit-by-drone-attack-2026-10-09/"
+        },
+        {
+          "label": "Valdrans — hourly Radar analysis vs the September baseline (primary for the ~94%/−90%/−82% figures)",
+          "url": "https://valdrans.com/r/trump-energy-ceasefire-yandex-data-centres-drone-strikes"
+        },
+        {
+          "label": "BBC — Yandex says data centre in Vladimir shut down after drone attack",
+          "url": "https://www.bbc.com/news/articles/cw0k0g57mk3zo"
+        },
+        {
+          "label": "BBC — on the three supercomputers and their unconfirmed condition",
+          "url": "https://www.bbc.com/news/articles/c68xzqqn4ekro"
+        },
+        {
+          "label": "RTÉ — quotes the Vladimir service alert (\"completely suspended… unstable\")",
+          "url": "https://www.rte.ie/news/world/2026/1011/1594907-russia-data-centre/"
+        },
+        {
+          "label": "Al Jazeera — Yandex says data centre in Vladimir shut down after drone attack",
+          "url": "https://www.aljazeera.com/news/2026/10/11/russias-yandex-says-data-centre-in-vladimir-shut-down-after-drone-attack"
+        },
+        {
+          "label": "CNBC — first strike coverage (Oct 8)",
+          "url": "https://www.cnbc.com/2026/10/08/russia-yandex-ukraine-drone-strike-data-center.html"
+        },
+        {
+          "label": "implicator.ai — third data center shut, 80+ cloud services cut; Fire Point/Defense Express relay; restoration status",
+          "url": "https://www.implicator.ai/yandex-shuts-third-data-center-after-drone-strike-cutting-80-plus-cloud-services/"
+        },
+        {
+          "label": "Trestlewire — the 0.4% metric is not \"disinformation data\"; Maltese Herald debunk; Tom's Hardware walkback",
+          "url": "https://www.trestlewire.com/article/yandex-bot-traffic-0-4-percent-cloudflare-metric-not-disinformation-data-center-strikes"
+        },
+        {
+          "label": "The Deep Dive — bot traffic from Yandex's network falls to near zero after third drone strike (mechanism; \"one provider, not global traffic\")",
+          "url": "https://thedeepdive.ca/bot-traffic-from-yandexs-network-falls-to-near-zero-after-third-drone-strike/"
+        },
+        {
+          "label": "The Clarity Today — reconciles the Cloudflare and NetBlocks series (\"different units and different baselines\")",
+          "url": "https://theclarity.today/story/yandex-bot-traffic-falls-to-0-4-after-drone-strikes-e9ba7c1f"
+        },
+        {
+          "label": "The Clarity Today — Oct 8: Yandex Cloud customers pushed to other zones; spillover outages",
+          "url": "https://theclarity.today/story/drone-strike-pushes-yandex-cloud-customers-to-other-zones-0e962685"
+        },
+        {
+          "label": "The Verge — antibot4navalny: the chart is Yandex's own crawlers; bot/crawler traffic \"about the same as normal\"",
+          "url": "https://www.theverge.com/tech/1009443/yandex-russian-bots-cloudflare"
+        },
+        {
+          "label": "EUalive — tracked influence networks not disrupted; operations redundant across platforms",
+          "url": "https://eualive.net/ukraine-strikes-russias-data-centres-will-this-reduce-kremlins-online-election-meddling/"
+        },
+        {
+          "label": "Mezha — Rohtext/FactCheckRadar AfD debunk and synthesis (\"the data do not support the claim\")",
+          "url": "https://mezha.net/eng/mysli/2b69af1d_after_strikes_on_yandex/"
+        },
+        {
+          "label": "Euronews — did Ukrainian strikes cause Russian bot activity to plummet?",
+          "url": "https://www.euronews.com/2026/10/12/did-ukrainian-strikes-on-yandex-data-centres-cause-russian-bot-activity-to-plummet"
+        },
+        {
+          "label": "Informat.ro — analysis: \"a technical disruption, not the disappearance of an operation\"",
+          "url": "https://informat.ro/en/exclusive/yandex-propaganda-russia-influence-analysis-143105"
+        },
+        {
+          "label": "RuntimeWire — how the claim went viral from Bluesky/Reddit",
+          "url": "https://runtimewire.com/article/bluesky-yandex-bot-traffic-cloudflare-radar"
+        },
+        {
+          "label": "United24 Media — relays the 88.2%→0.3% swing, with mounting questions",
+          "url": "https://united24media.com/war-in-ukraine/ukraine-struck-yandex-data-centers-russian-bots-went-silent-now-questions-are-mounting-23339"
+        },
+        {
+          "label": "Hromadske — \"bot traffic plunges after Ukrainian strikes on Russian data centers, fueling disinformation debate\" (framing piece)",
+          "url": "https://hromadske.ua/en/war/272379-yandex-bot-traffic-plunges-after-ukrainian-strikes-on-russian-data-centers-fueling-disinformation-debate"
+        },
+        {
+          "label": "Ars Technica — Ukraine's drones knock out AI data center belonging to Russia's Google (Fire Point/Reuters Kaluga attribution)",
+          "url": "https://arstechnica.com/gadgets/2026/10/ukraines-drones-knock-out-ai-data-center-belonging-to-russias-google/"
+        },
+        {
+          "label": "The Insider — ru-central1-b migration; VK Cloud, Selectel, K2Cloud taking clients",
+          "url": "https://theins.press/en/news/298102"
+        },
+        {
+          "label": "Santage — Zelenskyy \"mirror response\" relay; AI supercomputer strike context",
+          "url": "https://santageai.com/news/2026/10/11/yandex-ai-supercomputer-drone-strikes"
+        },
+        {
+          "label": "Minusumin — Yandex shares fall ~4% on MOEX (note: its \"three supercomputers destroyed\" framing outruns the sourcing)",
+          "url": "https://minusumin.com/20261012051635-yandex-drone-strikes-cripple-russias-internet"
+        },
+        {
+          "label": "Xinhua — services gradually returning to normal after large-scale outage (Oct 12)",
+          "url": "http://www.xinhuanet.com/english/europe/20261012/48dac6d726b642378e5830fbe853a1db/c.html"
+        },
+        {
+          "label": "Ukrainska Pravda — \"six months to replace\" drone-damaged equipment (single-source estimate)",
+          "url": "https://www.pravda.com.ua/eng/news/2026/10/12/8057595/index.amp"
+        },
+        {
+          "label": "UA.NEWS — all three supercomputers \"may have been knocked out\" (T-Invariant); note its day attributions conflict with Yandex's statement",
+          "url": "https://ua.news/en/war-vs-rf/udari-droniv-mogli-vivesti-z-ladu-vsi-tri-superkompiuteri-iandeksa"
+        },
+        {
+          "label": "Cloudflare Radar Outage Center — the returned page names no Yandex facility",
+          "url": "https://radar.cloudflare.com/outage-center?dateRange=7d"
+        },
+        {
+          "label": "AI Pro Playbook — the Oct 10 edition's original Yandex item (continuity base for this piece)",
+          "url": "https://aiproplaybook.com/top-ai-stories/2026-10-10"
+        }
+      ]
+    }
+  ]
+}

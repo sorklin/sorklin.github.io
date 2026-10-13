@@ -104,8 +104,11 @@ cyber-risk-quant/index.html    quantification: the argument, the work, the Axio3
 cyber-security/index.html      assessments, frameworks, what you get
 news/index.html                the Daily Brief: daily AI + security news section
 news/news.json                 the feed file — written daily by a separate process
+news/deep-dives.json           the deep-dive library (append-only full bodies)
+news/deep-dive/index.html      the deep-dive article viewer (/news/deep-dive/?s=<slug>)
 news/README.md                 the writer contract for that process (schema, rules)
 news/AGENT-INSTRUCTIONS.md     the step-by-step runbook for the writing agent
+news/DEEP-DIVE-INSTRUCTIONS.md the runbook for the deep-dive agent
 projects/index.html            the projects menu + workshop sketches
 projects/dnd-shop/index.html   D&D Item Ledger (vendored single-file app)
 projects/dnd-shop/README.md    the ledger's own manual, vendored from the dnd project

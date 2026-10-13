@@ -7,16 +7,18 @@ anything else. (Design rationale lives in `README.md` in this same folder.)
 
 ## What you touch
 
-Exactly one file:
+At most two files:
 
 ```
-news/news.json
+news/news.json        the daily feed (cards only, trimmed to 90 days)
+news/deep-dives.json  the deep-dive library (full bodies, never trimmed)
 ```
 
-Nothing else. Not the HTML, not the CSS, not the scripts, not the sitemap.
-The whole section reads this one file — adding a day requires no other
-change. Work from the repo root (the folder that contains `index.html`,
-`news/`, `assets/` and `scripts/`).
+Deep dives are optional — when none were requested you only touch
+`news/news.json`. Never anything else: not the HTML, not the CSS, not the
+scripts, not the sitemap. The whole section reads these two files; adding a
+day requires no other change. Work from the repo root (the folder that
+contains `index.html`, `news/`, `assets/` and `scripts/`).
 
 ## The seven rules
 
@@ -49,7 +51,7 @@ key and its `_comment` sibling on your first real write.
 
 ```json
 {
-  "version": 2,
+  "version": 3,
   "updated": "2026-10-11",
   "days": [
     { "date": "2026-10-11", "items": [ { …story… }, { …story… } ] },
@@ -58,7 +60,7 @@ key and its `_comment` sibling on your first real write.
 }
 ```
 
-- `version` stays **2**.
+- `version` stays **3**.
 - `updated` = the `date` of the newest day (or `null` only while the feed
   is completely empty).
 - Each day is `{ "date": "YYYY-MM-DD", "items": [ … ] }`. Dates are the
@@ -105,6 +107,9 @@ key and its `_comment` sibling on your first real write.
 \* A missing `tldr` only draws a warning, but the design expects one —
 always write it.
 
+(The table above is for regular stories. **Deep-dive cards** use `type` +
+`slug` instead of `url` and carry only the card fields — see §Deep dives.)
+
 ### How the page uses each field
 
 Collapsed, a reader sees: category badge · source · **title** (linked to
@@ -137,6 +142,21 @@ self-sufficient: it is all a scanning reader gets.
   timelines, attribution, response steps ("pin 0.5.143; remove the monitor
   before revoking tokens").
 - `links[].label`: `"Publication — what it is"`; primary source first.
+
+## Deep dives (`type: "deep-dive"`)
+
+A **deep dive** is a long-form research piece — far too big for the feed's
+expandable cards, so it lives on its own page and the feed carries only a
+small amber card. It is a **two-file write**: one card item here (with
+`"type": "deep-dive"` + a `slug`, and no `url`/`summary`/`details`/`links`),
+plus the full body in `news/deep-dives.json`.
+
+Deep dives are normally produced by a **dedicated agent** — the complete
+step-by-step runbook for that job is **`DEEP-DIVE-INSTRUCTIONS.md`** in this
+folder. If the daily feed must reference a deep dive without producing one,
+add only the card exactly as that runbook's §1 specifies. The seven rules
+above (full-file rewrite, newest-first, plain text, https-only URLs,
+validate) apply to whatever you write.
 
 ## Publishing a day, step by step
 
@@ -172,9 +192,11 @@ The report format maps 1:1 onto the feed:
 ## Final checklist
 
 - [ ] Valid JSON — no trailing commas, no comments inside the file itself.
-- [ ] `version` is `2`; `updated` equals the newest day's date.
+- [ ] `version` is `3` (feed) and `1` (deep-dive library); `updated` equals
+      the newest day's date.
 - [ ] Days are newest-first; no duplicate dates; nothing older than 90 days.
 - [ ] Every `url` and every `links[].url` starts with `https://`.
+- [ ] Every deep-dive card has a matching slug in `news/deep-dives.json`.
 - [ ] No HTML or markdown in any string; no `_mock` key left behind.
 - [ ] `node scripts/check.mjs` prints `daily brief feed OK` and finishes
       without `✗` errors.

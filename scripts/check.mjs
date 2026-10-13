@@ -149,14 +149,15 @@ if (existsSync(cmdPath)) {
 // contract lives in news/README.md). Validate that machine contract here so
 // a bad write is caught pre-push instead of on the page.
 const newsJsonPath = path.join(ROOT, "news", "news.json");
+const diveRefs = []; // { slug, date } — cross-checked against news/deep-dives.json below
 if (!existsSync(newsJsonPath)) {
   warn("news/news.json absent — the Daily Brief has nothing to render");
 } else {
   try {
     const feed = JSON.parse(readFileSync(newsJsonPath, "utf8"));
     if (typeof feed !== "object" || feed === null || Array.isArray(feed)) throw new Error("root must be an object");
-    if (feed.version !== 2) {
-      throw new Error("version must be 2 (schema v2: each item carries tldr plus optional details[] and links[] — see news/README.md)");
+    if (feed.version !== 3) {
+      throw new Error("version must be 3 (schema v3: items may carry type:\"deep-dive\" + slug; deep-dive bodies live in news/deep-dives.json)");
     }
     if (feed.updated !== null && !/^\d{4}-\d{2}-\d{2}$/.test(String(feed.updated))) {
       throw new Error("updated must be null or YYYY-MM-DD");
@@ -175,12 +176,21 @@ if (!existsSync(newsJsonPath)) {
       d.items.forEach((it, j) => {
         if (!it || typeof it !== "object") throw new Error(`days[${i}].items[${j}] must be an object`);
         if (typeof it.title !== "string" || !it.title.trim()) throw new Error(`days[${i}].items[${j}].title missing`);
-        if (typeof it.url !== "string" || !/^https?:\/\//i.test(it.url)) {
+        const isDive = it.type === "deep-dive";
+        if (it.type !== undefined && !isDive && it.type !== "story") {
+          warn(`days[${i}].items[${j}].type "${it.type}" is unknown — rendering as a regular story`);
+        }
+        if (isDive) {
+          if (typeof it.slug !== "string" || !/^[a-z0-9][a-z0-9-]*$/.test(it.slug)) {
+            throw new Error(`days[${i}].items[${j}].slug must be lowercase-kebab for a deep-dive item`);
+          }
+          diveRefs.push({ slug: it.slug, date: d.date, where: `days[${i}].items[${j}]` });
+        } else if (typeof it.url !== "string" || !/^https?:\/\//i.test(it.url)) {
           throw new Error(`days[${i}].items[${j}].url must be an absolute http(s) URL`);
         }
         if (it.tldr === undefined || it.tldr === null) warn(`days[${i}].items[${j}] has no tldr (it shows collapsed under the title)`);
         else if (typeof it.tldr !== "string") throw new Error(`days[${i}].items[${j}].tldr must be a string`);
-        if (typeof it.summary !== "string" || !it.summary.trim()) warn(`days[${i}].items[${j}] has no summary`);
+        if (!isDive && (typeof it.summary !== "string" || !it.summary.trim())) warn(`days[${i}].items[${j}] has no summary`);
         if (typeof it.source !== "string" || !it.source.trim()) warn(`days[${i}].items[${j}] has no source name`);
         if (it.details !== undefined && !Array.isArray(it.details)) throw new Error(`days[${i}].items[${j}].details must be an array of strings`);
         it.details?.forEach((x, k) => {
@@ -211,6 +221,56 @@ if (!existsSync(newsJsonPath)) {
     }
   } catch (e) {
     bad("news/news.json: " + e.message);
+  }
+}
+
+/* 5d. the deep-dive library --------------------------------------------- */
+// Long-form deep dives live in news/deep-dives.json (append-only; never
+// trimmed with the 90-day feed). Each feed card of type "deep-dive" must
+// have a slug here, and the viewer page renders it from this file.
+const divesPath = path.join(ROOT, "news", "deep-dives.json");
+if (!existsSync(divesPath)) {
+  if (diveRefs.length) bad(`news/deep-dives.json absent but ${diveRefs.length} feed card(s) reference a deep dive`);
+  else note("news/deep-dives.json absent — no deep dives published yet");
+} else {
+  try {
+    const lib = JSON.parse(readFileSync(divesPath, "utf8"));
+    if (typeof lib !== "object" || lib === null || Array.isArray(lib)) throw new Error("root must be an object");
+    if (lib.version !== 1) throw new Error("version must be 1");
+    if (!Array.isArray(lib.dives)) throw new Error("dives must be an array");
+    const slugs = new Set();
+    lib.dives.forEach((dv, i) => {
+      if (!dv || typeof dv !== "object" || Array.isArray(dv)) throw new Error(`dives[${i}] must be an object`);
+      if (typeof dv.slug !== "string" || !/^[a-z0-9][a-z0-9-]*$/.test(dv.slug)) {
+        throw new Error(`dives[${i}].slug must be lowercase-kebab`);
+      }
+      if (slugs.has(dv.slug)) throw new Error(`duplicate slug ${dv.slug}`);
+      slugs.add(dv.slug);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dv.date || ""))) throw new Error(`dives[${i}].date must be YYYY-MM-DD`);
+      if (typeof dv.title !== "string" || !dv.title.trim()) throw new Error(`dives[${i}].title missing`);
+      if (typeof dv.tldr !== "string" || !dv.tldr.trim()) warn(`dives[${i}] ("${dv.slug}") has no tldr`);
+      if (typeof dv.summary !== "string" || !dv.summary.trim()) warn(`dives[${i}] ("${dv.slug}") has no summary`);
+      if (dv.details !== undefined && !Array.isArray(dv.details)) throw new Error(`dives[${i}].details must be an array of strings`);
+      dv.details?.forEach((x, k) => {
+        if (typeof x !== "string" || !x.trim()) throw new Error(`dives[${i}].details[${k}] must be a non-empty string`);
+      });
+      if (dv.links !== undefined && !Array.isArray(dv.links)) throw new Error(`dives[${i}].links must be an array`);
+      dv.links?.forEach((l, k) => {
+        if (!l || typeof l !== "object") throw new Error(`dives[${i}].links[${k}] must be an object`);
+        if (typeof l.url !== "string" || !/^https?:\/\//i.test(l.url)) {
+          throw new Error(`dives[${i}].links[${k}].url must be an absolute http(s) URL`);
+        }
+        if (typeof l.label !== "string" || !l.label.trim()) warn(`dives[${i}].links[${k}] has no label (the raw URL shows instead)`);
+      });
+    });
+    for (const ref of diveRefs) {
+      if (!slugs.has(ref.slug)) bad(`${ref.where}: deep-dive slug "${ref.slug}" has no entry in news/deep-dives.json — its card would link to a missing page`);
+      const dive = lib.dives.find((x) => x.slug === ref.slug);
+      if (dive && dive.date !== ref.date) warn(`deep dive "${ref.slug}" is dated ${dive.date} but its feed card sits under ${ref.date}`);
+    }
+    good(`deep-dive library OK: ${lib.dives.length} dive(s)`);
+  } catch (e) {
+    bad("news/deep-dives.json: " + e.message);
   }
 }
 

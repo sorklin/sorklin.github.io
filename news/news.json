@@ -1,10 +1,18 @@
 {
-  "version": 2,
+  "version": 3,
   "updated": "2026-10-12",
   "days": [
     {
       "date": "2026-10-12",
       "items": [
+        {
+          "type": "deep-dive",
+          "slug": "yandex-bot-traffic",
+          "category": "security",
+          "title": "Yandex data-center strikes collapsed bot traffic — but it was Yandex's own crawlers, not propaganda bots",
+          "tldr": "The drop is real — automated HTTP traffic from Yandex's own networks fell to ~0.4% of its two-week peak per Cloudflare Radar, and ~94% below the September baseline on Oct 11 per one independent analysis — but the viral \"Russian propaganda bots disappeared\" claim isn't supported: the measured traffic is dominated by Yandex's own search crawlers going dark with its data centers.",
+          "source": "Sorklin Research"
+        },
         {
           "category": "ai",
           "title": "\"CyberXero\": Russian-speaking initial access broker ran up to 51 Claude Code agents — 628,000+ Ukrainian records stolen.",
