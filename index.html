@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.sorklin.com/">
 <meta name="theme-color" content="#05070b">
-  <script>try{var t=localStorage.getItem("sorklin:theme");if(t&&t!=="midnight")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script>try{var t=localStorage.getItem("sorklin:theme");document.documentElement.setAttribute("data-theme",t||"daylight")}catch(e){}</script>
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://www.sorklin.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -316,7 +316,7 @@
       <span>© 2026 The Sorklin Group · Built by hand and by model, argued with by me, deployed by <span class="accent">git push</span></span>
       <span class="corp-note">Corporate mode active. The jokes are still in the source.</span>
       <button type="button" data-corporate-toggle>Make it more corporate</button>
-      <button type="button" data-theme-cycle>Theme: Midnight</button>
+      <button type="button" data-theme-cycle>Theme: Daylight</button>
     </div>
   </div>
 </footer>

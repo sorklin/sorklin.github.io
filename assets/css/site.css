@@ -1161,8 +1161,8 @@ figure.chart { margin: 0; }
   --amber: #b45309;
   --green: #15803d;
   --red: #b91c1c;
-  --grad: linear-gradient(118deg, #1f5aa8, #274690);
-  --grad-soft: linear-gradient(118deg, rgba(31, 90, 168, 0.1), rgba(109, 91, 208, 0.1));
+  --grad: linear-gradient(118deg, #0f766e, #4338ca 38%, #a21caf 64%, #b45309);
+  --grad-soft: linear-gradient(118deg, rgba(15, 118, 110, 0.1), rgba(67, 56, 202, 0.08) 38%, rgba(162, 28, 175, 0.08) 64%, rgba(180, 83, 9, 0.1));
 }
 [data-theme="daylight"] body { background: linear-gradient(180deg, #ffffff, #f7f8fa 320px); }
 [data-theme="daylight"] .site-nav, [data-theme="daylight"] .site-nav.stuck { background: rgba(255, 255, 255, 0.92); }
@@ -1272,3 +1272,10 @@ figure.chart { margin: 0; }
 [data-theme="press"] .brief-strip { background: rgba(255, 248, 236, 0.94); }
 [data-theme="press"] #field { display: none; }
 [data-theme="press"] #dd-summary::first-letter { float: left; font-family: var(--sans); font-size: 3.1em; line-height: 0.82; padding: 4px 10px 0 0; font-weight: 600; color: var(--cyan); }
+
+/* ── text selection per theme ───────────────────────────────────────────
+   Midnight's soft cyan + white works on dark; light themes get a soft
+   accent wash with dark ink instead of white-on-light. */
+[data-theme="daylight"] ::selection { background: rgba(31, 90, 168, 0.24); color: var(--ink); }
+[data-theme="arcade"] ::selection { background: rgba(255, 77, 109, 0.22); color: var(--ink); }
+[data-theme="press"] ::selection { background: rgba(15, 84, 153, 0.22); color: var(--ink); }

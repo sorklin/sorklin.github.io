@@ -292,8 +292,8 @@
       themeBtn.textContent = "Theme: " + THEME_LABELS[t];
       try { localStorage.setItem("sorklin:theme", t); } catch (e) {}
     };
-    var currentTheme = htmlEl.getAttribute("data-theme") || "midnight";
-    if (THEMES.indexOf(currentTheme) === -1) currentTheme = "midnight";
+    var currentTheme = htmlEl.getAttribute("data-theme") || "daylight";
+    if (THEMES.indexOf(currentTheme) === -1) currentTheme = "daylight";
     applyTheme(currentTheme);
     themeBtn.addEventListener("click", function () {
       var now = htmlEl.getAttribute("data-theme") || "midnight";
