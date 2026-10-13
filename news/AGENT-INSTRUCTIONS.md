@@ -75,7 +75,11 @@ key and its `_comment` sibling on your first real write.
 ```json
 {
   "category": "ai",
-  "title": "Agent framework patches prompt-injection flaw triggered by crafted documents",
+  "industry": [
+    { "code": "52", "name": "Finance and Insurance" },
+    { "code": "61", "name": "Educational Services" }
+  ],
+  "title": "Agent framework patches prompt-injection flaw exploited at a bank and a university",
   "tldr": "One line, always visible under the title: the hook plus the single most important fact.",
   "source": "The Register",
   "url": "https://www.theregister.com/security/example-story/",
@@ -96,6 +100,7 @@ key and its `_comment` sibling on your first real write.
 | Field | Required | Rule |
 |---|---|---|
 | `category` | yes | `"ai"` or `"security"` — see *Choosing a category* below. |
+| `industry` | no | Array of `{ "code", "name" }` top-level NAICS sectors — see *Choosing industries* below. Omit entirely when none apply; the page answers with an `Unspecified` pill. |
 | `title` | yes | The headline as summarised, ≤ ~120 characters, plain text. |
 | `tldr` | yes* | ONE line that must stand alone — the collapsed view shows exactly title + TL;DR, nothing else. |
 | `source` | yes | Publication of the primary link, e.g. `"BleepingComputer"`. |
@@ -112,11 +117,14 @@ always write it.
 
 ### How the page uses each field
 
-Collapsed, a reader sees: category badge · source · **title** (linked to
-`url`) · **tldr**. Expanded — a small "Summary · Key facts · Sources" box —
-the `summary`, the `details` as a dash list, and every `links` entry as a
-labelled link that opens in a new tab. That is why `tldr` must be
-self-sufficient: it is all a scanning reader gets.
+Collapsed, a reader sees: category badge · industry pills · source ·
+**title** (linked to `url`) · **tldr**. Expanded — a small
+"Summary · Key facts · Sources" box — the `summary`, the `details` as a dash
+list, and every `links` entry as a labelled link that opens in a new tab.
+Each `industry` entry renders as a green pill beside the category badge (a
+single dim `Unspecified` pill when the item carries none), and the industry
+dropdown above the list filters stories by sector. That is why `tldr` must
+be self-sufficient: it is all a scanning reader gets.
 
 ## Choosing a category
 
@@ -130,6 +138,60 @@ self-sufficient: it is all a scanning reader gets.
 - A story spanning both gets whichever is dominant. **A pure AI story with
   no security angle does not belong in this feed** — no model releases,
   funding rounds or benchmarks unless there is a security hook.
+
+## Choosing industries (`industry`)
+
+Besides the topic tag, every story may carry **industry** tags: the
+top-level NAICS sectors (per www.naics.com) of the **victims and targets** —
+the organisations on the receiving end. There are exactly twenty — always
+use these codes with these exact names:
+
+| Code | Sector |
+|---|---|
+| `11` | Agriculture, Forestry, Fishing and Hunting |
+| `21` | Mining |
+| `22` | Utilities |
+| `23` | Construction |
+| `31-33` | Manufacturing |
+| `42` | Wholesale Trade |
+| `44-45` | Retail Trade |
+| `48-49` | Transportation and Warehousing |
+| `51` | Information |
+| `52` | Finance and Insurance |
+| `53` | Real Estate Rental and Leasing |
+| `54` | Professional, Scientific, and Technical Services |
+| `55` | Management of Companies and Enterprises |
+| `56` | Administrative and Support and Waste Management and Remediation Services |
+| `61` | Educational Services |
+| `62` | Health Care and Social Assistance |
+| `71` | Arts, Entertainment, and Recreation |
+| `72` | Accommodation and Food Services |
+| `81` | Other Services (except Public Administration) |
+| `92` | Public Administration |
+
+- Write each tag as a pair — `{ "code": "52", "name": "Finance and
+  Insurance" }` — both fields, exactly as tabled above. The pill shows the
+  name; the code rides the hover tooltip.
+- **Tag the victims and the targets — never the tool.** The industries come
+  from whoever was breached, attacked, exposed or ordered to respond: the
+  hospital whose records leaked, the bank and the university whose systems
+  were exploited, the agencies named in an emergency directive. A
+  vulnerability in a tool does **not** inherit the tool-maker's industry: a
+  vLLM flaw exploited at a bank and a university is `52` Finance and
+  Insurance + `61` Educational Services — *not* the developers' sector,
+  even though vLLM is made by software developers.
+- **The maker's industry appears only when the maker is also a victim** —
+  their own tool turned back on them. If a vLLM vulnerability is exploited
+  to breach data at the vLLM developers themselves, `54` Professional,
+  Scientific, and Technical Services applies — because they are the ones
+  hit, not because they built it.
+- A story may carry **many** industries or **none**. When no sector applies
+  (a threat-actor profile with unnamed victims, a multi-industry CVE
+  digest, an exploited tool with no named victim), **omit the field
+  entirely** — the page shows a single dim `Unspecified` pill for those, so
+  never write the string `"Unspecified"` yourself.
+- When in doubt, leave it out: a wrong industry misleads the filter; a
+  missing one just reads as Unspecified.
 
 ## Writing style
 
@@ -169,8 +231,8 @@ validate) apply to whatever you write.
 6. Remove `_mock` / `_comment` keys if present.
 7. Write the entire file back.
 8. Run `node scripts/check.mjs`; resolve every error it reports.
-9. Report what you published: the date, the number of stories, and the
-   count per category.
+9. Report what you published: the date, the number of stories, the
+   count per category, and the industries you tagged.
 
 Starting from an empty feed is the same job — create one day object per
 date you've been given, newest first, and set `updated`.
@@ -196,6 +258,9 @@ The report format maps 1:1 onto the feed:
       the newest day's date.
 - [ ] Days are newest-first; no duplicate dates; nothing older than 90 days.
 - [ ] Every `url` and every `links[].url` starts with `https://`.
+- [ ] Every `industry` entry is a `{ code, name }` pair from the NAICS
+      table; items with no sector omit the field (never write
+      `"Unspecified"` in the data).
 - [ ] Every deep-dive card has a matching slug in `news/deep-dives.json`.
 - [ ] No HTML or markdown in any string; no `_mock` key left behind.
 - [ ] `node scripts/check.mjs` prints `daily brief feed OK` and finishes

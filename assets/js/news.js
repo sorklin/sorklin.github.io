@@ -27,7 +27,8 @@
   var state = {
     days: [],        // normalised feed, newest first
     updated: null,   // ISO date string of the newest day
-    filter: "all",   // all | security | ai
+    filter: "all",   // all | security | ai | dive (topic)
+    industry: "all", // all | unspecified | <NAICS sector name> (a second dimension)
     shown: BUDGET,   // how many matching stories are currently rendered
     counts: { all: 0, security: 0, ai: 0 }
   };
@@ -42,6 +43,28 @@
     if (cls) n.className = cls;
     if (text != null) n.textContent = text;
     return n;
+  }
+
+  // Industry = top-level NAICS sectors ({ code, name } pairs, the pill shows
+  // the name). The writer may omit the field entirely — meaning "none apply",
+  // which the page answers with an Unspecified pill. A literal "Unspecified"
+  // written by the writer counts as none, and duplicates collapse.
+  function parseIndustries(v) {
+    if (!Array.isArray(v)) return [];
+    var out = [], seen = {};
+    for (var i = 0; i < v.length; i++) {
+      var e = v[i], name = "", code = "";
+      if (typeof e === "string") name = e; // tolerate a bare sector name
+      else if (e && typeof e === "object") { name = String(e.name || ""); code = String(e.code || ""); }
+      name = name.trim();
+      code = code.trim();
+      if (!name || name.toLowerCase() === "unspecified") continue;
+      var key = name.toLowerCase();
+      if (seen[key]) continue;
+      seen[key] = true;
+      out.push({ code: code, name: name });
+    }
+    return out;
   }
 
   // Parse "YYYY-MM-DD" as a LOCAL date. new Date("2026-10-11") is parsed as
@@ -127,6 +150,7 @@
           links: (Array.isArray(it.links) ? it.links : [])
             .filter(function (l) { return l && /^https?:\/\//i.test(String(l.url || "")); })
             .map(function (l) { return { label: String(l.label || "").trim(), url: String(l.url) }; }),
+          industry: parseIndustries(it.industry),
           category: it.category === "ai" ? "ai" : it.category === "security" ? "security" : "news"
         });
       }
@@ -137,14 +161,34 @@
   }
 
   function matches(item) {
-    if (state.filter === "all") return true;
-    if (state.filter === "dive") return item.type === "deep-dive";
-    return item.category === state.filter;
+    if (state.filter === "all") return industryMatches(item);
+    if (state.filter === "dive") return item.type === "deep-dive" && industryMatches(item);
+    return item.category === state.filter && industryMatches(item);
+  }
+
+  // The second filter dimension: industry (NAICS sector). "unspecified"
+  // selects the stories that carry no industry at all.
+  function industryMatches(item) {
+    if (state.industry === "all") return true;
+    if (state.industry === "unspecified") return item.industry.length === 0;
+    for (var i = 0; i < item.industry.length; i++)
+      if (item.industry[i].name === state.industry) return true;
+    return false;
   }
 
   /* Human label for a FILTER value (not a category badge — use catLabel). */
   function filterLabel(f) {
     return f === "ai" ? "AI Security" : f === "security" ? "Security" : f === "dive" ? "Deep dives" : null;
+  }
+
+  /* Both active filters in one readable phrase for the empty state. */
+  function activeFilterLabel() {
+    var parts = [];
+    var topic = filterLabel(state.filter);
+    if (topic) parts.push(topic);
+    if (state.industry === "unspecified") parts.push("Unspecified industry");
+    else if (state.industry !== "all") parts.push(state.industry);
+    return parts.join(" + ");
   }
 
   function catLabel(c) {
@@ -178,6 +222,31 @@
   var BADGE = { security: "badge info", ai: "badge ai", news: "badge soon" };
   var TINT = { security: "", ai: "tint-ai", news: "tint-news" };
 
+  /* Industry pills — the NAICS sector name in a pill, like the category
+     badge; the code rides the hover tooltip. No industries on the item means
+     one dim "Unspecified" pill, the standing answer for "none assigned". */
+  function industryPills(item) {
+    var pills = [];
+    if (item.industry.length) {
+      for (var i = 0; i < item.industry.length; i++) {
+        var ind = item.industry[i];
+        var p = el("span", "badge ind", ind.name);
+        p.title = ind.code ? "NAICS " + ind.code + " — " + ind.name : "Industry";
+        pills.push(p);
+      }
+    } else {
+      var u = el("span", "badge ind unspec", "Unspecified");
+      u.title = "No industry assigned to this story";
+      pills.push(u);
+    }
+    return pills;
+  }
+
+  function appendIndustryPills(meta, item) {
+    var pills = industryPills(item);
+    for (var i = 0; i < pills.length; i++) meta.appendChild(pills[i]);
+  }
+
   /* A deep dive lives on its own generated page; the card is just the door. */
   function diveUrl(item) {
     return "/news/deep-dive/?s=" + encodeURIComponent(item.slug);
@@ -194,6 +263,7 @@
     var meta = el("div", "news-meta");
     meta.appendChild(el("span", "badge dive", "Deep dive"));
     meta.appendChild(el("span", BADGE[item.category] || BADGE.news, catLabel(item.category)));
+    appendIndustryPills(meta, item);
     if (item.source) meta.appendChild(el("span", "news-src", item.source));
     art.appendChild(meta);
 
@@ -230,6 +300,7 @@
 
     var meta = el("div", "news-meta");
     meta.appendChild(el("span", BADGE[item.category] || BADGE.news, catLabel(item.category)));
+    appendIndustryPills(meta, item);
     if (item.source) meta.appendChild(el("span", "news-src", item.source));
     art.appendChild(meta);
 
@@ -316,10 +387,12 @@
 
     if (total === 0) {
       list.appendChild(stateNode(
-        state.filter === "all" ? "No briefings yet" : "Nothing filed under " + (filterLabel(state.filter) || "this filter") + " in the archive",
-        state.filter === "all"
+        state.filter === "all" && state.industry === "all"
+          ? "No briefings yet"
+          : "Nothing filed under " + (activeFilterLabel() || "this filter") + " in the archive",
+        state.filter === "all" && state.industry === "all"
           ? "The feed is live but empty. The first briefing lands with the next daily run — the page fills itself when it does."
-          : "Switch back to All — the other tag has stories in this window."
+          : "Switch back to All — or set the industry filter back to All industries; the archive has stories outside this slice."
       ));
       var more0 = $("#news-more");
       if (more0) more0.hidden = true;
@@ -392,6 +465,43 @@
         ? "Updated " + (dayLabel(state.updated) || state.updated)
         : "";
     }
+    rebuildIndustryFilter();
+  }
+
+  /* The industry dropdown is the second filter dimension. Options are built
+     from the feed itself — only sectors actually present, alphabetical, with
+     counts — plus "Unspecified" when untagged stories exist. */
+  function rebuildIndustryFilter() {
+    var sel = $("#news-industry");
+    if (!sel) return;
+    var counts = {}, codes = {}, unspecified = 0;
+    for (var i = 0; i < state.days.length; i++) {
+      var items = state.days[i].items;
+      for (var j = 0; j < items.length; j++) {
+        var inds = items[j].industry;
+        if (!inds.length) { unspecified++; continue; }
+        for (var k = 0; k < inds.length; k++) {
+          var name = inds[k].name;
+          counts[name] = (counts[name] || 0) + 1;
+          if (!codes[name]) codes[name] = inds[k].code;
+        }
+      }
+    }
+    var names = Object.keys(counts).sort(function (a, b) { return a.localeCompare(b); });
+    var prev = state.industry;
+    sel.textContent = "";
+    sel.appendChild(new Option("All industries", "all"));
+    for (var x = 0; x < names.length; x++) {
+      var nm = names[x];
+      sel.appendChild(new Option(nm + " (" + counts[nm] + ")", nm));
+      if (codes[nm]) sel.lastChild.title = "NAICS " + codes[nm] + " — " + nm;
+    }
+    if (unspecified) sel.appendChild(new Option("Unspecified (" + unspecified + ")", "unspecified"));
+    sel.value = prev;
+    if (sel.selectedIndex === -1) { // the chosen industry aged out of the feed
+      state.industry = "all";
+      sel.value = "all";
+    }
   }
 
   function recomputeCounts() {
@@ -417,6 +527,15 @@
       state.filter = btn.getAttribute("data-filter") || "all";
       state.shown = BUDGET;
       for (var i = 0; i < tabs.length; i++) tabs[i].setAttribute("aria-pressed", tabs[i] === btn ? "true" : "false");
+      render();
+    });
+  }
+
+  var indSel = $("#news-industry");
+  if (indSel) {
+    indSel.addEventListener("change", function () {
+      state.industry = this.value || "all";
+      state.shown = BUDGET;
       render();
     });
   }

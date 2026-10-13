@@ -5,6 +5,12 @@
       "slug": "yandex-bot-traffic",
       "date": "2026-10-12",
       "category": "security",
+      "industry": [
+        {
+          "code": "51",
+          "name": "Information"
+        }
+      ],
       "title": "Yandex data-center strikes collapsed bot traffic — but it was Yandex's own crawlers, not propaganda bots",
       "tldr": "The drop is real — automated HTTP traffic from Yandex's own networks fell to ~0.4% of its two-week peak per Cloudflare Radar, and ~94% below the September baseline on Oct 11 per one independent analysis — but the viral \"Russian propaganda bots disappeared\" claim isn't supported: the measured traffic is dominated by Yandex's own search crawlers going dark with its data centers.",
       "summary": "The Oct 8–11 Ukrainian drone strikes on three Yandex data centers (Sasovo, Kaluga, and — new since our Oct 10 edition — Vladimir) did produce a near-total collapse in automated traffic from Yandex's own networks: Cloudflare Radar data showed bot requests from Yandex's autonomous system falling to ~0.4% of its two-week peak, with an independent analysis putting Oct 11 traffic ~94% below the September baseline and NetBlocks separately measuring Yandex Cloud at 30% of normal. But the viral claim that this means \"Russian propaganda bots disappeared\" — echoed by Zelenskyy on Oct 12 — is not supported: the measured traffic is dominated by Yandex's own search crawlers going dark with its data centers, tracked influence networks were reportedly unaffected, and the specific AfD/MAGA claims trace to an unsourced graphic that a German fact-check found plotted future dates. Yandex has not confirmed the fate of its three AI-training supercomputers (two of which were in the burned Sasovo site); services are only partially restored — Alice, Search, Maps, Taxi, and Mail are \"gradually returning,\" with no timeline for full recovery of payments — and one report suggests replacement hardware could take six months under sanctions. Confidence: the outage and traffic collapse — high; supercomputer loss, attribution, and any election effect — unproven.",

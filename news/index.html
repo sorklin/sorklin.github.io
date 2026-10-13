@@ -71,11 +71,19 @@
   <section class="section" id="brief">
     <div class="wrap">
       <div class="news-controls" id="news-controls" hidden>
-        <div class="news-tabs" role="group" aria-label="Filter stories by topic">
-          <button type="button" class="news-tab" data-filter="all" aria-pressed="true">All<span class="n"></span></button>
-          <button type="button" class="news-tab" data-filter="ai" aria-pressed="false">AI Security<span class="n"></span></button>
-          <button type="button" class="news-tab" data-filter="security" aria-pressed="false">Security<span class="n"></span></button>
-          <button type="button" class="news-tab" data-filter="dive" aria-pressed="false">Deep dive<span class="n"></span></button>
+        <div class="news-filters">
+          <div class="news-tabs" role="group" aria-label="Filter stories by topic">
+            <button type="button" class="news-tab" data-filter="all" aria-pressed="true">All<span class="n"></span></button>
+            <button type="button" class="news-tab" data-filter="ai" aria-pressed="false">AI Security<span class="n"></span></button>
+            <button type="button" class="news-tab" data-filter="security" aria-pressed="false">Security<span class="n"></span></button>
+            <button type="button" class="news-tab" data-filter="dive" aria-pressed="false">Deep dive<span class="n"></span></button>
+          </div>
+          <!-- The second filter dimension: industry (top-level NAICS sectors).
+               Options are built from the feed by news.js — only sectors that
+               actually appear, with counts, plus "Unspecified" when stories
+               carry none. -->
+          <label class="sr-only" for="news-industry">Filter stories by industry</label>
+          <select id="news-industry" class="news-indsel" aria-label="Filter stories by industry"></select>
         </div>
         <span class="news-updated dim mono" id="news-updated"></span>
       </div>
@@ -131,11 +139,15 @@
 
         <article class="card tint-violet reveal" data-delay="90">
           <div class="card-index">02 / Taxonomy</div>
-          <h3>Two tags. That's the whole taxonomy.</h3>
+          <h3>Two topic tags, plus the industry hit.</h3>
           <p><span class="badge ai">AI Security</span> — AI as the target, the weapon or the incident:
             model breaches, prompt injection, AI-powered attacks, and the policy arriving late.</p>
           <p style="margin-top:10px"><span class="badge info">Security</span> — “regular” security, the rest
             of the wire: breaches, CVEs, ransomware, advisories, and the policy that follows them.</p>
+          <p style="margin-top:10px">Every story also carries <span class="badge ind">Industry</span> pills —
+            the top-level NAICS sector(s) it lands on (retail, healthcare, finance…), or a dim
+            <span class="badge ind unspec">Unspecified</span> when none apply. The dropdown beside the tabs
+            filters by sector.</p>
           <p class="card-note" data-joke>Anything that is both gets filed under whichever tag was louder that
             morning.</p>
           <p class="card-note" data-corp>Stories spanning both topics are filed under their dominant theme.</p>

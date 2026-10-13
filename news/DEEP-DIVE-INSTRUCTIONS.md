@@ -47,6 +47,9 @@ A deep-dive card is a normal feed item under the day it was published, with
   "type": "deep-dive",
   "slug": "yandex-bot-traffic",
   "category": "security",
+  "industry": [
+    { "code": "51", "name": "Information" }
+  ],
   "title": "Yandex data-center strikes collapsed bot traffic — but it was Yandex's own crawlers",
   "tldr": "The one-line hook, same rules as any tldr.",
   "source": "Sorklin Research"
@@ -60,6 +63,9 @@ Card rules:
 - `title` — ≤ ~120 characters, plain text.
 - `tldr` — one line that stands alone; it is all a scanning reader sees.
 - `category` — `"ai"` or `"security"` (see *Choosing a category* below).
+- `industry` — optional; zero or more top-level NAICS sectors (see
+  *Choosing industries* below). Omit the field when none apply — the card
+  and the page show an `Unspecified` pill.
 - `source` — who produced the dive; `"Sorklin Research"` for agent research.
 
 ## §2 The body — `news/deep-dives.json`
@@ -76,6 +82,9 @@ dive as a new object — or, if a dive with the same slug already exists
       "slug": "yandex-bot-traffic",
       "date": "2026-10-12",
       "category": "security",
+      "industry": [
+        { "code": "51", "name": "Information" }
+      ],
       "title": "…same title as the card…",
       "tldr": "…same tldr as the card…",
       "summary": "The standfirst paragraph shown at the top of the page.",
@@ -96,6 +105,9 @@ Body rules:
 
 - `date` — the dive's publication date (`YYYY-MM-DD`,
   **America/New_York**). It must match the day the card sits under.
+- `industry` — same rules as the card: `{ "code", "name" }` NAICS sector
+  pairs, many or none (omit when none apply). Keep the body's industries in
+  sync with the card's.
 - `summary` — the page standfirst: what happened, who is affected, and why
   it matters. 1 short paragraph.
 - `details` — the heart of the piece: one fact per string. Long bullets are
@@ -115,6 +127,50 @@ Body rules:
 - **`"security"` — "regular" security.** The rest of the wire: breaches,
   CVEs, ransomware, advisories, threat actors, general cyber policy.
 - A deep dive spanning both gets whichever is dominant.
+
+## §3b Choosing industries (`industry`)
+
+Cards and bodies may carry **industry** tags: the top-level NAICS sectors
+(per www.naics.com) of the dive's **victims and targets** — the
+organisations on the receiving end. Use exactly these code/name pairs —
+the pill shows the name, the code rides the tooltip:
+
+| Code | Sector |
+|---|---|
+| `11` | Agriculture, Forestry, Fishing and Hunting |
+| `21` | Mining |
+| `22` | Utilities |
+| `23` | Construction |
+| `31-33` | Manufacturing |
+| `42` | Wholesale Trade |
+| `44-45` | Retail Trade |
+| `48-49` | Transportation and Warehousing |
+| `51` | Information |
+| `52` | Finance and Insurance |
+| `53` | Real Estate Rental and Leasing |
+| `54` | Professional, Scientific, and Technical Services |
+| `55` | Management of Companies and Enterprises |
+| `56` | Administrative and Support and Waste Management and Remediation Services |
+| `61` | Educational Services |
+| `62` | Health Care and Social Assistance |
+| `71` | Arts, Entertainment, and Recreation |
+| `72` | Accommodation and Food Services |
+| `81` | Other Services (except Public Administration) |
+| `92` | Public Administration |
+
+**Tag the victims and the targets — never the tool.** The industries come
+from whoever was breached, attacked, exposed or ordered to respond. A
+vulnerability does **not** inherit the tool-maker's industry: a vLLM flaw
+exploited at a bank and a university is `52` Finance and Insurance +
+`61` Educational Services — *not* the developers' sector. The maker's own
+industry appears only when the maker is also the victim (their own tool
+turned back on them — a vLLM flaw used to breach data at the vLLM
+developers themselves is `54` Professional, Scientific, and Technical
+Services, because they are the ones hit).
+
+Many or none are both fine: **omit the field when no sector applies**
+(the page answers with `Unspecified`; never write that string yourself).
+When in doubt, leave it out.
 
 ## §4 Writing style
 

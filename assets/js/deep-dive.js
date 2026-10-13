@@ -56,6 +56,27 @@
     return c === "ai" ? "AI Security" : c === "security" ? "Security" : "News";
   }
 
+  /* Industry = top-level NAICS sectors ({ code, name }); same tolerant parse
+     as the feed renderer — a literal "Unspecified" or junk degrades to none,
+     and none renders as the dim Unspecified pill. */
+  function parseIndustries(v) {
+    if (!Array.isArray(v)) return [];
+    var out = [], seen = {};
+    for (var i = 0; i < v.length; i++) {
+      var e = v[i], name = "", code = "";
+      if (typeof e === "string") name = e;
+      else if (e && typeof e === "object") { name = String(e.name || ""); code = String(e.code || ""); }
+      name = name.trim();
+      code = code.trim();
+      if (!name || name.toLowerCase() === "unspecified") continue;
+      var key = name.toLowerCase();
+      if (seen[key]) continue;
+      seen[key] = true;
+      out.push({ code: code, name: name });
+    }
+    return out;
+  }
+
   /* The house rule: publisher links ALWAYS open in a new tab/window. */
   function sourceLink(link) {
     var a = el("a", null, link.label || link.url);
@@ -90,6 +111,22 @@
       var d = parseDay(dive.date);
       bits.push(d && fmt ? fmt.format(d) : dive.date);
       PAGE.kicker.textContent = bits.join(" · ");
+      // Industry pills trail the kicker line — one per NAICS sector, or the
+      // single dim Unspecified pill when the dive carries none.
+      var inds = Array.isArray(dive.industry) ? dive.industry : [];
+      if (!inds.length) {
+        var u = el("span", "badge ind unspec", "Unspecified");
+        u.title = "No industry assigned to this story";
+        PAGE.kicker.appendChild(document.createTextNode("  "));
+        PAGE.kicker.appendChild(u);
+      } else {
+        for (var n = 0; n < inds.length; n++) {
+          var p = el("span", "badge ind", inds[n].name);
+          p.title = inds[n].code ? "NAICS " + inds[n].code + " — " + inds[n].name : "Industry";
+          PAGE.kicker.appendChild(document.createTextNode("  "));
+          PAGE.kicker.appendChild(p);
+        }
+      }
     }
     if (PAGE.tldr && dive.tldr) {
       PAGE.tldr.hidden = false;
@@ -166,6 +203,7 @@
           title: String(dive.title),
           date: String(dive.date || ""),
           category: dive.category,
+          industry: parseIndustries(dive.industry),
           tldr: String(dive.tldr || "").trim(),
           summary: String(dive.summary || "").trim(),
           details: Array.isArray(dive.details) ? dive.details : [],

@@ -150,6 +150,51 @@ if (existsSync(cmdPath)) {
 // a bad write is caught pre-push instead of on the page.
 const newsJsonPath = path.join(ROOT, "news", "news.json");
 const diveRefs = []; // { slug, date } — cross-checked against news/deep-dives.json below
+
+// Industry tags are top-level NAICS sectors (www.naics.com): the pill shows
+// the name, the code rides the tooltip. One canonical map here backs both the
+// feed and the deep-dive library, so a typo'd name or code is caught pre-push.
+const NAICS = {
+  "11": "Agriculture, Forestry, Fishing and Hunting",
+  "21": "Mining",
+  "22": "Utilities",
+  "23": "Construction",
+  "31-33": "Manufacturing",
+  "42": "Wholesale Trade",
+  "44-45": "Retail Trade",
+  "48-49": "Transportation and Warehousing",
+  "51": "Information",
+  "52": "Finance and Insurance",
+  "53": "Real Estate Rental and Leasing",
+  "54": "Professional, Scientific, and Technical Services",
+  "55": "Management of Companies and Enterprises",
+  "56": "Administrative and Support and Waste Management and Remediation Services",
+  "61": "Educational Services",
+  "62": "Health Care and Social Assistance",
+  "71": "Arts, Entertainment, and Recreation",
+  "72": "Accommodation and Food Services",
+  "81": "Other Services (except Public Administration)",
+  "92": "Public Administration",
+};
+function checkIndustry(v, where) {
+  if (v === undefined) return; // optional — absent means "none apply" (renders as Unspecified)
+  if (!Array.isArray(v)) throw new Error(`${where}.industry must be an array of { code, name } NAICS sectors`);
+  const seen = new Set();
+  v.forEach((e, k) => {
+    if (!e || typeof e !== "object" || Array.isArray(e) || typeof e.code !== "string" || typeof e.name !== "string") {
+      throw new Error(`${where}.industry[${k}] must be { code, name } — a top-level NAICS sector, e.g. { "code": "52", "name": "Finance and Insurance" }`);
+    }
+    if (!e.code.trim() || !e.name.trim()) throw new Error(`${where}.industry[${k}] code and name must be non-empty`);
+    if (!NAICS[e.code]) warn(`${where}.industry[${k}] code "${e.code}" is not a top-level NAICS sector`);
+    else if (NAICS[e.code] !== e.name) {
+      warn(`${where}.industry[${k}] name "${e.name}" does not match NAICS ${e.code} ("${NAICS[e.code]}")`);
+    }
+    const key = e.name.trim().toLowerCase();
+    if (seen.has(key)) warn(`${where}.industry[${k}] "${e.name}" repeats an industry already on this item`);
+    seen.add(key);
+  });
+}
+
 if (!existsSync(newsJsonPath)) {
   warn("news/news.json absent — the Daily Brief has nothing to render");
 } else {
@@ -164,7 +209,7 @@ if (!existsSync(newsJsonPath)) {
     }
     if (!Array.isArray(feed.days)) throw new Error("days must be an array");
     const seen = new Set();
-    let itemCount = 0, prev = null;
+    let itemCount = 0, industryTagged = 0, prev = null;
     feed.days.forEach((d, i) => {
       if (!d || typeof d !== "object" || Array.isArray(d)) throw new Error(`days[${i}] must be an object`);
       if (!/^\d{4}-\d{2}-\d{2}$/.test(String(d.date || ""))) throw new Error(`days[${i}].date must be YYYY-MM-DD`);
@@ -207,11 +252,13 @@ if (!existsSync(newsJsonPath)) {
         if (it.category !== "security" && it.category !== "ai") {
           warn(`days[${i}].items[${j}].category "${it.category}" is not security|ai — it renders under a neutral "News" tag`);
         }
+        checkIndustry(it.industry, `days[${i}].items[${j}]`);
+        if (Array.isArray(it.industry) && it.industry.length) industryTagged++;
         itemCount++;
       });
     });
     if (feed.days.length > 90) warn(`feed holds ${feed.days.length} days — the writer process trims to 90 (news/README.md)`);
-    good(`daily brief feed OK: ${feed.days.length} day(s), ${itemCount} item(s)`);
+    good(`daily brief feed OK: ${feed.days.length} day(s), ${itemCount} item(s), ${industryTagged} with industry tags (${itemCount - industryTagged} render as Unspecified)`);
     // The new-tab rule is enforced in the renderer; make sure it stayed there.
     const newsJsPath = path.join(ROOT, "assets", "js", "news.js");
     if (existsSync(newsJsPath) && !/_blank/.test(readFileSync(newsJsPath, "utf8"))) {
@@ -248,6 +295,7 @@ if (!existsSync(divesPath)) {
       slugs.add(dv.slug);
       if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dv.date || ""))) throw new Error(`dives[${i}].date must be YYYY-MM-DD`);
       if (typeof dv.title !== "string" || !dv.title.trim()) throw new Error(`dives[${i}].title missing`);
+      checkIndustry(dv.industry, `dives[${i}]`);
       if (typeof dv.tldr !== "string" || !dv.tldr.trim()) warn(`dives[${i}] ("${dv.slug}") has no tldr`);
       if (typeof dv.summary !== "string" || !dv.summary.trim()) warn(`dives[${i}] ("${dv.slug}") has no summary`);
       if (dv.details !== undefined && !Array.isArray(dv.details)) throw new Error(`dives[${i}].details must be an array of strings`);

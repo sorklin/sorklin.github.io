@@ -28,7 +28,11 @@ runbook aimed at the writing agent, see `AGENT-INSTRUCTIONS.md`.**
       "items": [
         {
           "category": "ai",
-          "title": "Agent framework patches prompt-injection flaw triggered by crafted documents",
+          "industry": [
+            { "code": "52", "name": "Finance and Insurance" },
+            { "code": "61", "name": "Educational Services" }
+          ],
+          "title": "Agent framework patches prompt-injection flaw exploited at a bank and a university",
           "tldr": "One punchy line, always visible under the title: the hook plus the single most important fact.",
           "source": "The Register",
           "url": "https://www.theregister.com/security/example-story/",
@@ -62,8 +66,14 @@ runbook aimed at the writing agent, see `AGENT-INSTRUCTIONS.md`.**
 
 ## What the page shows
 
-Collapsed, each story is: **badge · source · title (link) · TL;DR** — nothing
-else. The title links to `url`. Everything else — `summary`, `details`
+Collapsed, each story is: **badge · industry pills · source · title (link) ·
+TL;DR** — nothing else. Each `industry` entry renders as a green pill beside
+the category badge (the NAICS sector name; the code rides the tooltip), and
+an item with no industries shows a single dim **Unspecified** pill instead.
+The dropdown beside the topic tabs filters by industry — it lists only
+sectors actually present in the feed, with counts, plus "Unspecified" — and
+combines with the topic tabs (a story must match both). The title links to
+`url`. Everything else — `summary`, `details`
 (rendered as a dash list) and `links` (rendered as a labelled source list) —
 sits inside a native `<details>` accordion, collapsed by default and labelled
 "Summary · Key facts · Sources" according to what the item actually carries.
@@ -92,6 +102,7 @@ does.
 | `days[].date` | string | `YYYY-MM-DD`. One entry per date — never two. |
 | `days[].items` | array | 0 or more stories. The renderer preserves your order within a day, so put the most important story first. |
 | `items[].category` | string | `"ai"` = **AI security**: stories where AI is the target, the weapon or the incident — model breaches, prompt injection, AI-powered attacks, AI security policy. `"security"` = **"regular" security**: the rest of the wire — breaches, CVEs, ransomware, advisories, general cyber policy. A story spanning both gets the louder one. A pure AI story with no security angle does not belong in this feed. Anything else renders under a neutral "News" tag (it degrades, it doesn't disappear). |
+| `items[].industry` | {`code`, `name`}[] | Optional. The top-level NAICS sectors (www.naics.com) of the story's **victims and targets** — each entry `{ "code": "52", "name": "Finance and Insurance" }`, both fields exactly as canonical. A vulnerability does **not** inherit the tool-maker's industry: a vLLM flaw exploited at a bank and a university is Finance and Insurance + Educational Services, not the developers' sector. The maker's industry appears only when the maker is itself the victim (their own tool turned on them). **Omit the field when none apply** — the page answers with an `Unspecified` pill (never write that string yourself). The full table and tagging rules live in `AGENT-INSTRUCTIONS.md` §Choosing industries; the checker validates codes and names against the same canonical map. |
 | `items[].title` | string | The headline as summarised, ≤ ~120 characters. Plain text — never HTML or markdown. |
 | `items[].tldr` | string | **One line, always visible** under the title in the collapsed view. Should stand alone: hook + the single most important fact. Plain text. |
 | `items[].source` | string | Publication of the primary link, e.g. `"BleepingComputer"`. Plain text. |

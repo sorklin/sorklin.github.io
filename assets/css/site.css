@@ -842,6 +842,11 @@ figure.chart { margin: 0; }
    palette (security → cyan, AI → violet). No hardcoded hex here.
    ═══════════════════════════════════════════════════════════════════════ */
 .badge.ai { color: var(--violet); }
+/* industry pills (top-level NAICS sectors): the third badge colour — green.
+   Sector names stay sentence case (some run long), unlike the topic tags.
+   The dim variant is the standing "no industry assigned" answer. */
+.badge.ind { color: var(--green); text-transform: none; letter-spacing: 0.05em; }
+.badge.ind.unspec { color: var(--dim-2); }
 
 /* the closing section: process, taxonomy, attribution */
 #about-feed {
@@ -860,6 +865,12 @@ figure.chart { margin: 0; }
   margin-bottom: 24px;
 }
 .news-controls[hidden] { display: none; }
+.news-filters {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
 .news-tabs {
   display: inline-flex;
   gap: 4px;
@@ -884,6 +895,24 @@ figure.chart { margin: 0; }
 .news-tab[aria-pressed="true"] { color: var(--ink); background: rgba(255, 255, 255, 0.08); }
 .news-tab .n { color: var(--dim-2); margin-left: 7px; }
 .news-tab[aria-pressed="true"] .n { color: var(--cyan); }
+/* the industry filter: a native select styled to sit beside the topic tabs;
+   the popup itself stays native (option colours follow the theme tokens) */
+.news-indsel {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--dim);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+  max-width: 100%;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.news-indsel:hover { color: var(--ink); }
+.news-indsel:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
+.news-indsel option { color: var(--ink); background: var(--bg); }
 .news-updated { font-size: 12px; }
 .news-list { min-height: 120px; }
 .news-loading { padding: 8px 0; }
@@ -1207,6 +1236,8 @@ figure.chart { margin: 0; }
 [data-theme="arcade"] .card::before, [data-theme="arcade"] .news-item::before { display: none; }
 [data-theme="arcade"] .news-tabs { background: var(--panel); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
 [data-theme="arcade"] .news-tab[aria-pressed="true"] { background: var(--cyan); color: #fffdf8; }
+[data-theme="arcade"] .news-indsel { background: var(--panel); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+[data-theme="arcade"] .news-indsel option { background: var(--panel); }
 [data-theme="arcade"] .news-date { border-bottom-color: var(--ink); }
 [data-theme="arcade"] .news-date-tag { background: var(--panel); color: var(--ink); border: 2px solid var(--ink); box-shadow: 2px 2px 0 var(--ink); }
 [data-theme="arcade"] .site-nav, [data-theme="arcade"] .site-nav.stuck { background: rgba(255, 249, 239, 0.94); }
@@ -1263,6 +1294,7 @@ figure.chart { margin: 0; }
 [data-theme="press"] .news-date-tag { border-radius: 0; background: var(--ink); color: var(--bg); }
 [data-theme="press"] .news-tabs { border: 0; border-bottom: 1px solid var(--ink); border-radius: 0; background: transparent; }
 [data-theme="press"] .news-tab[aria-pressed="true"] { background: transparent; color: var(--ink); border-bottom: 3px solid var(--cyan); border-radius: 0; }
+[data-theme="press"] .news-indsel { border: 0; border-bottom: 1px solid var(--ink); border-radius: 0; background: transparent; }
 [data-theme="press"] .site-nav, [data-theme="press"] .site-nav.stuck { background: rgba(253, 241, 227, 0.94); }
 [data-theme="press"] .nav-toggle { background: rgba(253, 241, 227, 0.97); box-shadow: 0 24px 60px rgba(32, 26, 18, 0.18); }
 [data-theme="press"] .nav-links a:hover, [data-theme="press"] .btn-ghost:hover { background: rgba(32, 26, 18, 0.06); }
