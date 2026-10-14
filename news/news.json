@@ -7,6 +7,20 @@
       "items": [
         {
           "type": "deep-dive",
+          "slug": "irhythm-breach",
+          "category": "security",
+          "industry": [
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            }
+          ],
+          "title": "Why an iRhythm breach letter can arrive for a device you never wore — records come from ordering and billing.",
+          "tldr": "the never-user explanation carries moderate-high confidence — iRhythm's breached systems were its ordering/coverage/billing business applications, and the company demonstrably contacts people who never wore a Zio (coverage-verification and years-later billing outreach are documented), so a letter can arrive for a device you never wore; the M&A explanation is ruled out by the VitalConnect completion timeline (Oct 5 — after both the breach window and the letter date), and the exact origin of any individual record is unverifiable without iRhythm's answer to a formal data request. The breach facts: 368,173 people across Texas and South Carolina alone (California filed with no count), social engineering into unnamed third-party-hosted business applications, data exfiltrated June 3–8 with detection June 8 and letters dated Oct 2 — a ~116-day notification gap against HIPAA's 60-day rule — no group claiming the attack, no confirmation a ransom was paid, and no credit-monitoring offer.",
+          "source": "Sorklin Research"
+        },
+        {
+          "type": "deep-dive",
           "slug": "eu-ai-act-enforcement",
           "category": "ai",
           "industry": [

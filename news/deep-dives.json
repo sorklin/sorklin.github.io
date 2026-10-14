@@ -366,6 +366,161 @@
           "url": "https://pys8vc40ox3z7qxp.public.blob.vercel-storage.com/files/12b76f65b9ce0c31-b9096317-7fab-489a-84f0-606783f64e9c-RFI_FINAL_Regulatory_Response.pdf"
         }
       ]
+    },
+    {
+      "slug": "irhythm-breach",
+      "date": "2026-10-14",
+      "category": "security",
+      "industry": [
+        {
+          "code": "62",
+          "name": "Health Care and Social Assistance"
+        }
+      ],
+      "title": "Why an iRhythm breach letter can arrive for a device you never wore — records come from ordering and billing.",
+      "tldr": "the never-user explanation carries moderate-high confidence — iRhythm's breached systems were its ordering/coverage/billing business applications, and the company demonstrably contacts people who never wore a Zio (coverage-verification and years-later billing outreach are documented), so a letter can arrive for a device you never wore; the M&A explanation is ruled out by the VitalConnect completion timeline (Oct 5 — after both the breach window and the letter date), and the exact origin of any individual record is unverifiable without iRhythm's answer to a formal data request. The breach facts: 368,173 people across Texas and South Carolina alone (California filed with no count), social engineering into unnamed third-party-hosted business applications, data exfiltrated June 3–8 with detection June 8 and letters dated Oct 2 — a ~116-day notification gap against HIPAA's 60-day rule — no group claiming the attack, no confirmation a ransom was paid, and no credit-monitoring offer.",
+      "summary": "Our Oct 12 edition's base story stands and hardens: iRhythm's June 2026 breach — social engineering into unnamed third-party-hosted business applications, data exfiltrated June 3–8, an extortion demand June 9 (materiality determined June 10; the 8-K is dated June 15) — now has state filings covering 368,173 people in Texas and South Carolina alone (California filed with no count; the national total is undisclosed), and notification letters dated Oct 2 — roughly 116 days after detection, well past HIPAA's 60-day individual-notice window, with no law-enforcement-delay explanation and no OCR portal entry visible as of Oct 9 — plus no group claiming the attack, no confirmation a ransom was paid, and no credit-monitoring offer. The exposed fields (name, contact, account number, device serial, insurance number, date of service, DOB — no SSN, despite one contradicted June claim) support insurance fraud, medical identity theft, and highly convincing phishing. The deeper question this piece answers: why a breach letter can arrive for someone who never wore the device. The best-evidenced explanation (moderate-high confidence): iRhythm's breached systems are exactly its ordering, coverage, and billing business applications, and the company demonstrably contacts people who never wore a Zio — patient accounts document coverage-verification letters (telling patients iRhythm \"will work with your insurance company to understand your coverage for the Zio services\") and billing demands years later — so its records exist at every pipeline stage, and receipt of a letter is not proof of device use. The M&A explanation is ruled out by the timeline (the VitalConnect acquisition completed Oct 5 — after both the breach window and the letter date), purchased-list and predecessor-branding theories have no supporting evidence, and the exact origin of any individual record is unverifiable without iRhythm's answer to a formal data-subject request. Whether non-wearers received letters at scale is unverified — no returned source documents it.",
+      "source": "Sorklin Research",
+      "details": [
+        "CONFIRMED — the intrusion timeline and the filings: data was exfiltrated June 3–8, 2026 from \"certain third-party-hosted business applications,\" obtained through social engineering; unauthorized activity was identified June 8; a threat-actor communication arrived June 9 claiming to have obtained \"proprietary data, patient protected health information and other personal information\" and demanding payment to prevent its disclosure; iRhythm determined the incident material on June 10 \"in light of the volume of the potentially affected data\"; the Current Report on Form 8-K is dated June 15, 2026 (coverage published it June 15–16). iRhythm confirmed only that \"certain data was exfiltrated\" — never the proprietary-data portion — and stated it does not store individual financial-account or payment-card information, with no impact to products, clinical or medical device systems, manufacturing, or patient safety.",
+        "CONFIRMED — the counts: state filings cover Texas 298,647 + South Carolina 69,526 = 368,173 people, with a California filing carrying no count and the national total undisclosed (\"the real figure may be higher\" — The Record). Filings went in the week of Oct 6 (Texas, South Carolina, California).",
+        "CONFIRMED — the vector class and the unnamed systems: the applications and their host remain unnamed (\"The applications and their host have not been named\" — The Record; ISMG's questions about them \"went unanswered\" per VicyTech); no Salesforce, CRM, or data-warehouse attribution exists anywhere in the returned record; the exact technique \"has not been described publicly\"; and the response firm is unnamed (\"external cybersecurity professionals\" is all the letter and 8-K language offer). One outlier: a June 19 piece claims attackers spent \"less than 24 hours inside\" — most plausibly describing the June 8 exfiltration-to-June 9 demand gap rather than total dwell time — and the same piece carries the contradicted SSN claim below; treat it as an outlier against the 8-K's June 3–8 window.",
+        "CONFIRMED — no SSN in the exposed fields; one claim explicitly contradicted: the impacted-data list (letter and state filings agree) is names, contact information, iRhythm patient account numbers, device serial numbers, patient insurance numbers, dates of service, and dates of birth — no SSNs and no financial-account or payment-card data (iRhythm: it \"does not store or retain individual financial account information or payment card information\"). A June 19 piece asserting SSNs were taken (gblock.app) is contradicted by the letter, the state filings, and iRhythm's own statement — treat as wrong absent new evidence.",
+        "CONFIRMED — the threat actor and the ransom question: no hacking group has publicly claimed the attack (The Record; The HIPAA Guide; Almeida Law Group); no leak-site entry, proof-of-data samples, or data-volume assertion attributable to a named group appears anywhere. The 8-K does not say whether iRhythm paid, and coverage is explicit that it is unclear whether a ransom was paid; the company holds a cyber insurance policy (whether it was invoked is unreported). iRhythm repeated its no-evidence-of-identity-theft line in the Oct 2 update — an absence-of-evidence claim as of Oct 2, not a guarantee.",
+        "CONFIRMED — the notification gap: detection June 8 → letters dated Oct 2 = ~116 days, against HIPAA's Breach Notification Rule (without unreasonable delay and no later than 60 days, with a law-enforcement-delay exception) and a comparable Texas expectation; a June analysis projected letters \"should arrive by early August 2026,\" and October coverage flags the gap directly (\"The gap between the June intrusion and the October mailings is the part patients will notice\"). The company's stated reason: its Oct 5 update says it \"had finished a forensic review of the affected data\" before notifying — and the Oct 2 release separately confirms the forensic investigation was complete before notification began. No law-enforcement delay request, OCR complaint, or state-AG enforcement action appears in any returned source — absent from the record, not exonerating — and the HHS OCR breach portal did not yet show the incident as of Oct 9 reporting. Class actions: none filed — Edelson Lechtzin LLP opened an investigation Oct 6, joining ClassAction.org's Oct 7 posting and Almeida's page.",
+        "CONFIRMED — the never-user mechanism (moderate-high confidence): a Zio requires a physician order (\"Your doctor will review the results and create a care plan\"), the service runs on prescriptions from cardiology and primary-care practices, and iRhythm advertises integrations with health plans and value-based-care programs — and iRhythm demonstrably contacts people who may never wear the device: two independent patient accounts document coverage-verification letters (telling a patient iRhythm \"will work with your insurance company to understand your coverage for the Zio services\") and a billing demand years later (\"or I'd be responsible for the bill of $5000\" — almost three years after the encounter). iRhythm says only that it is notifying \"people for whom it holds contact information\" — a formulation consistent with order-stage and billing records — and the letters' field list is \"may include\" template language across all recipients. Non-wearers receiving breach letters at scale is unverified — no returned source documents it.",
+        "CONFIRMED — the M&A hypothesis is ruled out for the letters by the timeline: iRhythm agreed to acquire Vital Connect, Inc. (8-K dated Aug 5, 2026; total consideration ~$287.5 million; coverage Aug 14) — \"a leader in wearable biosensor technology and ambulatory cardiac monitoring\" — and the acquisition completed Oct 5, 2026, 9:05 AM ET ($237.5M cash plus up to 423,334 shares, with $10.0M of working-capital funding provided pre-close) — after both the June 3–8 breach window and the Oct 2 letter date. VitalConnect's patient records therefore were not in iRhythm's breached applications during the breach absent pre-close data sharing (not reported anywhere), and a VitalConnect-origin record cannot explain an Oct 2 letter. If a later notification wave went out after Oct 5, post-close migration becomes conceivable — no returned source documents any data migration at all. The only acquisition any search surfaced is VitalConnect (an M&A-history page returned HTTP 403 — reported); iRhythm was founded in 2006 in San Francisco.",
+        "CONFIRMED — rejected hypotheses, briefly: purchased/licensed data — no evidence either way (iRhythm's privacy-page policy text truncated before its data-sources section; its HIPAA Notice confirms outbound sharing with business associates, not inbound list purchases); prospect/lead databases — no evidence (the account-number field shows records exist beyond confirmed wearers, but whether any originate from purchased lists is unknown); predecessor branding — no evidence (\"ZIO by iRhythm\" is simply current branding; the platform has processed more than 12 million patients per June coverage, \"approximately 8 million patients in the United States and Europe\" per October coverage).",
+        "CONFIRMED — no credit monitoring offered: the notification letters did not mention a credit-monitoring offer, instead pointing to a separate precautionary-measures attachment (fraud alerts, security freezes, free credit reports); no returned source shows iRhythm funding monitoring for anyone.",
+        "REPORTED — single source / thin: the ~$700,000 incident cost through August (The HIPAA Guide, citing the company's August reporting); the \"at least 370,000\" patient floor (a BankInfoSecurity headline — fetch blocked; consistent with the 368,173 two-state count plus the uncounted California filing); the Texas AG publication of the incident report (a single tracker page); iRhythm's Oct 5 update framing (forensic-review-completed; the Oct 2 notification start — via Morning Overview's account, consistent with the letter date but not independently reproduced); the two Reddit accounts of coverage/billing outreach to non-wearers (single posts — they corroborate the mechanism structurally, not any individual case); the Edelson Lechtzin class-action investigation (Oct 6 release); and the Aliasfleet critical-timeline piece (~Oct 13, single source).",
+        "UNVERIFIED / ABSENT FROM THE RECORD (do not present as fact): the identity and host of the third-party-hosted applications, and whether they remain in use; the exact social-engineering technique; who first detected the access and why detection took five days; the response firm's name; whether a ransom was paid or negotiated (and whether insurance was invoked); any vendor termination or new controls; whether any group ever posted data samples; non-wearers receiving letters at scale; and the origin of a never-user's record — the physician-order, eligibility-check, and payer-interaction hypotheses are all live, and the question cannot be settled without iRhythm's answer to a formal data-subject request."
+      ],
+      "links": [
+        {
+          "label": "Markets Insider/GlobeNewswire — iRhythm provides update on cybersecurity incident previously disclosed in June 2026 (Oct 2 release; retrieved in full — primary)",
+          "url": "https://markets.businessinsider.com/news/stocks/irhythm-provides-update-on-cybersecurity-incident-previously-disclosed-in-june-2026-1036594860"
+        },
+        {
+          "label": "Markets Insider/GlobeNewswire — iRhythm completes acquisition of VitalConnect (Oct 5; retrieved in full — primary for the M&A timeline)",
+          "url": "https://markets.businessinsider.com/news/stocks/irhythm-completes-acquisition-of-vitalconnect-expanding-its-cardiac-monitoring-platform-across-ambulatory-inpatient-and-hospital-to-home-care-1036597035"
+        },
+        {
+          "label": "SEC — Form 8-K on the VitalConnect merger, dated Aug 5, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1388658/000138865826000071/irtc-20260805.htm"
+        },
+        {
+          "label": "iRhythm IR — iRhythm to acquire VitalConnect, expanding its cardiac monitoring platform",
+          "url": "https://investors.irhythmtech.com/news/news-details/2026/iRhythm-to-Acquire-VitalConnect-Expanding-Its-Cardiac-Monitoring-Platform-Across-Ambulatory-Inpatient-and-Hospital-to-Home-Care/default.aspx"
+        },
+        {
+          "label": "Yahoo Finance — iRhythm to acquire VitalConnect (Aug 14)",
+          "url": "https://finance.yahoo.com/healthcare/articles/irhythm-acquire-vitalconnect-expand-cardiac-150500483.html"
+        },
+        {
+          "label": "HIPAA Journal — iRhythm data breach (Oct 9; retrieved in full)",
+          "url": "https://www.hipaajournal.com/irhythm-data-breach/"
+        },
+        {
+          "label": "The Record — iRhythm data breach reports (Oct 9)",
+          "url": "https://therecord.media/irhythm-data-breach-reports"
+        },
+        {
+          "label": "Healthcaredive — iRhythm discloses data stolen from third-party applications in cyberattack (June 16)",
+          "url": "https://www.healthcaredive.com/news/irhythm-discloses-data-stolen-from-third-party-applications-in-cyberattack/823091/"
+        },
+        {
+          "label": "Malwarebytes — cardiac patients' medical data stolen and held to ransom (June 16)",
+          "url": "https://www.malwarebytes.com/blog/news/2026/06/cardiac-patients-medical-data-stolen-and-held-to-ransom"
+        },
+        {
+          "label": "VicyTech — iRhythm breach: 360,000+, third-party-hosted apps (Oct 13, citing ISMG)",
+          "url": "https://www.vicytech.com/news/irhythm-breach-360000-third-party-hosted-apps"
+        },
+        {
+          "label": "The Cyber Signal — iRhythm data breach: patient records disclosure (June 16)",
+          "url": "https://www.thecybersignal.com/irhythm-data-breach-patient-records-disclosure-2026/"
+        },
+        {
+          "label": "Massdevice — iRhythm reports cybersecurity breach, health data (June 15; 8-K quotes)",
+          "url": "https://www.massdevice.com/irhythm-reports-cybersecurity-breach-health-data/"
+        },
+        {
+          "label": "The Clarity Today — iRhythm notifies at least 360,000 patients of a data breach (Oct 9)",
+          "url": "https://theclarity.today/story/irhythm-notifies-at-least-360-000-patients-of-a-data-breach-d04b2486"
+        },
+        {
+          "label": "The HIPAA Guide — iRhythm data breach (Oct 14; the ~$700k cost figure)",
+          "url": "https://www.hipaaguide.net/irhythm-data-breach/"
+        },
+        {
+          "label": "Morning Overview — hackers took heart patients' birth dates and insurance numbers from Zio monitor maker iRhythm (Oct 10; the Oct 5 update account)",
+          "url": "https://morningoverview.com/hackers-took-heart-patients-birth-dates-and-insurance-numbers-from-zio-monitor-maker-irhythm/"
+        },
+        {
+          "label": "ByteSizedSecurity — iRhythm data breach: 12 million patient records exposed (June 16; the \"early August\" projection)",
+          "url": "https://blog.bytesizedsecurity.show/2026/06/16/irhythm-data-breach-12-million-patient-records-exposed/"
+        },
+        {
+          "label": "gblock.app — iRhythm breach social engineering (June 19; the contradicted SSN claim and the \"less than 24 hours\" outlier)",
+          "url": "https://www.gblock.app/articles/irhythm-breach-social-engineering-2026"
+        },
+        {
+          "label": "Almeida Law Group — iRhythm Technologies data breach investigation (Oct 6)",
+          "url": "https://www.almeidalawgroup.com/data-breach-news/irhythm-technologies-inc-data-breach-investigation/"
+        },
+        {
+          "label": "ClassAction.org — iRhythm Holdings June 2026 data breach lawsuits investigation (Oct 7)",
+          "url": "https://www.classaction.org/data-breach-lawsuits/irhythm-holdings-june-2026"
+        },
+        {
+          "label": "Class Action U — iRhythm Technologies tracker (Texas AG publication)",
+          "url": "https://classactionu.org/current-data-breaches/irhythm-technologies/"
+        },
+        {
+          "label": "GlobeNewswire — iRhythm Holdings data breach investigation: Edelson Lechtzin LLP probes class action claims (Oct 6)",
+          "url": "https://www.globenewswire.com/news-release/2026/10/06/3376151/0/en/irhythm-holdings-data-breach-investigation-edelson-lechtzin-llp-probes-class-action-claims-after-patient-data-is-exposed.html"
+        },
+        {
+          "label": "Aliasfleet — iRhythm data breach followup (~Oct 13; single-source critical-timeline piece)",
+          "url": "https://www.aliasfleet.com/blog/irhythm-data-breach-followup"
+        },
+        {
+          "label": "HHS — breach reporting page (the regulator channel)",
+          "url": "https://www.hhs.gov/hipaa/for-professionals/breach-notification/breach-reporting/index.html"
+        },
+        {
+          "label": "iRhythm — notice of data event page (named from prior coverage fetches; not returned by a search this run)",
+          "url": "https://www.irhythmtech.com/us/en/who-we-are/news-events/notice-of-data-event"
+        },
+        {
+          "label": "Yahoo Finance — iRhythm Q2 FY2026 earnings call transcript (the June 8 detection quote)",
+          "url": "https://finance.yahoo.com/quote/I25.F/earnings/I25.F-Q2-2026-earnings_call-658584.html"
+        },
+        {
+          "label": "iRhythm — How Zio Works (the physician-order requirement)",
+          "url": "https://www.irhythmtech.com/us/en/patients/how-zio-works"
+        },
+        {
+          "label": "iRhythm — healthcare professionals: billing and reimbursement (health-plan integrations)",
+          "url": "https://www.irhythmtech.com/us/en/healthcare-professionals/billing-reimbursement"
+        },
+        {
+          "label": "iRhythm — Trust Center privacy page (policy text truncated before the data-sources section)",
+          "url": "https://www.irhythmtech.com/us/en/who-we-are/trust-center/privacy"
+        },
+        {
+          "label": "iRhythm — HIPAA Notice of Privacy Practices (outbound business-associate sharing)",
+          "url": "https://www.irhythmtech.com/us/en/who-we-are/trust-center/privacy/hipaa-notice-privacy-practices"
+        },
+        {
+          "label": "Reddit r/HealthInsurance — \"Anthem & Irythm Discrepancy\" (the coverage-verification outreach account)",
+          "url": "https://www.reddit.com/r/HealthInsurance/comments/1hdlgxz/anthem_irythm_discrepancy/"
+        },
+        {
+          "label": "Reddit r/HealthInsurance — \"Getting a bill for heart monitor almost 3 years later?\" (the years-later billing outreach account)",
+          "url": "https://www.reddit.com/r/HealthInsurance/comments/14eb8t6/getting_a_bill_for_heart_monitor_almost_3_years/"
+        }
+      ]
     }
   ]
 }
