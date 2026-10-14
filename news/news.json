@@ -6,6 +6,24 @@
       "date": "2026-10-14",
       "items": [
         {
+          "type": "deep-dive",
+          "slug": "eu-ai-act-enforcement",
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "The EU's first AI Act enforcement began Aug 29, not Oct 14 — three layers of information requests, no fine yet.",
+          "tldr": "the AI Office sent its first formal RFIs — to 30+ GPAI providers, reportedly including OpenAI, Anthropic, and Google — on Aug 29, 2026 (two tracks: security/evaluation/monitoring, and training-content summaries/copyright); the Commission's own account confirms serious-incident reports received and combined AI-Office/Scientific-Panel RFIs to come; the Oct 14 Dublin layer adds incident-specific RFIs to OpenAI and Anthropic (single source); no company, model, or incident is named by the Commission, no infringement is established, and no deadline or fine is public.",
+          "source": "Sorklin Research"
+        },
+        {
           "category": "security",
           "industry": [
             {
