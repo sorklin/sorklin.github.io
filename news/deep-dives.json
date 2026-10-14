@@ -7,8 +7,24 @@
       "category": "security",
       "industry": [
         {
+          "code": "44-45",
+          "name": "Retail Trade"
+        },
+        {
+          "code": "48-49",
+          "name": "Transportation and Warehousing"
+        },
+        {
           "code": "51",
           "name": "Information"
+        },
+        {
+          "code": "52",
+          "name": "Finance and Insurance"
+        },
+        {
+          "code": "72",
+          "name": "Accommodation and Food Services"
         }
       ],
       "title": "Yandex data-center strikes collapsed bot traffic — but it was Yandex's own crawlers, not propaganda bots",

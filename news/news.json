@@ -184,8 +184,24 @@
           "category": "security",
           "industry": [
             {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
               "code": "51",
               "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "72",
+              "name": "Accommodation and Food Services"
             }
           ],
           "title": "Yandex data-center strikes collapsed bot traffic — but it was Yandex's own crawlers, not propaganda bots",
@@ -230,6 +246,12 @@
             {
               "label": "CyPro — CyberXero attacks target WordPress at scale",
               "url": "https://cypro.co.uk/insights/cyber-bulletins/cyberxero-attacks-target-wordpress-at-scale/"
+            }
+          ],
+          "industry": [
+            {
+              "code": "22",
+              "name": "Utilities"
             }
           ]
         },
@@ -404,10 +426,6 @@
             {
               "code": "51",
               "name": "Information"
-            },
-            {
-              "code": "54",
-              "name": "Professional, Scientific, and Technical Services"
             }
           ],
           "title": "ExploitGym follow-up: METR reportedly found the feared grader \"was never in use\"; May \"wiki incident\" gets new detail.",
@@ -436,6 +454,10 @@
         {
           "category": "ai",
           "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            },
             {
               "code": "92",
               "name": "Public Administration"
@@ -518,6 +540,12 @@
             {
               "label": "The Hacker News — front-page coverage citing Socket's 500+ account count (direct article URL not captured by the search)",
               "url": "https://thehackernews.com/"
+            }
+          ],
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
             }
           ]
         },
@@ -759,12 +787,6 @@
         },
         {
           "category": "security",
-          "industry": [
-            {
-              "code": "92",
-              "name": "Public Administration"
-            }
-          ],
           "title": "SonicWall SMA1000 zero-day — CISA orders federal agencies to respond.",
           "tldr": "CISA ordering federal agencies to respond (thin sourcing — verify before acting).",
           "source": "YouTube",
@@ -875,6 +897,16 @@
             {
               "label": "Futuretweets — plain recap of the announcement",
               "url": "https://futuretweets.com/anthropic-cuts-claude-internet-access-prompt-injection-2026/"
+            }
+          ],
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
             }
           ]
         },
@@ -1090,10 +1122,6 @@
             {
               "code": "51",
               "name": "Information"
-            },
-            {
-              "code": "92",
-              "name": "Public Administration"
             }
           ],
           "title": "China distillation dispute: regulators question DeepSeek and Moonshot.",
@@ -1346,6 +1374,16 @@
               "label": "Best AI Utility — \"This Week in AI: When the Tools Turned on Their Makers\"",
               "url": "https://www.bestaiutility.com/blog/ai-news-week-oct-10-safety-and-security"
             }
+          ],
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
           ]
         },
         {
@@ -1476,20 +1514,6 @@
         },
         {
           "category": "security",
-          "industry": [
-            {
-              "code": "92",
-              "name": "Public Administration"
-            },
-            {
-              "code": "22",
-              "name": "Utilities"
-            },
-            {
-              "code": "31-33",
-              "name": "Manufacturing"
-            }
-          ],
           "title": "NSA released zero-trust hardening guidance for critical OT.",
           "tldr": "(Oct 10).",
           "source": "Security Boulevard",
