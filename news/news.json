@@ -1265,12 +1265,6 @@
         },
         {
           "category": "ai",
-          "industry": [
-            {
-              "code": "54",
-              "name": "Professional, Scientific, and Technical Services"
-            }
-          ],
           "title": "TA419 AiTM campaign harvested live SSO tokens from US AI policy researchers.",
           "tldr": "(Oct 4) — MFA bypassed by taking the token, not the password.",
           "source": "RuntimeAI",
