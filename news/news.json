@@ -1,7 +1,105 @@
 {
   "version": 3,
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "days": [
+    {
+      "date": "2026-10-16",
+      "items": [
+        {
+          "category": "ai",
+          "title": "Trump’s Super Intelligence Force adopts 120-day charter and Pentagon-led early-warning system for AI breaches.",
+          "tldr": "The White House's Super Intelligence Force formally adopted its charter at its inaugural meeting — commissioning a PCAST risk report and tasking the Pentagon to build a system for AI labs to warn the government about breaches, hacks and jailbreaks.",
+          "source": "Semafor",
+          "url": "https://www.semafor.com/article/10/15/2026/white-houses-ai-task-force-gets-to-work",
+          "summary": "The White House's Super Intelligence Force (SIF) — chaired by DNI Jay Clayton and created after the Sept 29 White House Accord on Super Intelligence signed by major AI CEOs — formally adopted its charter at its inaugural meeting Thursday, attended per Politico by more than a dozen Cabinet-level officials (Treasury Secretary Bessent, Secretary of War Hegseth and Chief of Staff Wiles among those named). Per Semafor's account of the meeting readout, SIF agreed to commission a PCAST report evaluating AI risk in three areas — cybersecurity and critical-infrastructure protection; biosecurity and dual-use applications; and model control and accountability — and to stand up a working group to implement the Accord, led by Clayton and National Cyber Director Sean Cairncross. Pentagon technology chief Emil Michael will lead protocols for AI labs to give \"early warnings and systemized notifications to the government of breaches, hacks, jailbreaks, and other issues.\" The meeting also approved a DOJ–FTC law-enforcement and consumer-protection committee under FTC Chair Andrew Ferguson, with OPM Director (and SIF vice chair) Scott Kupor working critical-infrastructure protection and AI's jobs and economy impact with Labor; Kupor told CNBC the vision includes AI incident notifications and new private liability laws, while Politico reports the administration centers existing liability laws rather than new regulation — its preview also notes the FTC opened a probe into OpenAI \"Wednesday.\" Semafor flags that how compliance would be enforced, and whether lab reporting is legally mandatory, remains unresolved — the risk report, protocols and implementation rules are not yet written.",
+          "details": [
+            "The body: The Super Intelligence Force — chaired by DNI Jay Clayton, created after the Sept 29 White House Accord on Super Intelligence signed by major AI CEOs — formally adopted its charter at its inaugural meeting Thursday (Oct 15, 4:00 PM ET); per Politico, more than a dozen Cabinet-level officials attended, including Treasury Secretary Bessent, Secretary of War Hegseth and Chief of Staff Wiles.",
+            "PCAST risk report: SIF agreed to commission a PCAST report evaluating AI risk in three areas — cybersecurity and critical-infrastructure protection; biosecurity and dual-use applications; and model control and accountability.",
+            "Accord implementation: A working group led by Clayton and National Cyber Director Sean Cairncross will implement the Accord.",
+            "Lab early warnings: Pentagon technology chief Emil Michael will lead protocols for AI labs to give \"early warnings and systemized notifications to the government of breaches, hacks, jailbreaks, and other issues.\"",
+            "Law-enforcement committee: A DOJ–FTC law-enforcement and consumer-protection committee was approved under FTC Chair Andrew Ferguson; OPM Director (and SIF vice chair) Scott Kupor works critical-infrastructure protection and AI's jobs and economy impact with Labor, and told CNBC the vision includes AI incident notifications and new private liability laws.",
+            "Regulatory posture: Politico reports the administration's approach centers existing liability laws rather than new regulation — its preview also notes the FTC opened a probe into OpenAI \"Wednesday.\"",
+            "Open questions: Per Semafor, how compliance would be enforced and whether lab reporting is legally mandatory remain unresolved — the risk report, protocols and implementation rules are not yet written."
+          ],
+          "links": [
+            {
+              "label": "Semafor — meeting readout account (Oct 15)",
+              "url": "https://www.semafor.com/article/10/15/2026/white-houses-ai-task-force-gets-to-work"
+            },
+            {
+              "label": "The Latent — 120-day charter and early-warning system (Oct 15)",
+              "url": "https://thelatent.co/policy/at-its-first-meeting-trump-s-super-intelligence-force-trump-s-sets-120-day-charter-plans-system-to-flag-hacks-and-safety"
+            },
+            {
+              "label": "Bloomberg — task force to commission risks report (Oct 16)",
+              "url": "https://www.bloomberg.com/news/articles/2026-10-16/trump-s-ai-task-force-to-commission-report-on-technology-s-risks"
+            },
+            {
+              "label": "Politico — first-meeting preview (Oct 15)",
+              "url": "https://www.politico.com/news/2026/10/15/white-house-super-intelligence-task-force-to-hold-its-first-meeting-01120798"
+            },
+            {
+              "label": "TokenPost — coverage (Oct 16)",
+              "url": "https://www.tokenpost.com/news/regulation/33244"
+            },
+            {
+              "label": "CNN Brasil — coverage (Oct 15)",
+              "url": "https://www.cnnbrasil.com.br/internacional/forca-tarefa-de-superinteligencia-da-casa-branca-realiza-primeira-reuniao/"
+            },
+            {
+              "label": "TechFlow — meeting minutes (Oct 16)",
+              "url": "https://www.techflowpost.com/en-US/newsletter/140208"
+            },
+            {
+              "label": "Digg — summary of the Semafor readout (Oct 15)",
+              "url": "https://digg.com/tech/c2n6spuj"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Armory Castle exploited BeyondTrust Remote Support zero-day CVE-2026-102764 for root on an internet-facing appliance.",
+          "tldr": "The China-nexus Armory Castle espionage group exploited CVE-2026-102764 (CVSS 9.3) in BeyondTrust Remote Support as a zero-day on an internet-facing appliance in August — Mandiant warns any appliance exposed during the window should be treated as potentially compromised.",
+          "source": "BeyondTrust",
+          "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+          "summary": "China-nexus espionage group Armory Castle (previously tracked as UNC5221/Warp Panda, active since October 2023 with a history of appliance zero-days against legal services, SaaS providers, BPOs, technology and governments) exploited CVE-2026-102764 — improper origin validation in an internal messaging component of BeyondTrust Remote Support (formerly Bomgar) — as a zero-day on a single self-hosted, internet-facing appliance on Aug 29, 2026. BeyondTrust's timeline says it began hunting after public exploitation of \"another security device provider\" surfaced Sept 27; SaaS customers were patched by Oct 9, and self-hosted customers on 24.3.1–26.2.3 must apply the BT26-05-RS patch (older versions must upgrade first). Per Google GTIG/Mandiant, the intrusion deployed the lightweight PHP SAWFLY web shell, reached root by copying /bin/sh to /usr/bin/dbus-authd with the SUID bit set, harvested secrets via BeyondTrust's proprietary /ns/sbin/bt-secrets CLI, pivoted through Jump Items into downstream endpoints for file exfiltration, tunneled traffic via a custom BARECLAW SOCKS5 proxy made internet-reachable by editing haproxy.conf, and systematically deleted logs; operators blended in via commercial VPN exits and compromised home/SOHO routers. Mandiant's warning: \"Any appliance that was reachable from the internet on a vulnerable version during the exploitation window should be treated as potentially compromised until it has been reviewed.\" BeyondTrust also assesses that the actor \"keeps a working model of the products the actor targets in an AI context … to develop exploit chains\" — suspected AI-assisted exploit development.",
+          "details": [
+            "The flaw: CVE-2026-102764 (CVSS 9.3) — improper origin validation in an internal messaging component of BeyondTrust Remote Support (formerly Bomgar); exploited as a zero-day on a single self-hosted, internet-facing appliance on Aug 29, 2026. BeyondTrust published advisory BT26-05 on Thursday Oct 15.",
+            "Patching: SaaS customers were patched by Oct 9; self-hosted customers on 24.3.1–26.2.3 must apply the BT26-05-RS patch, and older versions must upgrade first.",
+            "The actor: Armory Castle — China-nexus espionage, previously tracked as UNC5221 and Warp Panda, active since October 2023, with a history of zero-days in Citrix NetScaler and Ivanti appliances against legal services, SaaS providers, BPOs, technology and governments.",
+            "Post-exploitation: The SAWFLY PHP web shell; root via copying /bin/sh to /usr/bin/dbus-authd with the SUID bit set; secret harvesting through the proprietary /ns/sbin/bt-secrets CLI; pivoting through Jump Items into downstream endpoints for file exfiltration; BARECLAW SOCKS5 proxy tunneling made internet-reachable via haproxy.conf edits; systematic log deletion; commercial VPN exits and compromised home/SOHO routers for cover.",
+            "The warning: Mandiant — \"Any appliance that was reachable from the internet on a vulnerable version during the exploitation window should be treated as potentially compromised until it has been reviewed.\"",
+            "AI angle: BeyondTrust assesses the actor \"keeps a working model of the products the actor targets in an AI context … to develop exploit chains\" — suspected AI-assisted exploit development."
+          ],
+          "links": [
+            {
+              "label": "BeyondTrust — advisory BT26-05 (Oct 15)",
+              "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05"
+            },
+            {
+              "label": "BeyondTrust — incident timeline blog (October 2026)",
+              "url": "https://www.beyondtrust.com/blog/entry/bt26-05"
+            },
+            {
+              "label": "Google Cloud / Mandiant — Armory Castle post-exploitation detail (Oct 16)",
+              "url": "https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-beyondtrust/"
+            },
+            {
+              "label": "The Hacker News — coverage (Oct 16)",
+              "url": "https://thehackernews.com/2026/10/china-linked-hackers-exploited.html"
+            },
+            {
+              "label": "SecurityWeek — coverage (Oct 16)",
+              "url": "https://www.securityweek.com/chinese-apt-exploited-beyondtrust-vulnerability-as-zero-day/"
+            },
+            {
+              "label": "Technology.org — corroboration (Oct 16)",
+              "url": "https://www.technology.org/2026/10/16/beyondtrust-zero-day-armory-castle-cve-2026-102764/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-15",
       "items": [
