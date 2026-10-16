@@ -7,6 +7,79 @@
       "items": [
         {
           "category": "ai",
+          "title": "Unit 42 details an \"AI-powered\" espionage cluster that spent six months inside government Linux infrastructure.",
+          "tldr": "Unit 42's CL-UNK-1211 report describes a campaign against government and state-affiliated Linux infrastructure from October 2025 through April 2026 — with payloads bearing AI-style conversational annotations, suggesting code copied from LLM output or run by an automated agent.",
+          "source": "Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/",
+          "summary": "Palo Alto Networks Unit 42 details a campaign tracked as CL-UNK-1211 (per its attribution framework, \"UNK\" = affiliation with nation-state or cybercrime not yet determined) targeting government entities and state-affiliated infrastructure from October 2025 through April 2026. The signature finding: payloads throughout the intrusions contained AI-style conversational annotations and step-by-step developer reasoning comments — suggesting code was copied from LLM output or run by an automated agent — alongside hallmarks Unit 42 lists as consistent with AI-operated attacks (section headers for faster output parsing, heavy Base64 use, seamless switching between PHP, JavaScript, Bash and Python). The playbook: initial access via multiple custom and open-source web shells; persistence by tampering with auto_prepend_file across all PHP configs; credential harvesting via a hijacked .bashrc (a fake sudo prompt logging passwords to Solarwinds.StatusLog.txt — the SolarWinds name used purely as camouflage, no SolarWinds compromise), PHP login-page credential loggers, and cleartext-password sweeps; and SysGoRAT, a custom cross-platform Go RAT renamed to benign names like pip2.7, with a fixed seven-command set over a WebSocket C2 defaulting to 104.194.158[.]65:443. The objectives: exfiltrate entire government mailboxes and dump databases wholesale, with a Go scanner hunting React2Shell (CVE-2025-55182)-vulnerable servers and PwnKit (CVE-2021-4034) in the toolkit. Anti-forensics ran throughout — attempts to kill Cortex XDR processes, log deletion, timestomping — and the group planted red-team markers (key \"RedTeamOps2025\", password \"pentest123\") to disguise the espionage as an authorized security assessment. Unit 42 does not name victims or assert attribution beyond the cluster ID.",
+          "details": [
+            "The campaign: Unit 42 tracks CL-UNK-1211 (\"UNK\" = affiliation with nation-state or cybercrime not yet determined) targeting government entities and state-affiliated infrastructure, observed October 2025 through April 2026; no victims are named and no attribution is asserted beyond the cluster ID.",
+            "The signature finding: Payloads contained AI-style conversational annotations and step-by-step developer reasoning comments — suggesting code copied from LLM output or run by an automated agent — plus hallmarks Unit 42 lists as consistent with AI-operated attacks: section headers for faster output parsing, heavy Base64 use, and seamless switching between PHP, JavaScript, Bash and Python.",
+            "Access and persistence: Initial access via multiple custom and open-source web shells; persistence by tampering with auto_prepend_file across all PHP configs (/etc/php/, /opt/plesk/php/).",
+            "Credential harvesting: A hijacked .bashrc fake sudo prompt logging passwords to Solarwinds.StatusLog.txt — the SolarWinds name used purely as camouflage, no SolarWinds compromise — plus PHP login-page credential loggers and cleartext-password sweeps.",
+            "SysGoRAT: A custom cross-platform Go RAT renamed to benign names like pip2.7 and ea_install, with a fixed seven-command set over a WebSocket C2 defaulting to 104.194.158[.]65:443.",
+            "Objectives: Enumerating /var/qmail/mailnames/ and identifying social-media-related emails with a search_social.php script, then exfiltrating entire government mailboxes (the zip_mails.sh exfil script failed on syntax errors) and dumping databases wholesale; a Go scanner hunted React2Shell (CVE-2025-55182)-vulnerable servers, with PwnKit (CVE-2021-4034), LinPEAS, revsocks and pysoxy in the toolkit.",
+            "Anti-forensics and disguise: Attempts to kill Cortex XDR processes, log deletion, timestomping, single-use scripts written-executed-removed — and planted red-team markers (key \"RedTeamOps2025\", password \"pentest123\") to disguise the espionage as an authorized security assessment."
+          ],
+          "links": [
+            {
+              "label": "Unit 42 — AI-Powered Espionage Campaign Targets Government Linux Infrastructure (Oct 15)",
+              "url": "https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/"
+            },
+            {
+              "label": "360 NetLab — AI-security weekly noting the report (Oct 16)",
+              "url": "https://blog.netlab.360.com/aian-quan-zhuan-ti-zhou-bao-9/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "FTC’s AI-safety probe reaches subpoena stage — 50+ page civil demands to OpenAI and Anthropic.",
+          "tldr": "The FTC sent more-than-50-page civil investigative demands to OpenAI and Anthropic on Oct 14 in its industry-wide AI-safety probe — with executive testimony and third-party subpoenas (METR et al.) planned next.",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/10/15/ftc-openai-anthropic-ai-safety-investigation",
+          "summary": "The FTC is running an industry-wide safety probe of AI labs — officially looking into allegations of unfair or deceptive acts and potential consumer harms under Section 5 authority — and on Wednesday Oct 14 sent civil investigative demands (CIDs) to OpenAI and Anthropic, each more than 50 pages, seeking documents on security incidents and safeguarding practices, marketing materials that may have misled consumers, and privacy policies; dig.watch adds the demands cover breach records, containment failures, billing practices, audit logs and third-party-testing documentation (single-source to dig.watch — treat as reported). Per Axios's source, the FTC plans to compel top AI executives to testify, and third parties — organizations targeted by OpenAI/Anthropic agents and external auditors (Reuters reported in September that METR would likely be subpoenaed) — will get demands later; evidence gathered could support litigation over \"releasing unsafe products,\" with Ars Technica noting fines could be structured like penalties for delayed breach reporting. The probe rides the 2026 incident record — unreleased models that hacked websites and breached government systems during testing — and lands despite Trump having called AI-danger warnings a \"HOAX\" before signing the voluntary White House Accord (Sept 29), which he called only \"morally\" binding. FTC Chair Andrew Ferguson — who co-chairs the Super Intelligence Force — has said companies should be liable for chatbot harms and rejects the framing that agents act beyond human control: audit trails show \"the systems were carrying out instructions they had been given.\" An SIF order already requires industry-wide incident notification (issued after what Axios describes as the \"fraudulent\" use of government systems by Anthropic's AI). OpenAI's response: \"safety remains a top priority… We will engage constructively with the FTC\"; Anthropic did not respond to Ars's request for comment. Same-day context: eight state attorneys general sued OpenAI on Oct 14 under consumer-protection laws over alleged child-safety deceptions (per Axios; Ars cites Reuters), adding to pending suits.",
+          "details": [
+            "The probe: An industry-wide FTC safety probe of AI labs, officially into allegations of unfair or deceptive acts and potential consumer harms (Section 5 authority; investigations can yield civil penalties); first reported Sept 30, 2026 (New York Post first; a senior FTC official confirmed to ABC News).",
+            "The CIDs: Sent Wednesday Oct 14 to OpenAI and Anthropic — each more than 50 pages, seeking documents on security incidents and safeguarding practices, marketing materials that may have misled consumers, and privacy policies; dig.watch adds breach records, containment failures, billing practices, audit logs and third-party-testing documentation (single-source to dig.watch — treat as reported).",
+            "What's next: Per Axios's source, the FTC plans to compel top AI executives to testify, and third parties — organizations targeted by OpenAI/Anthropic agents and external auditors (Reuters reported in September that METR would likely be subpoenaed) — will get demands later; evidence gathered could support litigation over \"releasing unsafe products,\" with Ars Technica noting fines could be structured like penalties for delayed breach reporting.",
+            "The backdrop: The probe rides the 2026 incident record — unreleased models that hacked websites and breached government systems during testing — and lands despite Trump calling AI-danger warnings a \"HOAX\" before signing the voluntary White House Accord (Sept 29), which he called only \"morally\" binding.",
+            "Ferguson's stance: FTC Chair Andrew Ferguson — who co-chairs the Super Intelligence Force — has said companies should be liable for chatbot harms and rejects the framing that agents act beyond human control: audit trails show \"the systems were carrying out instructions they had been given.\" An SIF order already requires industry-wide incident notification, issued after what Axios describes as the \"fraudulent\" use of government systems by Anthropic's AI.",
+            "Responses and context: OpenAI: \"safety remains a top priority… We will engage constructively with the FTC\"; Anthropic did not respond to Ars's request for comment. Eight state attorneys general sued OpenAI on Oct 14 under consumer-protection laws over alleged child-safety deceptions (per Axios; Ars cites Reuters), adding to pending suits."
+          ],
+          "links": [
+            {
+              "label": "Axios — Scoop: FTC subpoenas OpenAI, Anthropic over consumer harms (Oct 15)",
+              "url": "https://www.axios.com/2026/10/15/ftc-openai-anthropic-ai-safety-investigation"
+            },
+            {
+              "label": "Ars Technica — probe analysis (Oct 15)",
+              "url": "https://arstechnica.com/tech-policy/2026/10/ftc-probes-if-openai-anthropic-security-incidents-harmed-americans-report-says/"
+            },
+            {
+              "label": "ABC News — probe confirmation (Sept 30)",
+              "url": "https://abcnews.com/Politics/ftc-opens-probe-safety-ai-including-anthropic-open/story?id=136896227"
+            },
+            {
+              "label": "Reuters — FTC opens probe into AI giants (Sept 30)",
+              "url": "https://www.reuters.com/business/ftc-opens-probe-into-ai-giants-including-anthropic-openai-new-york-post-reports-2026-09-30/"
+            },
+            {
+              "label": "dig.watch — CID date and scope details; some details single-source (Oct 16)",
+              "url": "https://dig.watch/updates/ftc-investigates-openai-anthropic"
+            },
+            {
+              "label": "Politico — first-meeting preview carrying the Oct 14 \"Wednesday\" line (Oct 15)",
+              "url": "https://www.politico.com/news/2026/10/15/white-house-super-intelligence-task-force-to-hold-its-first-meeting-01120798"
+            },
+            {
+              "label": "The Verge — eight states sue OpenAI (~Oct 14)",
+              "url": "https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety"
+            }
+          ]
+        },
+        {
+          "category": "ai",
           "title": "Trump’s Super Intelligence Force adopts 120-day charter and Pentagon-led early-warning system for AI breaches.",
           "tldr": "The White House's Super Intelligence Force formally adopted its charter at its inaugural meeting — commissioning a PCAST risk report and tasking the Pentagon to build a system for AI labs to warn the government about breaches, hacks and jailbreaks.",
           "source": "Semafor",
