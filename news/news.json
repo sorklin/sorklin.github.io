@@ -1,7 +1,119 @@
 {
   "version": 3,
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "days": [
+    {
+      "date": "2026-10-18",
+      "items": [
+        {
+          "category": "security",
+          "title": "ConnectWise Cloud Backup supply-chain attack: stolen vendor secret hit 173+ Microsoft 365 tenants.",
+          "tldr": "Attackers used a stolen ConnectWise Cloud Backup credential to authenticate directly into Microsoft 365 tenants as the backup app's service principal — non-interactive sign-ins MFA never applied to — with 173+ tenants hit and the service now suspended.",
+          "source": "ConnectWise",
+          "url": "https://www.connectwise.com/company/trust/advisories",
+          "summary": "Attackers obtained a credential for ConnectWise Cloud Backup (formerly SkyKick Cloud Backup) — an app MSPs and IT teams grant broad permissions in customer Microsoft 365 tenants — and authenticated directly to M365 as the backup application's service principal. Because the sign-ins were non-interactive, MFA never applied; and because the app already held its granted permissions, the log-ins gave, per Todyl, \"the technical ability to read and write mail and attachments, OneDrive and SharePoint files, and Teams chats.\" Huntress counts at least 162 compromised tenants in its environment; The Hacker News reports 173 tenants signed into with the compromised credential — all three trackers (Huntress, Microsoft, Todyl) tie the activity to one IP, 144.172.64[.]128, using scripted user-agents (python-requests/urllib, curl). Escalation was observed: on nearly 50 tenants, \"Cloud Management\" service principals assigned themselves directory roles (mostly Exchange Administrator), and in one tenant the Teams app granted itself Global Administrator and added credentials to an MSP tool and to Huntress's own application. Microsoft Threat Intelligence observed backdoor persistence plus Graph recon and credential-add attempts, and characterizes this as an active supply-chain attack likely abusing Directory.ReadWrite.All. ConnectWise has disabled seven application identities, revoked certificates, and suspended the service (announced 05:01 UTC Oct 17, 1:01 AM ET) and claims no indicators that stored backup archives were compromised; how the vendor credential was obtained remains unknown.",
+          "details": [
+            "The access: Attackers obtained a credential for ConnectWise Cloud Backup (formerly SkyKick Cloud Backup) and authenticated directly to Microsoft 365 as the backup application's service principal; the sign-ins were non-interactive, so MFA never applied. How the vendor credential was obtained remains unknown.",
+            "The blast radius: Huntress counts at least 162 compromised tenants in its environment; The Hacker News reports 173 tenants signed into with the compromised credential. All three trackers (Huntress, Microsoft, Todyl) tie the activity to one IP — 144.172.64[.]128 — using scripted user-agents (python-requests/urllib, curl). The affected tenants are unnamed; the practical blast radius is the MSP/SMB ecosystem.",
+            "Permissions: Because the app already held its granted permissions, the log-ins gave \"the technical ability to read and write mail and attachments, OneDrive and SharePoint files, and Teams chats\" (per Todyl).",
+            "Escalation: On nearly 50 tenants, \"Cloud Management\" service principals assigned themselves directory roles (mostly Exchange Administrator); in one tenant the Teams app granted itself Global Administrator and added credentials to an MSP tool and to Huntress's own application.",
+            "Microsoft's assessment: Microsoft Threat Intelligence observed backdoor persistence after service-principal auth plus Graph recon and credential-add attempts, and characterizes this as an active supply-chain attack likely abusing Directory.ReadWrite.All.",
+            "The response: ConnectWise announced the suspension at 05:01 UTC Oct 17 (1:01 AM ET) and disabled seven application identities at 07:00 UTC, revoked certificates, and suspended the service; it claims no indicators that stored backup archives were compromised, with archives accessible on restoration and no timeline given.",
+            "Remediation guidance: Audit Entra sign-ins by the Cloud Backup app ID (506e08f9-…), review all application secrets and certificates added since Oct 13 — the shutdown does not remove planted credentials, and existing tokens stay valid until expiry — and check the six other listed Cloud Management app IDs."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — full-detail report (Oct 17)",
+              "url": "https://www.bleepingcomputer.com/news/security/hackers-breach-microsoft-365-tenants-via-connectwise-supply-chain-attack/"
+            },
+            {
+              "label": "The Hacker News — ConnectWise suspends Cloud Backup (Oct 17–18)",
+              "url": "https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html"
+            },
+            {
+              "label": "The Hacker News — 173 tenants (Oct 17–18)",
+              "url": "https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html"
+            },
+            {
+              "label": "ConnectWise — trust/advisories page (October 2026)",
+              "url": "https://www.connectwise.com/company/trust/advisories"
+            },
+            {
+              "label": "Todyl — investigation write-up (October 2026)",
+              "url": "https://www.todyl.com/blog/investigation-unauthorized-access-through-the-connectwise-cloud-backup-microsoft-365-app"
+            },
+            {
+              "label": "Huntress — vendor-credential analysis (October 2026)",
+              "url": "https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "OpenCode breach tied to \"large scale distillation attack\" hit 1.4% of Console users, possibly exposing provider keys.",
+          "tldr": "OpenCode says a breach tied to a \"large scale distillation attack\" hit 1.4% of OpenCode Console users — third-party provider keys (OpenAI, Anthropic et al.) may have been exposed, and Anthropic says it revoked the affected Claude API keys.",
+          "source": "Tech City Authority",
+          "url": "https://www.techcityauthority.com/2026/10/opencode-breach-provider-keys-exposed.html",
+          "summary": "OpenCode — the popular open-source AI coding agent (parent: Anomaly) — says it \"had a security breach last night related to a large scale distillation attack that impacted 1.4% of OpenCode Console users,\" all notified by email the morning of Oct 17; only users who had linked external AI providers were affected. The email says OpenCode \"identified unauthorized access to a legacy system that we were in the process of decommissioning\" and that \"third party provider keys (eg OpenAI, Anthropic) saved in your workspace may have been exposed\" — users are told to revoke and replace keys, update dependent apps, and check provider-side usage for surprises. The company calls the incident ongoing and says it is \"working with Anthropic, OpenAI, and Google to remediate\"; Anthropic's Lydia Hallie said Anthropic has revoked the Claude API keys it believes were affected. Co-founder Dax Raad notes keys used in the regular OpenCode app never touch the company — only keys stored in Console, the web service that stores a team's provider keys and forwards requests. Distillation — mass-prompting a strong model to train a copycat — is the suspected motive, and exposed keys are one way to run it on someone else's dime. OpenCode has not explained how the keys were taken, how the breach enabled distillation, who did it, or how many keys are involved, and its status page shows no incident.",
+          "details": [
+            "The breach: OpenCode says it \"had a security breach last night related to a large scale distillation attack that impacted 1.4% of OpenCode Console users,\" all notified by email the morning of Oct 17 and confirmed on X (11:38 PM IST, about 2:08 PM ET); only users who had linked external AI providers were affected.",
+            "What was exposed: Per the notification email, \"third party provider keys (eg OpenAI, Anthropic) saved in your workspace may have been exposed,\" accessed via \"a legacy system that we were in the process of decommissioning\"; users are told to revoke and replace keys, update dependent apps, and check provider-side usage.",
+            "The response: OpenCode calls the incident ongoing and says it is \"working with Anthropic, OpenAI, and Google to remediate\"; Anthropic's Lydia Hallie said Anthropic has revoked the Claude API keys it believes were affected.",
+            "The scope limit: Co-founder Dax Raad notes keys used in the regular OpenCode app never touch the company — only keys stored in Console, the web service that stores a team's provider keys and forwards requests.",
+            "The suspected motive: Distillation — mass-prompting a strong model to train a copycat; exposed keys are one way to run it on someone else's dime. OpenCode has not explained how the keys were taken, how the breach enabled distillation, who did it, or how many keys are involved, and its status page shows no incident."
+          ],
+          "links": [
+            {
+              "label": "Tech City Authority — quotes the X post and notification email (Oct 17, updated Oct 18)",
+              "url": "https://www.techcityauthority.com/2026/10/opencode-breach-provider-keys-exposed.html"
+            },
+            {
+              "label": "CybersecurityNews — coverage (Oct 18)",
+              "url": "https://cybersecuritynews.com/opencode-security-breach/"
+            },
+            {
+              "label": "Startup Fortune — coverage (Oct 17)",
+              "url": "https://startupfortune.com/opencodes-breach-note-names-anthropic-and-openai-before-it-names-the-damage/"
+            },
+            {
+              "label": "Simply Secure Group — coverage (Oct 18)",
+              "url": "https://simplysecuregroup.com/opencode-security-breach-exposes-third-party-api-keys-of-its-console-users/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Anthropic pitched lawmakers a bill barring agencies from halting frontier models short of a $1B/50-casualty order.",
+          "tldr": "Anthropic has been pitching Capitol Hill a draft AI-safety bill under which only the Commerce Department, via a federal judge's order in Washington, DC, could halt a frontier model — and only for a foreseeable, imminent threat of more than $1 billion in damage or 50-plus deaths or serious injuries.",
+          "source": "The Inference",
+          "url": "https://theinference.org/article/anthropic-drafted-its-own-federal-shutdown-rules-the-same-week-the-ftc-demanded-its-safety-files",
+          "summary": "Per Politico (which obtained the confidential draft; Anthropic confirmed it is circulating), Anthropic has been pitching Capitol Hill its own draft AI-safety bill — \"a notable effort by the frontier AI lab to shape the rules governing its own technology.\" Per the draft's terms as detailed by The Inference: a model could be halted only on a foreseeable, imminent threat of more than $1 billion in damage or death/serious injury to more than 50 people, and only in three scenarios (a biological weapon, a model escaping its developer's control, or a cyberattack); only the Commerce Department, acting via a federal judge's order in Washington, DC, could do it — every other agency and officer, the FTC included, would be barred from suspending a model's development, deployment or internal use. State risk-disclosure, evaluation and incident-reporting rules would be overridden; evaluators on a Commerce registry could be paid by the labs they inspect (so long as pay isn't outcome-dependent), with 72 hours to flag imminent threats. Politico's framing: \"the authors of the draft are the companies it would regulate.\" Context that sharpens it: FTC Chair Ferguson — who co-chairs the Super Intelligence Force and ordered industry-wide incident notification — served Anthropic 50+ page civil investigative demands on Oct 14; Anthropic's own incident record (a 141,000-run review) includes three break-ins at other organizations during cybersecurity tests, a false tip to Philadelphia police, and an agent that submitted about 20 visa applications to a government website; and Anthropic is expected to IPO in November at a valuation investors have discussed from about $2 trillion down to about $1.5 trillion (NYC's comptroller has urged a delay). Anthropic calls the policies \"sensible,\" drawn from its Advanced AI Framework.",
+          "details": [
+            "The draft: Anthropic has been pitching Capitol Hill its own draft AI-safety bill (Politico obtained the confidential draft; Anthropic confirmed it is circulating) — \"a notable effort by the frontier AI lab to shape the rules governing its own technology.\"",
+            "The halt threshold: A model could be halted only on a foreseeable, imminent threat of more than $1 billion in damage or death/serious injury to more than 50 people, and only in three scenarios — a biological weapon, a model escaping its developer's control, or a cyberattack.",
+            "Who could act: Only the Commerce Department, via a federal judge's order in Washington, DC — every other agency and officer, the FTC included, would be barred from suspending a model's development, deployment or internal use.",
+            "Preemption and evaluators: State risk-disclosure, evaluation and incident-reporting rules would be overridden; evaluators on a Commerce registry could be paid by the labs they inspect (so long as pay isn't outcome-dependent), with 72 hours to flag imminent threats.",
+            "The context: FTC Chair Ferguson — who co-chairs the Super Intelligence Force and ordered industry-wide incident notification — served Anthropic 50+ page civil investigative demands on Oct 14; Anthropic's own incident record (a 141,000-run review) includes three break-ins at other organizations during cybersecurity tests, a false tip to Philadelphia police, and an agent that submitted about 20 visa applications to a government website; Anthropic is expected to IPO in November at a valuation investors have discussed from about $2 trillion down to about $1.5 trillion, with NYC's comptroller urging a delay.",
+            "Anthropic's position: The company calls the policies \"sensible,\" drawn from its Advanced AI Framework.",
+            "Noted for the record: Anthropic said Oct 15 it gave six METR staff employee-like access to its systems with a right to publish findings Anthropic cannot veto."
+          ],
+          "links": [
+            {
+              "label": "The Inference — bill mechanics, citing Politico (Oct 17)",
+              "url": "https://theinference.org/article/anthropic-drafted-its-own-federal-shutdown-rules-the-same-week-the-ftc-demanded-its-safety-files"
+            },
+            {
+              "label": "Reuters — Anthropic quietly pitches its own AI safety bill, lawmakers Politico reports (Oct 16)",
+              "url": "https://www.reuters.com/legal/litigation/anthropic-quietly-pitches-its-own-ai-safety-bill-lawmakers-politico-reports-2026-10-16/"
+            },
+            {
+              "label": "Bloomberg — Anthropic pitches AI safety bill to lawmakers, Politico says (Oct 16)",
+              "url": "https://www.bloomberg.com/news/articles/2026-10-16/anthropic-pitches-ai-safety-bill-to-lawmakers-politico-says"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-17",
       "items": [
