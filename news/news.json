@@ -1,7 +1,118 @@
 {
   "version": 3,
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "days": [
+    {
+      "date": "2026-10-19",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            }
+          ],
+          "title": "Lone hacker’s AI agents broke into 100+ companies’ sites — Deere, SharkNinja, Cummins — at ~$50 per successful hack.",
+          "tldr": "A Chinese-speaking hacker’s AI agents attempted to break into more than 1,200 e-commerce sites — Reuters independently identified 100-plus victim companies including Deere, SharkNinja and Cummins — with successful intrusions costing roughly $50 each in tokens, per NorForge researcher Snorre Fagerland.",
+          "source": "Reuters",
+          "url": "https://www.investing.com/news/stock-market-news/exclusivehow-one-hacker-used-ai-agents-and-a-few-thousand-dollars-to-break-into-scores-of-sites-4956846",
+          "summary": "Principal threat researcher Snorre Fagerland of NorForge, scanning for inadvertently exposed instances of Cairn — an open-source AI problem-solving platform \"popular with hackers\" — found about two dozen instances being used for malicious activity, letting him watch cybercriminals' AI agents work. The most prolific operator, a Chinese-speaking hacker (campaign from about Sept 25), set agents loose on US, Canadian, Australian and Japanese e-commerce sites, attempting to break into more than 1,200 sites; successful intrusions typically took about 23 hours of autonomous probing, and the campaign burned roughly $5,000 of tokens — about $50 per successful hack — using a mix of China's DeepSeek and Anthropic's Claude Code. Reuters independently identified victims including Deere, SharkNinja and engine-maker Cummins, plus more than 100 companies overall; the hacker's instructions were terse, under 100 Chinese characters. In one case, after failing against a large company's public app, the agents mined digital records for associated infrastructure, found a public-facing control panel, discovered a subtle data-handling weakness, and achieved command execution after hours of trial and error — \"It's not script kiddie stuff\" (Fagerland). Deere took \"necessary remediation actions\" and sees \"no indication that sensitive information was accessed\"; SharkNinja says the hit was a standalone product-support site, now contained; Cummins is \"investigating the report of a potential cyber-attack on a website operated by one of our third-party vendors\"; two smaller businesses confirmed compromise, and the degree of data extraction is unknown. One observed hacker stole a trove of credit-card data; another tried to get agents to rob a cryptocurrency exchange. Cairn's author says the platform \"was not designed for hacking attacks,\" and Fagerland's bottom line: agents demonstrably ran complex intrusions start-to-finish without human intervention — \"It's a new world now.\"",
+          "details": [
+            "The find: NorForge principal threat researcher Snorre Fagerland found about two dozen inadvertently exposed instances of Cairn — an open-source AI problem-solving platform (author's handle \"le1xia0\") \"popular with hackers\" — being used for malicious activity, letting him watch cybercriminals' AI agents work.",
+            "The campaign: The most prolific operator, a Chinese-speaking hacker (campaign from about Sept 25), set agents loose on US, Canadian, Australian and Japanese e-commerce sites — 1,200-plus attempted break-ins; successful intrusions typically took about 23 hours of autonomous probing and the campaign burned roughly $5,000 of tokens (about $50 per successful hack), using a mix of China's DeepSeek and Anthropic's Claude Code.",
+            "The victims: Reuters independently identified Deere, SharkNinja and engine-maker Cummins, plus more than 100 companies overall; the hacker's instructions were terse, under 100 Chinese characters.",
+            "The technique: In one case, after failing against a large company's public app, the agents mined digital records for associated infrastructure, found a public-facing control panel, discovered a subtle data-handling weakness, and achieved command execution after hours of trial and error — \"It's not script kiddie stuff\" (Fagerland).",
+            "The responses: Deere took \"necessary remediation actions\" and sees \"no indication that sensitive information was accessed\"; SharkNinja says the hit was a standalone product-support site, now contained; Cummins is \"investigating the report of a potential cyber-attack on a website operated by one of our third-party vendors\"; two smaller businesses confirmed compromise; the degree of data extraction is unknown.",
+            "The extremes: One observed hacker stole a trove of credit-card data; another tried to get agents to rob a cryptocurrency exchange. Cairn's author says the platform \"was not designed for hacking attacks\"; Fagerland's bottom line — agents demonstrably ran complex intrusions start-to-finish without human intervention, \"It's a new world now.\""
+          ],
+          "links": [
+            {
+              "label": "Reuters (via Investing.com) — Exclusive: How one hacker used AI agents and a few thousand dollars to break into scores of sites (Oct 19)",
+              "url": "https://www.investing.com/news/stock-market-news/exclusivehow-one-hacker-used-ai-agents-and-a-few-thousand-dollars-to-break-into-scores-of-sites-4956846"
+            },
+            {
+              "label": "RTÉ News — follow-up (Oct 19)",
+              "url": "https://www.rte.ie/news/newslens/2026/1019/1595959-hacker-ai-agents/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "ConnectWise incident widens: ~1,000 tenants probed, 300+ sign-ins, three services suspended, two new attacker IPs.",
+          "tldr": "Huntress now counts sign-in activity from the attacker IP in nearly 1,000 Entra tenants with over 300 successful sign-ins — ConnectWise has suspended Cloud Backup, SaaS Security and Cloud Management with no restoration timeline, and two new attacker IPs joined the review list.",
+          "source": "ConnectWise",
+          "url": "https://www.connectwise.com/company/trust/advisories",
+          "summary": "The Microsoft 365 tenant compromise first detailed Sunday has grown: per Huntress — whose Oct 16 analysis underpinned Sunday's rank-1 story — by Oct 17 there was sign-in activity from the attacker IP in nearly 1,000 Entra tenants, with over 300 successful sign-ins (success required the tenant to have the ConnectWise service principal present). The credential was a client assertion living in ConnectWise's own tenant — \"nothing a customer did in their environment could have produced it\" — and the actor walked tenants in sorted GUID order a few seconds apart, \"a script working from a target list.\" The same IP (144.172.64[.]128) was used in password-spraying attacks against four law-firm tenants on Oct 13–14. One timeline nuance: in a single tenant, the Cloud Management–Teams app granted itself Global Administrator and ran a Python script adding client secrets to an MSP tool and to Huntress's own app about 2.5 hours before the first attacker-IP sign-ins, and from Microsoft's internal cloud network rather than that IP — Huntress has not tied the phases to the same operator. ConnectWise's Oct 19 update: Cloud Backup, SaaS Security and Cloud Management all remain suspended (backups, archive access, restores, SaaS Security alerting and Cloud Management user/license management all unavailable) with no confirmed restoration time; the company reports \"no evidence\" backup archives were accessed (existing archives encrypted, isolated, preserved) and \"no successful threat activity\" observed since mitigations, and two new attacker IPs — 144.172.64[.]99 and 144.172.64[.]60 — joined 144.172.64[.]128 for partner log review. How the vendor credential was obtained is still unknown.",
+          "details": [
+            "The widened counts: Per Huntress — whose Oct 16 analysis underpinned Sunday's rank-1 story — by Oct 17 there was sign-in activity from the attacker IP in nearly 1,000 Entra tenants, with over 300 successful sign-ins; success required the tenant to have the ConnectWise service principal present.",
+            "The credential: It was a client assertion living in ConnectWise's own tenant — \"nothing a customer did in their environment could have produced it\"; the actor walked tenants in sorted GUID order a few seconds apart — \"a script working from a target list.\"",
+            "Law-firm spraying: The same IP (144.172.64[.]128) was used in password-spraying attacks against four law-firm tenants on Oct 13–14.",
+            "Timeline nuance: In one tenant, the Cloud Management–Teams app granted itself Global Administrator and ran a Python script adding client secrets to an MSP tool and to Huntress's own app about 2.5 hours before the first attacker-IP sign-ins, and from Microsoft's internal cloud network rather than that IP; Huntress has not tied the phases to the same operator.",
+            "The Oct 19 update: Cloud Backup, SaaS Security and Cloud Management all remain suspended (backups, archive access, restores, SaaS Security alerting and Cloud Management user/license management all unavailable) with no confirmed restoration time (next advisory update due Oct 19 13:00 UTC); \"no evidence\" backup archives were accessed (existing archives encrypted, isolated, preserved); \"no successful threat activity\" observed since mitigations.",
+            "New indicators and guidance: Two new attacker IPs — 144.172.64[.]99 and 144.172.64[.]60 — joined 144.172.64[.]128 for partner log review; a ConnectWise technical investigation/remediation guide (Oct 18) walks partners through tenant-by-tenant evidence preservation and cleanup; how the vendor credential was obtained is still unknown."
+          ],
+          "links": [
+            {
+              "label": "ConnectWise — Trust Center advisory, updated Oct 19, 01:15 UTC",
+              "url": "https://www.connectwise.com/company/trust/advisories"
+            },
+            {
+              "label": "SecurityWeek — Huntress ~1,000/300+ figures (Oct 19)",
+              "url": "https://www.securityweek.com/connectwise-suspends-cloud-services-in-response-to-cyberattack/"
+            },
+            {
+              "label": "CSO Online — coverage (Oct 19)",
+              "url": "https://www.csoonline.com/article/4237087/connectwise-backup-credentials-exposed-multiple-microsoft-365-tenants.html"
+            },
+            {
+              "label": "The Register — coverage (Oct 19)",
+              "url": "https://www.theregister.com/security/2026/10/19/connectwise-turns-off-its-saas-y-backup-security-and-management-services-to-probe-security-snafu/5303758"
+            },
+            {
+              "label": "ConnectWise — technical investigation and remediation guide PDF (Oct 18)",
+              "url": "https://www.connectwise.com/contentassets/10777cd3364d440c86ed5270a94a5f24/connectwise-cloud-backup-technical-investigation-and-remediation-guide-1.pdf"
+            },
+            {
+              "label": "Huntress — vendor-credential analysis (October 2026)",
+              "url": "https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "ARTEX toll: Shinhan alone 25,729 records; Recorded Future ties intrusions to TAG-217 — \"the AI did not act alone.\"",
+          "tldr": "Recorded Future ties the ARTEX agentic-pentest intrusions against South Korean financial firms to TAG-217; Korean investigators put Shinhan Bank alone at 25,729 people’s data exposed, with personal data of at least 68,000 people across at least seven institutions in play.",
+          "source": "Zscaler ThreatLabz",
+          "url": "https://www.zscaler.com/blogs/security-research/threat-actor-abuses-agentic-ai-pentesting-framework-target-south-korean",
+          "summary": "New detail on the agentic-pentest campaign Zscaler disclosed Oct 14: Recorded Future's Insikt Group ties the intrusions to the financially motivated actor it tracks as TAG-217, which was testing remote-access infrastructure, crypto-mining-theft tools and mobile exploit workspaces from mid-August — weeks before South Korean regulators disclosed the bank breaches. Per Korean reporting (The Herald Business, citing the Korea Financial Security Institute), investigators confirmed ARTEX was used via attack-IP/log tracing at Shinhan Bank, that every confirmed breach hit employee- or partner-facing systems rather than core internet banking, and the per-institution exposure counts are Shinhan 25,729 people (loan-agent inquiry service), KB Kookmin 119, Hana Bank 89, BNK Busan 11 — with subsequent reporting putting personal data of at least 68,000 people across at least seven financial institutions in play (Zscaler's figure: about 67,000). An institute official states the AI did not act alone — a human operator used the tool. Zscaler maps the harness's LLM backends (DeepSeek v4.1-flash primary; Zhipu GLM-5.3 and \"SpaceXAI Grok 4.6\" supplementary) and says the original project went closed-source after disclosure, though forks persist; CrowdStrike found open directories exposing Claude Code session histories, ARTEX configs and Claude memory files, a two-server layout (ARTEX at 38.244.50[.]120 plus a Hong Kong node), and confirms the operator asked Claude where Korean breach data is typically sold and for Korean-language Telegram sales channels; AhnLab adds hundreds of exposed instances, detectable User-Agents and fork-rebranding detail for SOC hunting.",
+          "details": [
+            "Attribution: Recorded Future's Insikt Group ties the intrusions to the financially motivated actor it tracks as TAG-217, which was testing remote-access infrastructure, crypto-mining-theft tools and mobile exploit workspaces from mid-August — weeks before South Korean regulators disclosed the bank breaches (report Oct 16; run here as a flagged catch-up).",
+            "The per-institution counts: Per Korean reporting (The Herald Business, citing the Korea Financial Security Institute), ARTEX use was confirmed via attack-IP/log tracing at Shinhan Bank, every confirmed breach hit employee- or partner-facing systems rather than core internet banking, and the counts are Shinhan 25,729 people (loan-agent inquiry service), KB Kookmin 119, Hana Bank 89, BNK Busan 11 — with subsequent reporting putting personal data of at least 68,000 people across at least seven financial institutions in play (Zscaler's figure: about 67,000).",
+            "Human in the loop: An institute official states the AI did not act alone — a human operator used the tool.",
+            "The tooling: Zscaler maps the harness's LLM backends (DeepSeek v4.1-flash primary; Zhipu GLM-5.3 and \"SpaceXAI Grok 4.6\" supplementary) and says the original project went closed-source after disclosure, though forks persist.",
+            "CrowdStrike's findings: Open directories exposing Claude Code session histories, ARTEX configs and Claude memory files; a two-server layout (ARTEX at 38.244.50[.]120 plus a Hong Kong node); the operator asked Claude where Korean breach data is typically sold and for Korean-language Telegram sales channels.",
+            "AhnLab: Hundreds of exposed instances, detectable User-Agents, and fork-rebranding detail for SOC hunting."
+          ],
+          "links": [
+            {
+              "label": "SOCtember — aggregation of Recorded Future/Zscaler/CrowdStrike/AhnLab/Herald Business reporting (Oct 18)",
+              "url": "https://www.soctember.com/tools/artex-ai-pentest-tool-tag-217-south-korean-banks"
+            },
+            {
+              "label": "Zscaler ThreatLabz — original ARTEX report (Oct 14)",
+              "url": "https://www.zscaler.com/blogs/security-research/threat-actor-abuses-agentic-ai-pentesting-framework-target-south-korean"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-18",
       "items": [
