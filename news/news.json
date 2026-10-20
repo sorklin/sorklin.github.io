@@ -1,7 +1,84 @@
 {
   "version": 3,
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "days": [
+    {
+      "date": "2026-10-20",
+      "items": [
+        {
+          "category": "security",
+          "title": "ConnectWise plans phased Cloud Backup restoration; second backdoored tenant found; sweep timed at 96 minutes.",
+          "tldr": "ConnectWise says remediation is under way with a controlled, phased restoration to come — as Huntress’s 10,000-tenant review finds a second backdoored tenant and Sophos times the attacker’s sweep at about 96 minutes from a single VPS.",
+          "source": "ConnectWise",
+          "url": "https://www.connectwise.com/company/trust/advisories",
+          "summary": "ConnectWise's Oct 20 advisory update — which opens with \"We take responsibility for keeping you informed and restoring service safely\" — says teams are resetting accounts and replacing application credentials, and announces a controlled, phased restoration once remediation and security validation complete, with partner instructions before re-enablement; technical webinars run every two hours beginning Oct 20 at 18:00 UTC to walk partners through Entra ID sign-in/audit logs, app registrations, credentials and permissions. All three services (Cloud Backup, SaaS Security, Cloud Management) remain suspended with no restoration timeline — \"no indication\" any other ConnectWise product is impacted, archives \"encrypted, isolated, and preserved, with no indication of compromise,\" and no successful threat activity observed since the Oct 17 05:00 UTC mitigations (next update due Oct 20 19:00 UTC). Two research updates deepen the picture: Huntress says it reviewed application sign-ins across 10,000-plus tenants with ConnectWise apps — 144.172.64[.]128 and Microsoft-internal ranges are the only addresses that produced application sign-in activity (the other broadcast IPs — .99, .60 and 144.172.94[.]243 — were password-spray/failed-login noise, \"unlikely to be related\"); Huntress also found post-compromise actions on a second tenant (same modus operandi: self-granted Global Administrator plus new secrets on a few tenant-registered apps), notes the backdoored-app choice \"appeared to be random … without regard to what those applications can actually do,\" and sees no signs the Graph access was weaponized for mailbox/file manipulation or user/policy changes. Sophos X-Ops independently timed the sweep: Oct 15, 07:11–08:47 UTC (about 96 minutes) from a single VPS, no hands-on-keyboard activity, tenants hit in strictly ascending GUID order 1–6 minutes apart — and the sweep included tenants with no active backup subscription, indicating the attacker worked from a full list of tenants that had ever consented to the application; Sophos found no evidence of new secrets, apps, consents or role assignments in reviewed tenants.",
+          "details": [
+            "The restoration plan: ConnectWise's Oct 20 advisory update says teams are resetting accounts and replacing application credentials, and announces a controlled, phased restoration once remediation and security validation complete, with partner instructions before re-enablement; technical webinars run every two hours beginning Oct 20 at 18:00 UTC, walking partners through Entra ID sign-in/audit logs, app registrations, credentials and permissions.",
+            "Service status: All three services (Cloud Backup, SaaS Security, Cloud Management) remain suspended with no restoration timeline — \"no indication\" any other ConnectWise product is impacted, archives \"encrypted, isolated, and preserved, with no indication of compromise,\" and no successful threat activity observed since the Oct 17 05:00 UTC mitigations; the next update is due Oct 20 19:00 UTC.",
+            "Huntress's widened review: Application sign-ins across 10,000-plus tenants with ConnectWise apps were reviewed — 144.172.64[.]128 and Microsoft-internal ranges are the only addresses that produced application sign-in activity; the other broadcast IPs (.99, .60 and 144.172.94[.]243) were password-spray/failed-login noise, \"unlikely to be related.\"",
+            "A second backdoored tenant: Huntress found post-compromise actions on a second tenant — same modus operandi: self-granted Global Administrator plus new secrets on a few tenant-registered apps; the backdoored-app choice \"appeared to be random … without regard to what those applications can actually do,\" and Huntress sees no signs the Graph access was weaponized for mailbox/file manipulation or user/policy changes.",
+            "Sophos's sweep timeline: The Oct 15 sweep ran 07:11–08:47 UTC (about 96 minutes) from a single VPS with no hands-on-keyboard activity, hitting tenants in strictly ascending GUID order 1–6 minutes apart; it included tenants with no active backup subscription, indicating the attacker worked from a full list of tenants that had ever consented to the application — and Sophos found no evidence of new secrets, apps, consents or role assignments in reviewed tenants."
+          ],
+          "links": [
+            {
+              "label": "ConnectWise — Trust Center advisory, updated Oct 20, 12:45 UTC",
+              "url": "https://www.connectwise.com/company/trust/advisories"
+            },
+            {
+              "label": "The Hacker News — credential resets and Huntress’s 10,000-tenant review (Oct 20)",
+              "url": "https://thehackernews.com/2026/10/connectwise-resets-credentials-as-cloud.html"
+            },
+            {
+              "label": "Sophos X-Ops — cross-tenant token-sweep analysis (Oct 19)",
+              "url": "https://www.sophos.com/en-us/blog/connectwise-cloud-backup-application-abused-in-token-sweep"
+            },
+            {
+              "label": "IT Pro — disruption continues three days on (Oct 20)",
+              "url": "https://www.itpro.com/security/connectwise-breach-cloud-services-disruption-continues-three-days-after-initial-intrusion-detected"
+            },
+            {
+              "label": "Huntress — vendor-credential analysis (October 2026)",
+              "url": "https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "OVHcloud CLI backdoored across five GitHub releases via hijacked account — users must rotate every secret on disk.",
+          "tldr": "Attackers hijacked a developer’s GitHub account and modified five OVHcloud CLI releases (v0.11.0–v0.15.0) with secret-stealing malware — detected and blocked in about 90 minutes; v0.10.0 and v0.16.0 are clean, and users who installed must revoke every secret on disk.",
+          "source": "OVHcloud",
+          "url": "https://www.bleepingcomputer.com/news/security/ovhcloud-cli-releases-backdoored-on-github-to-steal-developer-secrets/",
+          "summary": "Attackers hijacked a developer's GitHub account and used it to modify five releases (v0.11.0–v0.15.0) of OVHcloud's open-source CLI — the terminal tool administrators and developers use to manage OVHcloud cloud and hosting services. Per CEO Octave Klaba, the injected malware is \"poor quality\" but built to \"retrieve secrets from the disk\"; v0.10.0 and the current v0.16.0 are clean, and the CI/CD pipelines (unit, functional, CVE-detection tests) were never touched — the attacker uploaded locally built malware-infected packages and edited existing releases directly, which was possible because GitHub's release-immutability setting was disabled (OVHcloud has since enabled it and considers the incident resolved). The compromised release was published Oct 19 14:47 UTC and detected and blocked at 16:21 UTC after a customer report — about 90 minutes; users who downloaded a compromised release are told to clean the system and revoke every secret on disk. OpenSourceMalware links the operation to GlassWorm — the campaign family hitting VSCode, OpenVSX, GitHub and npm since late 2025: the hijacked account shows a scripted history rewrite on March 5, 2026 and a hidden preinstall.js loader decoding a second stage via a Solana memo dead-drop, and the associated wallet is a known GlassWorm indicator. Affected binaries span macOS (Intel/ARM), Linux (x86_64/ARM64) and Windows x86-64; source builds and Docker images were unaffected.",
+          "details": [
+            "The compromise: Attackers hijacked a developer's GitHub account and modified five releases (v0.11.0–v0.15.0) of OVHcloud's open-source CLI — the terminal tool administrators and developers use to manage OVHcloud cloud and hosting services; the compromised release was published Oct 19 14:47 UTC and detected and blocked at 16:21 UTC after a customer report, with CEO Octave Klaba disclosing the same day.",
+            "The malware: Per Klaba, \"poor quality\" but built to \"retrieve secrets from the disk\"; affected binaries span macOS (Intel/ARM), Linux (x86_64/ARM64) and Windows x86-64, while source builds and Docker images were unaffected, and the CI/CD pipelines (unit, functional, CVE-detection tests) were never touched.",
+            "Clean versions and the gap: v0.10.0 and the current v0.16.0 are clean; the attacker uploaded locally built malware-infected packages and edited existing releases directly — possible because GitHub's release-immutability setting was disabled, which OVHcloud has since enabled, considering the incident resolved.",
+            "The remediation: Users who downloaded a compromised release are told to clean the system and revoke every secret on disk.",
+            "GlassWorm linkage: OpenSourceMalware links the operation to GlassWorm — the campaign family hitting VSCode, OpenVSX, GitHub and npm since late 2025; the hijacked account shows a scripted history rewrite on March 5, 2026 and a hidden preinstall.js loader decoding a second stage via a Solana memo dead-drop, and the associated wallet is a known GlassWorm indicator."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — Klaba quotes and timeline (Oct 20)",
+              "url": "https://www.bleepingcomputer.com/news/security/ovhcloud-cli-releases-backdoored-on-github-to-steal-developer-secrets/"
+            },
+            {
+              "label": "The Hacker News — coverage (Oct 20)",
+              "url": "https://thehackernews.com/2026/10/hackers-hijack-five-ovhcloud-cli.html"
+            },
+            {
+              "label": "OVHcloud — Octave Klaba’s disclosure posts, as quoted by both write-ups (Oct 19)",
+              "url": "https://www.bleepingcomputer.com/news/security/ovhcloud-cli-releases-backdoored-on-github-to-steal-developer-secrets/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-19",
       "items": [
