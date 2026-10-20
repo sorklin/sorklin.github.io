@@ -521,6 +521,189 @@
           "url": "https://www.reddit.com/r/HealthInsurance/comments/14eb8t6/getting_a_bill_for_heart_monitor_almost_3_years/"
         }
       ]
+    },
+    {
+      "slug": "cyber-physical-events-jul-oct-2026",
+      "date": "2026-10-20",
+      "category": "security",
+      "industry": [
+        {
+          "code": "22",
+          "name": "Utilities"
+        },
+        {
+          "code": "44-45",
+          "name": "Retail Trade"
+        },
+        {
+          "code": "31-33",
+          "name": "Manufacturing"
+        },
+        {
+          "code": "48-49",
+          "name": "Transportation and Warehousing"
+        },
+        {
+          "code": "62",
+          "name": "Health Care and Social Assistance"
+        }
+      ],
+      "title": "Eight cyber-physical events, July 20–Oct 20, 2026: IT dependency and legacy OT did the damage, not seized control.",
+      "tldr": "the window's only confirmed property destruction was the French supermarket cold-chain attack (Oct 11–12 — stock destroyed, fires, losses that could reach several million euros); the broadest physical-service event was the Iranian-linked water-systems campaign (at least 12 states, around 100 facilities — but one pump-station shutdown and a Georgia boil-water advisory, no illnesses, and claim-only attribution); Fairlife and Boston Scientific halted production for days-to-weeks with no OT compromise confirmed; two hospitals diverted critical patients over imaging failures; and the record's through-line is that physical risk came from IT dependency and legacy internet-facing OT, not from novel OT-fighting malware — with nothing in the window showing confirmed attacker-caused injury or death.",
+      "summary": "Between July 20 and October 20, 2026, eight cyber incidents with established real-world physical consequences hit infrastructure, manufacturing, healthcare, retail, and maritime operations — and the pattern across them is not attackers seizing industrial control. The window's only confirmed property destruction came in France overnight Oct 11–12, where attackers remotely forced supermarket refrigeration into heating mode — 300 Intermarché and Netto stores, fewer than 100 Coopérative U stores, and E.Leclerc locations affected (Carrefour Market and Monoprix hits reported but unconfirmed), fresh and frozen stock destroyed chain-wide, fires reported, and national losses that \"could reach several million euros\" — and its deepest facts (end-of-life Danfoss controllers, ANSSI's engagement, the Paris prosecutor's probe, and Claroty's August research lineage) never ran in the daily brief, whose Oct 13 edition carried only the initial report. The broadest physical-service event was the Iranian-linked campaign against US water and wastewater systems (from July 27 per the FBI): at least 12 states and around 100 facilities touched per the run's primary verification (CSIS's Aug 18 mapping), with the most severe confirmed consequence a Georgia pump-station shutdown, a pressure drop, and a boil-water advisory — no related illnesses — and damage CSIS calls \"relatively minor\"; CyberAv3ngers claimed responsibility (\"warn America to back down\"), but the US government has not publicly attributed the attacks (UNVERIFIED). The two big manufacturing halts — Coca-Cola/Fairlife (all four US plants suspended, ~11 days to majority restoration) and Boston Scientific (worldwide manufacturing, order and shipping disruption, ~2 weeks) — were IT-dependency failures: CrowdStrike's final summary confirmed no compromise in Boston Scientific's SCADA environments, and Anubis's technical claims about Fairlife (Nutanix encryption, ~1 TB stolen, CitrixBleed 2 access) remain claimed-but-unverified. Two hospitals diverted critical patients because images could not reach radiologists (Community Medical Center, Falls City, Nebraska — company-acknowledged CONFIRMED; Cedar County Memorial Hospital, Missouri — single-source REPORTED); North Carolina's three ports lost about three days of gate operations; and CISA's tracking of cyber threats against nearly 20 commercial vessels produced no established control of any ship. The through-line the record supports: physical risk in this window came from IT dependency and legacy internet-facing OT — not from novel OT-fighting malware — and nothing in it shows confirmed attacker-caused injury or death.",
+      "source": "Sorklin Research",
+      "details": [
+        "CONFIRMED — the window's only confirmed property destruction: the French supermarket cold-chain attack (overnight Oct 11–12). Attackers remotely triggered forced-defrost/heating on supermarket refrigeration so cases heated instead of cooled — a 50 °C setting (122 °F) (staff opening cases met \"a wave of heat\"); 300 Intermarché and Netto stores, fewer than 100 Coopérative U stores, plus E.Leclerc were affected (Reuters' first report put it at ~150 Intermarché/Cooperative U stores — the counts come from different reporters at different times and both are presented), with Carrefour Market and Monoprix hits reported by a trade site but unconfirmed by those chains. Fresh and frozen stock was destroyed chain-wide; fires were reported; national losses \"could reach several million euros.\" Specific losses: an Intermarché in Haguenau lost its entire frozen stock (~€50,000); a Leclerc in Wasselonne discarded ~€220,000 of goods; the Leclerc Atlantis in Saint-Herblain pulled all frozen Drive products indefinitely. Coopérative U CEO Dominique Schelcher called the attack on food-preservation equipment \"extremely serious and unprecedented.\" The Paris prosecutor opened an investigation (anti-cybercrime unit); ANSSI identified a vulnerability in Danfoss-supplied software, contacted the vendor, and is coordinating with European counterparts. Danfoss says most affected equipment was end-of-life (EOL) AK-SM800 and AK-SC355 systems (no security updates) and AK-SM800A units on outdated firmware; Claroty's Team82 had published research on these controllers Aug 9 (hidden authentication bypass; Censys counted 2,765 exposed management interfaces; patched in firmware R4.3.1) — authorities have not confirmed that flaw was the entry point (UNVERIFIED). Nobody was reported injured. Daily-brief status: the initial report ran as the Oct 13 edition's main #4; the vendor and forensics detail here is the addition.",
+        "CONFIRMED (event) / UNVERIFIED (attribution) — the Iranian-linked water campaign, the window's broadest physical-service event. Beginning July 27, 2026 (per the FBI), malicious cyber actors targeted internet-facing programmable logic controllers (PLCs) in the Water and Wastewater Sector; utilities in at least seven states reported incidents to the FBI, \"and some of that activity degraded water operations\" (FBI alert, Aug 6 — the fetch returned HTTP 403; the quoted sentence comes from the alert's returned search summary). CSIS's Aug 18 mapping — fetched and verified this run — reports the campaign touched at least 12 states (ABC) and at least 100 facilities (NYT, Aug 7 — a REPORTED figure), with CSIS locating 55 of them via open sources; Minnesota authorities disclosed 30+ attacked systems in late July. The most severe confirmed consequence was in Georgia: a pump station was shut down, water pressure dropped, contamination risk rose, and residents were advised to boil water — no related illnesses reported. CSIS's overall assessment: damage was \"relatively minor,\" and there are no reports of water quality degraded to a level endangering consumers. CyberAv3ngers, an actor linked to the IRGC, claimed responsibility, saying the intent was to \"warn America to back down\" — the US government has not publicly attributed the attacks (UNVERIFIED). CSIS notes water facilities are \"something of an Iranian specialty\" (New York 2013, western Pennsylvania 2023, Israel 2020 and 2023) but that the 2026 campaign is far broader than any predecessor. Congressional response followed in August (the Water Cyber Shield Act, Klobuchar/Schiff).",
+        "CONFIRMED (halt) / UNVERIFIED (claims) — Coca-Cola/Fairlife: ransomware halted all four US production plants for ~11 days. The Coca-Cola Company disclosed via SEC Form 8-K on July 16, 2026 that an unauthorized third party accessed Fairlife (its dairy subsidiary) systems \"including production-related systems\" — and that all four US production facilities (Michigan, Arizona, New Mexico, New York area) suspended production; Canadian operations continued throughout. A majority of US production resumed around July 27 (about 11 days from disclosure), Coca-Cola confirmed data was taken, and data was published July 27 after the deadline passed; the company said product quality and safety were not affected and declined to negotiate. The Anubis ransomware group (formerly Sphinx) claimed responsibility — alleging it encrypted Nutanix infrastructure across ~500 hosts, stole ~1 TB, and exploited CitrixBleed 2 (CVE-2025-5777) for initial access — none of those technical claims were verified by the company, and the initial access vector remains undisclosed (UNVERIFIED). Window flag: the attack (~July 9, claimed) and the July 16 disclosure precede the July 20 window open; the restoration and data-publication consequences fall inside it. The lesson the coverage draws: attackers reportedly hit planning/infrastructure layers, not PLCs — and production stopped anyway.",
+        "CONFIRMED — Boston Scientific: worldwide manufacturing, order and shipping disruption, with no SCADA compromise found. An Aug 25, 2026 cyberattack disrupted manufacturing, order processing, and shipping worldwide (SEC filing Aug 26); staff at the Cork, Ireland manufacturing facility were sent home; by Sept 9 the company said manufacturing, order fulfillment and shipping were fully restored with distribution at or above normal levels — roughly a two-week disruption. New activations of its LATITUDE remote cardiac-monitoring system were disrupted; existing implanted cardiac devices were unaffected. CrowdStrike's final investigation summary (published Sept 22) found the attacker entered via an external-facing network device into a limited portion of on-premises IT — and found no evidence of compromise in SCADA environments or in business systems tied to manufacturing maintenance. Manufacturing was disrupted anyway — the IT/OT dependency problem in its purest form; the likely mechanism (an ERP-freeze of planning/inventory layers) is Industrial Cyber's assessment, not a finding (UNVERIFIED), since the summary names no affected systems.",
+        "CONFIRMED — North Carolina Ports: three terminals' gate operations disrupted for ~3 days. On Aug 4, 2026, IT security monitoring at the NC State Ports Authority flagged unauthorized network activity and the cybersecurity contingency plan was activated. IT systems were disrupted at the Port of Wilmington, the Port of Morehead City, and the Charlotte Inland Port; recovery began Aug 5 after containment, and gate operations were expected to return to normal schedules on Aug 7, with delays persisting as systems were restored. Cargo flow was delayed; no equipment damage or injury was reported in returned coverage. Attacker, vector, and data impact: UNVERIFIED (not disclosed in returned coverage).",
+        "CONFIRMED (the diversions are company-acknowledged) / UNVERIFIED (attribution) — Community Medical Center, Falls City, Nebraska: critical patients rerouted to other hospitals. Over the weekend of Oct 17–18, 2026, unauthorized access damaged parts of the network at the 24-bed critical-access hospital; it shut down its computer system, switched to paper, canceled/delayed/rescheduled appointments, and — because it could not transmit diagnostic images to radiologists (the PACS imaging pipeline) — ambulances began taking critical patients to other hospitals. The ER stayed open and staffed; replacement computers were shipped in and an entirely new network deployed (Bryan Health in Lincoln assisted); preliminary findings indicated patient information was unaffected, pending outside verification; slower service was expected \"through much of this week.\" MSC News' report (Oct 19) identified Qilin as the involved group — that attribution has not been independently established (UNVERIFIED) (DysruptionHub, Oct 20).",
+        "REPORTED — single source — Cedar County Memorial Hospital, Missouri: partial diversions in August, resolved Aug 28. An August IT disruption left the hospital unable to send images to radiologists, and it partially diverted critical patients; diversion ended when routine operations returned Aug 28 (DysruptionHub — the single returned source, its own registry entry). Same mechanism as the Nebraska case, smaller scale.",
+        "REPORTED — single source — CISA was tracking cyber threats against ~20 commercial vessels, with no control established. A CISA official said the agency was tracking cyber threats against nearly 20 ships worldwide after several commercial vessels were targeted in potential cyberattacks in late August — noting hackers did not appear to have taken control of the targeted ships (Insurance Journal, Sept 17). No physical impact was established — the story is the targeting of the maritime OT environment — a direct OT-safety observation — with the negative finding explicit.",
+        "CONFIRMED — pattern one: the IT/OT dependency problem dominates. In the two biggest manufacturing cases — Fairlife and Boston Scientific — and per CrowdStrike's Boston Scientific finding, attackers never touched OT, yet physical production stopped for days-to-weeks because planning, order, and shipping layers died. In this window, \"cyber-physical\" usually means IT dependency, not PLC encryption.",
+        "CONFIRMED — pattern two: legacy, internet-reachable OT devices are the confirmed intrusion surface. The FBI's water alert is explicitly about internet-facing PLCs; the French freezer attack hit end-of-life Danfoss controllers — with Claroty having published the relevant bypass research two months earlier. Both cases involve small, under-resourced operators.",
+        "CONFIRMED — pattern three: healthcare's physical consequence is patient flow. Both hospital incidents produced ambulance diversions through an imaging-transmission failure — a repeatable, low-tech failure mode: the imaging pipeline dies, and the nearest ER stops being the safest ER for critical patients.",
+        "CONFIRMED — pattern four: message-sending and thresholds, not damage-seeking. CSIS's read of the water campaign is that Iran likely intended a warning, not mass harm; maritime (NC Ports, the ~20 ships) stayed at the threshold — an IT outage with delay and targeting with no established control.",
+        "UNVERIFIED — the claimed-but-unverified impact ledger (do not present as fact). Anubis's Fairlife claims (Nutanix encryption across ~500 hosts; ~1 TB stolen; CitrixBleed 2/CVE-2025-5777 initial access — claimed by the group and per published reporting, never verified by Coca-Cola); CyberAv3ngers' responsibility for the water campaign (claim only, no US attribution); Qilin vs onsemi (ON Semiconductor) (listed on the leak site Oct 5; onsemi has not confirmed a breach, and no production disruption, fab downtime, or manufacturing-system outage was reported as of Oct 6 — no physical impact established); Colorado County, Texas (a ransomware claim describing risks to public-safety systems, unconfirmed by officials); and Qilin vs Community Medical Center (identified by one local outlet, not independently established).",
+        "CONFIRMED — what did not count as cyber-physical (physical-sector victims, IT-only impact): Berlin's Rhysida event (a massive government data leak — departments disconnected Aug 14, 30 BTC demand refused, archive published Sept 4, a reported ~5.79 TB auction per an aggregator (unverified) — no physical-service disruption established); BAE Systems/federal bankruptcy courts (an IT paperwork-flow outage at a defense contractor); Parkview Health (network/MyChart shutdown, no diversions reported); CUSI (a utility bill-payment processor disruption — payments, not water/power operations); Loxone (a building-automation supplier's ordering disrupted — installed building controls at customer sites kept operating, the counterfactual to the Danfoss case); Terrebonne Parish (IT/online services only); and Colorado County, Texas (disruption claimed, cyberattack unconfirmed).",
+        "CONFIRMED — adjacent daily-brief coverage, for orientation (none of it counts as cyber-physical): the daily editions' in-window events — the ConnectWise Cloud Backup credential incident, the OpenCode Console breach, the OVHcloud CLI backdoor, the BeyondTrust/Armory Castle appliance intrusion, the Cairn AI-agent hacking spree, the ARTEX/TAG-217 South Korean bank-data campaign, CERT-In's advisory on AI agents reaching live Indian systems, the FTC and SIF policy arc, and Ivanti and Patch Tuesday patching — are all data, credential, or policy events with no reported physical consequence; the Oct 13 edition's 400-scientist letter on air-gapping is a policy response to the same incident record.",
+        "CONFIRMED — the verdict's through-line: nothing in the window shows confirmed attacker-caused injury or death, and the two incidents closest to equipment-level compromise — the water PLCs and the Danfoss controllers — both trace to known, published device weaknesses at small operators. Physical risk in 2026 came from IT dependency and legacy OT exposure, not from novel OT-fighting malware."
+      ],
+      "links": [
+        {
+          "label": "Water campaign — FBI — alert on malicious cyber actors targeting water and wastewater sector internet-facing PLCs (Aug 6; fetch returned 403 — key sentence quoted from the returned search summary)",
+          "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/malicious-cyber-actors-targeting-water-and-wastewater-sector-internet--facing-programmable-logic-controllers-causing-operational-disruptions"
+        },
+        {
+          "label": "Water campaign — CSIS — Mapping Iranian Cyberattacks on U.S. Water Systems (Aug 18; fetched and verified this run)",
+          "url": "https://www.csis.org/analysis/mapping-iranian-cyberattacks-us-water-systems"
+        },
+        {
+          "label": "Water campaign — Cybersecurity Dive — what we know so far (Aug 20)",
+          "url": "https://www.cybersecuritydive.com/news/what-we-know-so-far-about-the-hacking-campaign-against-us-water-systems/828374/"
+        },
+        {
+          "label": "Water campaign — Prosegur — utility security lessons, citing Tenable’s Minnesota analysis (Oct 6)",
+          "url": "https://www.prosegur.us/blog/security/utility-security-lessons-2026-water-attacks"
+        },
+        {
+          "label": "French supermarket cold-chain attack — Security Affairs — consolidation with vendor and scale detail (Oct 13; fetched and verified in the Oct 15 run)",
+          "url": "https://securityaffairs.com/200863/hacking/hackers-cranked-french-supermarkets-freezers-up-to-50-degrees-causing-hundreds-of-stores-to-lose-their-stock.html"
+        },
+        {
+          "label": "French supermarket cold-chain attack — BFMTV — the primary local reporting (Oct 12; via Security Affairs)",
+          "url": "https://www.bfmtv.com/economie/consommation/la-temperature-est-montee-jusqu-a-50-degres-une-cyberattaque-contre-les-systemes-frigorifiques-provoque-la-destruction-de-produits-frais-dans-des-centaines-d-intermarche-et-de-super-u_AN-202610120327.html"
+        },
+        {
+          "label": "French supermarket cold-chain attack — Reuters — first wire report (Oct 12, 6:57 AM ET)",
+          "url": "https://www.reuters.com/business/retail-consumer/french-supermarket-chain-intermarche-hit-by-cyberattack-150-stories-targeted-2026-10-12/"
+        },
+        {
+          "label": "French supermarket cold-chain attack — CNBC — follow-up (Oct 13)",
+          "url": "https://www.cnbc.com/2026/10/13/france-supermarket-hack-cyberattack-fridges-fires.html"
+        },
+        {
+          "label": "Coca-Cola/Fairlife — CompTIA — production-line analysis (Sept 22)",
+          "url": "https://www.comptia.org/en-us/blog/ransomware-reaches-the-production-line-at-coca-cola-fairlife/"
+        },
+        {
+          "label": "Coca-Cola/Fairlife — Adaptive Security — detailed timeline table (Aug 22)",
+          "url": "https://www.adaptivesecurity.com/blog/coca-cola-ransomware-analysis"
+        },
+        {
+          "label": "Coca-Cola/Fairlife — Eclypsium — CitrixBleed 2 reporting (Aug 13)",
+          "url": "https://eclypsium.com/blog/fairlife-ransomware-citrixbleed-network-edge-risk/"
+        },
+        {
+          "label": "Coca-Cola/Fairlife — Agility Recovery — recovery-plan lesson (Aug 11)",
+          "url": "https://agilityrecovery.com/blog/ransomware-production-line-recovery-plan/"
+        },
+        {
+          "label": "Coca-Cola/Fairlife — Illumio — Black Kite context: 1,183 disclosed manufacturing ransomware incidents Jan 1–Jul 29, 2026, +40% YoY (Oct 9)",
+          "url": "https://www.illumio.com/blog/ransomware-is-surging-and-manufacturing-is-paying-the-price"
+        },
+        {
+          "label": "Boston Scientific — Industrial Cyber — CrowdStrike summary analysis with primary quotes (Sept 30; SEC filings Aug 26/Sept 22 referenced, URLs not returned)",
+          "url": "https://industrialcyber.co/expert/inside-the-it-ot-dependency-problem-boston-scientifics-production-halt-berlins-rhysida-leak-and-the-developer-workstation-as-an-entry-point/"
+        },
+        {
+          "label": "North Carolina Ports — BleepingComputer — company confirmation (August 2026)",
+          "url": "https://www.bleepingcomputer.com/news/security/north-carolina-ports-confirms-cyberattack-disrupting-operations/"
+        },
+        {
+          "label": "North Carolina Ports — WorldCargoNews — gate restoration (August 2026)",
+          "url": "https://www.worldcargonews.com/business/2026/08/north-carolina-ports-restoring-gate-operations-after-cyber-attack/"
+        },
+        {
+          "label": "North Carolina Ports — Shieldworkz — what we know and what we still don’t",
+          "url": "https://shieldworkz.com/blogs/north-carolina-ports-cyberattack-what-happened-what-we-know-and-what-we-still-don-t"
+        },
+        {
+          "label": "North Carolina Ports — Rescana — containment/recovery dates (August 2026)",
+          "url": "https://www.rescana.com/post/north-carolina-ports-authority-cyberattack-disrupts-it-systems-and-port-operations-at-wilmington-morehead-city-and-charl"
+        },
+        {
+          "label": "Community Medical Center — MSC News — CEO Ryan Larsen quotes, the primary local report (Oct 19)",
+          "url": "https://mscnews.net/local-news/936628"
+        },
+        {
+          "label": "Community Medical Center — Beckers Hospital Review — corroboration (October 2026)",
+          "url": "https://www.beckershospitalreview.com/healthcare-information-technology/cybersecurity/cyberattack-diverts-critical-patients-from-nebraska-hospital/"
+        },
+        {
+          "label": "Community Medical Center — DysruptionHub — full detail, fetched and verified this run (Oct 20, 7:30 AM ET)",
+          "url": "https://dysruptionhub.com/community-medical-center-nebraska-cyberattack/"
+        },
+        {
+          "label": "Cedar County Memorial Hospital — DysruptionHub — IT shutdown and diversion end (single returned source; October 2026)",
+          "url": "https://dysruptionhub.com/cedar-county-hospital-it-shutdown/"
+        },
+        {
+          "label": "Commercial vessels — Insurance Journal — CISA official quotes (Sept 17, 2026; single returned source)",
+          "url": "https://www.insurancejournal.com/news/national/2026/09/17/885384.htm"
+        },
+        {
+          "label": "Qilin vs onsemi, the unverified-impact ledger — Shieldworkz — how far did Qilin really get (Oct 6)",
+          "url": "https://shieldworkz.com/blogs/inside-the-alleged-onsemi-cyberattack-how-far-did-qilin-really-get"
+        },
+        {
+          "label": "Qilin vs onsemi, the unverified-impact ledger — Ransomware.live — Qilin page, listing dated 2026-10-05",
+          "url": "https://www.ransomware.live/group/qilin"
+        },
+        {
+          "label": "Boundary cases — Reuters — Berlin launches crisis response after hackers publish stolen data (Sept 5)",
+          "url": "https://www.reuters.com/world/berlin-launches-crisis-response-after-hackers-publish-stolen-data-2026-09-05/"
+        },
+        {
+          "label": "Boundary cases — SOCRadar — Berlin data-leak analysis (September 2026; fetched, body truncated)",
+          "url": "https://socradar.io/blog/berlin-data-leak-rhysida-unresolved/"
+        },
+        {
+          "label": "Boundary cases — The Record — BAE Systems/federal bankruptcy courts (Oct 15)",
+          "url": "https://therecord.media/federal-bankruptcy-courts-dealing-with-cyberattack-outage"
+        },
+        {
+          "label": "Boundary cases — DysruptionHub — Parkview Health (Oct 19)",
+          "url": "https://dysruptionhub.com/parkview-health-indiana-mychart-shutdown/"
+        },
+        {
+          "label": "Boundary cases — DysruptionHub — CUSI utility payments (Oct 19)",
+          "url": "https://dysruptionhub.com/cusi-arkansas-suspected-cyber-payments/"
+        },
+        {
+          "label": "Boundary cases — DysruptionHub — Loxone building-automation supplier (Oct 20; URL host restored — the piece filed it without the dysruptionhub.com host)",
+          "url": "https://dysruptionhub.com/loxone-pennsylvania-cyberattack-orders/"
+        },
+        {
+          "label": "Boundary cases — DysruptionHub — Colorado County, Texas (Oct 19)",
+          "url": "https://dysruptionhub.com/colorado-county-texas-systems-disruption/"
+        },
+        {
+          "label": "Boundary cases — DysruptionHub — Terrebonne Parish registry",
+          "url": "https://dysruptionhub.com/incidents/"
+        }
+      ]
     }
   ]
 }

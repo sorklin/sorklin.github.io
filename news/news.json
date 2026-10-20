@@ -6,6 +6,36 @@
       "date": "2026-10-20",
       "items": [
         {
+          "type": "deep-dive",
+          "slug": "cyber-physical-events-jul-oct-2026",
+          "category": "security",
+          "industry": [
+            {
+              "code": "22",
+              "name": "Utilities"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            }
+          ],
+          "title": "Eight cyber-physical events, July 20–Oct 20, 2026: IT dependency and legacy OT did the damage, not seized control.",
+          "tldr": "the window's only confirmed property destruction was the French supermarket cold-chain attack (Oct 11–12 — stock destroyed, fires, losses that could reach several million euros); the broadest physical-service event was the Iranian-linked water-systems campaign (at least 12 states, around 100 facilities — but one pump-station shutdown and a Georgia boil-water advisory, no illnesses, and claim-only attribution); Fairlife and Boston Scientific halted production for days-to-weeks with no OT compromise confirmed; two hospitals diverted critical patients over imaging failures; and the record's through-line is that physical risk came from IT dependency and legacy internet-facing OT, not from novel OT-fighting malware — with nothing in the window showing confirmed attacker-caused injury or death.",
+          "source": "Sorklin Research"
+        },
+        {
           "category": "security",
           "title": "ConnectWise plans phased Cloud Backup restoration; second backdoored tenant found; sweep timed at 96 minutes.",
           "tldr": "ConnectWise says remediation is under way with a controlled, phased restoration to come — as Huntress’s 10,000-tenant review finds a second backdoored tenant and Sophos times the attacker’s sweep at about 96 minutes from a single VPS.",
