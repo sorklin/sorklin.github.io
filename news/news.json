@@ -1,7 +1,117 @@
 {
   "version": 3,
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "days": [
+    {
+      "date": "2026-10-21",
+      "items": [
+        {
+          "category": "security",
+          "title": "ConnectWise begins phased Cloud Backup restoration — \"several days\" expected, partner reconnection instructions to come.",
+          "tldr": "ConnectWise’s Oct 21 update confirms restoration has started in controlled phases after a full Oct 19 account-and-credential reset — \"several days\" expected, each step security-reviewed, and partner reconnection instructions to be published before anyone re-enables anything.",
+          "source": "ConnectWise",
+          "url": "https://www.connectwise.com/company/trust/advisories",
+          "summary": "The parked Oct 20 19:00 UTC update confirmed a full reset of all accounts and credentials in the affected Cloud Backup environment was completed Oct 19, with restoration to proceed in controlled phases — \"core infrastructure first, with additional review of the most sensitive connections\" — and an expectation that the process \"will take several days\" once begun; a \"more reliable timeline\" was promised after the first full restoration day. The Oct 21 12:45 UTC update confirms restoration has now started: \"We have begun restoring services in controlled phases, following remediation and security validation\" — with each step subject to security review, service availability returning in stages (the start of restoration \"does not mean all capabilities are available\"), and step-by-step partner reconnection instructions to be published before anyone re-enables anything — affected connections must stay disabled until then. The twice-hourly technical webinar series continues; the investigation into how the unauthorized access first occurred and its full scope is still open; Cloud Backup jobs, archive access, restores, SaaS Security alerting, and Cloud Management user/license management remain unavailable; and backup archives remain \"encrypted, isolated, and preserved, with no indication of compromise.\" Next update: by Oct 21 19:00 UTC.",
+          "details": [
+            "The reset: The Oct 20 19:00 UTC advisory confirmed a full reset of all accounts and credentials in the affected Cloud Backup environment was completed Oct 19, with restoration to proceed in controlled phases — \"core infrastructure first, with additional review of the most sensitive connections\" — expected to \"take several days\" once begun; a \"more reliable timeline\" was promised after the first full restoration day.",
+            "Restoration has begun: The Oct 21 12:45 UTC update — \"We have begun restoring services in controlled phases, following remediation and security validation\" — with each step subject to security review and service availability returning in stages; the start of restoration \"does not mean all capabilities are available.\"",
+            "Partner instructions: Step-by-step reconnection instructions will be published before anyone re-enables anything — affected connections must stay disabled until then; the twice-hourly technical webinar series continues.",
+            "Still unavailable: Cloud Backup jobs, archive access, restores, SaaS Security alerting, and Cloud Management user/license management; backup archives remain \"encrypted, isolated, and preserved, with no indication of compromise.\"",
+            "Open questions: The investigation into how the unauthorized access first occurred and its full scope is still open; the next advisory update is due by Oct 21 19:00 UTC."
+          ],
+          "links": [
+            {
+              "label": "ConnectWise — Trust Center advisory, updated Oct 21, 12:45 UTC (includes the Oct 20 19:00 UTC and Oct 21 00:30 UTC updates)",
+              "url": "https://www.connectwise.com/company/trust/advisories"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA adds six exploited flaws to KEV — four Plex bugs (Plex2Shell chain), a SiteGuard WAF injection, a Siemens path flaw.",
+          "tldr": "CISA’s Oct 20 KEV additions — all with evidence of active exploitation — cover four Plex Media Server flaws matching the \"Plex2Shell\" chaining tool, an EG Secure Solutions SiteGuard WAF OS command injection, and a Siemens Software Center search-path flaw.",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/10/20/cisa-adds-six-known-exploited-vulnerabilities-catalog",
+          "summary": "CISA's Oct 20 KEV additions, all \"based on evidence of active exploitation\": CVE-2026-96652 (Plex Media Server SSRF — an authenticated user can request arbitrary internal or external addresses via the /video/:/transcode/universal path parameter), CVE-2026-96654 (Plex — improper neutralization of encoded URI schemes in a web page), CVE-2026-96655 (Plex SSRF), CVE-2026-96656 (Plex — external control of file name or path), CVE-2026-106931 (EG Secure Solutions SiteGuard Server Edition OS command injection — the Japanese WAF), and CVE-2026-110936 (Siemens Software Center uncontrolled search path element). The four-Plex cluster matches the \"Plex2Shell\" chaining tool circulating in threat-report circles; no per-CVE due dates appear in the alert (BOD 26-04 is the risk-based framework). The operational read: home/SMB-grade media servers, Japanese WAF appliances, and Siemens management tooling are all confirmed-exploitation territory as of this week.",
+          "details": [
+            "The additions (Oct 20; all \"based on evidence of active exploitation\"): CVE-2026-96652 (Plex Media Server SSRF — arbitrary internal or external addresses via the /video/:/transcode/universal path parameter), CVE-2026-96654 (Plex — improper neutralization of encoded URI schemes in a web page), CVE-2026-96655 (Plex SSRF), CVE-2026-96656 (Plex — external control of file name or path), CVE-2026-106931 (EG Secure Solutions SiteGuard Server Edition OS command injection), and CVE-2026-110936 (Siemens Software Center uncontrolled search path element).",
+            "The Plex cluster: The four-Plex grouping matches the \"Plex2Shell\" chaining tool circulating in threat-report circles (corroborated by Dark Web Intelligence).",
+            "No fixed deadlines: No per-CVE due dates appear in the alert — BOD 26-04 is the risk-based remediation framework.",
+            "Operational read: Home/SMB-grade media servers, Japanese WAF appliances, and Siemens management tooling are all confirmed-exploitation territory as of this week."
+          ],
+          "links": [
+            {
+              "label": "CISA — CISA Adds Six Known Exploited Vulnerabilities to Catalog (Oct 20; fetched and verified this run)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/10/20/cisa-adds-six-known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "Dark Web Intelligence — \"CISA adds Plex2Shell…\" corroboration (Oct 20)",
+              "url": "https://x.com/DailyDarkWeb/status/2112729108102992066"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA, FBI, Secret Service and German police issue SafePay ransomware advisory — 600+ critical-infrastructure victims.",
+          "tldr": "A joint #StopRansomware advisory (AA26-293A) from CISA, the FBI, the US Secret Service and Germany’s Landeskriminalamt Rheinland-Pfalz details SafePay — described as among 2026’s most active ransomware groups, with at least 600 separate victims across multiple critical-infrastructure sectors.",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-293a",
+          "summary": "CISA, the FBI, the US Secret Service (USSS), and Germany's Landeskriminalamt Rheinland-Pfalz released #StopRansomware: SafePay Ransomware (AA26-293A), detailing TTPs, IOCs, incident-response actions and mitigations for SafePay — described as \"among the most active ransomware groups in 2026,\" having impacted at least 600 separate victims from multiple critical-infrastructure sectors. The advisory highlights SafePay's wide range of initial access vectors (per Infosecurity's read); no victim organizations are named in the returned text. Context from the same window: Infosecurity notes Conduent agreed on Oct 16 to pay $80M to settle a class action over a data breach — a separate matter cited in the advisory's coverage.",
+          "details": [
+            "The advisory: #StopRansomware: SafePay Ransomware (AA26-293A), released Oct 20 by CISA, the FBI, the US Secret Service and Germany's Landeskriminalamt Rheinland-Pfalz — TTPs, IOCs, incident-response actions and mitigations.",
+            "The group: SafePay is described as \"among the most active ransomware groups in 2026,\" having impacted at least 600 separate victims from multiple critical-infrastructure sectors; the advisory highlights a wide range of initial access vectors (per Infosecurity's read), and no victim organizations are named in the returned text.",
+            "Adjacent context: Infosecurity notes Conduent agreed on Oct 16 to pay $80M to settle a class action over a data breach — a separate matter cited in the advisory's coverage."
+          ],
+          "links": [
+            {
+              "label": "CISA — #StopRansomware: SafePay Ransomware, AA26-293A (Oct 20)",
+              "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-293a"
+            },
+            {
+              "label": "CISA — advisory PDF (October 2026)",
+              "url": "https://www.cisa.gov/sites/default/files/2026-10/aa26-293a-stopransomware-safepay-ransomware-508c.pdf"
+            },
+            {
+              "label": "Infosecurity Magazine — advisory coverage (Oct 20)",
+              "url": "https://www.infosecurity-magazine.com/news/safepay-compromised-critical/"
+            },
+            {
+              "label": "ISSSource — agency roster (October 2026)",
+              "url": "https://www.isssource.com/safepay-ransomware-group-warning-from-feds/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "NorForge’s fuller Cairn accounting: 20+ open AI-hacking control panels, 1,000+ reconstructed attacks, ~10% success.",
+          "tldr": "NorForge’s fuller accounting of the Cairn AI-hacking ecosystem found 20-plus unprotected control panels exposing targets, exploit chains and victims’ secrets — from which researchers reconstructed 1,000-plus attacks at an estimated ~10% success rate — and several panels remained open and active at writing.",
+          "source": "Humans on AI",
+          "url": "https://p3humansonai.substack.com/p/humans-on-ai-63-october-20-2026",
+          "summary": "Beyond the Chinese-speaking hacker who hit 100+ companies (Deere, SharkNinja, Cummins) via 1,200+ attempts, NorForge's fuller accounting — per the Humans on AI write-up — found more than 20 unprotected agentic-hacking control panels on exposed Cairn instances, from which researchers reconstructed 1,000+ attacks on targets \"ranging from merchant payment services to pharmaceutical sites.\" The panels require no login and expose targets, exploit chains, and hundreds of victims' secrets; several remained open and active at writing, where \"a careless POST or PUT\" could issue new tasks to the agents. The busiest Chinese-language cluster ran 1,100+ attack projects against online stores in the US, Japan and Australia, with every task handled by a single worker — apparently Claude Code running DeepSeek V4.1 Flash — at an estimated ~$5 per task and a ~10% success rate across clusters (NorForge estimate). Pangram-style analysis of the human-tagged task texts (colloquial interjections, hacker slang like \"落地,\" particle errors, code-switching) indicates direct human authorship. The write-up's caution: the internet is \"littered with loaded cyberweapons, many with their safeties off.\"",
+          "details": [
+            "The panels: NorForge's fuller accounting (per the Humans on AI write-up, building on the Oct 19 Reuters story and a BreachCache report whose URL was not returned) found more than 20 unprotected agentic-hacking control panels on exposed Cairn instances — they require no login and expose targets, exploit chains, and hundreds of victims' secrets.",
+            "The reconstruction: Researchers reconstructed 1,000+ attacks on targets \"ranging from merchant payment services to pharmaceutical sites\"; several panels remained open and active at writing, where \"a careless POST or PUT\" could issue new tasks to the agents.",
+            "The busiest cluster: A Chinese-language cluster ran 1,100+ attack projects against online stores in the US, Japan and Australia, with every task handled by a single worker — apparently Claude Code running DeepSeek V4.1 Flash — at an estimated ~$5 per task and a ~10% success rate across clusters (NorForge estimate).",
+            "Human authorship: Pangram-style analysis of the human-tagged task texts (colloquial interjections, hacker slang like \"落地,\" particle errors, code-switching) indicates direct human authorship.",
+            "The caution: The write-up's line — the internet is \"littered with loaded cyberweapons, many with their safeties off.\""
+          ],
+          "links": [
+            {
+              "label": "Humans on AI #63 — the NorForge fuller accounting, citing NorForge and a BreachCache report (Oct 21, 12:15 AM UTC)",
+              "url": "https://p3humansonai.substack.com/p/humans-on-ai-63-october-20-2026"
+            },
+            {
+              "label": "Cisoseries — corroborating the Cairn/Reuters figures (Oct 20)",
+              "url": "https://cisoseries.com/cybersecurity-news-october-20-2026/"
+            },
+            {
+              "label": "Reuters (via Investing.com) — the original Cairn exclusive (Oct 19; already run)",
+              "url": "https://www.investing.com/news/stock-market-news/exclusivehow-one-hacker-used-ai-agents-and-a-few-thousand-dollars-to-break-into-scores-of-sites-4956846"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-20",
       "items": [
