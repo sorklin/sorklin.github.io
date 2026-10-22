@@ -1,7 +1,266 @@
 {
   "version": 3,
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "days": [
+    {
+      "date": "2026-10-22",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "54",
+              "name": "Professional, Scientific, and Technical Services"
+            },
+            {
+              "code": "22",
+              "name": "Utilities"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            },
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Microsoft ties ConnectWise Cloud Backup breach to China-aligned Storm-0940 running the ARTEX agentic-AI framework.",
+          "tldr": "ConnectWise — citing Microsoft threat intelligence — says China state-aligned Storm-0940 was responsible for the Cloud Backup supply-chain breach and used the openly available ARTEX agentic-AI framework to automate and speed the operation, while phased restoration advances with per-step security validation.",
+          "source": "ConnectWise",
+          "url": "https://www.connectwise.com/company/trust/advisories",
+          "summary": "In its 22:00 UTC Oct 21 update — superseding the restoration-only read of the parked Oct 19 advisory — ConnectWise said that, based on evidence including Microsoft threat intelligence, a China state-aligned group (Storm-0940) was responsible and used an openly available agentic-AI framework to automate and speed the operation. Microsoft's post: Storm-0940 has been active since 2021 and since at least September has used the same ARTEX tooling against organizations in aerospace and defense, energy, financial services, government, legal, manufacturing, semiconductors and technology — accelerating scanning, password-spray attacks and OAuth application abuse in downstream victims, in several cases reaching privileged cloud access in under three hours; Microsoft also reports threat actors in multiple regions now use the same framework. ConnectWise says contained application connections and phased restoration do not remove unauthorized access already established in individual customer tenants, which require separate review; backup archives remain encrypted, isolated and preserved with no indication of compromise, and no indication other ConnectWise products are affected. The Oct 22 13:00 UTC update confirms restoration is advancing with per-step security validation (updates now twice daily). This largely resolves the ARTEX/TAG-217 watch item carried since Oct 19.",
+          "details": [
+            "The attribution: In its Oct 21 22:00 UTC update, ConnectWise said that, based on evidence including Microsoft threat intelligence, a China state-aligned group (Storm-0940) was responsible for the Cloud Backup supply-chain breach and used an openly available agentic-AI framework to automate and speed the operation.",
+            "Microsoft's picture of the campaign: Storm-0940 has been active since 2021, and since at least September has used the same ARTEX tooling against organizations in aerospace and defense, energy, financial services, government, legal, manufacturing, semiconductors and technology — accelerating scanning, password-spray attacks and OAuth application abuse in downstream victims, in several cases reaching privileged cloud access in under three hours.",
+            "Framework diffusion: Microsoft also reports threat actors in multiple regions now use the same framework.",
+            "Restoration status: The Oct 22 13:00 UTC update confirms restoration is advancing with per-step security validation, following the completed Oct 19 account/credential reset and the restoration start announced Oct 21; updates now come twice daily, with the next due Oct 23 01:00 UTC.",
+            "The tenant warning: ConnectWise says contained application connections and phased restoration do not remove unauthorized access already established in individual customer tenants, which require separate review; backup archives remain encrypted, isolated and preserved with no indication of compromise, and there is no indication other ConnectWise products are affected.",
+            "The resolved watch item: This largely resolves the ARTEX/TAG-217 thread carried since Oct 19 (the Recorded Future linkage, the Zscaler disclosure, and the Korean bank counts)."
+          ],
+          "links": [
+            {
+              "label": "ConnectWise — Trust Center advisories (Oct 21–22 updates; fetched)",
+              "url": "https://www.connectwise.com/company/trust/advisories"
+            },
+            {
+              "label": "Microsoft Security Blog — Storm-0940 uses ARTEX agentic AI (Oct 21)",
+              "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+            },
+            {
+              "label": "CyberScoop — attribution coverage (Oct 21/22)",
+              "url": "https://cyberscoop.com/microsoft-attributes-connectwise-supply-chain-attack-china-storm-0940/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "LiteLLM v1.107.0 shipped a credential stealer and hourly code loader on PyPI and Docker — second compromise this year.",
+          "tldr": "All seven PyPI wheels and the official Docker/GHCR images of LiteLLM v1.107.0 carried a credential stealer (\"privcollect\") plus an hourly remote-code loader — live for roughly two to three hours on Oct 21, ~49,000 downloads per Wiz, and the second LiteLLM compromise this year.",
+          "source": "LiteLLM",
+          "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
+          "summary": "All seven PyPI wheels and the official Docker/GHCR images (including litellm-database, litellm-non_root) of LiteLLM v1.107.0 carried three files (cook.pth, cook.py, sitecustomize.py) that run on every Python start without importing litellm — live on PyPI 11:39–13:23 UTC on Oct 21 (Docker tags v1.107.0, latest, main-latest, main-stable compromised 11:46–14:20 UTC). The stealer (\"privcollect\", 16 modules) takes browser passwords, SSH/GPG/TLS keys, AWS/Azure/GCP credentials and instance metadata, CI/CD and container secrets, configs of 20+ AI coding tools (Claude Code, Codex, Cursor, Gemini CLI, etc.), and — via a Prisma dump — the LiteLLM proxy database's stored provider API keys; it exfiltrates AES/RSA-encrypted to http://www.litellm.dev/healthcheck (a lookalike domain registered Oct 13). sitecustomize.py forks an hourly daemon polling a GitHub dead-drop for remote code — the dead-drop domain.txt was empty, so stage 2 was never armed. BerriAI: attackers used three developers' GitHub CLI credentials; one token belonged to a GitHub organization owner and was used to disable branch protections and force-push a release redirect to lookalike repo Berri-AI/litellm (one hyphen); BerriAI suspects that token leaked from logs of an internet-facing internal LiteLLM deployment and notes circumstances in which Claude Code could expose GitHub tokens in responses recorded by LiteLLM; how the other two accounts were reached is unknown, and releases are paused. PyPI quarantined at ~13:20 UTC; artifacts pulled; latest safe version 1.106.2; enterprise private-registry customers unaffected. Per Wiz (ClickPy data) the malicious version got ~49,000 downloads — the second LiteLLM compromise this year (March's 1.82.7/1.82.8 — CloudSEK then estimated 2,500+ organizations and 434,000 CI/CD pipelines exposed, per The Register). Treat any 1.107.0 install or run as fully compromised; rotate everything reachable.",
+          "details": [
+            "What shipped: All seven PyPI wheels and the official Docker/GHCR images (including litellm-database and litellm-non_root) of v1.107.0 carried three files (cook.pth, cook.py, sitecustomize.py) that run on every Python start without importing litellm.",
+            "The windows: PyPI live 11:39–13:23 UTC Oct 21 (quarantined at ~13:20 UTC, artifacts pulled); Docker tags v1.107.0, latest, main-latest and main-stable compromised 11:46–14:20 UTC; latest safe version is 1.106.2, and enterprise private-registry customers were unaffected.",
+            "The stealer: \"privcollect\" (16 modules) — browser passwords, SSH/GPG/TLS keys, AWS/Azure/GCP credentials and instance metadata, CI/CD and container secrets, configs of 20+ AI coding tools (Claude Code, Codex, Cursor, Gemini CLI, etc.), and — via a Prisma dump — the LiteLLM proxy database's stored provider API keys; exfiltration is AES/RSA-encrypted to http://www.litellm.dev/healthcheck, a lookalike domain registered Oct 13.",
+            "The loader: sitecustomize.py forks an hourly daemon polling a GitHub dead-drop for remote code; the dead-drop domain.txt was empty, so stage 2 was never armed.",
+            "The intrusion: BerriAI says attackers used three developers' GitHub CLI credentials; one belonged to a GitHub organization owner and was used to disable branch protections and force-push a release redirect to lookalike repo Berri-AI/litellm (one hyphen); BerriAI suspects that token leaked from logs of an internet-facing internal LiteLLM deployment and notes circumstances in which Claude Code could expose GitHub tokens in responses recorded by LiteLLM; how the other two accounts were reached is unknown, and releases are paused.",
+            "Scale and history: Per Wiz (ClickPy data) the malicious version got ~49,000 downloads; this is the second LiteLLM compromise this year — March's 1.82.7/1.82.8, after which CloudSEK estimated 2,500+ organizations and 434,000 CI/CD pipelines exposed (per The Register).",
+            "The bottom line: Treat any 1.107.0 install or run as fully compromised; rotate everything reachable."
+          ],
+          "links": [
+            {
+              "label": "LiteLLM — incident report (Oct 21, updated 20:30 UTC)",
+              "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+            },
+            {
+              "label": "The Register — coverage (Oct 21, 19:22 UTC)",
+              "url": "https://www.theregister.com/security/2026/10/21/litellm-supply-chain-attack-hoovers-up-passwords-and-secrets/5304548"
+            },
+            {
+              "label": "Wiz — analysis with download counts (Oct 21)",
+              "url": "https://www.wiz.io/blog/litellm-compromised-steals-credentials"
+            },
+            {
+              "label": "StepSecurity — attack-chain analysis (Oct 21)",
+              "url": "https://www.stepsecurity.io/blog/litellm-1-107-0-compromised-pypi-backdoored-wheels-credential-stealer"
+            },
+            {
+              "label": "Socket — analysis (Oct 21)",
+              "url": "https://socket.dev/blog/litellm-compromise"
+            },
+            {
+              "label": "CSO Online — release-pipeline coverage (Oct 22)",
+              "url": "https://www.csoonline.com/article/4239033/litellm-release-pipeline-hacked-to-distribute-credential-stealing-malware.html"
+            },
+            {
+              "label": "The Hacker News — GitHub-token-leak reporting (Oct 22)",
+              "url": "https://thehackernews.com/2026/10/litellm-suspects-github-token-leak-in.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "PHP ships emergency patches for \"php2shell\" — two unauthenticated RCE flaws, exploitation began pre-patch.",
+          "tldr": "CVE-2026-109618 and CVE-2026-109619 — unauthenticated RCE in all PHP installations serving web requests — got emergency releases (8.5.12/8.4.27/8.3.36/8.2.35) after exploitation reportedly began about four days before the patches; CISA urged immediate patching and taking unpatchable systems offline.",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching",
+          "summary": "CVE-2026-109618 and CVE-2026-109619 — unauthenticated remote code execution affecting all PHP installations serving web requests (PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP, LiteSpeed) — stem from PHP leaving memory corrupted when a request ends abnormally; per the PHP team the risk is highest for mod_php, \"with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs.\" Fix: PHP 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35, with source backports for 7.4/8.0/8.1; PHP 8.1-and-older is unsupported. CISA urged immediate patching, prioritizing internet-facing systems, and taking unpatchable systems offline — stating it had not observed exploitation as of its alert. Cloudflare's CTO said the company was already observing early attacks pre-patch (per BleepingComputer), and per BleepingComputer (Oct 22), Amazon reported php2shell exploitation began about 4 days before the patches. Discovered by Calif, OpenAI and Wiz researchers. VirusTotal estimates 5.1M+ PHP hosts exposed online (PHP powers about 75–80% of websites). UK NCSC urged UK organizations to update immediately or go offline; trade press reported European government websites and the Dutch NCSC itself going offline amid emergency patching (per KrebsOnSecurity). A potential third CVE in the same code region is under investigation; the flaws were not in the KEV catalog as of the Oct 22 morning briefing.",
+          "details": [
+            "The flaws: CVE-2026-109618 and CVE-2026-109619 — unauthenticated RCE affecting all PHP installations serving web requests (PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP, LiteSpeed); both stem from PHP leaving memory corrupted when a request ends abnormally, and the PHP team says the risk is highest for mod_php — \"with a demonstrated exploit where an unauthenticated request can trigger the attack before any application code runs.\"",
+            "The fix: PHP 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35, with source backports for 7.4/8.0/8.1; PHP 8.1-and-older is unsupported (emergency releases and the CISA alert landed Oct 21).",
+            "Exploitation: CISA stated it had not observed exploitation as of its alert, but Cloudflare's CTO said the company was already observing early attacks pre-patch, and Amazon reported php2shell exploitation began about 4 days before the patches (Oct 22 reporting).",
+            "Exposure scale: VirusTotal estimates 5.1M+ PHP hosts exposed online, and PHP powers roughly 75–80% of websites; the flaws were discovered by Calif, OpenAI and Wiz researchers.",
+            "The fallout: The UK NCSC urged UK organizations to update immediately or go offline; trade press reported European government websites and the Dutch NCSC itself going offline amid emergency patching; a potential third CVE in the same code region is under investigation; the flaws were not in the KEV catalog as of the Oct 22 morning briefing."
+          ],
+          "links": [
+            {
+              "label": "CISA — alert urging immediate patching (Oct 21; fetched)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching"
+            },
+            {
+              "label": "PHP — release archive with the emergency versions (Oct 20–21)",
+              "url": "https://www.php.net/archive/2026.php"
+            },
+            {
+              "label": "BleepingComputer — emergency-patch report (Oct 21)",
+              "url": "https://www.bleepingcomputer.com/news/security/php-ships-emergency-patches-for-critical-php2shell-flaws/"
+            },
+            {
+              "label": "The Register — patch-or-offline warning (Oct 21)",
+              "url": "https://www.theregister.com/security/2026/10/21/php-devs-publish-critical-bug-fix-as-site-owners-warned-pull-em-offline-if-youre-unpatched/5304519"
+            },
+            {
+              "label": "KrebsOnSecurity — outage fallout (Oct 21)",
+              "url": "https://krebsonsecurity.com/2026/10/widespread-php-flaw-may-cause-many-site-outages-today/"
+            },
+            {
+              "label": "BleepingComputer — Amazon exploitation timeline (Oct 22)",
+              "url": "https://www.bleepingcomputer.com/news/security/amazon-says-php2shell-exploitation-began-4-days-before-patches/"
+            },
+            {
+              "label": "The Hacker News — overview (Oct 21)",
+              "url": "https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Eight eMudhra intermediate-CA keys generated with 3–8 bits of entropy — blocked by Chrome, Mozilla, Apple and Microsoft.",
+          "tldr": "Eight compromised eMudhra intermediate-CA keys dropped from 384 bits of entropy to 3–8 — some were single-digit integers — making impersonation of any website or service trivial; Chrome, Mozilla and Apple blocked the TLS intermediates, Microsoft the code-signing pair, and Go shipped CVE-2026-111943 fixes.",
+          "source": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/compromised-intermediate-certificates/",
+          "summary": "Eight compromised intermediates under eMudhra's emSign Root TLS CA - G3 (and its cross-sign of Comodo AAA Certificate Services): six TLS (EV/OV/DV, eMudhra BV and eMudhra Inc) and two code-signing. Root cause: an April 30, 2025 key-generation ceremony for 24 subordinate CAs — a wrap/unwrap flaw created a second set of weak P-384 keys that were mistakenly used for eight intermediates, dropping entropy from 384 bits to 3–8 (some keys were single-digit integers), making recovery trivial; a holder could impersonate any website or service. Chrome, Mozilla and Apple blocked the six TLS intermediates; Microsoft blocked the two code-signing certificates. eMudhra has revoked the compromised certificates and stopped issuing under its G3 root. The Go team designated the exposure CVE-2026-111943 and shipped Go 1.27.3 / 1.26.10, which filter the eight compromised SPKI hashes (relevant to Docker/Kubernetes/Terraform/Prometheus estates); Talos flags VPNs, enterprise appliances, CI/CD package paths and embedded devices as needing vendor fixes. Talos reports no malicious incidents seen in the wild as of Oct 21 14:00 UTC.",
+          "details": [
+            "The compromise: Eight intermediates under eMudhra's emSign Root TLS CA - G3 (and its cross-sign of Comodo AAA Certificate Services): six TLS (EV/OV/DV, eMudhra BV and eMudhra Inc) and two code-signing.",
+            "The root cause: An April 30, 2025 key-generation ceremony for 24 subordinate CAs — a wrap/unwrap flaw created a second set of weak P-384 keys that were mistakenly used for eight intermediates, dropping entropy from 384 bits to 3–8 (some keys were single-digit integers), making recovery trivial; a holder could impersonate any website or service.",
+            "The vendor blocks: Chrome, Mozilla and Apple blocked the six TLS intermediates; Microsoft blocked the two code-signing certificates; eMudhra has revoked the compromised certificates and stopped issuing under its G3 root.",
+            "The Go response: The Go team designated the exposure CVE-2026-111943 and shipped Go 1.27.3 / 1.26.10, filtering the eight compromised SPKI hashes — relevant to Docker/Kubernetes/Terraform/Prometheus estates; Talos flags VPNs, enterprise appliances, CI/CD package paths and embedded devices as needing vendor fixes.",
+            "No abuse seen: Talos reports no malicious incidents seen in the wild as of Oct 21 14:00 UTC. (A \"60M+ certificates\" scale figure circulating in briefings was not verified at a primary and is omitted.)"
+          ],
+          "links": [
+            {
+              "label": "Cisco Talos — threat advisory (Oct 21, 16:43 UTC; fetched)",
+              "url": "https://blog.talosintelligence.com/compromised-intermediate-certificates/"
+            },
+            {
+              "label": "eMudhra — certificate-security-incident notice (Oct 21)",
+              "url": "https://emudhra.com/en/post/certificate-security-incident"
+            },
+            {
+              "label": "BleepingComputer — vendor-block coverage (Oct 21/22)",
+              "url": "https://www.bleepingcomputer.com/news/security/mozilla-google-apple-block-compromised-emudhra-ca-certificates/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Railway: intruder may have read decrypted env variables; wallets drained; tied to AI-inference-provider campaign.",
+          "tldr": "The PaaS provider says an unauthorized third party may have gained access to encrypted environment variables and in some cases obtained the decrypted contents — a researcher reports crypto wallets whose keys were stored on Railway were drained — and Railway ties the incident to a campaign targeting platform companies to compromise AI inference providers.",
+          "source": "Railway",
+          "url": "https://blog.railway.com/p/security-disclosure-wednesday-october-21st",
+          "summary": "The PaaS provider disclosed \"anomalous activity\" in systems that store customer environment variables, then found an unauthorized third party may have gained access to encrypted environment variables and, in some cases, obtained the decrypted contents — impact limited to a \"subset of users\" (count undisclosed). Railway notified upstream providers to proactively revoke keys and urges customers to rotate environment variables/API keys and private-registry credentials and review service logs. Per security researcher Taylor Monahan (single source, per The Hacker News), the attacker also drained cryptocurrency wallets whose private keys were stored on Railway — first theft 7:36 p.m., at least two hours before disclosure. Railway has rotated all bucket credentials and invalidated Railway API tokens; builds are restored for Pro/Enterprise workspaces while Hobby/Free lag and deployments remain queued. Railway says the incident is likely part of a series of attacks targeting platform companies with the goal of compromising AI inference providers.",
+          "details": [
+            "The exposure: Railway disclosed \"anomalous activity\" in systems that store customer environment variables, then found an unauthorized third party may have gained access to encrypted environment variables and, in some cases, obtained the decrypted contents — impact limited to a \"subset of users\" (count undisclosed).",
+            "The wallets: Per security researcher Taylor Monahan (single source, per The Hacker News), the attacker also drained cryptocurrency wallets whose private keys were stored on Railway — first theft 7:36 p.m., at least two hours before disclosure.",
+            "The response: Railway notified upstream providers to proactively revoke keys and urges customers to rotate environment variables/API keys and private-registry credentials and review service logs; it has rotated all bucket credentials and invalidated Railway API tokens; builds are restored for Pro/Enterprise workspaces while Hobby/Free lag and deployments remain queued.",
+            "The campaign context: Railway says the incident is likely part of a series of attacks targeting platform companies with the goal of compromising AI inference providers."
+          ],
+          "links": [
+            {
+              "label": "Railway — security disclosure (Oct 21)",
+              "url": "https://blog.railway.com/p/security-disclosure-wednesday-october-21st"
+            },
+            {
+              "label": "Railway — status incident (October 2026)",
+              "url": "https://status.railway.com/incident/QH8L8B3E"
+            },
+            {
+              "label": "The Hacker News — write-up with the wallet-drain report (Oct 22)",
+              "url": "https://thehackernews.com/2026/10/railway-says-intruder-may-have-accessed.html"
+            },
+            {
+              "label": "The Defiant — rotate-secrets coverage (Oct 22)",
+              "url": "https://thedefiant.io/news/security/railway-urges-all-users-to-rotate-secrets-after-security-incident"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Japan’s Onamae Desktop Cloud (GMO) halted service after hackers installed malware on up to 26,739 customer VPS servers.",
+          "tldr": "Hackers compromised the infrastructure of Onamae Desktop Cloud — a popular Japanese VPS provider — and installed malware on up to 26,739 customers’ servers; the service is halted with no resumption timeline, and the company says it has not confirmed any misuse or data leak.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/japans-onamae-desktop-cloud-hacked-up-to-27-000-servers-affected/",
+          "summary": "Hackers compromised the infrastructure of Onamae Desktop Cloud, a popular Japanese VPS provider, and installed malware on up to 26,739 customers' servers (BleepingComputer's headline: \"up to 27,000\"). The company halted the service; it says it has not confirmed any misuse or data leak but has given no resumption timeline (per teiss). Guidance: rotate stored passwords from a clean device (per Safeguard).",
+          "details": [
+            "The incident: Hackers compromised the infrastructure of Onamae Desktop Cloud (GMO) — a popular Japanese VPS provider — and installed malware on up to 26,739 customers' servers (BleepingComputer's headline: \"up to 27,000\"); the company found the malicious programs Oct 20 and disclosed around Oct 21–22.",
+            "The status: The service is halted; the company says it has not confirmed any misuse or data leak but has given no resumption timeline (per teiss).",
+            "The guidance: Rotate stored passwords from a clean device (per Safeguard)."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — up-to-27,000-servers report (Oct 21/22)",
+              "url": "https://www.bleepingcomputer.com/news/security/japans-onamae-desktop-cloud-hacked-up-to-27-000-servers-affected/"
+            },
+            {
+              "label": "Safeguard — analysis (Oct 22)",
+              "url": "https://safeguard.sh/resources/blog/onamae-desktop-cloud-hack-japan"
+            },
+            {
+              "label": "TEISS — service-halt corroboration (Oct 22)",
+              "url": "https://www.teiss.co.uk/news/japanese-vps-provider-onamae-desktop-cloud-halts-service-after-hackers-install-malware-on-customer-servers-18343"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-21",
       "items": [
