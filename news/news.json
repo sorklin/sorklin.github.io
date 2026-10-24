@@ -1,7 +1,95 @@
 {
   "version": 3,
-  "updated": "2026-10-23",
+  "updated": "2026-10-24",
   "days": [
+    {
+      "date": "2026-10-24",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "LiteLLM RCA: unrevoked May master key gave attacker org-owner GitHub access, led to poisoned 1.107.0 release.",
+          "tldr": "LiteLLM’s canonical root-cause analysis supersedes its earlier log-leak theory: a master key accidentally committed to a public GitHub repo in May was never revoked, and the attacker used it on Oct 10 to obtain an org-owner GitHub token — leading to the poisoned v1.107.0 release.",
+          "source": "LiteLLM",
+          "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026-attack-chain",
+          "summary": "LiteLLM has published the canonical attack chain behind the Oct 21 compromise of v1.107.0 (fetched at the primary), stating that \"some assumptions and beliefs in those updates were later proven to be inaccurate or incomplete.\" The chain: on May 27, 2026, a configuration file (opencode.json) committed to the public LiteLLM-Labs/lite-harness repository inadvertently contained the master key to the LiteLLM Agent Platform; the commit was force-pushed away and revocation identified as required, but the master key was never revoked. On Oct 10, the attacker (from 69.48.229[.]143) used the key against the Agent Platform API — a single GET returned the GitHub CLI OAuth token of one of the organization's two owners (unscoped, not a service-account token; GitHub CLI tokens are post-2FA and exempt from the sensitive-action reauth flow). That evening the attacker used the owner token to run throwaway-branch workflows in BerriAI/litellm and BerriAI/litellm-auto that posted CI secrets — including two more maintainer GitHub CLI tokens (GH_TOKEN, RELEASE_PLEASE_TOKEN) — to an attacker-controlled webhook[.]site endpoint, deleting the runs minutes later; further secret exfiltration across private repos followed Oct 12 (per Socket). On Oct 21 the owner token overrode branch protection on BerriAI/project-releaser to repoint releases at lookalike repo Berri-AI/litellm (commit 20535d8f); the production gate was approved with the second maintainer's token from 199.91.221[.]39; seven wheels published 11:39–11:40 UTC, Docker 11:46 UTC; the third token deleted the run records 11:53–11:54 UTC and the owner token force-pushed the history clean 12:09–12:24 UTC. Upwind researcher LidorMachluf's issue landed at 12:06 UTC; PyPI quarantined by 13:23 UTC; Docker cleaned by 14:20 UTC. LiteLLM explicitly retires its earlier working theory — \"Our first post suspected the tokens were taken from the logs of an internal LiteLLM deployment. The request logs show the first token came from a different service\" — i.e., the Claude-Code-log-leak hypothesis is superseded. Containment: all organization members removed except one clean account temporarily promoted to owner, an assume-everything-exfiltrated posture, Trail of Bits (via Patch the Planet) assisting, and every internal-system and vendor token being revoked, with the attacker's activity showing \"a primary focus on upstream inference API tokens.\" LiteLLM expected its first post-incident release by end of day Oct 23 — including a fix removing the eMudhra CA from its trust store — and promised a process-improvements write-up next week. Separately, Microsoft's Oct 23 deep-dive (primary) dissects the payload's two startup-hook execution paths (the cook.pth credential collector and the Unix sitecustomize loader), confirms endpoint observations on Windows and macOS, and warns responders not to run Python or pip inside a suspect environment — a routine invocation to install an unrelated dependency activated the collector in one observed case.",
+          "details": [
+            "The May leak: On May 27, 2026, a configuration file (opencode.json) committed to the public LiteLLM-Labs/lite-harness repository inadvertently contained the master key to the LiteLLM Agent Platform; the commit was force-pushed away and revocation identified as required — but the master key was never revoked.",
+            "The Oct 10 access: The attacker (from 69.48.229[.]143) used the key against the Agent Platform API — a single GET returned the GitHub CLI OAuth token of one of the organization's two owners (unscoped, not a service-account token; GitHub CLI tokens are post-2FA and exempt from the sensitive-action reauth flow).",
+            "Secret harvesting: That evening the attacker used the owner token to run throwaway-branch workflows in BerriAI/litellm and BerriAI/litellm-auto that posted CI secrets — including two more maintainer GitHub CLI tokens (GH_TOKEN, RELEASE_PLEASE_TOKEN) — to an attacker-controlled webhook[.]site endpoint, deleting the runs minutes later; further secret exfiltration across private repos followed Oct 12 (per Socket).",
+            "The release poison: On Oct 21 the owner token overrode branch protection on BerriAI/project-releaser to repoint releases at lookalike repo Berri-AI/litellm (commit 20535d8f); the production gate was approved with the second maintainer's token from 199.91.221[.]39; seven wheels published 11:39–11:40 UTC and Docker 11:46 UTC; the third token deleted the run records 11:53–11:54 UTC and the owner token force-pushed the history clean 12:09–12:24 UTC.",
+            "Detection and containment: Upwind researcher LidorMachluf's issue landed at 12:06 UTC; PyPI quarantined by 13:23 UTC and Docker cleaned by 14:20 UTC. Containment: all organization members removed except one clean account temporarily promoted to owner; an assume-everything-exfiltrated posture; Trail of Bits (via Patch the Planet) assisting; every internal-system and vendor token being revoked, with the attacker's activity showing \"a primary focus on upstream inference API tokens.\"",
+            "The superseded theory: LiteLLM explicitly retires its earlier working theory — \"Our first post suspected the tokens were taken from the logs of an internal LiteLLM deployment. The request logs show the first token came from a different service\" — i.e., the Claude-Code-log-leak hypothesis is superseded.",
+            "The release and Microsoft's detail: LiteLLM expected its first post-incident release by end of day Oct 23 — including a fix removing the eMudhra CA from its trust store — and promised a process-improvements write-up next week. Microsoft's Oct 23 deep-dive (primary) dissects the payload's two startup-hook execution paths (the cook.pth credential collector and the Unix sitecustomize loader), confirms endpoint observations on Windows and macOS, and warns responders not to run Python or pip inside a suspect environment — a routine invocation to install an unrelated dependency activated the collector in one observed case."
+          ],
+          "links": [
+            {
+              "label": "LiteLLM — root-cause analysis (Oct 23, 21:00 UTC; fetched)",
+              "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026-attack-chain"
+            },
+            {
+              "label": "Microsoft Security Blog — technical deep-dive (Oct 23, 18:12 UTC)",
+              "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
+            },
+            {
+              "label": "The Hacker News — write-up (Oct 24, 11:03 UTC)",
+              "url": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html"
+            },
+            {
+              "label": "Socket — independent investigation (Oct 22)",
+              "url": "https://socket.dev/blog/litellm-attack-timeline"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "22",
+              "name": "Utilities"
+            },
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "NCSC urgently investigates UK Storm-0940 exposure — ConnectWise notified the ICO — UK pledges £130m for AI cyber defense.",
+          "tldr": "Per The Telegraph — the single source returned — the NCSC is \"urgently investigating\" whether British organizations were compromised in Storm-0940’s ARTEX campaign, ConnectWise has notified the UK Information Commissioner’s Office, and UK ministers pledged £130m for AI-powered cyber defense.",
+          "source": "The Telegraph",
+          "url": "https://www.telegraph.co.uk/business/2026/10/24/uk-on-alert-over-beijing-backed-ai-hacking-spree/",
+          "summary": "Per The Telegraph (single source returned — verify before running): the NCSC, GCHQ's cyber arm, is \"urgently investigating\" whether British organizations were compromised by Storm-0940, working with Microsoft and others; ConnectWise has notified the UK Information Commissioner's Office, which is assessing the breach. The piece restates Microsoft's campaign reporting — sensitive industries including defence, energy, finance, government and technology were targeted — and adds ARTEX context: the framework was released publicly in July by a Chinese developer, won an award from Baidu, was used in attacks on South Korean banks and Japanese companies, and was taken offline in October after being copied by more than 12,000 people. Separately, UK ministers announced Saturday a £60m \"National Cyber Shield\" to use agentic AI to improve UK cyber defenses, plus £70m for AI tools that spot vulnerabilities across British critical infrastructure and the economy.",
+          "details": [
+            "The investigation: Per The Telegraph (single source returned — verify before running), the NCSC — GCHQ's cyber arm — is \"urgently investigating\" whether British organizations were compromised by Storm-0940, working with Microsoft and others.",
+            "The ICO: ConnectWise has notified the UK Information Commissioner's Office, which is assessing the breach.",
+            "The campaign restated: Sensitive industries including defence, energy, finance, government and technology were targeted; the piece adds ARTEX context — the framework was released publicly in July by a Chinese developer, won an award from Baidu, was used in attacks on South Korean banks and Japanese companies, and was taken offline in October after being copied by more than 12,000 people.",
+            "The funding: UK ministers announced Saturday a £60m \"National Cyber Shield\" to use agentic AI to improve UK cyber defenses, plus £70m for AI tools that spot vulnerabilities across British critical infrastructure and the economy."
+          ],
+          "links": [
+            {
+              "label": "The Telegraph — the single returned source (Oct 24, 05:30 UTC)",
+              "url": "https://www.telegraph.co.uk/business/2026/10/24/uk-on-alert-over-beijing-backed-ai-hacking-spree/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-23",
       "items": [
