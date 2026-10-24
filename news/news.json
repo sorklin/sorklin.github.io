@@ -6,6 +6,44 @@
       "date": "2026-10-24",
       "items": [
         {
+          "type": "deep-dive",
+          "slug": "artex-agentic-pentest-framework",
+          "category": "ai",
+          "industry": [
+            {
+              "code": "54",
+              "name": "Professional, Scientific, and Technical Services"
+            },
+            {
+              "code": "22",
+              "name": "Utilities"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            },
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            }
+          ],
+          "title": "ARTEX: one agentic hacking framework, four actor clusters — and 12,000-plus copies left in the wild.",
+          "tldr": "ARTEX is a dual-vendor-confirmed open-source, China-developed agentic pentest framework (built \"Autumn-27,\" public since July 2026, Baidu-contest winner) — and the record shows four distinct clusters using it or its pattern: a financially motivated actor (Recorded Future's TAG-217) behind the South Korean bank breaches, the China-state-aligned Storm-0940 behind ConnectWise and a global Microsoft 365 campaign (per Microsoft's assessment), an unattributed Japanese cluster, and a diffusion pattern across regions — with the framework's retreat to closed-source leaving forks and copies in the wild.",
+          "source": "Sorklin Research"
+        },
+        {
           "category": "ai",
           "industry": [
             {
