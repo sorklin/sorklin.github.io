@@ -1,7 +1,121 @@
 {
   "version": 3,
-  "updated": "2026-10-25",
+  "updated": "2026-10-26",
   "days": [
+    {
+      "date": "2026-10-26",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Onamae Desktop Cloud attack escalates: FX trades drained, ransomware threat, and Japan’s first Active Cyber Defense test.",
+          "tldr": "GMO acknowledged Oct 24 that data was exfiltrated from Onamae.com Desktop Cloud — customers report unauthorized FX trades (one loss exceeding 6 million yen), an extortionist calling itself \"Hacking Team\" threatened a ransomware strike on customers’ computers, and GMO’s request to invoke Japan’s new Active Cyber Defense law heads to an emergency ministerial panel today.",
+          "source": "The Asahi Shimbun",
+          "url": "https://www.asahi.com/ajw/articles/16994734",
+          "summary": "The attack on Onamae.com Desktop Cloud — GMO Internet's server-rental service used for automated foreign-exchange trading, where malware was found on up to 26,739 customer VPS instances (ran as the Oct 22 edition's main 6) — has escalated into a full-blown data-theft, extortion and financial-loss event. GMO acknowledged on Oct 24 that information had been exfiltrated from the service, that passwords and other trading-account information on its servers may have been viewed by third parties, and that the suspected attacker demanded money while threatening to release company and customer information; customers report unauthorized FX trades — one Kanagawa office worker lost more than 6 million yen on Oct 21 and later received a message from a sender calling itself \"Hacking Team\" reading \"We have destroyed your entire account balance.\" GMO says it will compensate customers for losses from unauthorized trades and will pay 5,000 yen (US$32) to all users of the service regardless of loss, and — per The Asahi Shimbun — on Oct 24 a person believed to be behind the attack posted online that a ransomware attack would be launched against customers' computers, prompting GMO to urge backups and virus scans. The escalation has reached Tokyo: GMO asked the government to invoke Active Cyber Defense — the legal framework that took effect earlier this month allowing police and the Self-Defense Forces to infiltrate attackers' systems and neutralize threats — a rare private-sector request; Chief Cabinet Secretary Minoru Kihara said any neutralization \"will be judged appropriately based on the relevant requirements,\" and a Prime Minister's Office official said further analysis was needed and any operation would likely stay undisclosed. Japan's first ministerial cybersecurity panel meets today (Oct 26) under PM Sanae Takaichi; the ruling LDP submitted recommendations Oct 23 for a dedicated cyber-response headquarters. Kihara: cyberattacks have become \"a serious situation threatening the public's safe and secure way of life.\"",
+          "details": [
+            "The escalation: The attack on Onamae.com Desktop Cloud — GMO Internet's server-rental service used for automated foreign-exchange trading, where malware was found on up to 26,739 customer VPS instances (the Oct 22 edition's main 6) — escalated into a data-theft, extortion and financial-loss event: GMO acknowledged on Oct 24 that information had been exfiltrated, that passwords and other trading-account information on its servers may have been viewed by third parties, and that the suspected attacker demanded money while threatening to release company and customer information.",
+            "The financial losses: Customers report unauthorized FX trades — one Kanagawa office worker lost more than 6 million yen on Oct 21 and later received a message from a sender calling itself \"Hacking Team\" reading \"We have destroyed your entire account balance.\"",
+            "The ransomware threat: Per The Asahi Shimbun, on Oct 24 a person believed to be behind the attack posted online that a ransomware attack would be launched against customers' computers, prompting GMO to urge backups and virus scans.",
+            "The compensation: GMO says it will compensate customers for losses from unauthorized trades and will pay 5,000 yen (US$32) to all users of the service regardless of loss.",
+            "The Active Cyber Defense request: GMO asked the government to invoke Active Cyber Defense — the legal framework that took effect earlier this month allowing police and the Self-Defense Forces to infiltrate attackers' systems and neutralize threats — a rare private-sector request; Chief Cabinet Secretary Minoru Kihara said any neutralization \"will be judged appropriately based on the relevant requirements,\" and a Prime Minister's Office official said further analysis was needed and any operation would likely stay undisclosed.",
+            "The government response: Japan's first ministerial cybersecurity panel meets today (Oct 26) under PM Sanae Takaichi; the ruling LDP submitted recommendations Oct 23 for a dedicated cyber-response headquarters; Kihara: cyberattacks have become \"a serious situation threatening the public's safe and secure way of life.\""
+          ],
+          "links": [
+            {
+              "label": "The Asahi Shimbun — the primary account (Oct 26, 17:02 JST, fetched)",
+              "url": "https://www.asahi.com/ajw/articles/16994734"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Malicious AGENTS.md in a Downloads folder hijacked AI coding agents — Codex 90%, Claude Code ~50% — nothing to patch.",
+          "tldr": "Forever Security researchers found a malicious AGENTS.md instruction file in a Downloads folder tricking AI coding agents into installing malware — Codex followed the instructions in more than 90% of reconstructed runs and a Claude Code demonstration exposed OAuth tokens in about half — with \"nothing for OpenAI or Anthropic to patch.\"",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
+          "summary": "Researchers at Forever Security found a malicious AGENTS.md instruction file in a customer's Downloads folder — which was also the coding agent's working directory — that tricked an AI coding agent into attempting to install a malicious npm package, \"function-color\" (blocked before execution). Because agents automatically load instruction files (AGENTS.md for Codex, CLAUDE.md for Claude Code) from their working directories, plain-Markdown instructions can drive real tool calls with the agent's existing permissions. In reconstructed tests: Codex followed the malicious instructions in more than 90% of runs — including modifying the machine-wide MCP server configuration and launching a new session with approval and sandbox restrictions bypassed, so the attacker's server persists across directories and sessions; a parallel CLAUDE.md demonstration redirected Claude Code's API traffic to a researcher-controlled server, exposing the agent's OAuth token and letting the server impersonate the model and return tool calls that executed code — successful in roughly half of tests — and a captured token was replayed against the legitimate API, demonstrating account compromise. The researchers could not determine how the file reached Downloads but note a malicious website could trigger the download without a separate prompt, and stress there is \"nothing here for OpenAI or Anthropic to patch — an agent that follows the AGENTS.md in its folder is doing exactly what it was built to do\"; the defense burden sits on users (treat untrusted directories as hostile, pin/inspect instruction files, restrict agent permissions). No in-the-wild victim beyond the blocked customer attempt has been reported.",
+          "details": [
+            "The find: Researchers at Forever Security found a malicious AGENTS.md instruction file in a customer's Downloads folder — also the coding agent's working directory — that tricked an AI coding agent into attempting to install a malicious npm package, \"function-color\" (blocked before execution); agents automatically load instruction files (AGENTS.md for Codex, CLAUDE.md for Claude Code) from their working directories, so plain-Markdown instructions can drive real tool calls with the agent's existing permissions.",
+            "The Codex results: Codex followed the malicious instructions in more than 90% of reconstructed runs — including modifying the machine-wide MCP server configuration and launching a new session with approval and sandbox restrictions bypassed, so the attacker's server persists across directories and sessions.",
+            "The Claude Code results: A parallel CLAUDE.md demonstration redirected Claude Code's API traffic to a researcher-controlled server, exposing the agent's OAuth token and letting the server impersonate the model and return tool calls that executed code — successful in roughly half of tests — and a captured token was replayed against the legitimate API, demonstrating account compromise.",
+            "The delivery question: The researchers could not determine how the file reached Downloads but note a malicious website could trigger the download without a separate prompt; no in-the-wild victim beyond the blocked customer attempt has been reported.",
+            "The verdict and the burden: The researchers stress there is \"nothing here for OpenAI or Anthropic to patch — an agent that follows the AGENTS.md in its folder is doing exactly what it was built to do\" — the defense burden sits on users: treat untrusted directories as hostile, pin/inspect instruction files, and restrict agent permissions."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — the research report (Oct 25, 11:49 AM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/"
+            },
+            {
+              "label": "CSO Online — follow-up (Oct 26)",
+              "url": "https://www.csoonline.com/article/4240222/malicious-downloads-can-trick-ai-coding-agents-into-compromising-themselves.html"
+            },
+            {
+              "label": "The Hacker News — follow-up (Oct 26)",
+              "url": "https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html"
+            },
+            {
+              "label": "Mashable — follow-up (Oct 25–26)",
+              "url": "https://mashable.com/tech/hackers-ai-coding-agents-downloads-malware"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            },
+            {
+              "code": "61",
+              "name": "Educational Services"
+            },
+            {
+              "code": "71",
+              "name": "Arts, Entertainment, and Recreation"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Seoul police bust generative-AI hacking ring: 7 suspects, 8.2M records, 90+ entities, 60 breached with AI tooling.",
+          "tldr": "Seoul police say seven suspects stole about 8.2 million records from more than 90 entities — using an AI coding agent and an autonomous pentest system to breach 60 companies in just over 40 days (per Yonhap and AI-translated secondary Korean reporting — verify before running).",
+          "source": "Yonhap",
+          "url": "https://en.yna.co.kr/view/AEN20261026005800315",
+          "summary": "Seoul police say they have broken up a cybercrime ring that stole about 8.2 million pieces of personal data and other internal records from more than 90 entities — hospitals, private academies, golf courses, universities, an affiliate of a large conglomerate and a regional mutual finance institution — from September 2025 onward. Seven suspects were apprehended; the 32-year-old ringleader — a self-taught hacker who learned the trade working at a security company running mock attacks — was referred to prosecutors on Friday (Oct 23) while under physical detention; six others face further questioning. The group used AI tools to hack 60 of the targets, and per Seoul Economic Daily the ringleader \"later used an AI coding agent and an autonomous AI penetration-testing system to breach 60 companies in just over 40 days, from Aug. 31 to the 13th of this month.\" 38 entities suffered losses; the group demanded a combined 360 million won (about US$272,000) — an attempt that failed — and collected about 300,000 won from one company; data taken from academies included information on minors. Both outlets call it the first South Korean arrest case involving large-scale misuse of generative AI; police themselves used an in-house AI tool to analyze ~530,000 pieces of investigative material. Notably, the pentest system \"was found to be the same tool used in a recent personal data breach in the financial sector\" — though police say no connection between the two cases has been confirmed, and neither outlet names the tool (the description matches an autonomous pentest system of the ARTEX class, but connecting it to ARTEX would be speculation). An agency cybercrime head: \"crime exploiting AI is evolving to a level that is difficult to counter with existing investigative methods alone.\" (Per Yonhap and AI-translated secondary Korean reporting — Seoul Economic Daily and SBS via On The Wire — with no police release found online; verify before running.)",
+          "details": [
+            "The ring: Seoul police say they broke up a cybercrime ring that stole about 8.2 million pieces of personal data and other internal records from more than 90 entities — hospitals, private academies, golf courses, universities, an affiliate of a large conglomerate and a regional mutual finance institution — from September 2025 onward; seven suspects were apprehended.",
+            "The ringleader: A 32-year-old self-taught hacker who learned the trade working at a security company running mock attacks was referred to prosecutors on Friday (Oct 23) while under physical detention; six others face further questioning.",
+            "The AI tooling: The group used AI tools to hack 60 of the targets, and per Seoul Economic Daily the ringleader later used an AI coding agent and an autonomous AI penetration-testing system to breach 60 companies in just over 40 days, from Aug. 31 to the 13th of this month; both outlets call it the first South Korean arrest case involving large-scale misuse of generative AI, and police themselves used an in-house AI tool to analyze ~530,000 pieces of investigative material.",
+            "The extortion and the data: 38 entities suffered losses; the group demanded a combined 360 million won (about US$272,000) — an attempt that failed — and collected about 300,000 won from one company; data taken from academies included information on minors.",
+            "The unnamed pentest system: The autonomous pentest system \"was found to be the same tool used in a recent personal data breach in the financial sector\" — though police say no connection between the two cases has been confirmed, and neither outlet names the tool (the description matches an autonomous pentest system of the ARTEX class, but connecting it to ARTEX would be speculation).",
+            "The assessment: An agency cybercrime head: \"crime exploiting AI is evolving to a level that is difficult to counter with existing investigative methods alone.\""
+          ],
+          "links": [
+            {
+              "label": "Yonhap — the wire report (Oct 26)",
+              "url": "https://en.yna.co.kr/view/AEN20261026005800315"
+            },
+            {
+              "label": "On The Wire — daily update aggregating Seoul Economic Daily and SBS (Oct 26, fetched; AI-translated secondary reporting — verify)",
+              "url": "https://onthewire.ai/article/daily-update-26-october-2026-seoul-police-arrest-gang-accused-of-using-ai-tools-"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-25",
       "items": [
