@@ -1,7 +1,116 @@
 {
   "version": 3,
-  "updated": "2026-10-26",
+  "updated": "2026-10-27",
   "days": [
+    {
+      "date": "2026-10-27",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "GMO Tenth Report: Onamae attackers dumped claimed data at 12:30 JST, no ransomware fired; demand was ~¥8B.",
+          "tldr": "GMO’s Tenth Report confirms attackers published claimed company and customer data at 12:30 JST Oct 27, no ransomware has fired as of 13:55, the demand reached approximately 8 billion yen (about US$50M) on Oct 21, and customers are being told to power off their PCs — with legal action prepared against leakers.",
+          "source": "GMO Internet",
+          "url": "https://internet.gmo/en/news/article/256/",
+          "summary": "The Onamae.com Desktop Cloud attack (GMO's server-rental service for automated FX trading; malware on up to 26,739 customer VPS — the Oct 22 edition) has entered its leak-and-threaten phase. Per GMO's Tenth Report (primary, fetched): at 12:30 JST Oct 27, persons believed to be the attackers published what they claim is company and customer information; GMO is verifying the content (\"it may contain information that is inconsistent with the facts\") and warns customers not to access or spread the leak site — \"The information of those who have accessed the site in question has been obtained by the attackers\" — and is preparing legal measures, including civil disclosure requests and criminal complaints, against those who spread the information with malice. \"As of 13:55 on October 27, no ransomware attack has been confirmed. We remain on alert.\" — countering the attacker's Oct 24 post threatening a ransomware strike on customers' computers. Customer guidance now includes running a full antivirus scan, backing up data, disconnecting the PC from the network and powering it off (a request first made at 9:58 JST ahead of the 12:00 announcement), never sharing passwords/authentication codes, and refusing any \"recover your losses\" offer. GMO reiterates it will not comply with the attackers' demands — whose timeline shows a threatening email on Oct 21 demanding approximately 8 billion yen (about US$50M), police consultation Oct 22, the Active Cyber Defense request Oct 24 (ran Oct 26), device custody and white-hat analysis since Oct 26 — with customers whose information appears in the leak now getting separate sympathy-payment deliberations on top of the flat 5,000 yen, and offers of cooperation from Trend Micro, AI companies and others. Korean and trade coverage frames the standoff: \"Japan's GMO faces daily data-leak threats… hackers demand $50M ransom; GMO's refusal highlights Japan's cybersecurity gaps\" (Chosun). The government's Active Cyber Defense decision and the Oct 26 ministerial panel's outcome remain unannounced.",
+          "details": [
+            "The dump: Per GMO's Tenth Report (primary, fetched Oct 27 13:55 JST), at 12:30 JST Oct 27 persons believed to be the attackers published what they claim is company and customer information; GMO is verifying the content (\"it may contain information that is inconsistent with the facts\").",
+            "The warning: GMO warns customers not to access or spread the leak site — \"The information of those who have accessed the site in question has been obtained by the attackers\" — and is preparing legal measures, including civil disclosure requests and criminal complaints, against those who spread the information with malice.",
+            "No ransomware yet: \"As of 13:55 on October 27, no ransomware attack has been confirmed. We remain on alert\" — countering the attacker's Oct 24 post threatening a ransomware strike on customers' computers.",
+            "Customer guidance: Run a full antivirus scan, back up data, disconnect the PC from the network and power it off (a request first made at 9:58 JST ahead of the 12:00 announcement); never share passwords or authentication codes; refuse any \"recover your losses\" offer.",
+            "The demand and the timeline: GMO reiterates it will not comply with the attackers' demands — the record shows a threatening email on Oct 21 demanding approximately 8 billion yen (about US$50M), police consultation Oct 22, the Active Cyber Defense request Oct 24 (ran Oct 26), and device custody with white-hat analysis since Oct 26.",
+            "Payments and cooperation: Customers whose information appears in the leak are getting separate sympathy-payment deliberations on top of the flat 5,000 yen, and GMO notes offers of cooperation from Trend Micro, AI companies and others.",
+            "The framing: Korean and trade coverage frames the standoff — \"Japan's GMO faces daily data-leak threats… hackers demand $50M ransom; GMO's refusal highlights Japan's cybersecurity gaps\" (Chosun); the government's Active Cyber Defense decision and the Oct 26 ministerial panel's outcome remain unannounced."
+          ],
+          "links": [
+            {
+              "label": "GMO Internet — Tenth Report (Oct 27, 13:55 JST; fetched)",
+              "url": "https://internet.gmo/en/news/article/256/"
+            },
+            {
+              "label": "Chosun — the standoff framing (Oct 27)",
+              "url": "https://www.chosun.com/english/world-en/2026/10/27/UAJAZFUEABFCBHJHP6FXYGQWZ4/"
+            },
+            {
+              "label": "Tech Insider — the $50M-demand coverage (Oct 27)",
+              "url": "https://tech-insider.org/gmo-internet-ransomware-warning-50m-demand-onamae-desktop-cloud-2026/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA adds both PHP2Shell flaws to KEV — active exploitation confirmed; 32.5M services unpatched; FCEB deadline Oct 29.",
+          "tldr": "CISA added CVE-2026-109618 and CVE-2026-109619 (each CVSS 9.2) to the KEV catalog on Oct 26, confirming active exploitation of the PHP2Shell flaws emergency-patched Oct 21 — following a Perplexity researcher’s documented successful RCE against honeypots; about 32.5 million PHP services still run an affected version, and the FCEB deadline is Oct 29.",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching",
+          "summary": "CISA added both PHP2Shell flaws — CVE-2026-109618 (out-of-memory corruption enabling unauthenticated RCE) and CVE-2026-109619 (stale internal request-state enabling unauthenticated RCE), each CVSS 9.2 — to the Known Exploited Vulnerabilities catalog on Monday, Oct 26, confirming active exploitation of the vulnerabilities PHP emergency-patched on Oct 21; the CISA alert was updated accordingly, and federal agencies have until Oct 29, 2026 to apply the fixes (fix versions 8.5.12/8.4.27/8.3.36/8.2.35). The confirmation follows Perplexity detection-and-response lead Adel Karimi's Oct 24 report of successful RCE against honeypot systems: \"This is now confirmed RCE with usable memory disclosure, not just a crash followed by a suspicious process — the response delivered an 800 KiB decoded cookie dump, and a function address derived from that dump using the public exploit's offsets appears in the subsequent execution payload\" (on the favorable single-worker mod_php profile; not a reliability measure elsewhere). Censys estimates more than 32.51 million PHP services still run an affected version, and the vendor-advisory list now spans dozens of affected products (ABB, Arista, Broadcom, Canon, Citrix, Craft CMS, Dell, Drupal, F5, Hikvision, HPE, Hitachi Energy, Huawei, IBM, Ivanti, Johnson Controls, Mitel, Moxa, NETGEAR, Okta, QNAP, Rockwell, Salesforce, Schneider Electric, Siemens, SonicWall, Splunk, Synology, Veeam, WordPress and more). Related: the PHP Foundation shipped Windows builds on Oct 26 that also address CVE-2026-111497 — the Brotli-decoder out-of-bounds write (Broccoli2Shell/HTTP2Shell/Node2Shell) OpenAI's red-teaming surfaced — which is reachable in PHP Windows builds via the cURL extension when automatic response decompression is enabled (off by default); Brotli 1.0.3–1.2.0 is affected, fixed in 1.0.10/1.1.1/1.2.1 and across Node.js, Bun, Envoy, Istio, .NET and Python. Tenable notes CVE-2026-111497 was not in KEV as of Oct 26.",
+          "details": [
+            "The KEV additions: CISA added both PHP2Shell flaws to the Known Exploited Vulnerabilities catalog on Monday, Oct 26 — CVE-2026-109618 (out-of-memory corruption enabling unauthenticated RCE) and CVE-2026-109619 (stale internal request-state enabling unauthenticated RCE), each CVSS 9.2 — confirming active exploitation of the vulnerabilities PHP emergency-patched on Oct 21; the CISA alert was updated accordingly.",
+            "The deadline and the fix: Federal agencies have until Oct 29, 2026, to apply the fixes — versions 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35.",
+            "The honeypot confirmation: The KEV move follows Perplexity detection-and-response lead Adel Karimi's Oct 24 report of successful RCE against honeypot systems — \"This is now confirmed RCE with usable memory disclosure, not just a crash followed by a suspicious process — the response delivered an 800 KiB decoded cookie dump, and a function address derived from that dump using the public exploit's offsets appears in the subsequent execution payload\" (on the favorable single-worker mod_php profile; not a reliability measure elsewhere).",
+            "The exposure: Censys estimates more than 32.51 million PHP services still run an affected version, and the vendor-advisory list now spans dozens of affected products (ABB, Arista, Broadcom, Canon, Citrix, Craft CMS, Dell, Drupal, F5, Hikvision, HPE, Hitachi Energy, Huawei, IBM, Ivanti, Johnson Controls, Mitel, Moxa, NETGEAR, Okta, QNAP, Rockwell, Salesforce, Schneider Electric, Siemens, SonicWall, Splunk, Synology, Veeam, WordPress and more).",
+            "The Brotli note: The PHP Foundation shipped Windows builds on Oct 26 that also address CVE-2026-111497 — the Brotli-decoder out-of-bounds write (Broccoli2Shell/HTTP2Shell/Node2Shell) OpenAI's red-teaming surfaced — reachable in PHP Windows builds via the cURL extension when automatic response decompression is enabled (off by default); Brotli 1.0.3–1.2.0 is affected, fixed in 1.0.10/1.1.1/1.2.1 and across Node.js, Bun, Envoy, Istio, .NET and Python, and Tenable notes CVE-2026-111497 was not in KEV as of Oct 26."
+          ],
+          "links": [
+            {
+              "label": "The Hacker News — KEV-confirmation coverage (Oct 27, 1:00 AM ET, fetched)",
+              "url": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html"
+            },
+            {
+              "label": "CISA — php2shell alert, updated (Oct 21/26)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching"
+            },
+            {
+              "label": "CISA — KEV catalog (October 2026)",
+              "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "Tenable — Brotli2Shell FAQ (Oct 26–27)",
+              "url": "https://www.tenable.com/blog/brotli2shell-frequently-asked-questions-for-google-brotli-decoder-cve-2026-111497"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Ex-DOGE staffers’ startup says its AI agents reached Anthropic’s sales, HR and IT systems in under 12 hours.",
+          "tldr": "Cathedral — a months-old startup founded by four ex-DOGE staffers, valued at $1.4B in July — told Anthropic its AI agents penetrated internal data and messaging systems in under 12 hours through third-party software; Anthropic confirms \"a limited set\" of sales, HR and IT systems was reached, says customer conversations, Claude responses, source code and model weights were not, and disputes the framing (per The Washington Post — a compile-gap catch-up).",
+          "source": "The Washington Post",
+          "url": "https://www.washingtonpost.com/technology/2026/10/26/researchers-cybersecurity-start-up-cathedral-got-inside-anthropic/",
+          "summary": "Cathedral — a months-old cybersecurity startup founded by four former staffers of the Department of Government Efficiency (DOGE) that raised $160M at a $1.4B valuation in July — told Anthropic that its researchers had penetrated sensitive internal data and messaging systems, per a draft report reviewed by The Washington Post. The way in was not Claude but third-party administrative and sales software (\"the kind of programs companies use to track customers and manage staff — many other companies use the same software\"), and Cathedral's AI agents, running multi-step tasks without per-action approval, found routes in under 12 hours — reaching, per the draft, meeting transcripts, salary and job-offer details, and Slack messages about Anthropic's advanced models. The engagement ran through a program structured like a bug bounty. Anthropic's response (per the WaPo and Decrypt): the researchers reached \"a limited set\" of sales, HR and IT systems holding business contact details and basic user account records; customer conversations, Claude responses, source code and model weights were not reached; \"our monitoring flagged some of Cathedral's activity before they reported it to us — we shut off their access the same day\"; and Anthropic says Cathedral overstated the national-security implications and did not disclose all of its testing. Cathedral says it kept data access \"to the absolute minimum.\" The story lands amid mounting concern about AI-race security — and about ex-DOGE personnel now working in the private sector. (The Washington Post published Oct 26 5:00 AM ET — a compile-gap catch-up missed by the Oct 26 edition.)",
+          "details": [
+            "The claim: Cathedral — a months-old cybersecurity startup founded by four former staffers of the Department of Government Efficiency (DOGE) that raised $160M at a $1.4B valuation in July — told Anthropic its researchers had penetrated sensitive internal data and messaging systems, per a draft report reviewed by The Washington Post.",
+            "The way in: Not Claude but third-party administrative and sales software (\"the kind of programs companies use to track customers and manage staff — many other companies use the same software\"); Cathedral's AI agents, running multi-step tasks without per-action approval, found routes in under 12 hours — reaching, per the draft, meeting transcripts, salary and job-offer details, and Slack messages about Anthropic's advanced models. The engagement ran through a program structured like a bug bounty.",
+            "Anthropic's response: The researchers reached \"a limited set\" of sales, HR and IT systems holding business contact details and basic user account records; customer conversations, Claude responses, source code and model weights were not reached; \"our monitoring flagged some of Cathedral's activity before they reported it to us — we shut off their access the same day\"; and Anthropic says Cathedral overstated the national-security implications and did not disclose all of its testing. Cathedral says it kept data access \"to the absolute minimum.\"",
+            "The context: The story lands amid mounting concern about AI-race security — and about ex-DOGE personnel now working in the private sector (The Washington Post published Oct 26 5:00 AM ET — a compile-gap catch-up missed by the Oct 26 edition; Decrypt followed Oct 26 3:31 PM ET)."
+          ],
+          "links": [
+            {
+              "label": "The Washington Post — the draft-report account (Oct 26, 5:00 AM ET)",
+              "url": "https://www.washingtonpost.com/technology/2026/10/26/researchers-cybersecurity-start-up-cathedral-got-inside-anthropic/"
+            },
+            {
+              "label": "Decrypt — Anthropic’s response coverage (Oct 26, 3:31 PM ET)",
+              "url": "https://decrypt.co/381860/ai-agents-hack-anthropic-business-systems-12-hours"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-26",
       "items": [
