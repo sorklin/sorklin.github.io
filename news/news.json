@@ -1,7 +1,133 @@
 {
   "version": 3,
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "days": [
+    {
+      "date": "2026-10-28",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "GMO makes refusal permanent, adds ¥3M-per-person condolence schedule and a $1M cybercrime bounty; leak site taken down.",
+          "tldr": "GMO’s Twelfth Report (Oct 27 — a compile-gap catch-up) makes the refusal permanent, adds a tiered condolence schedule up to ¥3 million per person, and launches a US$1 million cybercrime bounty — and the Thirteenth Report confirms the perpetrators’ leak-site domain was suspended at about 4:00 a.m. JST Oct 28.",
+          "source": "GMO Internet",
+          "url": "https://internet.gmo/en/news/article/258/",
+          "summary": "GMO's Twelfth Report (Oct 27 19:10 JST — a compile-gap catch-up missed by the Oct 27 edition) formalizes what the Oct 27 edition reported as intent: the company \"will permanently refuse to comply\" with the perpetrators' demands (the ~¥8-billion/US$50M emailed Oct 21), reasoning that payment guarantees neither deletion nor non-use and would fund further attacks; police are consulted and the response proceeds with them. It details a GMO Special Condolence Payment for customers whose information was published — ¥10,000 for basic info (name/contact details), ¥15,000 for financial/authentication info (trading account IDs, passwords), ¥25,000 for highly private info — summed per category up to ¥3 million per person, paid separately from the flat ¥5,000 condolence payment and transaction-loss compensation announced Oct 24. It also launches the \"GMO Cybercrime Bounty\": total cap US$1 million (reference ~¥150 million at ¥150/US$), soliciting specific, verifiable information leading to identification/arrest of those involved or clarification of the incident (perpetrator identity/whereabouts, attack infrastructure, funds flow and attribution, chain of command); the portal at cybercrimebounty.gmo opened 12:00 JST Oct 28 (11:00 PM ET Oct 27) and runs in Japanese/English/Chinese until the perpetrators are arrested; GMO stresses it is not a ransom and excludes perpetrators, accomplices, and anyone whose information was illegally obtained. The Twelfth also renews warnings: visitors' information was harvested by the leak site (run a full AV scan if you accessed it), evidence is being preserved, and civil disclosure requests and criminal complaints are prepared against malicious spreaders — plus a phishing/fraud caution tied to the incident. The Thirteenth Report (Oct 28 11:00 JST) confirms the perpetrators' site domain — including mirror sites — was suspended at about 4:00 a.m. JST Oct 28 after takedown work with relevant business operators; GMO pledges immediate takedowns of any new sites, and warns that posting, reproducing, or spreading links to the published data (even \"casually\") may be treated as complicity — posts will be recorded and preserved, reported to X, and provided to police. Still no ransomware has fired (last addressed in the Tenth Report, 13:55 JST Oct 27).",
+          "details": [
+            "The permanent refusal: GMO's Twelfth Report (Oct 27 19:10 JST — a compile-gap catch-up missed by the Oct 27 edition) formalizes that the company \"will permanently refuse to comply\" with the perpetrators' demands (the ~¥8-billion/US$50M emailed Oct 21), reasoning that payment guarantees neither deletion nor non-use and would fund further attacks; police are consulted and the response proceeds with them.",
+            "The tiered condolence schedule: A GMO Special Condolence Payment for customers whose information was published — ¥10,000 for basic info (name/contact details), ¥15,000 for financial/authentication info (trading account IDs, passwords), ¥25,000 for highly private info — summed per category up to ¥3 million per person, paid separately from the flat ¥5,000 condolence payment and transaction-loss compensation announced Oct 24.",
+            "The bounty: The \"GMO Cybercrime Bounty\" carries a total cap of US$1 million (reference ~¥150 million at ¥150/US$), soliciting specific, verifiable information leading to identification or arrest of those involved or clarification of the incident (perpetrator identity/whereabouts, attack infrastructure, funds flow and attribution, chain of command); the portal at cybercrimebounty.gmo opened 12:00 JST Oct 28 (11:00 PM ET Oct 27) and runs in Japanese/English/Chinese until the perpetrators are arrested; GMO stresses it is not a ransom and excludes perpetrators, accomplices, and anyone whose information was illegally obtained.",
+            "The renewed warnings: Visitors' information was harvested by the leak site (run a full AV scan if you accessed it); evidence is being preserved; civil disclosure requests and criminal complaints are prepared against malicious spreaders — plus a phishing/fraud caution tied to the incident.",
+            "The Thirteenth Report: The perpetrators' site domain — including mirror sites — was suspended at about 4:00 a.m. JST Oct 28 after takedown work with relevant business operators; GMO pledges immediate takedowns of any new sites, and warns that posting, reproducing, or spreading links to the published data (even \"casually\") may be treated as complicity — posts will be recorded and preserved, reported to X, and provided to police.",
+            "Still no ransomware: No ransomware has fired (last addressed in the Tenth Report, 13:55 JST Oct 27)."
+          ],
+          "links": [
+            {
+              "label": "GMO Internet — Twelfth Report (Oct 27, 19:10 JST; fetched)",
+              "url": "https://internet.gmo/en/news/article/258/"
+            },
+            {
+              "label": "GMO Internet — Thirteenth Report (Oct 28, 11:00 JST; fetched)",
+              "url": "https://internet.gmo/en/news/article/259/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA adds Google Brotli and Adobe Commerce/Magento flaws to KEV — the Brotli watch item resolved one day on.",
+          "tldr": "CISA’s Oct 27 KEV additions — both \"based on evidence of active exploitation\" — cover CVE-2026-111497 (Google Brotli, the OpenAI-red-team find whose KEV absence was reported Oct 27) and CVE-2026-48356 (Adobe Commerce/Magento file upload); the Magento FCEB due date is Nov 10 per Rescana (single source — verify).",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/10/27/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+          "summary": "CISA added two vulnerabilities to the KEV catalog based on evidence of active exploitation: CVE-2026-48356 (Adobe Commerce and Magento — unrestricted upload of file with dangerous type) and CVE-2026-111497 (Google Brotli — unchecked return value). The Brotli add resolves the Oct 27 edition's watch item: that edition noted Brotli was not yet in KEV as of Oct 26 (per Tenable) and was patched in the PHP Foundation's Oct 26 Windows builds (reachable via cURL auto-decompression, off by default) — it is now formally listed as exploited. For the Magento flaw, per Rescana (single source returned — verify before running), the FCEB remediation due date is Nov 10 and the fix shipped in the July 2026 APSB26-73 patch bundle; the CISA alert page itself states no due dates, and no victim organizations or sectors are named. This alert is separate from the php2shell additions of Oct 26 (CVE-2026-109618/109619, FCEB deadline Oct 29 — tomorrow).",
+          "details": [
+            "The additions: CISA added two vulnerabilities to the KEV catalog based on evidence of active exploitation — CVE-2026-48356 (Adobe Commerce and Magento — unrestricted upload of file with dangerous type) and CVE-2026-111497 (Google Brotli — unchecked return value) — in an Oct 27 release.",
+            "The Brotli watch item, resolved: The Oct 27 edition noted Brotli was not yet in KEV as of Oct 26 (per Tenable) and was patched in the PHP Foundation's Oct 26 Windows builds (reachable via cURL auto-decompression, off by default) — it is now formally listed as exploited.",
+            "The Magento detail: Per Rescana (single source returned — verify before running), the FCEB remediation due date is Nov 10 and the fix shipped in the July 2026 APSB26-73 patch bundle; the CISA alert page itself states no due dates, and no victim organizations or sectors are named.",
+            "The separation: This alert is separate from the php2shell additions of Oct 26 (CVE-2026-109618/109619, FCEB deadline Oct 29 — tomorrow)."
+          ],
+          "links": [
+            {
+              "label": "CISA — KEV alert (Oct 27)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/10/27/cisa-adds-two-known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "Rescana — KEV/due-date detail (Oct 28)",
+              "url": "https://www.rescana.com/post/adobe-commerce-magento-cve-2026-48356-file-upload-rce-kev-october-2026"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Comet: intruder used an inactive account’s API key to siphon 29 internal OpenAI and Anthropic keys via an Opik flaw.",
+          "tldr": "Per Comet’s incident post — the single source returned — an unauthorized party used an inactive account’s comet.com API key to reach Comet’s own internal test workspaces and exploit a flaw in Opik’s AI-provider settings, obtaining 29 internal OpenAI and Anthropic keys; all 29 were revoked and no customer data was touched.",
+          "source": "Comet",
+          "url": "https://www.comet.com/site/blog/security-incident-october-2026/",
+          "summary": "Per Comet's incident post (single source — company statement; verify before running): an unauthorized party used a comet.com user API key from an inactive account — the same kind of key any Opik user holds, with no admin rights and no customer-workspace access — to access a small number of Comet's own internal test workspaces. From there the attacker exploited a flaw in Opik's AI-provider settings to obtain 29 API keys Comet uses internally for OpenAI and Anthropic, and tried the same flaw against other Comet systems without obtaining customer data. An AI provider alerted Comet to unusual activity on Oct 26; Comet blocked the exploited functionality the same morning, deployed a fix, revoked all 29 exposed keys, removed the inactive account, audited workspaces for stale members, and rotated internal credentials as a precaution; log review found no customer-data exposure. Opik on comet.com was down ~2 hours on Oct 26, with AI-provider settings, the Playground, and Ollie temporarily disabled. Hardening: provider-address changes now require API-key re-entry, provider request destinations are restricted, and monitoring for provider-settings changes and unusual outbound traffic was added. Comet says it has no evidence its systems were involved in how the key was obtained.",
+          "details": [
+            "The access: Per Comet's incident post (single source — company statement; verify before running), an unauthorized party used a comet.com user API key from an inactive account — the same kind of key any Opik user holds, with no admin rights and no customer-workspace access — to access a small number of Comet's own internal test workspaces.",
+            "The theft: From there the attacker exploited a flaw in Opik's AI-provider settings to obtain 29 API keys Comet uses internally for OpenAI and Anthropic, and tried the same flaw against other Comet systems without obtaining customer data.",
+            "The containment: An AI provider alerted Comet to unusual activity on Oct 26; Comet blocked the exploited functionality the same morning, deployed a fix, revoked all 29 exposed keys, removed the inactive account, audited workspaces for stale members, and rotated internal credentials as a precaution; log review found no customer-data exposure.",
+            "The downtime: Opik on comet.com was down ~2 hours on Oct 26, with AI-provider settings, the Playground, and Ollie temporarily disabled.",
+            "The hardening: Provider-address changes now require API-key re-entry, provider request destinations are restricted, and monitoring for provider-settings changes and unusual outbound traffic was added; Comet says it has no evidence its systems were involved in how the key was obtained."
+          ],
+          "links": [
+            {
+              "label": "Comet — Opik Security Incident: October 2026 (Oct 27; the single source returned)",
+              "url": "https://www.comet.com/site/blog/security-incident-october-2026/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Anthropic rebuttal: the Cathedral probe stretched over days, found two bugs, reported one — and broke bounty rules.",
+          "tldr": "Per The Decoder citing Anthropic red-team lead Logan Graham, the Cathedral probe \"stretched over several days\" — not \"under 12 hours\" — found two vulnerabilities with only one reported, and Anthropic says the startup broke the bug-bounty program’s rules through incomplete disclosure; Cathedral maintains it followed standard security research practices.",
+          "source": "The Decoder",
+          "url": "https://the-decoder.com/ai-agents-hacked-anthropic-maker-of-arguably-the-most-capable-ai-models-for-cyberdefense/",
+          "summary": "Per The Decoder citing Anthropic red-team lead Logan Graham: Anthropic says the attempted attack stretched over several days — not the \"under 12 hours\" Cathedral claims — and only pivoted to third-party software after days of probing its own systems; Cathedral found two vulnerabilities but reported only one, and Anthropic says it discovered and patched the second itself. Graham accuses Cathedral of violating the bug-bounty program's rules through incomplete disclosure, saying targeting third-party providers and pulling data went beyond the program's safe-harbor provisions — while welcoming the discoveries; Cathedral maintains it followed standard security research practices. The Independent (Oct 27) adds context: the disclosure landed hours after Anthropic filed IPO papers (expected to be the largest listing in history, exceeding SpaceX's $1.8T valuation); an anonymous Trump administration official said \"If a bunch of kids who have just started a company can do this, then potentially the Chinese aren't far behind\"; ExtraHop's Heath Mullins called it a basic third-party \"hygiene failure\" / supply-chain exposure rather than a sophisticated AI attack. Standing facts unchanged: sales/HR/IT systems reached (meeting transcripts, salary and job-offer data, Slack messages about advanced models, some customer/partner contact info and basic user-account records); Claude conversations, source code, and model weights not accessed; access shut off the same day; affected third-party tools disabled pending vendor fixes; vendors remain unnamed.",
+          "details": [
+            "The rebuttal: Per The Decoder (Oct 28, ~6:56 AM ET) citing Anthropic red-team lead Logan Graham, the attempted attack stretched over several days — not the \"under 12 hours\" Cathedral claims — and only pivoted to third-party software after days of probing Anthropic's own systems; Cathedral found two vulnerabilities but reported only one, and Anthropic says it discovered and patched the second itself.",
+            "The rule violation: Graham accuses Cathedral of violating the bug-bounty program's rules through incomplete disclosure, saying targeting third-party providers and pulling data went beyond the program's safe-harbor provisions — while welcoming the discoveries; Cathedral maintains it followed standard security research practices.",
+            "The context: The Independent (Oct 27) adds that the disclosure landed hours after Anthropic filed IPO papers (expected to be the largest listing in history, exceeding SpaceX's $1.8T valuation); an anonymous Trump administration official said \"If a bunch of kids who have just started a company can do this, then potentially the Chinese aren't far behind\"; ExtraHop's Heath Mullins called it a basic third-party \"hygiene failure\" / supply-chain exposure rather than a sophisticated AI attack.",
+            "Standing facts unchanged: Sales/HR/IT systems reached (meeting transcripts, salary and job-offer data, Slack messages about advanced models, some customer/partner contact info and basic user-account records); Claude conversations, source code, and model weights not accessed; access shut off the same day; affected third-party tools disabled pending vendor fixes; vendors remain unnamed."
+          ],
+          "links": [
+            {
+              "label": "The Decoder — the Logan Graham rebuttal (Oct 28, ~6:56 AM ET)",
+              "url": "https://the-decoder.com/ai-agents-hacked-anthropic-maker-of-arguably-the-most-capable-ai-models-for-cyberdefense/"
+            },
+            {
+              "label": "The Independent — context and timeline (Oct 27, 10:09 AM ET)",
+              "url": "https://www.independent.co.uk/tech/security/ai-hack-anthropic-cathedral-breach-b3073909.html"
+            },
+            {
+              "label": "The Independent — bulletin (Oct 27, 11:34 AM ET)",
+              "url": "https://www.independent.co.uk/bulletin/news/anthropic-ai-claude-hack-cathedral-b3074274.html"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-27",
       "items": [
