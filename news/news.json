@@ -6,6 +6,60 @@
       "date": "2026-10-31",
       "items": [
         {
+          "type": "deep-dive",
+          "slug": "agentic-harnesses-2026-record",
+          "category": "ai",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            },
+            {
+              "code": "54",
+              "name": "Professional, Scientific, and Technical Services"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "61",
+              "name": "Educational Services"
+            },
+            {
+              "code": "72",
+              "name": "Accommodation and Food Services"
+            },
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "42",
+              "name": "Wholesale Trade"
+            }
+          ],
+          "title": "Agentic harnesses: the 2026 record of AI-aided breaches, the four roles they play, and the six findings",
+          "tldr": "The 2026 record (emphasis September–October) documents four harness roles in real intrusions — purpose-built offensive frameworks, repurposed coding and CLI agents, abused agent infrastructure, and a defensive side consolidating faster than the offensive canon — with per-hack economics of roughly $5–$50 per successful intrusion and no model provider breached in any harness case on record; the load-bearing caveat is that \"agents were used\" is far better evidenced than \"who ran them.\"",
+          "source": "Sorklin Research"
+        },
+        {
           "category": "ai",
           "industry": [
             {
