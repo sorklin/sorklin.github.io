@@ -1,7 +1,151 @@
 {
   "version": 3,
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "days": [
+    {
+      "date": "2026-10-31",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "Chainalysis disclosed a breach by attackers using \"offensive agentic techniques,\" with customer records accessed.",
+          "tldr": "Blockchain-analytics firm Chainalysis says an external actor used \"offensive agentic techniques\" to gain unauthorized access to its systems and internal tools earlier this month, accessing user IDs, full names, email addresses, and role labels for platform users — per Chainalysis's disclosure; the \"agentic techniques\" characterization is the company's own and so far single-sourced.",
+          "source": "Chainalysis",
+          "url": "https://www.chainalysis.com/blog/security-incident-october-30/",
+          "summary": "Chainalysis published a security-incident notice on Oct 30 (~5:14 PM ET) saying it detected an external actor using \"offensive agentic techniques\" to gain unauthorized access to its systems and internal tools earlier this month. The accessed data covers user IDs, full names, email addresses, and organizational role labels for users provisioned on its platform, with a per-organization breakdown still pending. Chainalysis says there is no evidence of access to investigation content (graphs, notes, cases), transaction or query results, plaintext passwords, MFA secrets, or user session tokens, and that the incident is unrelated to the recent Binance theft. Per BleepingComputer (Oct 31, ~8:50 AM ET), a spokesperson confirmed the company is working with external cybersecurity experts and is using LLMs to support a broader security review; no technical details — exploited vulnerabilities, which internal tools, dwell time — have been shared, and it is unclear whether the attackers used an existing agentic offensive framework such as ARTEX or custom-built agents (the \"agentic techniques\" characterization is Chainalysis's own and so far single-source).",
+          "details": [
+            "The disclosure: Chainalysis published a security-incident notice ~5:14 PM ET Oct 30 (with the affected-customer email in full) saying it detected an external actor using \"offensive agentic techniques\" to gain unauthorized access to its systems and internal tools earlier this month.",
+            "The flag: the \"agentic techniques\" characterization is Chainalysis's own and so far single-source — no independent confirmation in returned material.",
+            "What was accessed: user IDs, full names, email addresses, and organizational role labels for users provisioned on the platform; a per-organization breakdown is still pending.",
+            "What was not accessed (per Chainalysis): no evidence of access to investigation content (graphs, notes, cases), transaction or query results, plaintext passwords, MFA secrets, or user session tokens.",
+            "Not Binance-related: the company says the incident is unrelated to the recent Binance theft.",
+            "The response: per BleepingComputer (Oct 31, ~8:50 AM ET), a Chainalysis spokesperson confirmed the company is working with external cybersecurity experts and is using LLMs to support a broader security review.",
+            "Open questions: no exploited vulnerability, affected internal tools, or dwell time disclosed; it is unclear whether the attackers used an existing agentic offensive framework such as ARTEX or custom-built agents.",
+            "Source basis: the notice itself was not fetched — facts ride the notice's returned search highlights plus BleepingComputer's follow-up."
+          ],
+          "links": [
+            {
+              "label": "Chainalysis — the security-incident notice (Oct 30, ~5:14 PM ET)",
+              "url": "https://www.chainalysis.com/blog/security-incident-october-30/"
+            },
+            {
+              "label": "BleepingComputer — the follow-up (Oct 31, ~8:50 AM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Binance's record theft attributed to North Korea's TraderTraitor — $6.36 billion across 10 blockchains",
+          "tldr": "TRM Labs attributes the record theft from Binance to TraderTraitor, North Korea's cyber unit — $6.36 billion across 10 blockchains, the largest crypto theft on record — with evidence pointing to a compromise of Binance's hot-wallet signing infrastructure; Binance has not confirmed the attribution.",
+          "source": "TRM Labs",
+          "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+          "summary": "Update to Oct 30's main story: TRM Labs puts the loss at $6.36 billion across 10 blockchains — the largest crypto theft on record — and attributes the attack to TraderTraitor, North Korea's cyber unit, \"with evidence pointing to a compromise of Binance's hot wallet signing infrastructure\" (TRM blog); Reuters reported the attribution Oct 30. Per DW — the single source on the FBI angle — Binance halted trading over the North Korea-linked hack and the FBI attributed it to TraderTraitor; AP's Oct 31 explainer repeats the ~$6.3B figure and the attribution. Per Noma's Oct 30 incident recap, most funds moved in ~20 minutes. Binance has not confirmed the attribution — it maintains there is no evidence of private-key compromise and estimates ~$6.3B impact with ~$3B frozen.",
+          "details": [
+            "The scale: $6.36 billion left Binance wallets across 10 blockchains — the largest crypto theft on record (TRM Labs, Oct 30).",
+            "The attribution: TraderTraitor, North Korea's cyber unit, \"with evidence pointing to a compromise of Binance's hot wallet signing infrastructure\" (TRM blog); Reuters reported the attribution Oct 30.",
+            "The FBI angle: per DW — the single source on this point — the FBI attributed the hack to TraderTraitor; DW also reports Binance halted trading over the North Korea-linked incident.",
+            "Binance's position: has not confirmed the attribution, maintains there is no evidence of private-key compromise, and estimates ~$6.3B impact with ~$3B frozen.",
+            "The speed: per Noma's Oct 30 incident recap, most funds moved in ~20 minutes.",
+            "Corroboration: AP's Oct 31 explainer repeats the ~$6.3B figure and the TraderTraitor attribution."
+          ],
+          "links": [
+            {
+              "label": "TRM Labs — the attribution analysis (Oct 30)",
+              "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
+            },
+            {
+              "label": "Reuters — the attribution report (Oct 30)",
+              "url": "https://www.reuters.com/legal/government/blockchain-analysis-firm-trm-says-north-korea-behind-binance-crypto-theft-2026-10-30/"
+            },
+            {
+              "label": "DW — the trading-halt and FBI report (Oct 31, ~12:45 AM ET)",
+              "url": "https://www.dw.com/en/binance-crypto-exchange-suspends-trades-over-north-korea-linked-hack/a-79803280"
+            },
+            {
+              "label": "AP — the explainer (Oct 31, ~6:45 AM ET)",
+              "url": "https://apnews.com/article/binance-cryptocurrency-security-hack-north-korea-550e9b876550f71f07098494fe735beb"
+            },
+            {
+              "label": "Noma — the incident explainer (Oct 30)",
+              "url": "https://noma.security/blog/the-call-is-coming-from-inside-the-laptop-the-pentagon-and-binance-incidents-explained"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Microsoft details trojanized Claude Code extension (2.1.313/2.1.312) served by Cursor's marketplace",
+          "tldr": "Per Microsoft Threat Intelligence, the injected JavaScript in malicious anthropic.claude-code 2.1.313/2.1.312 — served by Cursor's extension marketplace for about 11 hours on Oct 29 — attempts to add an attacker SSH key, enable SSH access, and persist on developer machines; the malicious packages never reached the Microsoft (Visual Studio) Marketplace or npm, and a separate, unrelated Cursor browser flaw surfaced the same day.",
+          "source": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/30/inside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor/",
+          "summary": "Microsoft Threat Intelligence analyzed the injected JavaScript in malicious anthropic.claude-code versions 2.1.313 and 2.1.312, which Cursor's extension marketplace served Oct 29 from about 2:27 AM to 1:35 PM PDT (~11 hours). The injected loader runs at extension-module load and attempts to add an attacker-controlled SSH key, enable the local SSH service, establish reverse SSH forwarding, configure persistence, and report host details — and may write keys/persistence artifacts even when tunnel access fails. Microsoft states the malicious packages were never published or distributed via the Microsoft (Visual Studio) Marketplace or npm @anthropic-ai/claude-code, and that Anthropic confirmed its systems were not compromised and it did not develop the package. Per Dark Reading, Cursor says at most 5,000 users were affected; OpenSourceMalware analysis found the only change was a single edit to extension.js — exfiltration limited to hostname, username, OS, paths, env-var names, git emails, and public IP, with per-OS persistence via LaunchAgent/scheduled tasks. Dark Reading also notes that on the same day a researcher (Weizman) described an unrelated Cursor flaw allowing arbitrary code deployment via Cursor's built-in browser — rating Cursor's the worst of the tested AI desktop assistants (Claude Desktop, GitHub Copilot, Codex, VS Code also tested); Cursor did not respond to inquiries.",
+          "details": [
+            "Malicious versions: 2.1.313 and 2.1.312 of anthropic.claude-code, served by Cursor's extension marketplace Oct 29 from about 2:27 AM to 1:35 PM PDT (~11 hours).",
+            "The loader: runs at extension-module load and attempts to add an attacker-controlled SSH key, enable the local SSH service, establish reverse SSH forwarding, configure persistence, and report host details — and may write keys/persistence artifacts even when tunnel access fails.",
+            "What stayed clean: Microsoft states the malicious packages were never published or distributed via the Microsoft (Visual Studio) Marketplace or npm @anthropic-ai/claude-code; Anthropic confirmed its systems were not compromised and it did not develop the package.",
+            "Scope and anatomy: per Dark Reading, Cursor says at most 5,000 users were affected; OpenSourceMalware analysis found the only change was a single edit to extension.js — exfiltration limited to hostname, username, OS, paths, env-var names, git emails, and public IP, with per-OS persistence via LaunchAgent/scheduled tasks.",
+            "The separate flaw: on the same day, a researcher (Weizman) described an unrelated Cursor flaw allowing arbitrary code deployment via Cursor's built-in browser — rating Cursor's the worst of the tested AI desktop assistants (Claude Desktop, GitHub Copilot, Codex, VS Code also tested); Cursor did not respond to inquiries.",
+            "Still open: how the Cursor marketplace listing was taken over, Open-VSX's response, and whether the 2.1.312 distribution window extends the exposure."
+          ],
+          "links": [
+            {
+              "label": "Microsoft Security Blog — the analysis (Oct 30, ~5:02 PM ET)",
+              "url": "https://www.microsoft.com/en-us/security/blog/2026/10/30/inside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor/"
+            },
+            {
+              "label": "Dark Reading — the coverage (Oct 30, ~4:05 PM ET)",
+              "url": "https://www.darkreading.com/cyberattacks-data-breaches/devs-trojanized-claude-code-extension-cursor"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Malicious ChatGPT share link could run attacker code in signed-in sessions; OpenAI fixed it as a P1",
+          "tldr": "Researchers at Parameter showed (per The Hacker News — the sole write-up returned) that a shared ChatGPT conversation link could run attacker-controlled code inside the signed-in session of anyone who opened it and reach chats that were never shared; OpenAI reproduced the proofs, raised the severity to P1, and shipped a fix by Oct 26.",
+          "source": "The Hacker News",
+          "url": "https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html",
+          "summary": "A shared ChatGPT conversation link could run attacker-controlled code inside the signed-in session of anyone who opened it — per The Hacker News, reporting Parameter's research (Parameter's own write-up URL was not returned). In the most reliable variant, the code ran when the victim clicked ChatGPT's Preview button; in a later variant, Preview opened automatically. The code called ChatGPT's own signed-in APIs — listing the victim's recent conversations, opening a private chat that was never shared, and sending part of it to an attacker server; Parameter writes it could \"perform any action on behalf of the victim's ChatGPT account.\" Reported through OpenAI's bug bounty on Oct 18; OpenAI reproduced both proofs, raised severity P2→P1, and rolled a fix across two web-frontend versions by Oct 26. Parameter reports no real-world abuse — a controlled test between accounts.",
+          "details": [
+            "The vector: a shared ChatGPT conversation link could run attacker-controlled code inside the signed-in session of anyone who opened it — most reliably by clicking ChatGPT's Preview button; in a later variant, Preview opened automatically.",
+            "The impact: the code called ChatGPT's own signed-in APIs, listing the victim's recent conversations, opening a private chat that was never shared, and sending part of it to an attacker server; per Parameter it could \"perform any action on behalf of the victim's ChatGPT account.\"",
+            "The timeline: reported through OpenAI's bug bounty Oct 18; OpenAI reproduced both proofs, raised severity P2→P1, and rolled a fix across two web-frontend versions by Oct 26; disclosed Oct 31 (~1:33 AM ET).",
+            "No abuse seen: Parameter reports no real-world abuse — a controlled test between accounts.",
+            "Source note: per The Hacker News; Parameter's own write-up URL was not returned."
+          ],
+          "links": [
+            {
+              "label": "The Hacker News — the disclosure (Oct 31, ~1:33 AM ET)",
+              "url": "https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-30",
       "items": [
