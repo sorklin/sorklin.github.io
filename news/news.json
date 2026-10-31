@@ -55,8 +55,8 @@
               "name": "Wholesale Trade"
             }
           ],
-          "title": "Agentic harnesses: the 2026 record of AI-aided breaches, the four roles they play, and the six findings",
-          "tldr": "The 2026 record (emphasis September–October) documents four harness roles in real intrusions — purpose-built offensive frameworks, repurposed coding and CLI agents, abused agent infrastructure, and a defensive side consolidating faster than the offensive canon — with per-hack economics of roughly $5–$50 per successful intrusion and no model provider breached in any harness case on record; the load-bearing caveat is that \"agents were used\" is far better evidenced than \"who ran them.\"",
+          "title": "The weaponized agentic harness: who is firing it, at whom, and at machine speed",
+          "tldr": "The 2026 record shows the agentic harness — not the model inside it — operating as a weapon in real intrusions: one open-source framework, ARTEX, served state espionage, extortion crews and commodity swarms alike (per CrowdStrike, Microsoft, Google GTIG/Mandiant and Zscaler), CrowdStrike counted roughly 45 agentic adversary attacks in September rising to 126 in October, and observed tempo exceeded 1,500 commands per hour against a historical 40 — while Rapid7's counterweight holds that AI is an operational component in just 8% of tracked incidents.",
           "source": "Sorklin Research"
         },
         {
