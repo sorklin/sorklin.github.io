@@ -1,7 +1,185 @@
 {
   "version": 3,
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "days": [
+    {
+      "date": "2026-11-01",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Wiz counted nine hacked AI developer platforms in \"Black October\" — and Northflank told customers to rotate every key.",
+          "tldr": "Wiz's \"Black October\" report counts nine hacked AI developer platforms — Fireworks AI, Andromeda, Zeabur, Lightning AI, OpenCode, Railway, Warp, CommandCode, and Northflank — all hunted for stored environment variables and AI keys; Northflank, the ninth, has told customers to assume every environment variable was decrypted and to rotate every key.",
+          "source": "Wiz",
+          "url": "https://www.wiz.io/blog/black-october-for-ai-developer-platforms",
+          "summary": "Wiz published its \"Black October\" census on Oct 30 (6:51 PM ET), tying nine incidents at AI developer platforms to stolen credentials: Fireworks AI, Andromeda, Zeabur, Lightning AI, OpenCode, Railway, Warp, CommandCode, and Northflank. The common pattern is attackers hunting stored environment variables and AI keys, then abusing them — including LLMjacking: about 800,000 and 1.7 million Bedrock calls on two stolen enterprise keys, estimated at more than $100,000. Zeabur is shutting down. Northflank — the ninth platform, flagged in a Wiz alert on Oct 30 (11:43 UTC) — told customers to assume every environment variable was decrypted and to rotate every key, confirmed several users' AI keys were abused, and turned on audit logs for all customers on Oct 31 (per Agent News Daily). Wiz explicitly finds no single vulnerability linking the nine incidents, and \"agent swarm\" claims rest on executive statements, not on the report's findings. Anyone building on these platforms should treat stored keys and environment variables as exposed and rotate them.",
+          "details": [
+            "The census: Wiz's \"Black October\" report (published Oct 30, 6:51 PM ET) counts nine incidents at AI developer platforms: Fireworks AI, Andromeda, Zeabur, Lightning AI, OpenCode, Railway, Warp, CommandCode, and Northflank.",
+            "The pattern: all nine involve attackers hunting stored environment variables and AI keys, then abusing them — including LLMjacking: about 800,000 and 1.7 million Bedrock calls on two stolen enterprise keys, estimated at more than $100,000.",
+            "Northflank: the ninth platform, flagged in a Wiz alert on Oct 30 (11:43 UTC) — told customers to assume every environment variable was decrypted and to rotate every key; confirmed several users' AI keys were abused; turned on audit logs for all customers on Oct 31 (per Agent News Daily).",
+            "Zeabur: shutting down, per the report.",
+            "No single cause: Wiz explicitly finds no single vulnerability linking the nine incidents; \"agent swarm\" claims rest on executive statements, not on the report's findings.",
+            "Fresh coverage: SXZ's dissection of the Northflank notice ran Nov 1 at 6:22 AM ET, with dstld.news also covering the incidents; Futurum's analysis published Oct 31 at 8:07 AM ET."
+          ],
+          "links": [
+            {
+              "label": "Wiz — the \"Black October\" report (Oct 30)",
+              "url": "https://www.wiz.io/blog/black-october-for-ai-developer-platforms"
+            },
+            {
+              "label": "SXZ — the Northflank notice dissection (Nov 1, 6:22 AM ET)",
+              "url": "https://sxz.io/northflank-environment-variables-decrypted-wiz-nine-ai-platform-incidents/"
+            },
+            {
+              "label": "dstld.news — the writeup (Nov 1)",
+              "url": "https://dstld.news/cybersecurity/2026-11-01/wiz-links-nine-ai-platform-incidents-to-stolen-credentials-and-model-key-abuse"
+            },
+            {
+              "label": "Agent News Daily — the brief with the Northflank audit-log move (Nov 1)",
+              "url": "https://agentnewsdaily.com/brief/2026-11-01"
+            },
+            {
+              "label": "Futurum — the analysis (Oct 31, 8:07 AM ET)",
+              "url": "https://futurumgroup.com/insights/black-october-llmjacking-wave-exposes-ai-infrastructures-credential-crisis/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "Rhysida listed Phoenix Charter Academy, claiming 445 GB of named minors' special-education and immigration files.",
+          "tldr": "The Rhysida ransomware group listed Phoenix Charter Academy — a Massachusetts charter network serving mainly low-income and immigrant families — on its leak site on Oct 31, claiming 36,829 files / 445.1 GB including named minors' special-education records and families' immigration records; the listing is corroborated verbatim on the RansomLook tracker, but every figure is attacker-claimed and the school has not confirmed.",
+          "source": "RansomLook",
+          "url": "https://www.ransomlook.io/group/Rhysida",
+          "summary": "Rhysida listed Phoenix Charter Academy on its leak site on Oct 31, claiming 36,829 files / 445.1 GB. The academy is a Massachusetts public charter network (Chelsea, Lawrence, Springfield) serving mainly low-income and immigrant families. The listing claims student special-education records of named minors — signed IEP/504 plans for 2025–26, BASC-3 psychological protocols, re-evaluations, speech-therapy and discipline files — plus families' immigration records (CBP I-94 entry records, parole applications), staff W-2s with SSNs, passport scans, bank statements, CORI background checks, MassHealth/immunization data, and password hashes for about 170+ staff accounts, and says a domain controller, file/helpdesk/print servers, and a PowerSchool test server were taken. The listing content is corroborated verbatim on the RansomLook tracker (primary), but no school confirmation exists and every figure is attacker-claimed; the school has not responded publicly. Per ThreatVectr, Rhysida has appeared in three of its stories since Aug 31 and recurs on schools and healthcare; the two writeups (ThreatVectr, QPulse) are AI-assisted trade outlets — treat as unconfirmed until the school responds. The group's post gives a claimed attack/discovery time of Oct 31 12:35 UTC (8:35 AM ET).",
+          "details": [
+            "The listing: Rhysida added Phoenix Charter Academy to its leak site on Oct 31, claiming 36,829 files / 445.1 GB; the group's post gives a claimed attack/discovery time of Oct 31 12:35 UTC (8:35 AM ET).",
+            "Who's affected: a Massachusetts public charter network with campuses in Chelsea, Lawrence, and Springfield, serving mainly low-income and immigrant families.",
+            "Claimed student data: special-education records of named minors — signed IEP/504 plans for 2025–26, BASC-3 psychological protocols, re-evaluations, speech-therapy and discipline files.",
+            "Claimed family and staff data: families' immigration records (CBP I-94 entry records, parole applications); staff W-2s with SSNs, passport scans, bank statements, CORI background checks, MassHealth/immunization data, and password hashes for about 170+ staff accounts.",
+            "Claimed systems: a domain controller, file/helpdesk/print servers, and a PowerSchool test server taken.",
+            "Corroboration and limits: the listing content is corroborated verbatim on the RansomLook tracker (primary), but no school confirmation exists and every figure is attacker-claimed; the school has not responded publicly.",
+            "Context: ThreatVectr notes Rhysida has appeared in three of its stories since Aug 31 and recurs on schools and healthcare; both writeups (ThreatVectr Oct 31 ~9:05 PM ET; QPulse Oct 31 ~11:36 PM ET) are AI-assisted trade outlets — verify before treating as confirmed.",
+            "What to watch: school or district confirmation, a PowerSchool angle, and whether Rhysida escalates from auction to publication."
+          ],
+          "links": [
+            {
+              "label": "RansomLook — Rhysida group page with the Oct 31 listing",
+              "url": "https://www.ransomlook.io/group/Rhysida"
+            },
+            {
+              "label": "ThreatVectr — the writeup (Oct 31, ~9:05 PM ET)",
+              "url": "https://threatvectr.com/story/rhysida-claims-attack-on-phoenix-charter-academy-alleging-student-immigration"
+            },
+            {
+              "label": "QPulse — the writeup (Oct 31, ~11:36 PM ET)",
+              "url": "https://qpulse.quasarcybertech.com/news/7653/rhysida-ransomware-group-targets-phoenix-charter-academy-exfiltrating-445gb-of-sensitive-student-and-staff-data"
+            },
+            {
+              "label": "DarkWeb Monitor — mirror of the Rhysida auction page",
+              "url": "https://darkweb.thugs.red/site/367-rhysida-auction"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA's KEV deadlines fall due today: Cisco ASA/FTD DoS, CVSS 10.0 GitLab CI/CD RCE, and two Ivanti Connect Secure flaws.",
+          "tldr": "Federal remediation deadlines under CISA's Known Exploited Vulnerabilities catalog land Nov 1–2: a Cisco Secure Firewall ASA/FTD DoS (CVE-2026-76418) and a CVSS 10.0 GitLab CI/CD RCE (CVE-2026-97229) are due today, and two Ivanti Connect Secure flaws from the UTA0576 zero-day chain are due Nov 1–2 — with mandatory forensic triage attached.",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "summary": "Per CISA's catalog and CSV, CVE-2026-76418 — an unchecked-return-value NULL-dereference DoS in Cisco Secure Firewall ASA/FTD, reachable via unauthenticated remote requests (added Oct 29) — and CVE-2026-97229, a CVSS 10.0 integer overflow from weak regex validation in GitLab CE/EE CI/CD configurations enabling unauthenticated code execution (affecting GitLab 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2), are both due today, Nov 1. The two Ivanti Connect Secure additions from the UTA0576 zero-day chain — the Volexity-documented unauthenticated RCE against fully patched appliances, chained on CVE-2026-104935 — are due Nov 1 (CVE-2026-118527) and Nov 2 (CVE-2026-111357), both marked \"forensic triage required\" under BOD 26-04. One discrepancy: SecurityAffairs prints Nov 13 for CVE-2026-118527, but CISA's CSV says 2026-11-01 — the primary governs. CISA's CSV also shows Linux kernel CVE-2026-46300 (missing variable initialization) came due Oct 31 — it is chainable with the php2shell PHP flaws to implant webshells and run commands as root.",
+          "details": [
+            "Cisco — CVE-2026-76418: Secure Firewall ASA/FTD unchecked-return-value NULL-dereference DoS via unauthenticated remote requests; added to the catalog Oct 29; remediation due Nov 1.",
+            "GitLab — CVE-2026-97229: CVSS 10.0 integer overflow from weak regex validation in CI/CD configurations, enabling unauthenticated code execution; affects GitLab CE/EE 19.2 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2; due Nov 1.",
+            "Ivanti — the UTA0576 chain: the two Connect Secure additions stem from the Volexity-documented zero-day chain — unauthenticated RCE against fully patched appliances, chained on CVE-2026-104935; CVE-2026-118527 is due Nov 1 and CVE-2026-111357 due Nov 2, both marked \"forensic triage required\" under BOD 26-04.",
+            "Date discrepancy: SecurityAffairs prints Nov 13 for CVE-2026-118527; CISA's CSV says 2026-11-01 — the primary governs.",
+            "Also due: Linux kernel CVE-2026-46300 (missing variable initialization) came due Oct 31 — chainable with the php2shell PHP flaws to implant webshells and run commands as root."
+          ],
+          "links": [
+            {
+              "label": "CISA — the KEV catalog",
+              "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "CISA — the KEV CSV",
+              "url": "https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv"
+            },
+            {
+              "label": "SecurityAffairs — the GitLab and Cisco adds (Oct 30)",
+              "url": "https://securityaffairs.com/202133/security/u-s-cisa-adds-gitlab-and-cisco-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+            },
+            {
+              "label": "SecurityAffairs — the Ivanti adds (Oct 31)",
+              "url": "https://securityaffairs.com/202175/security/u-s-cisa-adds-ivanti-connect-secure-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "New extortion group BYOD hit UNM Health Sciences Center, offering free decryption and up to $2,500 per patient.",
+          "tldr": "Per Yahoo's writeup — the single source returned — new extortion group BYOD hit UNM Health Sciences Center on Oct 26, diverting ambulances from 12:30 to 2:30 PM, then offered free decryption for the hospital side and up to $2,500 per affected patient while saying it will keep the stolen data; UNM says only end-user devices were involved and warns against contacting the group.",
+          "source": "Yahoo",
+          "url": "https://finance.yahoo.com/technology/ai/articles/hackers-hit-unm-hospital-then-120000897.html",
+          "summary": "New extortion group BYOD hit UNM Health Sciences Center on Oct 26, per Yahoo's writeup (Oct 31, 8:00 AM ET) — the single source returned. Per the writeup, ambulances were diverted from 12:30 to 2:30 PM, about 30 clinics and four colleges were affected, and the group then offered free decryption for the hospital side and up to $2,500 per affected patient — while saying it will keep the stolen data. UNM says end-user devices only were involved — core systems were not penetrated — and warns against contacting the group; the FBI is assisting. A Yaamlabs analysis (Nov 1, 10:42 AM ET, just after this edition's window closed) examines the attack. The group's claims and figures are attacker statements — treat as reported, not confirmed.",
+          "details": [
+            "The incident: new extortion group BYOD hit UNM Health Sciences Center on Oct 26; per the writeup, ambulances were diverted from 12:30 to 2:30 PM, and about 30 clinics and four colleges were affected.",
+            "The offer: free decryption for the hospital side and up to $2,500 per affected patient — while the group says it will keep the stolen data.",
+            "UNM's position: end-user devices only — core systems not penetrated; the hospital warns against contacting the group; the FBI is assisting.",
+            "Source limits: the Yahoo piece (Oct 31, 8:00 AM ET) is the single source returned — the group's figures are attacker claims; the Yaamlabs analysis is post-window (Nov 1, 10:42 AM ET)."
+          ],
+          "links": [
+            {
+              "label": "Yahoo — the writeup (Oct 31, 8:00 AM ET)",
+              "url": "https://finance.yahoo.com/technology/ai/articles/hackers-hit-unm-hospital-then-120000897.html"
+            },
+            {
+              "label": "Yaamlabs — the analysis (Nov 1, 10:42 AM ET, post-window)",
+              "url": "https://yaamlabs.com/blog/unm-health-byod-extortion-attack"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "Frontline Education breach reaches school nurses' Medicaid billing records — 805,382 people in four states.",
+          "tldr": "Frontline Education — a Pennsylvania vendor of K-12 HR and health software — says unauthorized access to its Frontline Central and School Health Management platforms ran Aug 14–15, 2026, reaching the system school nurses use to document care and bill Medicaid; state filings put the count at 805,382 people across four states, per the single writeup returned.",
+          "source": "MedRisk",
+          "url": "https://medrisk.io/2026/11/01/frontline-education-school-health-medicaid-breach/",
+          "summary": "Frontline Education (Wayne, PA) says its team found a vulnerability in a third-party software component on Aug 14, 2026, and that unauthorized access ran Aug 14–15 across two platforms: Frontline Central (HR/employee records) and School Health Management, which school nurses use to document care and bill Medicaid. Exposed data per the writeup includes Medicaid identifiers, student IDs, birth dates, and SSNs. State filings put the count at 805,382 people across MA, NH, VT, and TX — 778,372 in Texas alone; Greenville County Schools (SC) confirmed School Health Management was the only affected system on its end, and Killeen ISD (TX) was told about 45,000 current and former employees may be affected. Notification letters began mailing Oct 26. Frontline has not named the product or flaw, has not published a total, and no ransomware group has claimed the intrusion. Per MedRisk — the single source returned — verify against state AG filings before treating the counts as confirmed.",
+          "details": [
+            "The vendor: Frontline Education (Wayne, PA — K-12 HR/health software); it says its team found a vulnerability in a third-party software component on Aug 14, 2026, and that unauthorized access ran Aug 14–15.",
+            "The platforms: Frontline Central (HR/employee records) and School Health Management, which school nurses use to document care and bill Medicaid.",
+            "Exposed data per the writeup: Medicaid identifiers, student IDs, birth dates, and SSNs.",
+            "The count: state filings put it at 805,382 people across MA, NH, VT, and TX — 778,372 in Texas alone.",
+            "Districts: Greenville County Schools (SC) confirmed School Health Management was the only affected system on its end; Killeen ISD (TX) was told about 45,000 current and former employees may be affected.",
+            "Notifications: letters began mailing Oct 26; more state AG filings and district notifications are expected into November.",
+            "Still unknown: Frontline has not named the product or flaw, has not published a total, and no ransomware group has claimed the intrusion.",
+            "Source limits: per MedRisk (Oct 31, ~10:49 PM ET) — the single source returned; verify against state AG filings before treating counts as confirmed."
+          ],
+          "links": [
+            {
+              "label": "MedRisk — the writeup (Oct 31, ~10:49 PM ET)",
+              "url": "https://medrisk.io/2026/11/01/frontline-education-school-health-medicaid-breach/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-10-31",
       "items": [
