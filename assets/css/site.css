@@ -1094,6 +1094,7 @@ figure.chart { margin: 0; }
 .dd-facts li { font-size: 14.5px; line-height: 1.65; }
 .dd-sources { margin-top: 12px; }
 .dd-sources li { font-size: 14.5px; }
+.dd-backrow { margin-top: 26px; }
 
 /* -- homepage strip: latest headlines, pinned below the nav -------------- */
 .brief-strip {

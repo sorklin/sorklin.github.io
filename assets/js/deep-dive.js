@@ -27,7 +27,6 @@
     tldr: document.getElementById("dd-tldr"),
     tldrText: document.getElementById("dd-tldr-text"),
     summary: document.getElementById("dd-summary"),
-    backRow: document.getElementById("dd-back-row"),
     bodySec: document.getElementById("dd-body-sec")
   };
 
@@ -136,8 +135,16 @@
       PAGE.summary.hidden = false;
       PAGE.summary.textContent = dive.summary;
     }
-    if (PAGE.backRow) PAGE.backRow.hidden = false;
     if (PAGE.bodySec) PAGE.bodySec.hidden = false;
+
+    /* Key facts and Sources follow the summary directly; the back link is
+       the last element on the page (website-osm — owner-corrected
+       2026-11-02: the first pass had this order backwards). Built here, not
+       in the page shell, so errorState's own back link stays the only one
+       up top. Also clears the loading placeholder: the feed renderer
+       empties its list inside render(); this page must too, or "Loading…"
+       lingers. */
+    content.textContent = "";
 
     var hasFacts = Array.isArray(dive.details) && dive.details.length;
     var hasSources = Array.isArray(dive.links) && dive.links.length;
@@ -175,6 +182,12 @@
     noteBody.appendChild(em);
     note.appendChild(noteBody);
     content.appendChild(note);
+
+    var backRow = el("div", "cta-row dd-backrow");
+    var back = el("a", "btn btn-ghost", "Back to the Daily Brief");
+    back.href = "/news/";
+    backRow.appendChild(back);
+    content.appendChild(backRow);
   }
 
   var slug = "";
