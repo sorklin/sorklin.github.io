@@ -1,7 +1,119 @@
 {
   "version": 3,
-  "updated": "2026-11-01",
+  "updated": "2026-11-02",
   "days": [
+    {
+      "date": "2026-11-02",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "title": "Amadeus breach widens past eight airlines — booking-display vulnerability confirmed and fixed",
+          "tldr": "Unauthorized access at Amadeus — the Spain-based provider behind airline reservation, ticketing and check-in systems worldwide — exposed passenger reservation data spanning August 2023 to September 2026, the affected-airline tally has grown past eight, and per NST/Business Times Amadeus now confirms on the record a booking-display vulnerability that it says is fixed.",
+          "source": "NST/Business Times",
+          "url": "https://www.nst.com.my/business/corporate/2026/11/1569011/amadeus-fixes-booking-system-vulnerability-amid-airline-data",
+          "summary": "Unauthorized access at Amadeus IT Group exposed passenger reservation data processed for its airline customers between August 10, 2023 and September 23, 2026, and the list of affected airlines has grown from four to as many as eight-plus in under two weeks: Cathay Pacific (~53,000 bookings), Japan Airlines and Japan Transocean Air (~92,000 customers — about 90,000 with PNR, name and flight details, and about 2,000 also with email, phone, passport number, nationality, frequent-flyer and ticket/seat data), ANA (~37,800), Malaysia Airlines (count undisclosed), Korean Air and Asiana (notified Oct 20, counts undisclosed), plus Qantas, and Condor and StarFlyer (reported confirmed, per The Contrail's live tally). In its first on-record confirmation, in-window on Nov 2, Amadeus calls it \"a vulnerability affecting a travel booking display environment,\" says certain booking-display data was accessible, says it has fixed the vulnerability, and reports no evidence payment or financial data was accessed and \"no indications that this vulnerability has been exploited for ransomware purposes\" (per NST/Business Times). Cathay says the access used login credentials assigned to an Amadeus system account. No airline reports compromise of its own systems, and no card numbers or passwords were involved per JAL and ANA. With PNR, name and flight data — and some passport numbers — exposed, phishing against passengers is the near-term harm.",
+          "details": [
+            "The incident: unauthorized access at Amadeus IT Group — the Spain-based global provider of airline reservation, ticketing and check-in systems — exposed passenger reservation data processed for its airline customers between August 10, 2023 and September 23, 2026.",
+            "The airline list: Cathay Pacific (~53,000 bookings); Japan Airlines and Japan Transocean Air (~92,000 customers — about 90,000 with PNR, name and flight details, about 2,000 also with email, phone, passport number, nationality, frequent-flyer and ticket/seat data); ANA (~37,800); Malaysia Airlines (count undisclosed); Korean Air and Asiana (notified Oct 20, counts undisclosed); Qantas (says it is \"working with them to understand the impact\"; Amadeus \"advised the issue was contained in September\"); Condor and StarFlyer (reported confirmed, per The Contrail's live tally) — the list grew from four to as many as eight-plus airlines in under two weeks.",
+            "Amadeus on the record: per NST/Business Times (Nov 2, 01:50 ET), the company's first confirmation — \"a vulnerability affecting a travel booking display environment\"; \"certain booking-display data was accessible\"; the vulnerability has been fixed; no evidence payment or financial data was accessed; \"no indications that this vulnerability has been exploited for ransomware purposes.\"",
+            "Access method: Cathay says the access used login credentials assigned to an Amadeus system account.",
+            "No airline-system compromise: no airline reports compromise of its own systems; no card numbers or passwords involved per JAL/ANA.",
+            "Timeline: airline notifications from Amadeus Oct 20 (Korean Air, Asiana) and Oct 23 (JAL/JTA) per NST; public disclosures Oct 28–30 (JAL, Cathay, ANA, Malaysia Airlines); in-window updates from CNA (Nov 1, 00:01 ET), The Contrail (Nov 1, 05:50 ET), News24 (Nov 1, 16:27 ET), The Star (Nov 1, 19:53 ET) and NST/Business Times (Nov 2, 01:50 ET). Malaysia Airlines' own statement was published Oct 30; the independent in-window movement is Amadeus's confirmation, the Qantas notice, and the Condor/StarFlyer additions.",
+            "Still developing: Amadeus has not said how many airline customers were hit or named the entry point beyond the system-account credentials, and more airline notices are likely; phishing risk to passengers with exposed PNR, name and flight data (and some passport numbers) is the near-term harm."
+          ],
+          "links": [
+            {
+              "label": "NST/Business Times — Amadeus statement (Nov 2, 01:50 ET)",
+              "url": "https://www.nst.com.my/business/corporate/2026/11/1569011/amadeus-fixes-booking-system-vulnerability-amid-airline-data"
+            },
+            {
+              "label": "CNA — the in-window report (Nov 1, 00:01 ET)",
+              "url": "https://www.channelnewsasia.com/asia/malaysia-airlines-amadeus-security-breach-6510631"
+            },
+            {
+              "label": "The Contrail — live tally of affected airlines (Nov 1, 05:50 ET)",
+              "url": "https://www.thecontrail.org/amadeus-data-breach-airlines/"
+            },
+            {
+              "label": "News24 — Qantas (Nov 1, 16:27 ET)",
+              "url": "https://www.news24.com.au/business/markets/qantas-alerts-australian-cyber-security-centre-over-data-breach-concerns-after-booking-service-provider-amadeus-exposure/news-story/9a076cfaecfd9ca6aab3f672f89dd10d"
+            },
+            {
+              "label": "Cathay Pacific — statement (Oct 30)",
+              "url": "https://www.cathaypacific.com/cx/en_US/latest-news/security-and-operational-changes/personal-data-security.html"
+            },
+            {
+              "label": "JAL — statement (Oct 28)",
+              "url": "https://www.jal.co.jp/en-jp/news/general/2026/other/261028.html"
+            },
+            {
+              "label": "ANA — statement (Oct 30)",
+              "url": "https://www.ana.co.jp/en/us/special-notice/001615.html?p1=top&p2=en&p3=global"
+            },
+            {
+              "label": "Malaysia Airlines — statement (Oct 30)",
+              "url": "https://www.malaysiaairlines.com/hq/en/mh-media-centre/important-for-you/passengers-to-arrive-early-klia1.html"
+            },
+            {
+              "label": "The Star — the report (Nov 1, 19:53 ET)",
+              "url": "https://www.thestar.com.my/business/business-news/2026/11/02/malaysia-airlines-says-customer-data-may-be-affected-by-amadeus-breach"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "GMO CEO bows in apology at first Onamae Desktop Cloud press conference — 26,000+ cases, reported North Korea links",
+          "tldr": "GMO Internet Group's CEO bowed in apology at the company's first press conference on the October attack on its Onamae Desktop Cloud service, confirming more than 26,000 affected cases and a security vulnerability left unaddressed for over two years — and per Kyodo News, five attack IPs match those previously used by a North Korean hacking group.",
+          "source": "AP News",
+          "url": "https://apnews.com/article/hack-cyberattack-security-gmo-japan-1a14fac1015f2bbca62a07358615af19",
+          "summary": "GMO Internet Group CEO Masatoshi Kumagai held the company's first press conference since the October attack on Onamae.com Desktop Cloud (the server-rental service for automated FX trading; malware on up to 26,739 customer VPS per the Oct 22 edition), bowing in apology and confirming unauthorized access produced leaked information and transactions customers didn't recall making, affecting dozens of securities firms and other businesses — more than 26,000 cases. GMO revealed a security vulnerability had gone unaddressed for more than two years after it was identified — \"we were not able to utilize (the vulnerability alert) in the operation of the service,\" per Kyodo — and acknowledged the attackers deployed ransomware, previously unconfirmed. It says it refused to pay the reported ~¥8 billion (~$50M) demand and is offering a $1 million bounty that has drawn over 400 submissions. Kumagai and other executives took pay cuts (CEO 30% for three months); customers get a flat ¥5,000 (~$30) goodwill payment plus loss compensation, and GMO says it will switch to a new security system. Attribution is reported, not confirmed: per Kyodo News working with experts, five IP addresses used to access a now-shuttered website claiming responsibility matched those previously used by a North Korean hacking group — GMO and police have not formally attributed the attack.",
+          "details": [
+            "The press conference: GMO Internet Group CEO Masatoshi Kumagai held the company's first press conference since the October attack on Onamae.com Desktop Cloud — the server-rental service for automated FX trading, where malware reached up to 26,739 customer VPS per the Oct 22 edition — and bowed in apology.",
+            "Confirmed impact: unauthorized access produced leaked information and transactions customers didn't recall making, affecting dozens of securities firms and other businesses — more than 26,000 cases.",
+            "The ignored alert: a security vulnerability had gone unaddressed for more than two years after it was identified — \"we were not able to utilize (the vulnerability alert) in the operation of the service,\" per Kyodo.",
+            "Ransomware: GMO acknowledged the attackers deployed ransomware — not previously confirmed — and says it refused to pay the reported ~¥8 billion (~$50M) demand.",
+            "Remedies: Kumagai and other executives took pay cuts (CEO 30% for three months); customers get a flat ¥5,000 (~$30) goodwill payment plus loss compensation; GMO says it will switch to a new security system.",
+            "Bounty: the company's $1 million \"GMO Cybercrime Bounty\" has drawn over 400 submissions so far.",
+            "Attribution (reported, not confirmed): per Kyodo News working with experts, five IP addresses used to access a now-shuttered website claiming responsibility matched those previously used by a North Korean hacking group — GMO and police have not formally attributed the attack.",
+            "What to watch: whether Japanese authorities or broadcaster NHK corroborate the North Korea link, and the ransomware threat against customers' PCs (threatened Oct 24 by the \"Hacking Team\" group), which has not fired in returned coverage."
+          ],
+          "links": [
+            {
+              "label": "AP News — the press-conference report (Nov 2, ~3:33 AM ET)",
+              "url": "https://apnews.com/article/hack-cyberattack-security-gmo-japan-1a14fac1015f2bbca62a07358615af19"
+            },
+            {
+              "label": "Kyodo News — the attribution report (Nov 2, ~5:51 AM ET)",
+              "url": "https://english.kyodonews.net/articles/-/90150"
+            },
+            {
+              "label": "The Japan Times — the report (Nov 2, ~0:52 AM ET)",
+              "url": "https://www.japantimes.co.jp/news/2026/11/02/japan/gmo-news-conference/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-01",
       "items": [
