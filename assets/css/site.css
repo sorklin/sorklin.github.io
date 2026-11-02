@@ -1098,6 +1098,10 @@ figure.chart { margin: 0; }
 /* The hero's own bottom padding is the separator; .section's 64–116px top
    pad stacked on it and left a hole between summary and Key facts. */
 #dd-body-sec { padding-top: 0; }
+/* Industry pills live in their own row that wraps inside the page — never a
+   no-wrap flex line, or ten sectors push the last tag off the edge. */
+#dd-industries { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+#dd-industries[hidden] { display: none; }
 
 /* -- homepage strip: latest headlines, pinned below the nav -------------- */
 .brief-strip {

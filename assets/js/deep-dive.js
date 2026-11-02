@@ -24,6 +24,7 @@
   var PAGE = {
     title: document.getElementById("dd-title"),
     kicker: document.getElementById("dd-kicker"),
+    industries: document.getElementById("dd-industries"),
     tldr: document.getElementById("dd-tldr"),
     tldrText: document.getElementById("dd-tldr-text"),
     summary: document.getElementById("dd-summary"),
@@ -89,6 +90,7 @@
   }
 
   function errorState(title, body) {
+    if (PAGE.bodySec) PAGE.bodySec.hidden = false;
     content.textContent = "";
     var box = el("div", "news-state");
     box.appendChild(el("h3", null, title));
@@ -110,20 +112,23 @@
       var d = parseDay(dive.date);
       bits.push(d && fmt ? fmt.format(d) : dive.date);
       PAGE.kicker.textContent = bits.join(" · ");
-      // Industry pills trail the kicker line — one per NAICS sector, or the
-      // single dim Unspecified pill when the dive carries none.
+    }
+    /* Industry pills trail the kicker — in their OWN wrapping row. Inside the
+       kicker they shared a no-wrap flex line: ten sectors squeezed the date
+       to one word per line and pushed the last pill off the page edge. */
+    if (PAGE.industries) {
+      PAGE.industries.hidden = false;
+      PAGE.industries.textContent = "";
       var inds = Array.isArray(dive.industry) ? dive.industry : [];
       if (!inds.length) {
         var u = el("span", "badge ind unspec", "Unspecified");
         u.title = "No industry assigned to this story";
-        PAGE.kicker.appendChild(document.createTextNode("  "));
-        PAGE.kicker.appendChild(u);
+        PAGE.industries.appendChild(u);
       } else {
         for (var n = 0; n < inds.length; n++) {
           var p = el("span", "badge ind", inds[n].name);
           p.title = inds[n].code ? "NAICS " + inds[n].code + " — " + inds[n].name : "Industry";
-          PAGE.kicker.appendChild(document.createTextNode("  "));
-          PAGE.kicker.appendChild(p);
+          PAGE.industries.appendChild(p);
         }
       }
     }
