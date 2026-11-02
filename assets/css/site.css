@@ -1095,6 +1095,9 @@ figure.chart { margin: 0; }
 .dd-sources { margin-top: 12px; }
 .dd-sources li { font-size: 14.5px; }
 .dd-backrow { margin-top: 26px; }
+/* The hero's own bottom padding is the separator; .section's 64–116px top
+   pad stacked on it and left a hole between summary and Key facts. */
+#dd-body-sec { padding-top: 0; }
 
 /* -- homepage strip: latest headlines, pinned below the nav -------------- */
 .brief-strip {
