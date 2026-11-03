@@ -1,7 +1,139 @@
 {
   "version": 3,
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "days": [
+    {
+      "date": "2026-11-03",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "BYOD ransomware gang claims 1.3 million Michigan State records; university ties claim to October credential incident",
+          "tldr": "The week-old BYOD ransomware gang claims personal data on 1.3 million Michigan State University students, and the university ties the claim to an early-October credential incident — but the 1.3 million figure is the attacker's own and unverified (per The Record — the single source returned for the university's response).",
+          "source": "The Record",
+          "url": "https://therecord.media/michigan-state-university-byod-gang-cyber-incident",
+          "summary": "The BYOD ransomware gang — the same week-old group behind the University of New Mexico hospital shutdown and the Trump Mobile leak — added Michigan State University to its leak site Sunday evening, claiming personal data on 1.3 million current and former students. An MSU spokesperson confirmed the claim \"was tied to an incident last month\": the school detected suspicious activity in early October, forced a NetID password reset for all students and employees on Oct 1 (a new 15-character minimum), and says evidence to date points to \"a potential credential compromise event\" with no successful compromise of central Active Directory and \"no evidence that other MSU data was accessed, changed, or stolen.\" The 1.3 million figure is the attacker's own and is unverified; the university did not respond to follow-ups on the gang's specific claim. The claim-versus-evidence gap is the story: BYOD emerged in September, remains little-known, and is escalating on high-profile US targets.",
+          "details": [
+            "Who: BYOD, a ransomware gang that emerged in September and remains little-known — the group behind the University of New Mexico hospital shutdown and the Trump Mobile leak — listed Michigan State University on its leak site Sunday evening Nov 1.",
+            "Claim: Personal data on 1.3 million current and former students — the figure is the attacker’s own and is unverified.",
+            "University response: An MSU spokesperson confirmed the claim \"was tied to an incident last month\"; the school detected suspicious activity in early October and forced a NetID password reset for all students and employees (Oct 1 email; new 15-character minimum).",
+            "Evidence to date: \"A potential credential compromise event\" — no successful compromise of central Active Directory and \"no evidence that other MSU data was accessed, changed, or stolen.\"",
+            "Gap: The university did not respond to follow-ups on the gang's specific claim; the victim response is single-sourced via The Record.",
+            "Watch: An MSU statement on the 1.3 million claim; BYOD's next listings — the gang is escalating on high-profile US targets."
+          ],
+          "links": [
+            {
+              "label": "The Record — Recorded Future News cybersecurity outlet (Nov 2)",
+              "url": "https://therecord.media/michigan-state-university-byod-gang-cyber-incident"
+            },
+            {
+              "label": "RecentBreach.es — leak-site tracker capture (Nov 2)",
+              "url": "https://recentbreaches.com/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            }
+          ],
+          "title": "Second wave of refrigeration cyberattacks hits supermarkets in Belgium, Sweden, Estonia; food forced off shelves",
+          "tldr": "A second wave of attacks on supermarket refrigeration controls forced food off shelves in Belgium, Sweden and Estonia overnight into Nov 2 — one Swedish ICA store found units set to 50°C — and Danfoss confirmed its controls were involved, as in the first French wave (per The Hacker News and Reuters-sourced coverage).",
+          "source": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html",
+          "summary": "Attackers remotely altered refrigeration controls — switching units into defrost mode or raising setpoints — at supermarket chains in Belgium, Sweden, Estonia \"and other European countries.\" One ICA store in Sjöbo, Sweden found units set to 50°C. Affected per company statements: Delhaize (several dozen stores, Belgium/Luxembourg), Carrefour Belgium (15 of 700+), Intermarché Belgium (10–15), Spar under Colruyt Group (5), one IKEA in Mons, an ICA store in the Stockholm area (\"Everything is destroyed,\" per Reuters), and a Selver in Estonia (no products damaged). Danfoss confirmed its refrigeration controls were involved, as in the first wave that hit hundreds of French supermarkets roughly three weeks earlier (an October CERT-FR alert); no one has claimed the attacks and a link to the France wave is unconfirmed. Store counts are small per chain, but the repeated targeting of food-cold-chain operational technology is the significance.",
+          "details": [
+            "Method: Attackers remotely altered refrigeration controls — switching units into defrost mode or raising setpoints; one ICA store in Sjöbo, Sweden found units set to 50°C.",
+            "Affected chains (per company statements): Delhaize (several dozen stores, Belgium/Luxembourg; called an \"IT incident\"), Carrefour Belgium (15 of 700+; called a cyberattack), Intermarché Belgium (10–15), Spar under Colruyt Group (5), one IKEA in Mons, an ICA store in the Stockholm area (\"Everything is destroyed,\" per Reuters), and a Selver in Estonia (no products damaged).",
+            "Equipment: Danfoss confirmed its refrigeration controls were involved, as in the first wave that hit hundreds of French supermarkets roughly three weeks earlier (October CERT-FR alert).",
+            "Attribution: No one has claimed the attacks; a link to the France wave is unconfirmed; Danfoss's advisories page listed nothing as of Nov 3."
+          ],
+          "links": [
+            {
+              "label": "The Hacker News — cybersecurity news site (Nov 3)",
+              "url": "https://thehackernews.com/2026/11/second-wave-of-cyberattacks-hits.html"
+            },
+            {
+              "label": "GVWire — Reuters-sourced wire report (Nov 2)",
+              "url": "https://gvwire.com/2026/11/02/new-cyberattack-on-supermarket-fridges-sweeps-across-europe/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "WorkOS says an AI offensive framework breached its internal sales app, exposing customer Slack excerpts and CRM data.",
+          "tldr": "Identity-software vendor WorkOS confirmed unauthorized access to an internal sales app holding CRM data and customer Slack excerpts, and CEO Michael Grinich attributed the intrusion to ARTEX — an AI-powered autonomous offensive-security framework (bulletin contents per CybersecurityNews — the single source returned for the bulletin).",
+          "source": "CybersecurityNews",
+          "url": "https://cybersecuritynews.com/workos-data-breach/",
+          "summary": "WorkOS confirmed unauthorized access to an internal sales application holding names, emails, phone numbers, job titles, company affiliations, customer account and sales histories, summaries and excerpts of sales calls, support discussions, customer Slack conversations, and product-usage metadata. The company says there is no evidence WorkOS production services or application data were hit, and it is still determining per-customer impact. CEO Michael Grinich attributed the intrusion to ARTEX, which Google Threat Intelligence Group and Mandiant describe as a multi-agent platform that converts attacker goals into commands and chains attack stages with limited human input — the same framework CrowdStrike tied to the VAPOR PANDA campaign against 200 organizations in late October. It follows Trigger.dev’s disclosure a day earlier.",
+          "details": [
+            "Timeline: Detected Oct 30; security bulletin Nov 2; CEO Michael Grinich named the tool on X the same day.",
+            "What was exposed: An internal sales application accessible from CRM data — names, emails, phone numbers, job titles, company affiliations, customer account and sales histories, summaries and excerpts of sales calls, support discussions, customer Slack conversations, and product-usage metadata.",
+            "Containment claim: No evidence WorkOS production services or application data were hit; per-customer impact still being determined.",
+            "Attribution: ARTEX — Google Threat Intelligence Group and Mandiant describe it as a multi-agent platform that converts attacker goals into commands and chains attack stages with limited human input; the same framework CrowdStrike tied to the VAPOR PANDA campaign against 200 organizations in late October.",
+            "Source note: Bulletin contents are single-sourced via CybersecurityNews's reading of the bulletin; the WorkOS bulletin URL was not returned."
+          ],
+          "links": [
+            {
+              "label": "CybersecurityNews — security news site (Nov 3)",
+              "url": "https://cybersecuritynews.com/workos-data-breach/"
+            },
+            {
+              "label": "CellCog — analysis blog summarizing the bulletin and CEO statement (Nov 2026)",
+              "url": "https://cellcog.ai/blog/workos-artex-breach/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Trigger.dev attacker stole customer environment variables — hosted AI-agent platform discloses, details pending",
+          "tldr": "Trigger.dev, a hosted platform for building AI agents and workflows in TypeScript, disclosed that an attacker stole environment variables belonging to a subset of customer organizations — potentially credentials for connected services — with the exploit, affected orgs and a count still unnamed (per the company's Nov 1 disclosure).",
+          "source": "Trigger.dev",
+          "url": "https://trigger.dev/blog/security-incident-nov-2026",
+          "summary": "Trigger.dev — a hosted durable-execution platform used to build AI agents and workflows in TypeScript — disclosed Nov 1 that an attacker gained unauthorized access to environment variables belonging to a subset of customer organizations, potentially credentials for connected services such as the Stripe, Supabase and Slack integrations the platform advertises. The company says it has blocked the exploit, notified affected owners with remediation steps, and promised a full incident report — without naming the exploit, the affected organizations, or a count. The Register, in detailed Nov 2 coverage, notes that exposed environment variables in a service advertising elastic AI-agent scaling could amount to \"keys to the kingdom,\" and lists publicized customers including Emporio Armani, GovSignals and Cal.com — none confirmed affected.",
+          "details": [
+            "What was accessed: Environment variables belonging to a subset of customer organizations — potentially credentials for connected services (the platform advertises Stripe, Supabase and Slack integrations).",
+            "Response: The exploit is blocked; affected owners were notified with remediation steps; a full incident report is promised.",
+            "Still pending: The exploit used, the affected organizations, and a count are all unnamed.",
+            "Context: The Register notes exposed environment variables in a service advertising elastic AI-agent scaling could amount to \"keys to the kingdom\"; publicized customers include Emporio Armani, GovSignals and Cal.com — none confirmed affected."
+          ],
+          "links": [
+            {
+              "label": "Trigger.dev — security disclosure (Nov 1)",
+              "url": "https://trigger.dev/blog/security-incident-nov-2026"
+            },
+            {
+              "label": "The Register — UK tech news (Nov 2)",
+              "url": "https://www.theregister.com/security/2026/11/02/cloud-hosted-ai-workflow-tool-has-environment-variables-snatched-in-security-incident/5306998"
+            },
+            {
+              "label": "Trigger.dev status page (Nov 1)",
+              "url": "https://status.trigger.dev/incident/1110434"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-02",
       "items": [
