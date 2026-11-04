@@ -1,7 +1,262 @@
 {
   "version": 3,
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "days": [
+    {
+      "date": "2026-11-04",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "GitBook says an AI-agent attack reached its infrastructure credentials, forcing a shutdown and token invalidation",
+          "tldr": "Documentation platform GitBook — widely used by crypto projects — took its app and authenticated docs sites offline after what it calls a \"sophisticated, highly targeted attack using AI agents\" reached infrastructure credentials, then invalidated every customer personal API token platform-wide (per its security-incident page; how the AI agents were used is undisclosed).",
+          "source": "GitBook",
+          "url": "https://www.gitbook.com/status/security-incident-2026-11-03",
+          "summary": "GitBook disclosed Nov 3 that an attacker gained unauthorized access to some of its infrastructure credentials in what the company describes as a \"sophisticated, highly targeted attack using AI agents.\" It says it detected the intrusion immediately, took the app and authenticated docs sites offline, and blocked the attacker. Potentially accessed: integration tokens, Git Sync secrets, API tokens, and questions visitors asked GitBook Assistant — GitBook says it found no evidence hosted content was modified. The response was sweeping: every infrastructure credential replaced and all customer personal API tokens invalidated platform-wide, with customers told to rotate GitBook and third-party tokens and secrets and re-authenticate the GitBook MCP server. The company has not explained how AI agents were used, which AI systems were involved, or how credentials were obtained — and its disclosure does not establish its own AI products were responsible — treat the AI framing as the company's own. Crypto exchange PancakeSwap temporarily took its documentation offline before moving it off GitBook. The incident was declared resolved Nov 4, 11:36 CET, with a full postmortem promised within 24 hours — a story still developing.",
+          "details": [
+            "Timing: Attack Nov 2, 2026, 7:00 PM CET (1:00 PM ET); disclosure Nov 3 (status-page updates 16:21 CET, then Nov 4, 11:36 CET); Decrypt's coverage Nov 3, ~2:46 PM ET; incident declared resolved Nov 4, 11:36 CET, with a full postmortem promised within 24 hours (Git Sync remained degraded due to an unrelated GitHub outage).",
+            "What happened: An attacker gained unauthorized access to some of GitBook's infrastructure credentials; GitBook says it detected the intrusion immediately, took the app and authenticated docs sites offline, and blocked the attacker.",
+            "Potentially accessed: Integration tokens, Git Sync secrets, API tokens, and questions visitors asked GitBook Assistant; GitBook says it found no evidence hosted content was modified.",
+            "Response: Every infrastructure credential replaced; all customer personal API tokens invalidated platform-wide; customers told to rotate GitBook and third-party tokens/secrets and re-authenticate the GitBook MCP server.",
+            "Undisclosed: How AI agents were used, which AI systems were involved, and how credentials were obtained; the disclosure does not establish GitBook's own AI products were responsible — treat the AI framing as the company's own.",
+            "Customer impact: PancakeSwap temporarily took its documentation offline before moving it off GitBook.",
+            "Watch: Whether the postmortem lands on schedule; whether any third-party crypto secrets were actually abused; which AI systems the attacker ran."
+          ],
+          "links": [
+            {
+              "label": "GitBook — security-incident page (Nov 3–4)",
+              "url": "https://www.gitbook.com/status/security-incident-2026-11-03"
+            },
+            {
+              "label": "Decrypt — crypto-news coverage (Nov 3, ~2:46 PM ET)",
+              "url": "https://decrypt.co/382465/crypto-docs-gitbook-ai-agent-security-breach"
+            },
+            {
+              "label": "The Injection — week-45 digest, rates it HIGH (2026-11-03)",
+              "url": "https://theinjection.dev/week/2026-w45/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Chainstack discloses intrusion tied to late-October AI-powered attack campaign; customer password hashes exposed",
+          "tldr": "Managed blockchain-node provider Chainstack says an attacker reached part of its production infrastructure through a third-party component, accessed a customer database including password hashes, and is rotating node credentials — assessing the incident as part of the broader late-October AI-powered attack campaign (per Chainstack's incident report; the ARTEX overlap is per The Hacker News).",
+          "source": "Chainstack",
+          "url": "https://chainstack.com/security-incident-nov-2026/",
+          "summary": "Chainstack, which runs managed blockchain nodes and RPC APIs for Ethereum/Solana developers, disclosed Nov 3 that an external attacker reached its infrastructure through a third-party component (not named). Its timeline: the development environment was accessed Oct 26, \"some parts of our production environment\" on Oct 29, the intrusion detected and access cut Oct 31, and the investigation closed Nov 2. The attacker reached a customer-account database — organization names, account holder names, member email addresses and password hashes — and had access to systems holding node credentials; there is no evidence those credentials were read, but Chainstack treats them as exposed and has self-service rotation live. Customer nodes, console and API were not modified, and no payment-card data was stored. Chainstack assesses the incident as part of a broader AI-powered attack campaign reported in late October; per The Hacker News, it shares overlaps with the China-linked cluster using the ARTEX framework — though Chainstack's own page names no framework or group. All customers are being emailed to rotate passwords, node credentials and platform API keys.",
+          "details": [
+            "Timeline (per Chainstack): Development environment accessed Oct 26; \"some parts of our production environment\" Oct 29; intrusion detected and access cut Oct 31; investigation closed Nov 2; incident notice created/updated Nov 3.",
+            "What was reached: A customer-account database — organization names, account holder names, member email addresses, password hashes — and systems holding node credentials; no evidence the credentials were read, but Chainstack treats them as exposed and has self-service rotation live.",
+            "Entry point: A third-party component, not named; the hash algorithm is unstated.",
+            "Not affected: Customer nodes, console and API were not modified; no payment-card data was stored.",
+            "AI-campaign tie: Chainstack assesses the incident as \"part of a broader AI-powered attack campaign reported in late October\"; per The Hacker News, it shares overlaps with the China-linked cluster using the ARTEX framework — Chainstack's own page names no framework or group.",
+            "Remediation: All customers are being emailed to rotate passwords, node credentials and platform API keys.",
+            "Watch: Which third-party component was the entry point; whether the ARTEX-cluster link firms up."
+          ],
+          "links": [
+            {
+              "label": "Chainstack — incident report (Nov 3)",
+              "url": "https://chainstack.com/security-incident-nov-2026/"
+            },
+            {
+              "label": "The Hacker News — cybersecurity news site (Nov 3, ~2:16 PM ET)",
+              "url": "https://thehackernews.com/2026/11/chainstack-reports-production-systems.html"
+            },
+            {
+              "label": "breachnews — breach tracker (Nov 4, ~12:38 AM ET)",
+              "url": "https://breachnews.com/breaches/chainstack-confirms-data-breach-exposing-customer-data-and-node-credentials/"
+            },
+            {
+              "label": "Protect.Computer — security news roundup (Nov 3)",
+              "url": "https://protect.computer/news/2026-11-03-chainstack-workos-artex-ai-breaches/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Era Security reports Chinese-language \"Greeter\" framework silently attacking self-hosted Flowise via CVE-2024-58351",
+          "tldr": "Per Era Security — the single source returned — a Chinese-language framework it calls \"Greeter\" delivered 4,972 one-shot malicious commands to seven Flowise honeypots across four regions via a known injection flaw (CVE-2024-58351), chaining them into a 12-step cloud-credential heist; the vulnerability is corroborated at the primary, the campaign is not.",
+          "source": "Era Security",
+          "url": "https://era.security/blog/greeter-flowise-ai-infrastructure-attack",
+          "summary": "Era Security's research team (a vendor — its product context should be assumed) reports that between July and October 2026, seven self-hosted Flowise honeypots across four regions collected 4,972 stored \"hello\" messages, each carrying a different malicious JavaScript command injected per-request via the overrideConfig parameter (javascriptFunction key) of Flowise's chat-prediction API — arriving about 3.5 seconds apart and never persisting in the saved chatflow. The injection surface is the corroborated part: CVE-2024-58351 / GHSA-5cph-wvm9-45gj is real (Flowise < 2.1.4 affected, fixed in 2.1.4). From more than 4,000 commands, Era reconstructed a 12-step chain: liveness beacon, id verification, a ~1 MB \"mega-recon dump,\" environment fingerprinting (Docker socket reachable, env-var exfiltration), AWS/Azure/GCP metadata probing, kernel-capability and eBPF enumeration, privilege-escalation assessment, SSH and credential discovery — including .env files for AI models/RAG and /root/.flowise/encryption.key — failed persistence attempts, log exfiltration, and fileless-execution staging. Initial access came from TOR exit node 185.246.188[.]74; Era hedges that the metronomic cadence \"potentially involves an AI agent, although timing alone cannot establish that distinction.\" Era's Shodan census counted 4,372 exposed Flowise instances (3,277 versioned; 703 unauthenticated), with the version table flagging CVE-2026-69255, CVE-2026-46442 and CVE-2026-56271 on most versioned hosts.",
+          "details": [
+            "Campaign (per Era Security — the single source returned): 4,972 stored \"hello\" messages on seven Flowise honeypots across four regions, July–October 2026; each a different malicious JavaScript command injected per-request via the overrideConfig parameter (javascriptFunction key) of the chat-prediction API, arriving ~3.5 seconds apart and never persisting in the saved chatflow.",
+            "Corroborated vulnerability: CVE-2024-58351 / GHSA-5cph-wvm9-45gj is real — Flowise < 2.1.4 affected, fixed in 2.1.4 (project advisory published Nov 21, 2024; NVD entry from VulnCheck published Jun 20, 2026: CVSS v3.1 9.8 with PR:N, v4.0 9.3, CWE-94, CISA SSVC \"automatable\").",
+            "12-step chain: Reconstructed from more than 4,000 commands — liveness beacon with hex nonces → id verification → ~1 MB \"mega-recon dump\" (19 commands with Chinese-labeled delimiters) → environment fingerprinting (Docker socket reachable, env-var exfil) → AWS/Azure/GCP metadata probing → kernel-capability/eBPF enumeration (all 41 caps on the honeypot) → privilege-escalation assessment → SSH/credential discovery (.env files for AI models/RAG, TLS client certs, ~/.ssh/*, /root/.flowise/encryption.key) → persistence files mimicking daemons (polld-keeper, varrun-watcher — failed) → wtmp/auth-log exfil → fileless-execution staging (memfd) → payload init.",
+            "Initial access: TOR exit node 185.246.188[.]74; Era hedges the cadence \"potentially involves an AI agent, although timing alone cannot establish that distinction.\"",
+            "Exposure census (Era's Shodan scan): 4,372 exposed Flowise instances (3,277 versioned; 703 unauthenticated), 46 matching its vulnerable conditions; version-based exposure includes CVE-2026-69255 (CSV Agent code-injection RCE, 9.2 — 99.3% of versioned hosts), CVE-2026-46442 (NodeVM sandbox escape, 9.9 — 89.2%) and CVE-2026-56271 (weak default JWT secrets, 9.8 — 87.0%).",
+            "Flags: The campaign observations are single-source (Era); independent coverage found is restatements (BitShield News, OffSeq's machine-generated analysis, mirrors); OffSeq's evidence ladder and NVD's Jun-2026 SSVC record exploitation as \"none\"/not in KEV — Era's honeypot telemetry is currently the only exploitation evidence; score tension — the FlowiseAI-reviewed GHSA scores 8.6 with PR:High and frames the issues as \"self-targeted,\" while VulnCheck's NVD entry assumes no privileges (9.8); a related overrideConfig advisory (GHSA-6vh2-wg4h-4vwj, Jul 29, 2026, fixed 3.1.3) shows the surface kept producing flaws.",
+            "Context: Wiz has documented an exposed Flowise staging node mass-exploiting other Flowise instances, and October Langflow coverage logged an actor hitting Flowise too — AI-workflow servers are a standing target class even though Greeter itself is single-source."
+          ],
+          "links": [
+            {
+              "label": "Era Security — \"You Had Me at Hello\" research post (Nov 3)",
+              "url": "https://era.security/blog/greeter-flowise-ai-infrastructure-attack"
+            },
+            {
+              "label": "GitHub — FlowiseAI advisory GHSA-5cph-wvm9-45gj (Nov 21, 2024)",
+              "url": "https://github.com/advisories/GHSA-5cph-wvm9-45gj"
+            },
+            {
+              "label": "NVD — CVE-2024-58351 record from VulnCheck (Jun 20, 2026)",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58351"
+            },
+            {
+              "label": "OffSeq Threat Radar — relay of the research (Nov 3)",
+              "url": "https://radar.offseq.com/threat/we-found-4972-hello-messages-hiding-thousands-of-malicious-commands-targeting-flowise-bb29e4bd77cce50c"
+            },
+            {
+              "label": "BitShield News — restatement (Nov 3, ~11:37 AM ET)",
+              "url": "https://bitshieldnews.com/section/cloud-security/4-972-malicious-commands-targeting-flowise/"
+            },
+            {
+              "label": "GitHub — FlowiseAI project advisory page (returned via search)",
+              "url": "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-5cph-wvm9-45gj"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Attackers hijacked cPGuard's own update channel to push a backdoor and credential thief to ~2,946 customer servers",
+          "tldr": "OpsShield says an \"unidentified attacker used compromised credentials\" to hijack the update channel of its cPGuard web-security suite, pushing a backdoor and credential thief through versions 5.88.12–5.88.19 to 2,946 servers (per an OpsShield spokesperson via BleepingComputer).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/",
+          "summary": "OpsShield, developer of the cPGuard web-security suite, says an \"unidentified attacker used compromised credentials\" to access its update-distribution CDN and push a malicious script through cPGuard versions 5.88.12–5.88.19; detection and shutdown took about 12 hours. Servers that updated in the window received a script harvesting Linux password hashes, root MariaDB/MySQL configuration, root shell history, and root SSH authorized_keys/known-hosts, exfiltrated through OpsShield's own licensing server via a compromised account. Per OpsShield, evidence shows the attacker retrieved 32 files per customer; a spokesperson told BleepingComputer 2,946 servers were affected, and OpsShield's billing database was also copied. Remediation is to update to 5.88.25+, then rotate database credentials, cloud secrets and SSH keys. How the initial credentials were obtained remains unclear. The irony is the point: a web-security product's update channel was the weapon, and its maker is both tool-maker and victim.",
+          "details": [
+            "Timing: Compromise began Nov 2, 2026, 02:06 UTC; detection and shutdown took ~12 hours; OpsShield alert and BleepingComputer coverage Nov 3, ~5:19 PM ET.",
+            "Vector: Compromised credentials gave an unidentified attacker access to the update-distribution CDN; the malicious script shipped through cPGuard 5.88.12–5.88.19.",
+            "Harvested: Linux password hashes, root MariaDB/MySQL configuration, root shell history, root SSH authorized_keys/known-hosts — exfiltrated through OpsShield's own licensing server via a compromised account.",
+            "Scale: Evidence shows 32 files retrieved per customer (per OpsShield); 2,946 servers affected per an OpsShield spokesperson (via BleepingComputer); OpsShield's billing database was also copied.",
+            "Remediation: Update to 5.88.25+, then rotate database credentials, cloud secrets and SSH keys.",
+            "Open: How the initial credentials were obtained remains unclear; OpsShield has promised a public announcement."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — security news site, incl. the OpsShield alert (Nov 3, ~5:19 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-cpguard-autoupdate-to-deploy-backdoor-steal-data/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA confirmed active exploitation of WordPress Core update-window TOCTOU flaw CVE-2026-119977; Nov 6 federal deadline",
+          "tldr": "CISA added CVE-2026-119977 — a time-of-check/time-of-use race that lets unauthenticated attackers execute code during the WordPress Core upgrade window — to the KEV catalog on evidence of active exploitation, with a Nov 6 federal patch deadline; Wordfence recorded 18,500+ requests in the first 21 hours and 12,632 blocked attacks in the trailing 24 hours.",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "summary": "CISA added CVE-2026-119977 (CVSS 8.1 per Wordfence as CNA) to the KEV catalog on evidence of active exploitation: a time-of-check/time-of-use race condition letting unauthenticated attackers execute code during the WordPress Core full-package upgrade window, via predictable, web-accessible staging paths under wp-content/upgrade. Versions 7.1.0–7.1.3 and 7.0.0–7.0.7 are affected; fixes are 7.1.4/7.0.8, with backports 6.9.11/6.8.12. Wordfence, which surfaced the details the prior week, recorded 18,500+ requests targeting staged setup-config.php paths in the first 21 hours after disclosure and 12,632 blocked attacks in the trailing 24 hours; Previdian honeypots logged three attempts from a UK IP on Oct 30. FCEB agencies must patch by Nov 6, 2026 under BOD 26-04. No victim organizations are named — a KEV/patch-rush story rather than an incident, but WordPress is one of the year's most-deployed platforms.",
+          "details": [
+            "Flaw: CVE-2026-119977 — a time-of-check/time-of-use race letting unauthenticated attackers execute code during the WordPress Core full-package upgrade window, via predictable, web-accessible staging paths under wp-content/upgrade; CVSS 8.1 per Wordfence as CNA.",
+            "Affected and fixed: 7.1.0–7.1.3 and 7.0.0–7.0.7 affected; fixed in 7.1.4/7.0.8, with backports 6.9.11/6.8.12.",
+            "KEV timing: Added to the KEV catalog Nov 3, 2026, ~7:00 AM ET; fresh coverage Nov 4 (The Hacker News ~12:43 AM ET; MSP Business Patchwork).",
+            "Telemetry: Wordfence recorded 18,500+ requests targeting staged setup-config.php paths in the first 21 hours after disclosure and 12,632 blocked attacks in the trailing 24 hours; Previdian honeypots logged 3 attempts from a UK IP on Oct 30.",
+            "Deadline: FCEB agencies must patch by Nov 6, 2026 under BOD 26-04.",
+            "Victims: None named — a KEV/patch-rush story rather than an incident."
+          ],
+          "links": [
+            {
+              "label": "CISA — KEV alert (Nov 3, ~7:00 AM ET)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/11/03/cisa-adds-one-known-exploited-vulnerability-catalog"
+            },
+            {
+              "label": "The Hacker News — cybersecurity news site (Nov 4, ~12:43 AM ET)",
+              "url": "https://thehackernews.com/2026/11/cisa-confirms-hackers-exploiting.html"
+            },
+            {
+              "label": "MSP Business Patchwork — daily patch roundup (Nov 4)",
+              "url": "https://mspbusiness.com/en/security/patchwork-wednesday-4-november/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            }
+          ],
+          "title": "Revolve card-data breach headcount: at least 197,072 notified; Texas-AG record implies about 1.5 million affected",
+          "tldr": "SecurityWeek counts notification letters to at least 197,072 people in the Revolve payment-card breach, while a Texas-AG record found by Malwarebytes implies 1,515,073 total affected — a figure displayed nowhere publicly and not confirmed by the company.",
+          "source": "SecurityWeek",
+          "url": "https://www.securityweek.com/revolve-data-breach-impacts-at-least-180000-people/",
+          "summary": "Online fashion retailer Revolve Group is notifying customers that hackers stole names, addresses, payment card numbers and expiration dates (saved-card customers only; no CVV mentioned) via unauthorized access to its shopping platform. Per its SEC filing, the incident occurred Sept 11 and was discovered Sept 29, with data possibly obtained \"through automated means\"; no group has claimed it and Revolve has not said how access happened. SecurityWeek counts notification letters to at least 197,072 people across Iowa, Massachusetts, South Carolina, Texas and Vermont AG filings (the Nov 3 update added 17,813 South Carolinians). Malwarebytes found a Texas-AG record implying 1,515,073 total affected (127,200 in Texas) — a figure not displayed publicly and not confirmed by Revolve. Revolve says the incident caused no operational disruption, is not expected to be material, and is not offering credit monitoring.",
+          "details": [
+            "Stolen: Names, addresses, payment card numbers and expiration dates — saved-card customers only; no CVV mentioned — via unauthorized access to the shopping platform.",
+            "Timeline: Per the SEC filing, the incident occurred Sept 11 and was discovered Sept 29; the original disclosure was Oct 30, SecurityWeek's piece published Nov 2 (9:35 AM ET) and was updated Nov 3 (1:20 AM ET), and Malwarebytes' AG-filing analysis published Nov 3 (exact time not stated).",
+            "Headcount: At least 197,072 people notified across Iowa, Massachusetts, South Carolina, Texas and Vermont AG filings, per SecurityWeek — the Nov 3 update added 17,813 South Carolinians.",
+            "Implied scale: A Texas-AG record implies 1,515,073 total affected (127,200 in Texas), found by Malwarebytes — not displayed publicly and not confirmed by Revolve.",
+            "Method: Data possibly obtained \"through automated means\"; no group has claimed the breach and Revolve has not said how access happened.",
+            "Company position: No operational disruption, not expected to be material, and no credit monitoring offered."
+          ],
+          "links": [
+            {
+              "label": "SecurityWeek — breach coverage, updated (Nov 2, updated Nov 3, 1:20 AM ET)",
+              "url": "https://www.securityweek.com/revolve-data-breach-impacts-at-least-180000-people/"
+            },
+            {
+              "label": "Malwarebytes — AG-filing analysis (Nov 3)",
+              "url": "https://www.malwarebytes.com/blog/data-breaches/2026/11/revolve-card-breach-1-5-million-people-may-be-affected"
+            },
+            {
+              "label": "The Paypers — SEC-filing angle (date not returned)",
+              "url": "https://thepaypers.com/fraud-and-fincrime/news/revolve-discloses-payment-card-data-breach-in-sec-filing"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "WorkOS founder directly named ARTEX AI offensive framework as the tool behind its sales-app breach",
+          "tldr": "WorkOS founder Michael Grinich directly named ARTEX — an AI penetration-testing suite released earlier this year by Chinese developers — as the attacker tool in its sales-app breach, citing artex-enrich/1.0 and norma/0.4 user agents (per BleepingComputer).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/",
+          "summary": "WorkOS founder Michael Grinich has directly named ARTEX as the tool behind the sales-app breach the identity-software vendor disclosed earlier this week: an AI penetration-testing suite \"released earlier this year by Chinese developers\" that went private after being used against South Korean banks — though forks remain available. Grinich cited attacker user agents artex-enrich/1.0 and norma/0.4. Confirmed data accessed: CRM business contacts, customer account histories, sales-call summaries and excerpts, support discussions, and customer Slack conversations; no production services or app data were hit. The attribution had rested on a single outlet's reading of the company bulletin; the founder's own statement now carries it. It lands the same week Chainstack tied its breach to the same late-October AI-powered campaign.",
+          "details": [
+            "Statement: Founder Michael Grinich directly named ARTEX, citing attacker user agents artex-enrich/1.0 and norma/0.4 (BleepingComputer, Nov 3, ~4:28 PM ET; Protect.Computer roundup ~4:53 PM ET).",
+            "What ARTEX is: An AI penetration-testing suite \"released earlier this year by Chinese developers\" that went private after being used against South Korean banks; forks remain available.",
+            "Confirmed data accessed: CRM business contacts, customer account histories, sales-call summaries/excerpts, support discussions, customer Slack conversations; no production services or app data hit.",
+            "Attribution status: The ARTEX tie had rested on a single outlet's reading of the company bulletin; the founder's direct statement hardens it.",
+            "Watch: Whether ARTEX's China-nexus operators are formally attributed; more victims surfacing — Chainstack tied its breach to the same late-October AI-powered campaign this week."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — security news site (Nov 3, ~4:28 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/workos-says-attacker-used-artex-ai-to-breach-internal-sales-app/"
+            },
+            {
+              "label": "Protect.Computer — security news roundup (Nov 3)",
+              "url": "https://protect.computer/news/2026-11-03-chainstack-workos-artex-ai-breaches/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-03",
       "items": [
