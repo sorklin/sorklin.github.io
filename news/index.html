@@ -72,6 +72,16 @@
     <div class="wrap">
       <div class="news-controls" id="news-controls" hidden>
         <div class="news-filters">
+          <!-- Search across stories AND deep dives (website-dta): plain
+               client-side substring matching; deep-dives.json is fetched
+               lazily on the first keystroke and cached. While a query is
+               active the whole archive is searched and the tabs/industry/
+               jump controls are bypassed (dimmed in CSS). -->
+          <div class="news-search">
+            <label class="sr-only" for="news-search">Search stories and deep dives</label>
+            <input type="search" id="news-search" class="news-indsel news-search-input" placeholder="Search stories &amp; deep dives…" autocomplete="off" spellcheck="false">
+            <button type="button" class="news-search-clear" id="news-search-clear" aria-label="Clear search" hidden>×</button>
+          </div>
           <div class="news-tabs" role="group" aria-label="Filter stories by topic">
             <button type="button" class="news-tab" data-filter="all" aria-pressed="true">All<span class="n"></span></button>
             <button type="button" class="news-tab" data-filter="ai" aria-pressed="false">AI Security<span class="n"></span></button>

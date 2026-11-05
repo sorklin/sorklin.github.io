@@ -30,6 +30,11 @@
     filter: "all",   // all | security | ai | dive (topic)
     industry: "all", // all | unspecified | <NAICS sector name> (a second dimension)
     jumpDay: null,   // ISO date of the currently anchored day (jump controls)
+    query: "",       // active search terms, lowercased; "" = search off
+    queryTerms: [],  // the query split on whitespace (all must appear)
+    rawQuery: "",    // the query as typed, for the "matches for" line
+    dives: null,     // the deep-dive library, fetched lazily on first search
+    divesState: "",  // "" | "loading" | "loaded" | "failed"
     shown: BUDGET,   // how many matching stories are currently rendered
     counts: { all: 0, security: 0, ai: 0 }
   };
@@ -162,6 +167,7 @@
   }
 
   function matches(item) {
+    if (state.query) return searchMatches(item); // search bypasses tabs + industry
     if (state.filter === "all") return industryMatches(item);
     if (state.filter === "dive") return item.type === "deep-dive" && industryMatches(item);
     return item.category === state.filter && industryMatches(item);
@@ -295,7 +301,9 @@
     // Anchor target for deep links (homepage strip): /news/#story-<date>-<n>
     // where <n> is the story's 1-based position in the feed's items array —
     // computed from the file, so the strip and this page always agree.
-    art.id = "story-" + date + "-" + (idx + 1);
+    // Search-only library dives carry no feed position and get no anchor,
+    // so they can never collide with a real story's id.
+    if (idx != null) art.id = "story-" + date + "-" + (idx + 1);
 
     if (item.type === "deep-dive") return diveCardNode(item, art);
 
@@ -359,14 +367,18 @@
     return art;
   }
 
-  function stateNode(title, body, retry) {
+  function stateNode(title, body, retry, retryLabel) {
     var box = el("div", "news-state");
     box.appendChild(el("h3", null, title));
     box.appendChild(el("p", null, body));
     if (retry) {
-      var b = el("button", "btn btn-ghost", "Try again");
+      var b = el("button", "btn btn-ghost", retryLabel || "Try again");
       b.type = "button";
-      b.addEventListener("click", function () { load(); });
+      b.addEventListener("click", function () {
+        // "Try again" reloads the feed; the search empty state clears instead.
+        if (state.query) clearSearch();
+        else load();
+      });
       box.appendChild(b);
     }
     return box;
@@ -375,26 +387,38 @@
   /* ----------------------------------------------------------- rendering -- */
 
   function totalMatching() {
+    var days = activeDays();
     var n = 0;
-    for (var i = 0; i < state.days.length; i++)
-      for (var j = 0; j < state.days[i].items.length; j++)
-        if (matches(state.days[i].items[j])) n++;
+    for (var i = 0; i < days.length; i++)
+      for (var j = 0; j < days[i].items.length; j++)
+        if (matches(days[i].items[j])) n++;
     return n;
   }
 
   function render() {
     list.textContent = "";
+    var controls = $("#news-controls");
+    if (controls && controls.classList) controls.classList.toggle("searching", !!state.query);
     var total = totalMatching();
 
     if (total === 0) {
-      list.appendChild(stateNode(
-        state.filter === "all" && state.industry === "all"
-          ? "No briefings yet"
-          : "Nothing filed under " + (activeFilterLabel() || "this filter") + " in the archive",
-        state.filter === "all" && state.industry === "all"
-          ? "The feed is live but empty. The first briefing lands with the next daily run — the page fills itself when it does."
-          : "Switch back to All — or set the industry filter back to All industries; the archive has stories outside this slice."
-      ));
+      if (state.query) {
+        list.appendChild(stateNode(
+          "No matches for \u201C" + state.rawQuery + "\u201D",
+          "Nothing in the archive — stories or deep dives — contains every word. Fewer or shorter words reach further.",
+          true,
+          "Clear the search"
+        ));
+      } else {
+        list.appendChild(stateNode(
+          state.filter === "all" && state.industry === "all"
+            ? "No briefings yet"
+            : "Nothing filed under " + (activeFilterLabel() || "this filter") + " in the archive",
+          state.filter === "all" && state.industry === "all"
+            ? "The feed is live but empty. The first briefing lands with the next daily run — the page fills itself when it does."
+            : "Switch back to All — or set the industry filter back to All industries; the archive has stories outside this slice."
+        ));
+      }
       var more0 = $("#news-more");
       if (more0) more0.hidden = true;
       var shown0 = $("#news-shown");
@@ -404,10 +428,12 @@
 
     // Render newest-first until the story budget is spent. A day that
     // straddles the line shows its leading stories; the rest arrive with the
-    // next "Load older briefings" click.
+    // next "Load older briefings" click (or, while searching, the next page
+    // of results). In search mode the days are the merged result view.
+    var days = activeDays();
     var rendered = 0;
-    for (var i = 0; i < state.days.length && rendered < state.shown; i++) {
-      var day = state.days[i];
+    for (var i = 0; i < days.length && rendered < state.shown; i++) {
+      var day = days[i];
       var dayTotal = 0, j;
       for (j = 0; j < day.items.length; j++) if (matches(day.items[j])) dayTotal++;
       if (dayTotal === 0) continue;
@@ -433,8 +459,9 @@
         if (!matches(it)) continue;
         // The anchor index is the story's position in the feed FILE
         // (preserved through normalisation), so dropped items never shift
-        // later anchors.
-        wrap.appendChild(articleNode(it, day.date, it.feedIndex != null ? it.feedIndex : j));
+        // later anchors. A null feedIndex (search-only library dive) gets
+        // no anchor at all.
+        wrap.appendChild(articleNode(it, day.date, it.feedIndex != null ? it.feedIndex : null));
         shownHere++;
       }
       sec.appendChild(wrap);
@@ -447,9 +474,18 @@
     var shownLine = $("#news-shown");
     if (shownLine) {
       shownLine.hidden = false;
-      shownLine.textContent = rendered >= total
-        ? "Showing all " + total + " matching stories"
-        : "Showing the latest " + rendered + " of " + total + " matching stories";
+      if (state.query) {
+        var suffix = state.divesState === "loading" ? " · loading the deep-dive library…"
+          : state.divesState === "failed" ? " · the deep-dive library couldn't be loaded — feed results only"
+          : "";
+        shownLine.textContent = (rendered >= total
+          ? total + (total === 1 ? " match" : " matches") + " for \u201C" + state.rawQuery + "\u201D"
+          : "Showing " + rendered + " of " + total + " matches for \u201C" + state.rawQuery + "\u201D") + suffix;
+      } else {
+        shownLine.textContent = rendered >= total
+          ? "Showing all " + total + " matching stories"
+          : "Showing the latest " + rendered + " of " + total + " matching stories";
+      }
     }
   }
 
@@ -588,6 +624,138 @@
     syncJumpControls();
   }
 
+  /* ------------------- search across stories & deep dives (website-dta) ----
+     Plain case-insensitive substring search over every text field the
+     renderer shows. Several words all have to appear (AND); no stemming, no
+     ranking — predictable beats clever. While a query is active the whole
+     archive is searched and the topic/industry filters are bypassed; clearing
+     the box restores the previous view exactly. deep-dives.json is fetched
+     lazily on the first keystroke (it is append-only and far bigger than the
+     feed) and cached; a failed fetch degrades to feed-only results. */
+  function searchMatches(item) {
+    var hay = itemHaystack(item);
+    for (var i = 0; i < state.queryTerms.length; i++)
+      if (hay.indexOf(state.queryTerms[i]) === -1) return false;
+    return state.queryTerms.length > 0;
+  }
+
+  // One lowercase blob per item, built on first use and cached. Links
+  // contribute their labels (not raw URLs); industries their sector names.
+  function itemHaystack(item) {
+    if (item._hay) return item._hay;
+    var parts = [item.title, item.source, item.tldr, item.summary];
+    for (var i = 0; i < item.details.length; i++) parts.push(item.details[i]);
+    for (var j = 0; j < item.links.length; j++) parts.push(item.links[j].label || "");
+    for (var k = 0; k < item.industry.length; k++) parts.push(item.industry[k].name);
+    item._hay = parts.join(" ").toLowerCase();
+    return item._hay;
+  }
+
+  // A library dive with no feed card (its day aged out of the 90-day feed,
+  // but the library is append-only and forever) becomes a search-only card:
+  // same shape as a feed deep-dive item, but feedIndex stays null so
+  // articleNode leaves the #story- anchors alone. Cached on the dive.
+  function libDiveToItem(dive) {
+    if (dive._viewItem) return dive._viewItem;
+    var item = {
+      type: "deep-dive",
+      slug: String(dive.slug || "").trim(),
+      feedIndex: null,
+      title: String(dive.title || "").trim() || "(untitled)",
+      url: "",
+      source: String(dive.source || "").trim(),
+      tldr: String(dive.tldr || "").trim(),
+      summary: String(dive.summary || "").trim(),
+      details: (Array.isArray(dive.details) ? dive.details : [])
+        .map(function (d) { return String(d == null ? "" : d).trim(); })
+        .filter(Boolean),
+      links: (Array.isArray(dive.links) ? dive.links : [])
+        .filter(function (l) { return l && /^https?:\/\//i.test(String(l.url || "")); })
+        .map(function (l) { return { label: String(l.label || "").trim(), url: String(l.url) }; }),
+      industry: parseIndustries(dive.industry),
+      category: dive.category === "ai" ? "ai" : dive.category === "security" ? "security" : "news"
+    };
+    dive._viewItem = item;
+    return item;
+  }
+
+  // The search view: every matching feed item plus matching library dives
+  // whose slug has no feed card anymore, grouped by date, newest day first —
+  // so results render through the exact same day-section path as the feed.
+  function buildSearchDays() {
+    var byDate = {}, order = [], feedSlugs = {};
+    var push = function (date, item) {
+      if (!byDate[date]) { byDate[date] = []; order.push(date); }
+      byDate[date].push(item);
+    };
+    for (var i = 0; i < state.days.length; i++) {
+      var day = state.days[i];
+      for (var j = 0; j < day.items.length; j++) {
+        if (day.items[j].type === "deep-dive") feedSlugs[day.items[j].slug] = true;
+        if (searchMatches(day.items[j])) push(day.date, day.items[j]);
+      }
+    }
+    if (state.dives) {
+      for (var d = 0; d < state.dives.length; d++) {
+        var dive = state.dives[d];
+        if (!dive || feedSlugs[dive.slug] || !/^[a-z0-9][a-z0-9-]*$/.test(String(dive.slug || ""))) continue;
+        var item = libDiveToItem(dive);
+        if (searchMatches(item)) push(String(dive.date || ""), item);
+      }
+    }
+    order.sort(function (a, b) { return a < b ? 1 : a > b ? -1 : 0; });
+    var out = [];
+    for (var o = 0; o < order.length; o++) out.push({ date: order[o], items: byDate[order[o]] });
+    return out;
+  }
+
+  // Everything downstream (counts, the render loop) reads the view: the feed,
+  // or the merged search results while a query is active.
+  function activeDays() {
+    return state.query ? buildSearchDays() : state.days;
+  }
+
+  function applyQuery(raw) {
+    var q = String(raw || "").trim().toLowerCase();
+    state.rawQuery = raw;
+    state.query = q;
+    state.queryTerms = q ? q.split(/\s+/) : [];
+    state.shown = BUDGET;
+    var controls = $("#news-controls");
+    if (controls && controls.classList) controls.classList.toggle("searching", !!state.query);
+    var clearBtn = $("#news-search-clear");
+    if (clearBtn) clearBtn.hidden = !state.query;
+    // The library rides along on the first real query — never on page load.
+    if (state.query && state.divesState === "") {
+      state.divesState = "loading";
+      fetch("/news/deep-dives.json", { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(function (data) {
+          state.dives = data && Array.isArray(data.dives) ? data.dives : [];
+          state.divesState = "loaded";
+          render(); // library results arrived — fold them in if a query is still active
+        })
+        .catch(function () {
+          state.divesState = "failed";
+          render(); // degrade to feed-only results; the shown line carries the note
+        });
+    }
+    render();
+  }
+
+  function clearSearch() {
+    if (searchInput) searchInput.value = "";
+    state.query = "";
+    state.rawQuery = "";
+    state.queryTerms = [];
+    state.shown = BUDGET;
+    var controls = $("#news-controls");
+    if (controls && controls.classList) controls.classList.remove("searching");
+    var clearBtn = $("#news-search-clear");
+    if (clearBtn) clearBtn.hidden = true;
+    render();
+  }
+
   function recomputeCounts() {
     var c = { all: 0, security: 0, ai: 0, dive: 0 };
     for (var i = 0; i < state.days.length; i++) {
@@ -627,10 +795,11 @@
   var jumpSel = $("#news-jump");
   if (jumpSel) {
     jumpSel.addEventListener("change", function () {
-      if (this.value) jumpToDay(this.value);
+      if (this.value && !state.query) jumpToDay(this.value); // inert while searching
     });
   }
   function jumpStep(delta) {
+    if (state.query) return; // the jump row is dimmed/inert while searching
     var idx = jumpDayIndex() + delta;
     if (idx < 0 || idx >= state.days.length) return;
     jumpToDay(state.days[idx].date);
@@ -639,6 +808,25 @@
   if (newerBtn) newerBtn.addEventListener("click", function () { jumpStep(-1); });
   var olderBtn = $("#news-jump-older");
   if (olderBtn) olderBtn.addEventListener("click", function () { jumpStep(1); });
+
+  var searchInput = $("#news-search");
+  var searchTimer = null;
+  if (searchInput) {
+    // Debounced: render once per pause in typing, not per keystroke.
+    searchInput.addEventListener("input", function () {
+      var v = this.value;
+      var clearBtn = $("#news-search-clear");
+      if (clearBtn) clearBtn.hidden = !v;
+      if (searchTimer) clearTimeout(searchTimer);
+      var self = this;
+      searchTimer = setTimeout(function () { applyQuery(v); }, 180);
+    });
+    searchInput.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" || e.keyCode === 27) clearSearch();
+    });
+  }
+  var searchClear = $("#news-search-clear");
+  if (searchClear) searchClear.addEventListener("click", clearSearch);
 
   var moreBtn = $("#news-more");
   if (moreBtn) {

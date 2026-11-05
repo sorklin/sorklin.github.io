@@ -932,6 +932,33 @@ figure.chart { margin: 0; }
 .news-jump-btn:hover:not(:disabled) { color: var(--ink); }
 .news-jump-btn:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
 .news-jump-btn:disabled { opacity: 0.4; cursor: default; }
+/* search box (website-dta): a native search input styled like the selects;
+   the × clear button replaces the browser's own cancel button. deep-dives.json
+   is fetched lazily on the first keystroke, so the default page never grows. */
+.news-search { position: relative; display: inline-flex; align-items: center; }
+.news-search-input { min-width: 200px; padding-right: 30px; }
+.news-search-input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.news-search-clear {
+  position: absolute;
+  right: 4px;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--dim);
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 4px 7px;
+  cursor: pointer;
+}
+.news-search-clear:hover { color: var(--ink); }
+.news-search-clear:focus-visible { outline: 1px solid var(--cyan); outline-offset: 1px; }
+/* While a search is active the whole archive is searched: the topic tabs,
+   industry dropdown and jump controls are bypassed — dim them and take the
+   pointer events away so they read as switched off, not broken. */
+.news-controls.searching .news-tabs,
+.news-controls.searching .news-indsel:not(.news-search-input),
+.news-controls.searching .news-jump { opacity: 0.45; pointer-events: none; }
 .news-updated { font-size: 12px; }
 .news-list { min-height: 120px; }
 .news-loading { padding: 8px 0; }
