@@ -84,6 +84,15 @@
                carry none. -->
           <label class="sr-only" for="news-industry">Filter stories by industry</label>
           <select id="news-industry" class="news-indsel" aria-label="Filter stories by industry"></select>
+          <!-- Jump to a published day (website-rbw): the dropdown lists every
+               day in the feed. Options are built by news.js once the feed
+               loads; picking a day expands the render window until it is
+               fully on the page, then scrolls to #day-<date>. The default
+               view is unchanged until the reader jumps. -->
+          <div class="news-jump">
+            <label class="sr-only" for="news-jump">Jump to a published day</label>
+            <select id="news-jump" class="news-indsel" aria-label="Jump to a published day"></select>
+          </div>
           <!-- Search across stories AND deep dives (website-dta): plain
                client-side substring matching; deep-dives.json is fetched
                lazily on the first keystroke and cached. While a query is
@@ -98,15 +107,6 @@
             <label class="sr-only" for="news-search">Search stories and deep dives</label>
             <input type="search" id="news-search" class="news-indsel news-search-input" placeholder="Search stories &amp; deep dives…" autocomplete="off" spellcheck="false">
             <button type="button" class="news-search-clear" id="news-search-clear" aria-label="Clear search" hidden>×</button>
-          </div>
-          <!-- Jump to a published day (website-rbw): the dropdown lists every
-               day in the feed. Options are built by news.js once the feed
-               loads; picking a day expands the render window until it is
-               fully on the page, then scrolls to #day-<date>. The default
-               view is unchanged until the reader jumps. -->
-          <div class="news-jump">
-            <label class="sr-only" for="news-jump">Jump to a published day</label>
-            <select id="news-jump" class="news-indsel" aria-label="Jump to a published day"></select>
           </div>
         </div>
         <span class="news-updated dim mono" id="news-updated"></span>
