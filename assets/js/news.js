@@ -29,6 +29,7 @@
     updated: null,   // ISO date string of the newest day
     filter: "all",   // all | security | ai | dive (topic)
     industry: "all", // all | unspecified | <NAICS sector name> (a second dimension)
+    jumpDay: null,   // ISO date of the currently anchored day (jump controls)
     shown: BUDGET,   // how many matching stories are currently rendered
     counts: { all: 0, security: 0, ai: 0 }
   };
@@ -466,6 +467,7 @@
         : "";
     }
     rebuildIndustryFilter();
+    rebuildJumpFilter();
   }
 
   /* The industry dropdown is the second filter dimension. Options are built
@@ -504,6 +506,88 @@
     }
   }
 
+  /* ------------------------------- jump to a published day (website-rbw) --
+     The dropdown lists every day in the feed; picking one expands the render
+     window until that day is fully on the page (the same budget expansion
+     deep links use), then scrolls to its #day-<date> anchor. The arrows walk
+     one day at a time from the currently anchored day — which starts at the
+     newest and follows jumps and #day-/#story- hash landings. */
+  function prefersReducedMotion() {
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  function jumpDayIndex() {
+    if (!state.jumpDay) return 0; // not anchored yet: the arrows start at the newest day
+    for (var i = 0; i < state.days.length; i++)
+      if (state.days[i].date === state.jumpDay) return i;
+    return 0; // unknown/aged-out day: treat as newest
+  }
+
+  function dayMatchingCount(date) {
+    for (var i = 0; i < state.days.length; i++) {
+      if (state.days[i].date !== date) continue;
+      var n = 0;
+      for (var j = 0; j < state.days[i].items.length; j++)
+        if (matches(state.days[i].items[j])) n++;
+      return n;
+    }
+    return 0;
+  }
+
+  // A day counts as fully rendered when its section exists and shows every
+  // story the current filters let through (the budget may have cut it off).
+  function dayFullyRendered(date) {
+    var sec = document.getElementById("day-" + date);
+    if (!sec) return false;
+    return sec.querySelectorAll(".news-item").length >= dayMatchingCount(date);
+  }
+
+  function jumpToDay(date) {
+    if (!date) return;
+    state.jumpDay = date;
+    var guard = 80; // ~80 × 15 stories is far past the 90-day cap; belt and braces
+    while (!dayFullyRendered(date) && state.shown < totalMatching() && guard-- > 0) {
+      state.shown += BUDGET;
+      render();
+    }
+    var sec = document.getElementById("day-" + date);
+    if (sec) sec.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+    syncJumpControls();
+  }
+
+  function syncJumpControls() {
+    var sel = $("#news-jump");
+    if (sel && state.jumpDay) {
+      sel.value = state.jumpDay;
+      if (sel.selectedIndex === -1) sel.value = ""; // aged out of the feed
+    }
+    var newer = $("#news-jump-newer"), older = $("#news-jump-older");
+    if (newer && older) {
+      var idx = jumpDayIndex();
+      newer.disabled = idx <= 0;
+      older.disabled = idx >= state.days.length - 1;
+    }
+  }
+
+  /* Options are built from the feed itself, like the industry dropdown:
+     every day, newest first, with "Today"/"Yesterday" tags and story counts. */
+  function rebuildJumpFilter() {
+    var sel = $("#news-jump");
+    if (!sel) return;
+    sel.textContent = "";
+    sel.appendChild(new Option("Jump to a day…", ""));
+    for (var i = 0; i < state.days.length; i++) {
+      var day = state.days[i];
+      var tag = relativeTag(day.date);
+      var label = (tag ? tag + " — " : "") + (dayLabel(day.date) || day.date) +
+        " · " + day.items.length + (day.items.length === 1 ? " story" : " stories");
+      sel.appendChild(new Option(label, day.date));
+    }
+    sel.value = state.jumpDay || "";
+    if (sel.selectedIndex === -1) sel.value = "";
+    syncJumpControls();
+  }
+
   function recomputeCounts() {
     var c = { all: 0, security: 0, ai: 0, dive: 0 };
     for (var i = 0; i < state.days.length; i++) {
@@ -540,6 +624,22 @@
     });
   }
 
+  var jumpSel = $("#news-jump");
+  if (jumpSel) {
+    jumpSel.addEventListener("change", function () {
+      if (this.value) jumpToDay(this.value);
+    });
+  }
+  function jumpStep(delta) {
+    var idx = jumpDayIndex() + delta;
+    if (idx < 0 || idx >= state.days.length) return;
+    jumpToDay(state.days[idx].date);
+  }
+  var newerBtn = $("#news-jump-newer");
+  if (newerBtn) newerBtn.addEventListener("click", function () { jumpStep(-1); });
+  var olderBtn = $("#news-jump-older");
+  if (olderBtn) olderBtn.addEventListener("click", function () { jumpStep(1); });
+
   var moreBtn = $("#news-more");
   if (moreBtn) {
     moreBtn.addEventListener("click", function () {
@@ -564,6 +664,12 @@
     if (!t) return;
     var d = t.tagName === "DETAILS" ? t : t.querySelector("details");
     if (d) d.open = true;
+    // Anchor the jump controls to the landed day, so ‹ › walk from there.
+    var m = /^day-(\d{4}-\d{2}-\d{2})$/.exec(id) || /^story-(\d{4}-\d{2}-\d{2})-/.exec(id);
+    if (m) {
+      state.jumpDay = m[1];
+      syncJumpControls();
+    }
   }
   window.addEventListener("hashchange", settleTarget);
 

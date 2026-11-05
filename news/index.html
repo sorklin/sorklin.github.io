@@ -84,6 +84,17 @@
                carry none. -->
           <label class="sr-only" for="news-industry">Filter stories by industry</label>
           <select id="news-industry" class="news-indsel" aria-label="Filter stories by industry"></select>
+          <!-- Jump to a published day: the dropdown lists every day in the feed,
+               the arrows walk one day at a time. Options are built by news.js
+               once the feed loads; picking a day expands the render window
+               until it is fully on the page, then scrolls to #day-<date>.
+               The default view is unchanged until the reader jumps. -->
+          <div class="news-jump">
+            <button type="button" class="news-jump-btn" id="news-jump-newer" aria-label="One day newer" disabled>&#8249;</button>
+            <label class="sr-only" for="news-jump">Jump to a published day</label>
+            <select id="news-jump" class="news-indsel" aria-label="Jump to a published day"></select>
+            <button type="button" class="news-jump-btn" id="news-jump-older" aria-label="One day older" disabled>&#8250;</button>
+          </div>
         </div>
         <span class="news-updated dim mono" id="news-updated"></span>
       </div>
