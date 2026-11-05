@@ -72,15 +72,17 @@
     <div class="wrap">
       <div class="news-controls" id="news-controls" hidden>
         <div class="news-filters">
-          <!-- Search across stories AND deep dives (website-dta): plain
-               client-side substring matching; deep-dives.json is fetched
-               lazily on the first keystroke and cached. While a query is
-               active the whole archive is searched and the tabs/industry/
-               jump controls are bypassed (dimmed in CSS). -->
-          <div class="news-search">
-            <label class="sr-only" for="news-search">Search stories and deep dives</label>
-            <input type="search" id="news-search" class="news-indsel news-search-input" placeholder="Search stories &amp; deep dives…" autocomplete="off" spellcheck="false">
-            <button type="button" class="news-search-clear" id="news-search-clear" aria-label="Clear search" hidden>×</button>
+          <!-- Jump to a published day (website-rbw): the dropdown lists every
+               day in the feed, the arrows walk one day at a time. Options are
+               built by news.js once the feed loads; picking a day expands the
+               render window until it is fully on the page, then scrolls to
+               #day-<date>. Sits left of the topic tabs. The default view is
+               unchanged until the reader jumps. -->
+          <div class="news-jump">
+            <button type="button" class="news-jump-btn" id="news-jump-newer" aria-label="One day newer" disabled>&#8249;</button>
+            <label class="sr-only" for="news-jump">Jump to a published day</label>
+            <select id="news-jump" class="news-indsel" aria-label="Jump to a published day"></select>
+            <button type="button" class="news-jump-btn" id="news-jump-older" aria-label="One day older" disabled>&#8250;</button>
           </div>
           <div class="news-tabs" role="group" aria-label="Filter stories by topic">
             <button type="button" class="news-tab" data-filter="all" aria-pressed="true">All<span class="n"></span></button>
@@ -88,23 +90,27 @@
             <button type="button" class="news-tab" data-filter="security" aria-pressed="false">Security<span class="n"></span></button>
             <button type="button" class="news-tab" data-filter="dive" aria-pressed="false">Deep dive<span class="n"></span></button>
           </div>
+          <!-- Search across stories AND deep dives (website-dta): plain
+               client-side substring matching; deep-dives.json is fetched
+               lazily on the first keystroke and cached. While a query is
+               active the whole archive is searched and the tabs/industry/
+               jump controls are bypassed (dimmed in CSS). Sits left of the
+               industry dropdown; the magnifier marks the box. -->
+          <div class="news-search">
+            <svg class="news-search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/>
+              <path d="M20 20l-4.35-4.35"/>
+            </svg>
+            <label class="sr-only" for="news-search">Search stories and deep dives</label>
+            <input type="search" id="news-search" class="news-indsel news-search-input" placeholder="Search stories &amp; deep dives…" autocomplete="off" spellcheck="false">
+            <button type="button" class="news-search-clear" id="news-search-clear" aria-label="Clear search" hidden>×</button>
+          </div>
           <!-- The second filter dimension: industry (top-level NAICS sectors).
                Options are built from the feed by news.js — only sectors that
                actually appear, with counts, plus "Unspecified" when stories
                carry none. -->
           <label class="sr-only" for="news-industry">Filter stories by industry</label>
           <select id="news-industry" class="news-indsel" aria-label="Filter stories by industry"></select>
-          <!-- Jump to a published day: the dropdown lists every day in the feed,
-               the arrows walk one day at a time. Options are built by news.js
-               once the feed loads; picking a day expands the render window
-               until it is fully on the page, then scrolls to #day-<date>.
-               The default view is unchanged until the reader jumps. -->
-          <div class="news-jump">
-            <button type="button" class="news-jump-btn" id="news-jump-newer" aria-label="One day newer" disabled>&#8249;</button>
-            <label class="sr-only" for="news-jump">Jump to a published day</label>
-            <select id="news-jump" class="news-indsel" aria-label="Jump to a published day"></select>
-            <button type="button" class="news-jump-btn" id="news-jump-older" aria-label="One day older" disabled>&#8250;</button>
-          </div>
         </div>
         <span class="news-updated dim mono" id="news-updated"></span>
       </div>

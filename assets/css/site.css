@@ -936,7 +936,15 @@ figure.chart { margin: 0; }
    the × clear button replaces the browser's own cancel button. deep-dives.json
    is fetched lazily on the first keystroke, so the default page never grows. */
 .news-search { position: relative; display: inline-flex; align-items: center; }
-.news-search-input { min-width: 200px; padding-right: 30px; }
+.news-search-ico {
+  position: absolute;
+  left: 11px;
+  width: 13px;
+  height: 13px;
+  color: var(--dim);
+  pointer-events: none; /* clicks land on the input, never the icon */
+}
+.news-search-input { min-width: 200px; padding-left: 30px; padding-right: 30px; }
 .news-search-input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
 .news-search-clear {
   position: absolute;
