@@ -545,18 +545,11 @@
   /* ------------------------------- jump to a published day (website-rbw) --
      The dropdown lists every day in the feed; picking one expands the render
      window until that day is fully on the page (the same budget expansion
-     deep links use), then scrolls to its #day-<date> anchor. The arrows walk
-     one day at a time from the currently anchored day — which starts at the
-     newest and follows jumps and #day-/#story- hash landings. */
+     deep links use), then scrolls to its #day-<date> anchor. The selection
+     also follows #day-/#story- hash landings, so the dropdown always shows
+     the day the reader is looking at. */
   function prefersReducedMotion() {
     return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }
-
-  function jumpDayIndex() {
-    if (!state.jumpDay) return 0; // not anchored yet: the arrows start at the newest day
-    for (var i = 0; i < state.days.length; i++)
-      if (state.days[i].date === state.jumpDay) return i;
-    return 0; // unknown/aged-out day: treat as newest
   }
 
   function dayMatchingCount(date) {
@@ -596,12 +589,6 @@
     if (sel && state.jumpDay) {
       sel.value = state.jumpDay;
       if (sel.selectedIndex === -1) sel.value = ""; // aged out of the feed
-    }
-    var newer = $("#news-jump-newer"), older = $("#news-jump-older");
-    if (newer && older) {
-      var idx = jumpDayIndex();
-      newer.disabled = idx <= 0;
-      older.disabled = idx >= state.days.length - 1;
     }
   }
 
@@ -798,16 +785,6 @@
       if (this.value && !state.query) jumpToDay(this.value); // inert while searching
     });
   }
-  function jumpStep(delta) {
-    if (state.query) return; // the jump row is dimmed/inert while searching
-    var idx = jumpDayIndex() + delta;
-    if (idx < 0 || idx >= state.days.length) return;
-    jumpToDay(state.days[idx].date);
-  }
-  var newerBtn = $("#news-jump-newer");
-  if (newerBtn) newerBtn.addEventListener("click", function () { jumpStep(-1); });
-  var olderBtn = $("#news-jump-older");
-  if (olderBtn) olderBtn.addEventListener("click", function () { jumpStep(1); });
 
   var searchInput = $("#news-search");
   var searchTimer = null;
