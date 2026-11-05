@@ -1,7 +1,224 @@
 {
   "version": 3,
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "days": [
+    {
+      "date": "2026-11-05",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Chainalysis now says password hashes and live tokens for all users were exposed — walking back its Oct 30 assurance",
+          "tldr": "Blockchain-analytics firm Chainalysis now says \"certain customer information including names, usernames, password hashes and live tokens for all Chainalysis users were exposed to a malicious actor,\" walking back its Oct 30 notice that found no evidence credentials or session tokens were touched — per The Record, the single source returned for the update; all users must reset passwords and rotate API keys.",
+          "source": "The Record",
+          "url": "https://therecord.media/chainalysis-all-users-hit-by-agentic-cyberattack",
+          "summary": "In an update posted Wednesday night and reported by The Record Nov 5 (~5:01 AM ET), Chainalysis — whose 1,500+ customers include law enforcement, crypto and traditional finance firms, regulators and national-security agencies — says password hashes and live tokens for all Chainalysis users were exposed to a malicious actor. That directly contradicts the company's Oct 30 notice (~5:14 PM ET), which said there was no evidence authentication credentials or session tokens were accessed. All users must reset passwords and rotate API keys. Chainalysis attributes the exposure to an \"on-path attack\" — interception between users and the service — that it says has been contained and remediated, with affected accounts being locked, and it still says there is no evidence investigations data was accessed or attribution data manipulated. The perpetrator is unnamed, the company has never explained its earlier \"offensive agentic techniques\" characterization, and the scope of what an attacker could do with the live tokens is undisclosed.",
+          "details": [
+            "What's new: Update posted \"Wednesday night,\" Nov 4 (per The Record, published Nov 5, ~5:01 AM ET): \"certain customer information including names, usernames, password hashes and live tokens for all Chainalysis users were exposed to a malicious actor.\"",
+            "Walk-back: Contradicts the Oct 30 notice (~5:14 PM ET), which said there was no evidence authentication credentials or session tokens were accessed.",
+            "Required action: All users must reset passwords and rotate API keys.",
+            "Mechanism: Some customers' passwords were exposed via an \"on-path attack\" (interception between users and the service), which Chainalysis says has been contained and remediated; affected accounts are being locked.",
+            "Still no evidence: Any investigations data was accessed, or attribution data manipulated.",
+            "Customer base: 1,500+ customers including law enforcement, crypto and traditional finance, regulators and national security.",
+            "Open: The perpetrator is unnamed; what \"live tokens\" enabled in practice is undisclosed; whether any customer environments were actually entered is unknown; any link to the wider AI-platform attack wave is unestablished; the company has never explained its \"offensive agentic techniques\" characterization."
+          ],
+          "links": [
+            {
+              "label": "The Record — the update (Nov 5, ~5:01 AM ET)",
+              "url": "https://therecord.media/chainalysis-all-users-hit-by-agentic-cyberattack"
+            },
+            {
+              "label": "Chainalysis — original security notice (Oct 30)",
+              "url": "https://www.chainalysis.com/blog/security-incident-october-30/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "GitBook postmortem: SSO flaw let attacker create staff sessions, cascading to full production access",
+          "tldr": "GitBook's Nov 4 postmortem confirms a flaw in its SSO login flow let the attacker create sessions acting as GitBook staff, then pivot through a misconfigured GitHub App to internal repositories, a Cloudflare API key and a service account with full infrastructure access — with all customer data treated as exposed.",
+          "source": "GitBook",
+          "url": "https://www.gitbook.com/status/security-incident-2026-11-03",
+          "summary": "The postmortem, published Nov 4 at 2:30 PM ET on GitBook's security-incident page, confirms the chain: a flaw in GitBook's SSO login flow let the attacker create sessions acting as GitBook staff; they then queried the authentication information of a misconfigured GitHub App installed in GitBook's own organization → internal code repositories → a Cloudflare API key → production secrets → a service account with full infrastructure access. The attack began Nov 2 at ~1:00 PM ET; GitBook disabled every affected service account within hours, rotated every infrastructure and GitBook-managed customer secret, and was back online at 11:56 UTC Nov 3 after ~16 hours of downtime. The company says \"everything we've seen points to an attack aimed at one GitBook customer rather than at GitBook as a whole\" — but because the attacker could reach customer data while inside, GitBook treats all customer data as exposed. Per cybersixt, the targeted customer is trade[XYZ], a trading platform whose documentation was tampered with on Nov 2; it reports GitBook confirmed the tampering came from the infrastructure breach, that trade[XYZ] found no compromise of its own systems, and that it will move off GitBook. The original \"AI agents\" framing remains the company's own — the postmortem still does not name which AI systems were used or how credentials were first obtained.",
+          "details": [
+            "Timeline: Attack began Nov 2, ~1:00 PM ET; service restored 11:56 UTC Nov 3 after ~16 hours of downtime; resolution declared Nov 4, 11:36 CET; postmortem published Nov 4, 2:30 PM ET (20:30 CET) on the security-incident page.",
+            "Initial access: A flaw in GitBook's SSO login flow let the attacker create sessions acting as GitBook staff.",
+            "Chain: Misconfigured GitHub App installed in GitBook's own organization → its authentication information → internal code repositories → a Cloudflare API key → production secrets → a service account with full infrastructure access.",
+            "Response: Every affected service account disabled within hours; every infrastructure and GitBook-managed customer secret rotated.",
+            "Exposure: GitBook says everything points to an attack aimed at one customer rather than at GitBook as a whole — but treats all customer data as exposed, because the attacker could reach customer data while inside.",
+            "Per cybersixt: The targeted customer is trade[XYZ], a trading platform whose docs were tampered with on Nov 2; GitBook confirmed the tampering came from the infrastructure breach, trade[XYZ] found no compromise of its own systems, and it will move off GitBook (Nov 4).",
+            "Undisclosed: The original \"AI agents\" framing remains the company's own; the postmortem does not name which AI systems were used or how credentials were first obtained."
+          ],
+          "links": [
+            {
+              "label": "GitBook — security-incident page with postmortem (Nov 3–4)",
+              "url": "https://www.gitbook.com/status/security-incident-2026-11-03"
+            },
+            {
+              "label": "cybersixt — postmortem/trade[XYZ] write-up (Nov 3, ~7:50 PM ET)",
+              "url": "https://cybersixt.com/originals/gitbook-says-ai-driven-cyberattack-exposed-customer-api-tokens"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Singapore Airlines confirms 46,000 records accessed as the airline breach count tied to Amadeus keeps growing",
+          "tldr": "Per The Record's consolidation, Japan Airlines (92,000 customers), Singapore Airlines (46,000 records) and Cathay Pacific (53,000 records) have disclosed breaches traced to the attack on travel-technology provider Amadeus, joining Korean Air, Asiana and Malaysia Airlines.",
+          "source": "The Record",
+          "url": "https://therecord.media/asian-airlines-announce-data-breach-it-provider-incident",
+          "summary": "Airlines affected by the attack on Amadeus IT Group keep adding headcounts: Japan Airlines (92,000 customers), Singapore Airlines (46,000 records) and Cathay Pacific (53,000 records) have now disclosed breaches, joining Korean Air, Asiana and Malaysia Airlines. Singapore Airlines — the new count this window — told Reuters and Bloomberg that confirmation numbers, itineraries and names were leaked, and it is contacting passengers with upcoming flights to change exposed booking numbers. Cathay's disclosed records include booking numbers, passenger names, flight details, some passports and travel documents, frequent-flyer numbers and emails, and it reiterates the access used login credentials assigned to its system account. Amadeus re-stated on record that a \"vulnerability affecting a travel booking display environment\" was fixed, that there is no evidence payment or financial data was accessed and no indications of ransomware exploitation, and that fixes and enhanced monitoring are in place; it declined to say how many total victims there are or whether attackers contacted it. All airlines say their own systems were unaffected.",
+          "details": [
+            "New count: Singapore Airlines confirms 46,000 records accessed; it told Reuters and Bloomberg that confirmation numbers, itineraries and names were leaked, and it is contacting passengers with upcoming flights to change exposed booking numbers.",
+            "Airline counts: Japan Airlines (JAL) 92,000 customers; Cathay Pacific 53,000 records — booking numbers, passenger names, flight details, some passports/travel documents, frequent-flyer numbers, emails; ANA 37.8k (disclosed earlier).",
+            "Also affected: Korean Air, Asiana and Malaysia Airlines; all airlines say their own systems were unaffected.",
+            "Amadeus statement: A \"vulnerability affecting a travel booking display environment\"; no evidence payment/financial data was accessed; no indications of ransomware exploitation; fixes and enhanced monitoring in place; declined to say how many total victims or whether attackers contacted it.",
+            "Cathay: Reiterates the access used \"login credentials assigned to its system account.\"",
+            "Timing: The Record's consolidation published Nov 4, ~4:32 PM ET; the airline notices came \"over the last week\"; Singapore Airlines' own statement date was not returned."
+          ],
+          "links": [
+            {
+              "label": "The Record — the consolidation (Nov 4, ~4:32 PM ET)",
+              "url": "https://therecord.media/asian-airlines-announce-data-breach-it-provider-incident"
+            },
+            {
+              "label": "NST/Business Times — Amadeus statement (Nov 2)",
+              "url": "https://www.nst.com.my/business/corporate/2026/11/1569011/amadeus-fixes-booking-system-vulnerability-amid-airline-data"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Synology's C3RB3R ransomware wave against outdated NAS devices draws a government advisory from Korea's KISA",
+          "tldr": "Synology warns of a surge in C3RB3R ransomware attacks against NAS devices running outdated DiskStation Manager, exploiting flaws patched in late 2024 — and Korea's KISA has now issued its own user advisory as the wave continues (per BleepingComputer's report of the vendor warning).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/synology-warns-customers-of-ongoing-c3rb3r-ransomware-attacks/",
+          "summary": "Synology — which rarely issues such advisories (the last was August 2019) — warns of a surge in C3RB3R ransomware attacks against NAS devices running outdated DiskStation Manager (DSM), exploiting vulnerabilities patched in late 2024: CVE-2024-10441 (RCE, CVSS 9.8), CVE-2024-50629 (file read) and CVE-2024-10445 (file write). Per Qihoo 360 (via The Hacker News), C3RB3R also has a long history of hitting NAS, including two 2026 DSM flaws patched in September (CVE-2026-13684 and CVE-2026-13639, both CVSS 9.8 per that report). Victim reports describe files encrypted with a .L0CK3D extension and a read-me3.txt note pushing a paid \"C3rb3r Decryptor\". Synology urges immediate DSM updates (7.2.2-72806-1 or above) and blocking internet access to the management interface; Shadowserver tracks ~380,000 internet-connected Synology endpoints (per TechRadar). In-window, Korea's KISA issued its own user advisory Nov 3 — infection indicators (L0CK3D/locked/lock3d variants), update-and-isolate guidance, offline backup and MFA advice — and Synology extended PHP2Shell fixes to end-of-life DSM releases (per HKCERT). No victim organizations are named.",
+          "details": [
+            "Wave: A surge in C3RB3R ransomware attacks against Synology NAS devices running outdated DiskStation Manager (DSM); Synology rarely issues such advisories — the last was August 2019.",
+            "Late-2024 flaws: CVE-2024-10441 (RCE, CVSS 9.8), CVE-2024-50629 (file read), CVE-2024-10445 (file write) — patched in the Nov 2024 advisory.",
+            "2026 flaws (per Qihoo 360, via The Hacker News): CVE-2026-13684 and CVE-2026-13639, both CVSS 9.8 per that report, patched in September; which CVE(s) the current wave actually uses is unconfirmed.",
+            "Signatures: Files encrypted with a .L0CK3D extension and a read-me3.txt note pushing a paid \"C3rb3r Decryptor\"; KISA lists infection indicators including L0CK3D/locked/lock3d variants.",
+            "Guidance: Update DSM immediately (7.2.2-72806-1 or above); block internet access to the management interface; Synology extended PHP2Shell fixes to end-of-life DSM releases (per HKCERT); KISA adds offline backup and MFA advice.",
+            "Exposure: Shadowserver tracks ~380,000 internet-connected Synology endpoints (per TechRadar).",
+            "In-window movement: HKCERT alert Nov 2; KISA advisory Nov 3; Nov 4 pickups — theTechEdge (~9:03 PM ET), Cyware (~6:46 AM ET) and the PatchOrPass newsletter (~9:15 AM ET).",
+            "Open: No IoCs released by Synology; no victim organizations named — the attacks target unnamed Synology NAS owners/SMBs."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — the vendor warning (Nov 2, ~6:28 AM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/synology-warns-customers-of-ongoing-c3rb3r-ransomware-attacks/"
+            },
+            {
+              "label": "theTechEdge — KISA advisory write-up (Nov 4, ~9:03 PM ET)",
+              "url": "https://thetechedge.ai/synology_nas_ransomware_kisa_security_advisory_te_daily/"
+            },
+            {
+              "label": "HKCERT — security alert on the ransomware attacks (Nov 2)",
+              "url": "https://www.hkcert.org/security-bulletin/security-alert-ransomware-attacks-targeting-synology-nas-devices_20261102"
+            },
+            {
+              "label": "The Hacker News — Qihoo 360 findings (Nov 3, ~2:43 AM ET)",
+              "url": "https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html"
+            },
+            {
+              "label": "TechRadar — exposure estimate (Nov 3, ~12:10 PM ET)",
+              "url": "https://www.techradar.com/pro/security/synology-nas-devices-could-be-under-attack-from-new-ransomware-threat-so-update-now"
+            },
+            {
+              "label": "Cyware — daily threat briefing (Nov 4, ~6:46 AM ET)",
+              "url": "https://www.cyware.com/resources/threat-briefings/daily-threat-briefing/cyware-daily-threat-intelligence-november-04-2026"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "Qilin posts ~1 TB of data stolen from Canada's Burnaby School District — payroll, discipline, mental-health folders",
+          "tldr": "CBC News located a stolen Burnaby School District (British Columbia) database on Qilin's dark-web leak site — folders labelled \"Payroll,\" \"Harassment Investigations,\" \"Discipline\" and \"Mental health and Wellness\" in a listing described as a terabyte of data viewed nearly 4,000 times since Oct 15 — per CBC News, the single source returned.",
+          "source": "CBC News",
+          "url": "https://www.cbc.ca/news/canada/british-columbia/qilin-burnaby-school-ransomware-9.7409539",
+          "summary": "CBC News located the stolen Burnaby School District (British Columbia) database on Qilin's dark-web leak site, with screenshots showing folders labelled \"Payroll,\" \"Harassment Investigations,\" \"Discipline\" and \"Mental health and Wellness\" — a listing CBC describes as a terabyte of data viewed nearly 4,000 times since Oct 15. The district confirmed in a Nov 3 email to parents that the threat actor claims to have published files and information from the incident on the dark web, says it has shared reliable information as it became available, and has engaged an external expert to confirm what was posted and its extent. The Sept 21 breach — which the district previously said exposed medical information, detailed learning assessments, and personal information about students and staff in some cases — raised parent alarms; an Oct 14 superintendent note said most student, parent and guardian records remained secure but bus-touring information, student intervention records and other assessments were affected \"in a limited and smaller number of cases.\" Qilin is a Ransomware-as-a-Service operation believed to be Russia-based (per CBC).",
+          "details": [
+            "Discovery: CBC News located the stolen database on Qilin's dark-web leak site (posted Nov 4, 7:35 PM ET); the data itself was first posted publicly Oct 15 (per CBC) and has been viewed nearly 4,000 times since.",
+            "Listing: Screenshots show folders labelled \"Payroll,\" \"Harassment Investigations,\" \"Discipline\" and \"Mental health and Wellness,\" in a listing CBC describes as a terabyte of data.",
+            "Attack: Sept 21 (per the district); the district previously said it exposed medical information, detailed learning assessments, and personal information about students and staff in some cases.",
+            "District response: A Nov 3 email to parents confirms the threat actor claims to have published files and information from the incident on the dark web; an external expert is engaged to confirm what was posted and its extent.",
+            "Oct 14 superintendent note: Most student/parent/guardian records remained secure, but bus-touring information, student intervention records and other assessments were affected \"in a limited and smaller number of cases.\"",
+            "Attribution: Qilin is a Ransomware-as-a-Service operation believed to be Russia-based (per CBC).",
+            "Single source: per CBC News — the single source returned."
+          ],
+          "links": [
+            {
+              "label": "CBC News — the discovery (Nov 4, 7:35 PM ET)",
+              "url": "https://www.cbc.ca/news/canada/british-columbia/qilin-burnaby-school-ransomware-9.7409539"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "DreamHost confirms a months-long breach stole customers' FTP/SFTP credentials and webmail sessions from File Manager",
+          "tldr": "Web host DreamHost (~400,000 paying customers) says an unauthorized third party exploited a vulnerability in its web-based File Manager and accessed FTP/SFTP usernames and passwords plus webmail session information between ~August and Oct 23 (per BleepingComputer and TechCrunch).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/dreamhost-confirms-data-breach-exposed-ftp-logins-and-webmail-sessions/",
+          "summary": "DreamHost says an unauthorized third party exploited a vulnerability in its web-based File Manager (files.dreamhost.com) and accessed FTP/SFTP usernames and passwords of individuals who logged in between approximately August and Oct 23, plus webmail session information including credentials for a limited number of users. Per TechCrunch, the notice went to the California AG, the hackers obtained session tokens, affected customers are \"well under 10%\" of the base (the exact figure was declined), the vulnerability is unspecified and unrelated to the recently disclosed PHP flaws, and DreamHost has declined to say why detection took until October. The company says there is no evidence control-panel logins or billing/payment details — handled by an external provider — were accessed. Passwords were invalidated and sessions killed; affected users get one year of Equifax credit monitoring and are told to check website files for unauthorized changes, review webmail forwarding rules and filters, and rotate reused passwords.",
+          "details": [
+            "What was stolen: FTP/SFTP usernames and passwords of individuals who logged in between ~August and Oct 23, 2026, plus webmail session information including credentials for a limited number of users.",
+            "Vector: A vulnerability in the web-based File Manager (files.dreamhost.com); unspecified and unrelated to the recently disclosed PHP flaws (per TechCrunch).",
+            "Scale: ~400,000 paying customers; affected customers \"well under 10%\" of the base, exact figure declined.",
+            "Additional detail (per TechCrunch): Hackers obtained session tokens; the notice went to the California AG; DreamHost has declined to say why detection took until October.",
+            "Not accessed: No evidence control-panel logins or billing/payment details — handled by an external provider — were accessed.",
+            "Response: Passwords invalidated, sessions killed; affected users get one year of Equifax credit monitoring; recipients are told to check website files for unauthorized changes, review webmail forwarding rules/filters, and rotate reused passwords.",
+            "Timeline: Breach window Aug–Oct 23, 2026 (discovered Oct 23); initial disclosure Oct 29 (\"last Thursday\"); confirmations Nov 4 — BleepingComputer ~2:05 PM ET, TechCrunch ~3:36 PM ET."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — the confirmation (Nov 4, ~2:05 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/dreamhost-confirms-data-breach-exposed-ftp-logins-and-webmail-sessions/"
+            },
+            {
+              "label": "TechCrunch — additional detail (Nov 4, ~3:36 PM ET)",
+              "url": "https://techcrunch.com/2026/11/04/hackers-stole-dreamhost-customer-files-and-inboxes-during-months-long-attack/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-04",
       "items": [
