@@ -487,6 +487,10 @@
           : "Showing the latest " + rendered + " of " + total + " matching stories";
       }
     }
+
+    // Layout changed (budget, filters, search view) — the back-to-top button
+    // may need to appear or disappear.
+    syncTopButton();
   }
 
   function renderCounts() {
@@ -784,6 +788,28 @@
     jumpSel.addEventListener("change", function () {
       if (this.value && !state.query) jumpToDay(this.value); // inert while searching
     });
+  }
+
+  /* ----------------- back to the top of the feed (fixed bottom right) -----
+     Appears once the filter/search row has scrolled off the viewport — after
+     a jump to a far-back day the trip home is long — and clicking scrolls
+     back to that row. Hidden until then: before the feed loads, on error
+     states, and without JavaScript (the button never leaves the markup). */
+  var topBtn = $("#news-top");
+  function syncTopButton() {
+    if (!topBtn) return;
+    var controls = $("#news-controls");
+    if (!controls || controls.hidden) { topBtn.hidden = true; return; }
+    // Show only when the whole controls row is above the viewport: while any
+    // part of it is still on screen the reader can use it directly.
+    topBtn.hidden = controls.getBoundingClientRect().bottom > 0;
+  }
+  if (topBtn) {
+    topBtn.addEventListener("click", function () {
+      var t = $("#news-controls");
+      if (t) t.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+    });
+    window.addEventListener("scroll", syncTopButton, { passive: true });
   }
 
   var searchInput = $("#news-search");

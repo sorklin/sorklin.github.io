@@ -124,6 +124,13 @@
         <span class="dim mono news-shown" id="news-shown" hidden></span>
       </div>
 
+      <!-- Back to the top of the feed: news.js shows this fixed bottom-right
+           button once the filter/search row has scrolled off the viewport
+           (e.g. after a jump lands deep in the archive). Clicking scrolls
+           back to the controls row. Stays hidden until then — including
+           before the feed loads and without JavaScript. -->
+      <button type="button" class="news-top" id="news-top" aria-label="Back to the top of the feed" hidden>↑ Top</button>
+
       <noscript>
         <div class="callout" style="margin-top:20px">
           <span class="ico">[!]</span>
