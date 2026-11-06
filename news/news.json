@@ -1,7 +1,233 @@
 {
   "version": 3,
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "days": [
+    {
+      "date": "2026-11-06",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Chainalysis confirms some KYT customer accounts accessed — screening pulled, phased restoration begins Friday",
+          "tldr": "Chainalysis says some customers' accounts on its Know Your Transaction (KYT) service \"appear to have been accessed\" in an \"ongoing multifront cyberattack\" — and, per a Nov 6 update, phased restoration of KYT and Address Screening began Friday morning (restore timing per CCN and CoinCentral; the company's blog is the primary).",
+          "source": "Chainalysis",
+          "url": "https://www.chainalysis.com/blog/security-incident-october-30/",
+          "summary": "Chainalysis's Thursday updates — the first movement since the Nov 4-night disclosure that password hashes and live tokens for all users were exposed — say some customers' KYT accounts \"appear to have been accessed\" without authorization, and the company is \"directly notifying\" those customers. It describes an \"ongoing multifront cyberattack\": some customers' passwords were exposed in an \"on-path attack\" (attacker-in-the-middle) that it says has been \"contained and remediated\", with affected accounts locked and no evidence they were accessed improperly. It also detected \"abnormal activity\" on its transaction-screening products and took services down while \"critical work\" completes — with password-reset functionality down even as reset emails went out (per The Register). A Thursday-night update promised KYT and Address Screening access would begin restoring \"tomorrow\" — and per a Nov 6 update it did: phased restoration began Friday, with additional customers expected to regain access over the following hours. The company still reports no evidence investigations data was accessed or attribution data manipulated, and no attribution has been named.",
+          "details": [
+            "What's new: Thursday updates say some customers' accounts on the Know Your Transaction (KYT) service \"appear to have been accessed\" without authorization; Chainalysis is \"directly notifying\" those customers.",
+            "Framing: The company describes an \"ongoing multifront cyberattack.\"",
+            "Mechanism: Exposure of some customers' passwords happened in an \"on-path attack\" (attacker-in-the-middle), described as \"contained and remediated\"; affected accounts are being locked with no evidence they were accessed improperly.",
+            "Services down: \"Abnormal activity\" was detected on the transaction-screening products; services were taken down while \"critical work\" completes — and password-reset functionality was down even as reset emails went out (per The Register).",
+            "Restore: A Thursday-night update promised KYT and Address Screening access would begin restoring \"tomorrow\"; per a Nov 6 update, phased restoration of KYT and Address Screening began Friday, with additional customers expected to regain access over the following hours (per CCN; CoinCentral also reports the phased restore — the restore detail rests on their readings of the company's update, whose blog is the primary).",
+            "Prior facts stand: Names, usernames, password hashes and live tokens for all users were exposed; no evidence investigations data was accessed or attribution data manipulated; no attribution named.",
+            "Developing: A per-organization breakdown of KYT account access; whether password reset and the remaining services come back; whether any attribution or \"other fronts\" are named."
+          ],
+          "links": [
+            {
+              "label": "Chainalysis — Security Incident Information blog, updated Nov 6",
+              "url": "https://www.chainalysis.com/blog/security-incident-october-30/"
+            },
+            {
+              "label": "The Record — KYT access + multifront attack (Nov 5, 7:38 AM ET)",
+              "url": "https://therecord.media/chainalysis-all-users-hit-by-agentic-cyberattack"
+            },
+            {
+              "label": "The Register — services down, reset broken (Nov 5, 1:03 PM ET)",
+              "url": "https://www.theregister.com/cyber-crime/2026/11/05/october-crypto-tracker-hack-access-cracked-law-enforcement-tokens-packed/5307852"
+            },
+            {
+              "label": "CCN — restore begins (Nov 6)",
+              "url": "https://www.ccn.com/news/crypto/chainalysis-cyberattack-credentials-exposed-services-restored/"
+            },
+            {
+              "label": "CoinCentral — phased restore (Nov 6)",
+              "url": "https://coincentral.com/chainalysis-breach-disclosure-widens-in-one-week-from-names-to-live-tokens"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Microsoft: ARTEX agentic AI framework harvests GitHub-exposed secrets — one agent hit Azure Key Vault in five minutes",
+          "tldr": "Microsoft Threat Intelligence reports actors using the ARTEX agentic AI offensive framework to harvest GitHub-exposed secrets — including AI inference API keys — since August 2026, with at least one observed agent advancing from scanning GitHub to exfiltrating Azure Key Vault data in five minutes.",
+          "source": "Microsoft",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/",
+          "summary": "Microsoft Threat Intelligence and Microsoft Security Research report threat actors using the ARTEX agentic AI offensive framework to submit large volumes of GitHub queries for exposed secrets since August 2026 — organization names paired with secret, cloud-service and AI-provider keywords — harvesting application credentials and AI inference API keys. In at least one observed case, an AI agent advanced from scanning GitHub to exfiltrating Azure Key Vault data in five minutes. From Oct 28, 2026, Microsoft observed successful service-principal sign-ins from 199.19.77[.]84 across multiple application IDs and customers — including a vendor-owned multitenant app credential compromised at the source and used to reach multiple downstream tenants — for cloud-resource discovery and credential/data exfiltration from Key Vaults and Storage Accounts, plus abuse of Azure AI services. Guidance: assume exposed secrets are compromised and rotate immediately (deletion alone doesn't remediate), migrate to managed identities, and enable push protection. This is the operator-side playbook for the same framework named in the WorkOS and Chainstack breaches (Nov 3–4 editions) — from the cloud giant's own telemetry.",
+          "details": [
+            "Campaign: Threat actors use the ARTEX agentic AI offensive framework to submit large volumes of GitHub queries for exposed secrets since August 2026 — organization names paired with secret, cloud-service, and AI-provider keywords — harvesting application credentials and AI inference API keys.",
+            "Speed: In at least one observed case, an AI agent advanced from scanning GitHub to exfiltrating Azure Key Vault data in five minutes.",
+            "Infrastructure: From Oct 28, 2026, Microsoft observed successful service-principal sign-ins from 199.19.77[.]84 across multiple application IDs and customers — including a vendor-owned multitenant app credential compromised at the source and used to reach multiple downstream tenants — for cloud-resource discovery and credential/data exfiltration from Key Vaults and Storage Accounts, plus abuse of Azure AI services.",
+            "Two further IPs: 65.87.223[.]26 (shell commands embedded in a user agent, App Service token attempts) and 157.22.126[.]128 (reconnaissance of victims' Azure AI workloads).",
+            "Corroboration: A similar campaign was reported by Todyl.",
+            "Guidance: Assume exposed secrets are compromised and rotate immediately (deletion alone doesn't remediate); migrate to managed identities; enable push protection.",
+            "Continuity: The same ARTEX framework was named in the WorkOS and Chainstack breaches (Nov 3–4 editions); this is the framework's operator-side playbook from Microsoft's own telemetry."
+          ],
+          "links": [
+            {
+              "label": "Microsoft Security Blog — original research (Nov 5, 6:46 PM ET)",
+              "url": "https://www.microsoft.com/en-us/security/blog/2026/11/05/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-exposed-secrets/"
+            },
+            {
+              "label": "The AI News — brief with key numbers (Nov 5, 8:02 PM ET edition)",
+              "url": "https://www.theai.news/briefs/2026/11/threat-actors-use-agentic-ai-tooling-to-find-and-abuse-expos-c1dee076"
+            },
+            {
+              "label": "CybersecurityNews — write-up (Nov 6)",
+              "url": "https://cybersecuritynews.com/hackers-use-artex-ai/"
+            },
+            {
+              "label": "GBHackers — write-up (Nov 6)",
+              "url": "https://gbhackers.com/azure-key-vault-secrets/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "title": "Muji admits hackers may have reached 1.09M full card numbers — 345,000 still valid — as Japan's Arara leak wave widens",
+          "tldr": "Muji operator Ryohin Keikaku's second report says up to 27.26 million Muji App/online-store records and ~1.09 million MUJI Card full card numbers may have been accessed — ~345,000 of the cards still valid — in a leak wave tied to email-distribution contractor Arara Inc. (per Kyodo — the primary wire).",
+          "source": "Kyodo News",
+          "url": "https://english.kyodonews.net/articles/-/90309",
+          "summary": "Ryohin Keikaku's Nov 4 second report says up to 27.26 million Muji App/online-store records — emails, birth dates, gender, member IDs; ~520,000 also with name, address and phone — and ~1.09 million MUJI Card full card numbers with birth dates may have been accessed, ~345,000 of them still valid (no cardholder names, expiry dates or CVVs alongside). The card data was passed to Muji by issuer Credit Saison from Oct 2000–Jul 2021 for a points scheme and never deleted; cards issued after Aug 2021 are unaffected, and ~120 saved-card records exposed only first-6/last-2 digits plus names. Per Credit Saison, the intrusion hit at ~1 a.m. Oct 29 — and Muji's first report (Oct 30) had said card data, names and addresses were not involved. Separately, Nomura Investor Relations disclosed unauthorized access to its Institutional Navi service (detected Nov 2, confirmed Nov 3; names/emails may have leaked; service suspended). The wider wave tied to email-distribution contractor Arara Inc. includes Bic Camera (~14.9M records), Airdo (673,920), Solaseed Air (up to 490,000) and Workman (up to 1.45M). Per MLex, the card data stayed despite a 2021 deletion request; Credit Saison is stepping up monitoring and reissuing cards on request, and Muji says no dark-web posting or misuse has been found so far.",
+          "details": [
+            "Scale: Up to 27.26 million Muji App/online-store records — emails, birth dates, gender, member IDs; ~520,000 also with name, address and phone.",
+            "Card data: ~1.09 million MUJI Card full card numbers with birth dates may have been accessed — ~345,000 of them still valid; no cardholder names, expiry dates or CVVs alongside.",
+            "Retention angle: The card data was passed to Muji by issuer Credit Saison from Oct 2000–Jul 2021 for a points scheme and never deleted; per MLex, it stayed despite a 2021 deletion request. Cards issued after Aug 2021 are unaffected; ~120 saved-card records exposed first-6/last-2 digits plus names.",
+            "Timeline: Per Credit Saison, the intrusion hit ~1 a.m. Oct 29 — and Muji's first report (Oct 30) had said card data, names and addresses were not involved. The second report is dated Nov 4 (JST).",
+            "Related disclosure: Nomura Investor Relations disclosed unauthorized access to its Institutional Navi service (detected Nov 2, confirmed Nov 3; names/emails may have leaked; service suspended).",
+            "The wave: Email-distribution contractor Arara Inc. is tied to Bic Camera (~14.9M records), Airdo (673,920), Solaseed Air (up to 490,000) and Workman (up to 1.45M).",
+            "Response: Credit Saison is stepping up monitoring and reissuing cards on request; Muji says no dark-web posting or misuse has been found so far.",
+            "Developing: Whether the card data surfaces on the dark web; more Arara-linked victims; Japanese regulatory and data-retention fallout; how the intruder got in is undisclosed."
+          ],
+          "links": [
+            {
+              "label": "Kyodo News — original report (Nov 4, 9:02 AM ET)",
+              "url": "https://english.kyodonews.net/articles/-/90309"
+            },
+            {
+              "label": "bne IntelliNews — wave aggregation (Nov 5, 7:00 PM ET)",
+              "url": "https://www.intellinews.com/japan-s-muji-operator-reports-1-09mn-record-data-leak-482445/"
+            },
+            {
+              "label": "INTERNET Watch — second-report detail (Nov 5, 9:15 PM ET)",
+              "url": "https://internet.watch.impress.co.jp/docs/news/2154222.html"
+            },
+            {
+              "label": "MLex — retained-card-data scrutiny (Nov 6, 12:01 AM ET)",
+              "url": "https://www.mlex.com/mlex/articles/2547160/japan-s-muji-faces-questions-over-retained-card-data-after-cyberattack"
+            },
+            {
+              "label": "Cyberpresso — timeline reconstruction (Nov 5)",
+              "url": "https://cyberpresso.com/blog/muji-said-no-card-data-leaked-then-1-09-million-full-card-numbers-kept-since-2021-perk-scheme"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "DOJ stands up a \"Super Intelligence Task Force\" to coordinate AI criminal and civil enforcement",
+          "tldr": "The Justice Department announced DOJ-SITF, co-chaired by Associate Attorney General Stanley Woodward and Associate Deputy AG Stephen Weiss under an Oct 13 memo from AG Todd Blanche, to coordinate the department's criminal and civil AI law-enforcement efforts.",
+          "source": "Nextgov/FCW",
+          "url": "https://www.nextgov.com/artificial-intelligence/2026/11/department-justice-forms-ai-task-force/417074/",
+          "summary": "The Justice Department announced the DOJ Super Intelligence Task Force (DOJ-SITF), co-chaired by Associate Attorney General Stanley Woodward and Associate Deputy AG Stephen Weiss, per an Oct 13 memo from AG Todd Blanche. It coordinates the department's criminal and civil AI law-enforcement efforts, recommends enforcement priorities, and develops prosecution guidance for unlawful AI conduct — aimed at \"foreign state and state-sponsored actors, transnational criminal organizations, and individual or corporate actors engaged in fraud,\" while also protecting US \"SI dominance\" and warning against \"burdensome regulation\" (per Dow Jones Risk Journal). It absorbs the January AI Litigation Task Force, which had challenged state AI laws, and serves as DOJ's main contact with the White House \"Super Intelligence Force\" led by DNI Jay Clayton.",
+          "details": [
+            "What: The Justice Department announced the DOJ Super Intelligence Task Force (DOJ-SITF) on Thursday Nov 5 (Nextgov 1:56 PM ET; CoinDesk 1:59 PM ET; MLex 5:04 PM ET).",
+            "Leadership: Co-chaired by Associate Attorney General Stanley Woodward and Associate Deputy AG Stephen Weiss, per an Oct 13 memo from AG Todd Blanche.",
+            "Mandate: Coordinates the department's criminal and civil AI law-enforcement efforts, recommends enforcement priorities, and develops prosecution guidance for unlawful AI conduct.",
+            "Targets: \"Foreign state and state-sponsored actors, transnational criminal organizations, and individual or corporate actors engaged in fraud,\" while protecting US \"SI dominance\" and warning against \"burdensome regulation\" (per Dow Jones Risk Journal).",
+            "Consolidation: Absorbs the January AI Litigation Task Force, which had challenged state AI laws; serves as DOJ's main contact with the White House \"Super Intelligence Force\" led by DNI Jay Clayton.",
+            "Developing: Staffing, docket and first enforcement actions; interplay with state AI laws."
+          ],
+          "links": [
+            {
+              "label": "Nextgov/FCW — the announcement (Nov 5, 1:56 PM ET)",
+              "url": "https://www.nextgov.com/artificial-intelligence/2026/11/department-justice-forms-ai-task-force/417074/"
+            },
+            {
+              "label": "CoinDesk — coverage (Nov 5, 1:59 PM ET)",
+              "url": "https://www.coindesk.com/policy/2026/11/05/u-s-justice-department-assembles-force-to-shield-against-foreign-ai-threats"
+            },
+            {
+              "label": "MLex — coverage (Nov 5, 5:04 PM ET)",
+              "url": "https://www.mlex.com/mlex/articles/2547015/us-doj-combines-ai-efforts-with-new-super-intelligence-task-force"
+            },
+            {
+              "label": "Dow Jones Risk Journal — coverage (Nov 5, 5:22 PM ET)",
+              "url": "https://riskjournal.dowjones.com/article/doj-sets-up-super-intelligence-task-force-eyeing-ai-misconduct-ab49ddda"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "title": "Air Creebec confirms attackers exfiltrated administrative files containing employee and passenger data",
+          "tldr": "The Quebec regional airline disclosed (per BreachNews — the single source returned) that attackers exfiltrated administrative files holding current and former employee data and passenger data; operations were unaffected.",
+          "source": "BreachNews",
+          "url": "https://breachnews.com/breaches/air-creebec-confirms-data-breach-exposing-employee-and-passenger-files/",
+          "summary": "Air Creebec, a Quebec-based regional airline, disclosed on Nov 4 that attackers exfiltrated administrative files containing current and former employee data and passenger data, per BreachNews — the single source returned. The airline says operations were unaffected. An earlier Chaos ransomware leak-site claim (July 6, ~70 GB) remains unlinked to this disclosure and unverified.",
+          "details": [
+            "Disclosure: Quebec regional airline Air Creebec disclosed Nov 4 (per BreachNews) that attackers exfiltrated administrative files containing current and former employee data and passenger data.",
+            "Operations: Unaffected, per the disclosure.",
+            "Unlinked claim: An earlier Chaos leak-site claim (July 6, ~70 GB) is unlinked to this disclosure and unverified.",
+            "Coverage: BreachNews, Nov 5, 8:06 PM ET — the single source returned."
+          ],
+          "links": [
+            {
+              "label": "BreachNews — disclosure coverage (Nov 5, 8:06 PM ET)",
+              "url": "https://breachnews.com/breaches/air-creebec-confirms-data-breach-exposing-employee-and-passenger-files/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Ransomware group n0n claims a Delta Dental of Missouri breach exposing SSNs and dental-treatment data",
+          "tldr": "Per Becker's — the single source returned — dark-web monitors Ransomware.live and HookPhish posted that the n0n group claimed a Delta Dental of Missouri incident exposing names, SSNs, dates of birth, addresses and dental-treatment details; the claim is unverified beyond the company's acknowledgment of a posting.",
+          "source": "Becker's Dental Review",
+          "url": "https://www.beckersdental.com/revenue-cycle-management/ransomware-group-claims-responsibility-for-delta-dental-of-missouri-data-breach/",
+          "summary": "Per Becker's, dark-web monitors Ransomware.live and HookPhish posted that the n0n group claimed a Delta Dental of Missouri incident reportedly taking place Nov 5, with member/subscriber names, Social Security numbers, dates of birth, home addresses and dental-treatment details said to be exposed. A company spokesperson confirmed awareness of \"a posting on a website associated with a purported threat actor,\" said the insurer engaged independent forensic specialists, and that systems and services remain operational with no business disruption. The claimed data exposure is unverified — do not present it as fact; Becker's is the only outlet returned.",
+          "details": [
+            "Claim: Per Becker's, dark-web monitors Ransomware.live and HookPhish posted that the n0n group claimed a Delta Dental of Missouri incident reportedly taking place Nov 5.",
+            "Data said to be exposed: Member/subscriber names, Social Security numbers, dates of birth, home addresses and dental-treatment details — unverified; do not present as fact.",
+            "Company response: A spokesperson confirmed awareness of \"a posting on a website associated with a purported threat actor,\" said the insurer engaged independent forensic specialists, and that systems and services remain operational with no business disruption.",
+            "Single source: Becker's Dental Review (Nov 5, 6:48 PM ET) — the only outlet returned.",
+            "Developing: Leak-site listing and sample verification; confirmation of data types."
+          ],
+          "links": [
+            {
+              "label": "Becker's Dental Review — the claim and company response (Nov 5, 6:48 PM ET; single source)",
+              "url": "https://www.beckersdental.com/revenue-cycle-management/ransomware-group-claims-responsibility-for-delta-dental-of-missouri-data-breach/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-05",
       "items": [
