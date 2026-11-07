@@ -122,14 +122,16 @@
 
       <!-- Word cloud of proper names across the published stories (owner
            tickets 2026-11-06): news.js builds one button per frequently
-           mentioned name — tools, platforms, attacks, agencies, extracted
-           from the prose itself, no name list to maintain — sized by how
-           many stories mention it, then placed on a spiral spanning the
-           content width. Hidden by default on every load; the "Word cloud"
-           toggle in the controls row shows it. Clicking a name runs the
-           archive search for it — the same path as the search box above —
-           and the matching stories render in the list below. Inert without
-           JavaScript, like the rest of the page. -->
+           mentioned name — tools, platforms, attacks, agencies — sized by
+           how many stories mention it. Stories may carry a writer-supplied
+           "names" list (news/AGENT-INSTRUCTIONS.md §Choosing names), which
+           the cloud counts verbatim and prefers; everything else is
+           detected from the prose itself. Names are placed on a spiral
+           spanning the content width. Hidden by default on every load; the
+           "Word cloud" toggle in the controls row shows it. Clicking a
+           name runs the archive search for it — the same path as the
+           search box above — and the matching stories render in the list
+           below. Inert without JavaScript, like the rest of the page. -->
       <div class="news-cloud" id="news-cloud" hidden>
         <span class="news-cloud-label">Across the archive<span class="news-cloud-hint"> — click a name to search it</span></span>
         <div class="news-cloud-words" id="news-cloud-words" role="group" aria-label="Name cloud: click a name to search the archive"></div>

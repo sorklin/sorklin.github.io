@@ -73,6 +73,26 @@
     return out;
   }
 
+  // Writer-supplied proper names (website-5nk): optional strings or
+  // {name, type} objects, canonical casing, deduped. type exists for future
+  // filtering features — the cloud ignores it today.
+  function parseNames(v) {
+    if (!Array.isArray(v)) return [];
+    var out = [], seen = {};
+    for (var i = 0; i < v.length; i++) {
+      var e = v[i], name = "";
+      if (typeof e === "string") name = e;
+      else if (e && typeof e === "object") name = String(e.name || "");
+      name = name.replace(/\s+/g, " ").trim();
+      if (!name) continue;
+      var key = name.toLowerCase();
+      if (seen[key]) continue;
+      seen[key] = true;
+      out.push(name);
+    }
+    return out;
+  }
+
   // Parse "YYYY-MM-DD" as a LOCAL date. new Date("2026-10-11") is parsed as
   // UTC midnight and slides back a day in negative offsets — split instead.
   function parseDay(s) {
@@ -157,6 +177,7 @@
             .filter(function (l) { return l && /^https?:\/\//i.test(String(l.url || "")); })
             .map(function (l) { return { label: String(l.label || "").trim(), url: String(l.url) }; }),
           industry: parseIndustries(it.industry),
+          names: parseNames(it.names),
           category: it.category === "ai" ? "ai" : it.category === "security" ? "security" : "news"
         });
       }
@@ -664,6 +685,7 @@
         .filter(function (l) { return l && /^https?:\/\//i.test(String(l.url || "")); })
         .map(function (l) { return { label: String(l.label || "").trim(), url: String(l.url) }; }),
       industry: parseIndustries(dive.industry),
+      names: parseNames(dive.names),
       category: dive.category === "ai" ? "ai" : dive.category === "security" ? "security" : "news"
     };
     dive._viewItem = item;
@@ -782,7 +804,13 @@
      Keys stay lowercase (they must match the search and the active
      highlight); the button shows the most common casing seen. Mentions are
      counted per story — a story repeating a name thirty times counts once —
-     so the tooltip "N stories" is exact. */
+     so the tooltip "N stories" is exact.
+
+     Writer-supplied names ride the same pool: a story may carry a `names`
+     list (news/AGENT-INSTRUCTIONS.md §Choosing names). A tagged story
+     counts ONLY its list — the writer vouched for it, detection stands
+     down — while untagged stories fall back to the prose scan below, so
+     the cloud blends both and old days keep contributing. */
   var CLOUD_WORDS = 60;  // how many names make the cloud — the knob
   var CLOUD_MIN_PX = 12; // smallest cloud name
   var CLOUD_MAX_PX = 27; // largest cloud name
@@ -962,7 +990,9 @@
     var wrap = $("#news-cloud");
     if (!box || !wrap) return;
     // Pass 1 — candidacy: what can be a name at all. Only the prose
-    // nominates (titles are title-case throughout and prove nothing).
+    // nominates (titles are title-case throughout and prove nothing) — and
+    // only in stories the writer did not tag: a `names` list is
+    // authoritative, so those stories count nothing from detection.
     var pool = {};
     for (var pinned in CLOUD_PINNED)
       pool[pinned] = { disp: {}, singles: false, pinned: CLOUD_PINNED[pinned] };
@@ -970,6 +1000,16 @@
     for (var i = 0; i < state.days.length; i++)
       for (var j = 0; j < state.days[i].items.length; j++) {
         var it = state.days[i].items[j];
+        if (it.names.length) {
+          // Writer-vouched names join the pool directly — canonical casing
+          // straight from the list, counted per story in pass 2 below.
+          for (var m = 0; m < it.names.length; m++) {
+            var nk = it.names[m].toLowerCase();
+            if (!pool[nk]) pool[nk] = { disp: {}, singles: it.names[m].indexOf(" ") === -1 };
+            pool[nk].disp[it.names[m]] = (pool[nk].disp[it.names[m]] || 0) + 1;
+          }
+          continue;
+        }
         cloudScanProse(pool, it.tldr);
         cloudScanProse(pool, it.summary);
         for (var k = 0; k < it.details.length; k++) cloudScanProse(pool, it.details[k]);
@@ -986,6 +1026,12 @@
         var mark = function (key) {
           if (!seen[key]) { seen[key] = 1; stories[key] = (stories[key] || 0) + 1; }
         };
+        if (item.names.length) {
+          // Writer-tagged story: the names list is the whole truth for it —
+          // no prose counting, or the detector would fight the writer.
+          for (k = 0; k < item.names.length; k++) mark(item.names[k].toLowerCase());
+          continue;
+        }
         var fields = [item.tldr, item.summary];
         for (k = 0; k < item.details.length; k++) fields.push(item.details[k]);
         for (k = 0; k < fields.length; k++) {

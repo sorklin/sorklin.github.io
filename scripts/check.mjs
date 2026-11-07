@@ -195,6 +195,32 @@ function checkIndustry(v, where) {
   });
 }
 
+// Optional per-item proper names (website-5nk): strings or { name, type }.
+// The word cloud counts these verbatim and prefers them over its detector.
+const NAME_TYPES = new Set(["tool", "attack", "operation", "platform", "org", "agency", "malware", "law", "person", "other"]);
+function checkNames(v, where) {
+  if (v === undefined) return; // optional — absent means "use the detector"
+  if (!Array.isArray(v)) throw new Error(`${where}.names must be an array of proper names`);
+  const seen = new Set();
+  v.forEach((n, k) => {
+    if (typeof n === "string") {
+      if (!n.trim()) throw new Error(`${where}.names[${k}] must be a non-empty name`);
+    } else if (n && typeof n === "object" && !Array.isArray(n)) {
+      if (typeof n.name !== "string" || !n.name.trim()) {
+        throw new Error(`${where}.names[${k}].name must be a non-empty string, e.g. { "name": "Lazarus Group", "type": "org" }`);
+      }
+      if (n.type !== undefined && (typeof n.type !== "string" || !NAME_TYPES.has(n.type))) {
+        warn(`${where}.names[${k}].type "${n.type}" is not one of ${[...NAME_TYPES].join(", ")}`);
+      }
+    } else {
+      throw new Error(`${where}.names[${k}] must be a string or an object with a name`);
+    }
+    const key = (typeof n === "string" ? n : n.name).trim().toLowerCase();
+    if (seen.has(key)) warn(`${where}.names[${k}] repeats a name already on this item`);
+    seen.add(key);
+  });
+}
+
 if (!existsSync(newsJsonPath)) {
   warn("news/news.json absent — the Daily Brief has nothing to render");
 } else {
@@ -209,7 +235,7 @@ if (!existsSync(newsJsonPath)) {
     }
     if (!Array.isArray(feed.days)) throw new Error("days must be an array");
     const seen = new Set();
-    let itemCount = 0, industryTagged = 0, prev = null;
+    let itemCount = 0, industryTagged = 0, namesTagged = 0, prev = null;
     feed.days.forEach((d, i) => {
       if (!d || typeof d !== "object" || Array.isArray(d)) throw new Error(`days[${i}] must be an object`);
       if (!/^\d{4}-\d{2}-\d{2}$/.test(String(d.date || ""))) throw new Error(`days[${i}].date must be YYYY-MM-DD`);
@@ -253,12 +279,14 @@ if (!existsSync(newsJsonPath)) {
           warn(`days[${i}].items[${j}].category "${it.category}" is not security|ai — it renders under a neutral "News" tag`);
         }
         checkIndustry(it.industry, `days[${i}].items[${j}]`);
+        checkNames(it.names, `days[${i}].items[${j}]`);
         if (Array.isArray(it.industry) && it.industry.length) industryTagged++;
+        if (Array.isArray(it.names) && it.names.length) namesTagged++;
         itemCount++;
       });
     });
     if (feed.days.length > 90) warn(`feed holds ${feed.days.length} days — the writer process trims to 90 (news/README.md)`);
-    good(`daily brief feed OK: ${feed.days.length} day(s), ${itemCount} item(s), ${industryTagged} with industry tags (${itemCount - industryTagged} render as Unspecified)`);
+    good(`daily brief feed OK: ${feed.days.length} day(s), ${itemCount} item(s), ${industryTagged} with industry tags (${itemCount - industryTagged} render as Unspecified), ${namesTagged} with writer names`);
     // The new-tab rule is enforced in the renderer; make sure it stayed there.
     const newsJsPath = path.join(ROOT, "assets", "js", "news.js");
     if (existsSync(newsJsPath) && !/_blank/.test(readFileSync(newsJsPath, "utf8"))) {
@@ -296,6 +324,7 @@ if (!existsSync(divesPath)) {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dv.date || ""))) throw new Error(`dives[${i}].date must be YYYY-MM-DD`);
       if (typeof dv.title !== "string" || !dv.title.trim()) throw new Error(`dives[${i}].title missing`);
       checkIndustry(dv.industry, `dives[${i}]`);
+      checkNames(dv.names, `dives[${i}]`);
       if (typeof dv.tldr !== "string" || !dv.tldr.trim()) warn(`dives[${i}] ("${dv.slug}") has no tldr`);
       if (typeof dv.summary !== "string" || !dv.summary.trim()) warn(`dives[${i}] ("${dv.slug}") has no summary`);
       if (dv.details !== undefined && !Array.isArray(dv.details)) throw new Error(`dives[${i}].details must be an array of strings`);

@@ -193,6 +193,46 @@ use these codes with these exact names:
 - When in doubt, leave it out: a wrong industry misleads the filter; a
   missing one just reads as Unspecified.
 
+## Choosing names (`names`)
+
+Alongside the topic and industry tags, every story may carry a **names**
+list: the proper nouns the story is *about* or materially cites — the
+things a reader might want to find every other mention of. The word cloud
+on the page counts these verbatim and **prefers them over its automatic
+detection**, so treat the list as authoritative for that story.
+
+**What belongs:** tools and products (Chrome, vLLM, ConnectWise),
+platforms and services (AWS, Azure, Telegram), malware and exploit names
+(PHP2Shell, a CVE id), attacker groups and operations (Lazarus, ARTEX,
+Autumn-27), orgs and agencies (CISA, FBI, Anthropic, Hugging Face), laws
+and regulations (the CLOUD Act), and the few people without whom the
+story makes no sense.
+
+**What does not:** generic class words (ransomware, zero-day, phishing —
+those are topics, and the topic tag already carries them), industries
+(that is the `industry` field), every vendor that appears only in a link
+label, and anything you are not confident is a proper name. When in
+doubt, leave it out — the page's automatic detection still catches
+capitalized names in the prose of stories you do not tag.
+
+**Shape:** 1–10 entries, each a plain string in canonical casing —
+`"Claude Code"`, not `"claude code"` — or an object with an optional
+`type` for future filtering:
+
+```json
+"names": [
+  "Claude Code",
+  { "name": "Lazarus Group", "type": "org" },
+  { "name": "PHP2Shell", "type": "attack" }
+]
+```
+
+`type` is one of `tool`, `attack`, `operation`, `platform`, `org`,
+`agency`, `malware`, `law`, `person`, `other` — optional, and ignored by
+the page today. Omit the whole `names` field when a story has none worth
+listing; the checker validates the shape either way, and a story without
+the field simply falls back to automatic detection.
+
 ## Writing style
 
 - Factual, past-or-present tense, no hype, no first person, no rhetorical

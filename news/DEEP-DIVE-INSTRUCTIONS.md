@@ -66,6 +66,10 @@ Card rules:
 - `industry` — optional; zero or more top-level NAICS sectors (see
   *Choosing industries* below). Omit the field when none apply — the card
   and the page show an `Unspecified` pill.
+- `names` — optional; the proper names the dive is about or materially
+  cites (tools, platforms, malware, groups, orgs, laws, people), canonical
+  casing, 1–10 entries. Same rules as the daily story field — see
+  *Choosing names* in `AGENT-INSTRUCTIONS.md`. Omit when none apply.
 - `source` — who produced the dive; `"Sorklin Research"` for agent research.
 
 ## §2 The body — `news/deep-dives.json`
@@ -108,6 +112,10 @@ Body rules:
 - `industry` — same rules as the card: `{ "code", "name" }` NAICS sector
   pairs, many or none (omit when none apply). Keep the body's industries in
   sync with the card's.
+- `names` — same rules as the card: optional, canonical casing, 1–10
+  entries (see *Choosing names* in `AGENT-INSTRUCTIONS.md`). Keep the
+  body's list in sync with the card's — the card's list is what the word
+  cloud reads, the body's is what future features will read.
 - `summary` — the page standfirst: what happened, who is affected, and why
   it matters. 1 short paragraph.
 - `details` — the heart of the piece: one fact per string. Long bullets are
