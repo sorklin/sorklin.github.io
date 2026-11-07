@@ -943,6 +943,56 @@ figure.chart { margin: 0; }
 }
 .news-search-clear:hover { color: var(--ink); }
 .news-search-clear:focus-visible { outline: 1px solid var(--cyan); outline-offset: 1px; }
+/* word cloud (owner tickets 2026-11-06): the most-mentioned proper names
+   across the published stories — tools, platforms, attacks, agencies —
+   built by news.js from the prose itself. Per-name font sizes are set
+   inline (data-driven, 12–27px); every colour here rides the theme tokens,
+   so the four themes pick the cloud up without overrides. A click runs the
+   archive search for the name; the active one lights up cyan. */
+.news-cloud[hidden] { display: none; }
+.news-cloud { margin: 0 0 22px; }
+.news-cloud-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dim-2);
+  margin-bottom: 8px;
+}
+.news-cloud-hint { text-transform: none; letter-spacing: 0.03em; }
+/* the visibility toggle: rides the .news-tab pill styling; the chevron is
+   a plain glyph swapped by news.js (no animation, so reduced-motion needs
+   no handling) */
+.news-cloud-toggle .chev { color: var(--dim-2); }
+/* The cloud canvas: names are absolutely positioned by news.js on an
+   expanding spiral (no rows, no columns); the height is the placement
+   budget, which news.js may grow on narrow screens. */
+.news-cloud-words {
+  position: relative;
+  height: 210px;
+}
+.news-cloud-word {
+  position: absolute;
+  white-space: nowrap;
+  font-family: var(--body);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--dim);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+/* Hover/focus growth and the neighbour-yield are transforms (animated by
+   news.js's inline styles); under prefers-reduced-motion nothing animates —
+   the same grow/shrink applies instantly. */
+@media (prefers-reduced-motion: no-preference) {
+  .news-cloud-word { transition: transform 0.18s ease, color 0.2s; }
+}
+.news-cloud-word:hover { color: var(--ink); }
+.news-cloud-word:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
+.news-cloud-word.active { color: var(--cyan); }
 /* While a search is active the whole archive is searched: the topic tabs,
    industry dropdown and jump controls are bypassed — dim them and take the
    pointer events away so they read as switched off, not broken. */

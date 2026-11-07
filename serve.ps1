@@ -111,8 +111,8 @@ function Send-File([System.Net.HttpListenerContext]$Ctx, [string]$FullPath, [boo
         $Ctx.Response.ContentType     = Get-MimeFor $FullPath
         $Ctx.Response.ContentLength64 = $fs.Length
         $Ctx.Response.SendChunked     = $false
-        if ($ext -eq '.html') {
-            # never cache pages, or your own edits look like they did not take
+        if ($ext -eq '.html' -or $ext -eq '.js' -or $ext -eq '.css') {
+            # never cache pages or code, or your own edits look like they did not take
             $Ctx.Response.Headers.Add('Cache-Control', 'no-store')
         } else {
             $Ctx.Response.Headers.Add('Cache-Control', 'public, max-age=300')

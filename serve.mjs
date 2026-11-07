@@ -108,12 +108,14 @@ const server = createServer((req, res) => {
 
   const type = MIME[path.extname(file).toLowerCase()] || "application/octet-stream";
   const html = type.startsWith("text/html");
+  // Code and pages never cached so an edit shows on reload (local preview
+  // only — visitors never run this); everything else briefly, matching
+  // GitHub Pages behaviour closely enough to be useful.
+  const noStore = html || type === "text/javascript" || type === "text/css";
   res.writeHead(200, {
     "Content-Type": type,
     "Content-Length": statSync(file).size,
-    // HTML never cached so an edit shows on reload; everything else briefly,
-    // matching GitHub Pages behaviour closely enough to be useful.
-    "Cache-Control": html ? "no-store" : "public, max-age=300",
+    "Cache-Control": noStore ? "no-store" : "public, max-age=300",
     ...(mounted ? { "Access-Control-Allow-Origin": "*" } : {}),
   });
   if (req.method === "HEAD") return res.end();

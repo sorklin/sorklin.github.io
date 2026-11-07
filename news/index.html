@@ -108,8 +108,31 @@
             <input type="search" id="news-search" class="news-indsel news-search-input" placeholder="Search stories &amp; deep dives…" autocomplete="off" spellcheck="false">
             <button type="button" class="news-search-clear" id="news-search-clear" aria-label="Clear search" hidden>×</button>
           </div>
+          <!-- Word cloud visibility toggle (owner ticket 2026-11-06): the
+               cloud below starts hidden on every load; this flips it like an
+               accordion, just without a box around the expanded region.
+               Styled like the topic tabs; the chevron glyph flips with
+               state (JS swaps it, no animation). -->
+          <button type="button" class="news-tab news-cloud-toggle" id="news-cloud-toggle" aria-expanded="false" aria-controls="news-cloud">
+            Word cloud<span class="chev" aria-hidden="true"> ▸</span>
+          </button>
         </div>
         <span class="news-updated dim mono" id="news-updated"></span>
+      </div>
+
+      <!-- Word cloud of proper names across the published stories (owner
+           tickets 2026-11-06): news.js builds one button per frequently
+           mentioned name — tools, platforms, attacks, agencies, extracted
+           from the prose itself, no name list to maintain — sized by how
+           many stories mention it, then placed on a spiral spanning the
+           content width. Hidden by default on every load; the "Word cloud"
+           toggle in the controls row shows it. Clicking a name runs the
+           archive search for it — the same path as the search box above —
+           and the matching stories render in the list below. Inert without
+           JavaScript, like the rest of the page. -->
+      <div class="news-cloud" id="news-cloud" hidden>
+        <span class="news-cloud-label">Across the archive<span class="news-cloud-hint"> — click a name to search it</span></span>
+        <div class="news-cloud-words" id="news-cloud-words" role="group" aria-label="Name cloud: click a name to search the archive"></div>
       </div>
 
       <!-- The renderer builds every headline, summary and link from
