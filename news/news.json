@@ -1,7 +1,198 @@
 {
   "version": 3,
-  "updated": "2026-11-07",
+  "updated": "2026-11-08",
   "days": [
+    {
+      "date": "2026-11-08",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Chainalysis restores Reactor, KYT, and Address Screening on Saturday, closing the last major outage of its credential breach",
+          "tldr": "Chainalysis declared Reactor, KYT, and Address Screening back online with enhanced security measures in a Saturday 1:50 PM ET update — the final step of the staged restoration after the breach that exposed names, password hashes, and live tokens for all users — while customers were still being reconnected and Data Solutions was not on the restoration list.",
+          "source": "Chainalysis",
+          "url": "https://www.chainalysis.com/blog/security-incident-october-30/",
+          "summary": "Chainalysis’s Saturday Nov 7, 1:50 PM ET update declares Reactor, KYT (UI and API), and Address Screening \"now back online,\" restored \"with enhanced security measures,\" with reconnection emails sent to customers the same day — the final step of the staged restoration tracked since the Nov 4 disclosure that names, usernames, password hashes, and live tokens for all users were exposed to a malicious actor. The company itself tempers the milestone: it is still \"continuing to bring customers back onto KYT and Address Screening\" and working to \"return all products to typical operation,\" so endpoint restoration is not full service normalization. Reconnection requires trusted-IP allowlisting plus a full password reset and API-key rotation before registering transactions, and the company still reports no evidence investigations data was accessed or attribution data manipulated. Data Solutions is absent from the Saturday restoration list — per FXNews.ai, that is \"not confirmation that it remained offline,\" but its status was not established by the update.",
+          "details": [
+            "The update: Chainalysis’s Saturday Nov 7, 1:50 PM ET blog/status update declares Reactor, KYT (UI and API), and Address Screening \"now back online,\" restored \"with enhanced security measures.\"",
+            "Not fully normalized: The same update says the company is still \"continuing to bring customers back onto KYT and Address Screening\" and working to \"return all products to typical operation\" — endpoint restoration is not full service normalization.",
+            "Reconnection: Customer emails with reconnection instructions went out the same day; registering transactions again requires trusted-IP allowlisting plus a full password reset and API-key rotation.",
+            "The underlying breach (Nov 4 disclosure): Names, usernames, password hashes, and live tokens for all users were exposed to a malicious actor; the company reports no evidence investigations data was accessed or attribution data manipulated.",
+            "Data Solutions gap: Data Solutions is absent from the Saturday restoration list — per FXNews.ai, that is \"not confirmation that it remained offline,\" but its status was not established by the update.",
+            "Timing note: FXNews carries a 19:31 UTC timestamp vs the blog’s 1:50 PM EST — an immaterial one-minute discrepancy.",
+            "Developing: Data Solutions status; per-org breakdown of accessed KYT accounts; whether \"enhanced security measures\" details emerge."
+          ],
+          "links": [
+            {
+              "label": "Chainalysis — Security Incident Information blog, Nov 7 1:50 PM EST update",
+              "url": "https://www.chainalysis.com/blog/security-incident-october-30/"
+            },
+            {
+              "label": "FXNews.ai — product-by-product status table, incl. the Data Solutions gap (Nov 8)",
+              "url": "https://fxnews.ai/news/chainalysis-crypto-screening-reactor-restored-7nov-credential-incident/"
+            },
+            {
+              "label": "StatusStack — mirrored status timeline (Nov 7, 7:31 PM)",
+              "url": "https://statusstack.com/service/chainalysis/incidents/01a19d0b-2f7d-74e3-8918-13ace58bac63"
+            },
+            {
+              "label": "TokenPost — restoration coverage (Nov 8, 5:07 AM ET)",
+              "url": "https://www.tokenpost.com/news/technology/51371"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "71",
+              "name": "Arts, Entertainment, and Recreation"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "K-pop agency SM Entertainment discloses a Nov 4 hack of its electronic approval system that leaked employees’ resident registration numbers, bank account numbers, and contract details",
+          "tldr": "SM Entertainment says an external attacker accessed its electronic approval system and exfiltrated stored document files around Nov 4, leaking names, mobile numbers, addresses, bank account numbers, resident registration numbers, and some contract content — and the same pattern hit affiliates Dear U and Dream Maker.",
+          "source": "Seoul Economic Daily",
+          "url": "https://en.sedaily.com/culture/2026/11/08/sm-entertainment-says-employee-id-and-bank-data-leaked-in",
+          "summary": "SM Entertainment says internal security monitoring confirmed an external attacker gained unauthorized access to business systems including its electronic approval system and exfiltrated stored document files in a leak it dates to around Nov 4. Exposed items include names, mobile numbers, addresses, bank account numbers, resident registration numbers, department/position/title, and some contract content. Two affiliates were hit in the same pattern: Dear U, the Bubble fan-app operator, says fan data was not leaked, and concert planner Dream Maker Entertainment is also disclosing. All three say they blocked the attacker’s IPs and access routes, replaced compromised keys, and reported to KISA and the Personal Information Protection Commission; no secondary misuse has been confirmed so far, and individual notifications are going out. YTN notes the electronic approval system was also the vector in HYBE’s September–October breaches — the second K-pop major hit through the same corporate-system pattern in six weeks.",
+          "details": [
+            "What happened: SM Entertainment says internal security monitoring confirmed an external attacker gained unauthorized access to business systems including its electronic approval system and exfiltrated stored document files; the leak occurred around Nov 4.",
+            "Exposed items: Names, mobile numbers, addresses, bank account numbers, resident registration numbers, department/position/title, and some contract content.",
+            "Dear U: The Bubble fan-app operator was hit in the same pattern; SM says fan data was not leaked.",
+            "Dream Maker Entertainment: The concert planning affiliate is also disclosing a breach in the same pattern.",
+            "Response: All three say they blocked attacker IPs and access routes, replaced compromised keys, and reported to KISA and the Personal Information Protection Commission (SM explicitly); individual notifications are being sent.",
+            "No misuse so far: The companies say no secondary misuse has been confirmed; single-day disclosure with no named attacker.",
+            "Pattern context: Per YTN, the electronic approval system was also the vector in HYBE’s September–October breaches — the second K-pop major hit via the same corporate-system pattern in six weeks (no new HYBE numbers this window).",
+            "Developing: Attacker identification; affected-employee counts; any link to the wider Korean breach wave."
+          ],
+          "links": [
+            {
+              "label": "Seoul Economic Daily — breach details (Nov 8, 7:33 AM ET)",
+              "url": "https://en.sedaily.com/culture/2026/11/08/sm-entertainment-says-employee-id-and-bank-data-leaked-in"
+            },
+            {
+              "label": "STARNEWS — apology and scope (Nov 8)",
+              "url": "https://www.starnewskorea.com/en/star/2026/11/08/2026110817260689757"
+            },
+            {
+              "label": "Chosun Biz — Dear U and affiliate detail (Nov 8)",
+              "url": "https://biz.chosun.com/en/en-society/2026/11/08/XF4UESERQBB7TP5DZTIUTKGW5Y/?outputType=amp"
+            },
+            {
+              "label": "SBS English — KISA/PIPC report, fan data safe (Nov 8)",
+              "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008836201"
+            },
+            {
+              "label": "YTN — HYBE electronic-approval parallel (Nov 8, Korean)",
+              "url": "https://www.ytn.co.kr/_ln/0106_202611082257218587"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Mirae Asset Securities discloses back-to-back Nov 4–5 hacks that leaked ~3,800 customer account numbers and personal data of 35,255 current and former employees",
+          "tldr": "South Korea’s largest brokerage says unauthorized external access to its phone-authentication login service and internal groupware leaked ~3,800 customer account numbers and data on 35,255 employees — the fourth Mirae Asset group affiliate hit in two weeks, inside Korea’s ongoing financial-sector breach wave.",
+          "source": "Yonhap",
+          "url": "https://en.yna.co.kr/view/AEN20261107000400315",
+          "summary": "South Korea’s largest brokerage says unauthorized external access hit its mobile-web phone-authentication login service (Nov 4) and its internal groupware \"mi-global\" (Nov 5), leaking ~3,800 customer account numbers — no names, passwords, or balances, per Yonhap — and data on 35,255 current and former employees, including retirees and contractors (names, employee IDs, emails, mobile numbers, encrypted passwords; no resident registration or other sensitive IDs). The company says it blocked the routes, activated emergency response, and reported to the FSC, FSS, and PIPC; it states there was no malware infection, no service disruption, and no confirmed financial damage (company-stated, relayed by multiple outlets). With this incident, four Mirae Asset group affiliates have been breached since Oct 25 — Life Insurance, Global Investments, Energy Infrastructure Asset Management, and now the brokerage — a sequence Yonhap Infomax says calls the group’s security response into question. Police are already comparing methods across the wave to the September ARTEX-linked bank breaches, but no tool or group has been named for the Mirae Asset incident itself — any ARTEX link is unconfirmed.",
+          "details": [
+            "The two attacks: Unauthorized external access hit the mobile-web phone-authentication login service on Nov 4 and the internal groupware \"mi-global\" on Nov 5.",
+            "Customer data: About 3,800 customer account numbers leaked — no names, passwords, or balances, per Yonhap.",
+            "Employee data: Data on 35,255 current and former employees, including retirees and contractors — names, employee IDs, emails, mobile numbers, and encrypted passwords; no resident registration or other sensitive IDs.",
+            "Response: The company blocked the routes, activated emergency response, and reported to the FSC, FSS, and PIPC.",
+            "Company-stated impact: No malware infection, no service disruption, and no confirmed financial damage (company-stated, relayed by multiple outlets).",
+            "Group pattern: Four Mirae Asset group affiliates hit since Oct 25 — Life Insurance (Oct 25–26), Global Investments (Oct 28), Energy Infrastructure Asset Management (Nov 2), and now the brokerage; Yonhap Infomax calls the group-level security response into question.",
+            "ARTEX context: Police are comparing methods across the wave to the September ARTEX-linked bank breaches (CrowdStrike: a single China-based operator using the ARTEX agentic pentest framework); no tool or group has been named for the Mirae Asset incident itself — treat any ARTEX link as unconfirmed.",
+            "Developing: Whether police tie it to the ARTEX wave; customer-count refinement; possible same-attacker confirmation."
+          ],
+          "links": [
+            {
+              "label": "Yonhap — company disclosure (Nov 7, 8:14 AM KST)",
+              "url": "https://en.yna.co.kr/view/AEN20261107000400315"
+            },
+            {
+              "label": "Mirae Asset — Korean notice (Nov 7)",
+              "url": "https://securities.miraeasset.com/bbs/board/message/view.do?categoryId=66&messageId=2344060"
+            },
+            {
+              "label": "Yonhap Infomax — the group’s fourth affiliate hit (Nov 7)",
+              "url": "https://en.infomaxai.com/news/articleView.html?idxno=147446"
+            },
+            {
+              "label": "Chosun Biz — attack vector and leaked items (Nov 7)",
+              "url": "https://biz.chosun.com/en/en-finance/2026/11/07/DHMTSGPPLJHODFOMJHPBWV3V7I/"
+            },
+            {
+              "label": "Korea Times — context (Nov 7)",
+              "url": "https://www.koreatimes.co.kr/business/companies/20261107/mirae-asset-says-data-breaches-exposed-customer-employee-information"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Two research teams publish Firecracker microVM escapes in one week — Coinspect details CVE-2026-122192 (patched Sept 10, disclosed Nov 4) and pwn.ai’s PwnEscape Part 2 reaches host root on an unjailed host",
+          "tldr": "AWS disclosed CVE-2026-122192 in Firecracker v0.23.0–v1.16.1 (patched Sept 10, bulletin Nov 4) and, a day later, pwn.ai published PwnEscape Part 2 reaching host root code execution on an unjailed host — two escape chains in one week for the microVM that underpins AI agent sandboxes.",
+          "source": "AWS",
+          "url": "https://aws.amazon.com/security/security-bulletins/2026-169-aws/",
+          "summary": "Chain 1 (patched, newly detailed): AWS bulletin 2026-169-AWS (Nov 4) discloses CVE-2026-122192 — in Firecracker v0.23.0–v1.16.1, a root user inside a guest can read and modify Firecracker’s own process memory after a failed guest-memory discard on VMs restored from snapshots using the File memory backend with a balloon or virtio-mem device. Coinspect demonstrates reading and writing the live VMM heap and chains it with FC-03, a seccomp-policy bypass reaching host io_uring (blocked when the jailer’s network namespace is on; AWS will not assign it a CVE). The fix shipped in v1.16.2/v1.17.0 on Sept 10; AWS says Lambda and its own services are not affected, but the vulnerable snapshot-plus-balloon setup is common in agent sandboxes. Chain 2 (research, Nov 5): pwn.ai’s PwnEscape Part 2 — starting from CVE-2026-99999 (CVSS 9.3 host-kernel IPv4 checksum bug found during Vercel’s $1M sandbox bounty), the guest defeats ASLR, rewrites a vCPU thread’s saved pt_regs while parked in KVM_RUN, and makes the Firecracker process execute an attacker-chosen call as root on the host — per pwn.ai’s own lab, where the test ran as root with no jailer; the authors state a jailed deployment \"requires a separate assessment.\" Commentary from Marc Pope and Honoz stresses the real exposure is downstream self-hosters — Fly.io-style platforms and E2B/Modal-class AI sandboxes.",
+          "details": [
+            "Chain 1 — the bug: AWS bulletin 2026-169-AWS (Nov 4, 11:30 AM PST) discloses CVE-2026-122192 — in Firecracker v0.23.0–v1.16.1, a root user inside a guest can read and modify Firecracker’s own process memory after a failed guest-memory discard on VMs restored from snapshots with the File memory backend plus a balloon/virtio-mem device.",
+            "Chain 1 — the demo: Coinspect (Juan Pablo Martinez Kuhn) demonstrates reading and writing the live VMM heap and chains FC-03, a seccomp-policy bypass reaching host io_uring — blocked when the jailer’s network namespace is on; AWS will not assign FC-03 a CVE.",
+            "Chain 1 — the fix: Fixed in v1.16.2/v1.17.0 (published Sept 10) — patched before disclosure, but the bulletin landed Nov 4.",
+            "Chain 1 — scope: AWS says Lambda and its services are NOT affected; the exact setup (snapshot restore + balloon device) is common in agent sandboxes.",
+            "Chain 2 — the research: Paulos Yibelo’s pwn.ai \"PwnEscape Part 2\" (Nov 5) — starting from CVE-2026-99999 (CVSS 9.3 host-kernel IPv4 checksum bug, found during Vercel’s $1M sandbox bounty; fixed in seven stable kernel lines), the guest defeats ASLR, rewrites a vCPU thread’s saved pt_regs while parked in KVM_RUN, and gets the Firecracker process to execute an attacker-chosen call.",
+            "Chain 2 — the caveat: Host-root execution per pwn.ai’s own lab — the single research source — where the test ran as root with no jailer; the authors state a jailed deployment \"requires a separate assessment.\"",
+            "Who is exposed: Commentary (Marc Pope Nov 8, Honoz Nov 7) stresses the real exposure is downstream self-hosters — Fly.io-style platforms and E2B/Modal-class AI sandboxes.",
+            "Mitigations: Patch to ≥ v1.16.2, use the Uffd backend or drop balloons, run the jailer with network namespaces, patch host kernels, and audit seccomp for io_uring (Firecracker PR #6287).",
+            "Developing: Kernel-fix completeness (\"more complete validation at input is forthcoming\"); whether AI-sandbox vendors confirm their Firecracker configurations."
+          ],
+          "links": [
+            {
+              "label": "AWS — security bulletin 2026-169-AWS, CVE-2026-122192 (Nov 4)",
+              "url": "https://aws.amazon.com/security/security-bulletins/2026-169-aws/"
+            },
+            {
+              "label": "Firecracker — GHSA-48ww-rqpp-2mgm (Nov 4)",
+              "url": "https://github.com/firecracker-microvm/firecracker/security/advisories/GHSA-48ww-rqpp-2mgm"
+            },
+            {
+              "label": "Coinspect — \"Escaping Firecracker from Guest Userspace\" (Nov 4)",
+              "url": "https://www.coinspect.com/blog/firecracker-escape/"
+            },
+            {
+              "label": "pwn.ai — PwnEscape Part 2 (Nov 5)",
+              "url": "https://pwn.ai/blog/firecracker-escape"
+            },
+            {
+              "label": "Marc Pope — \"escaped twice in one week\" synthesis (Nov 8)",
+              "url": "https://www.marcpope.com/blog/firecracker-was-escaped-twice-in-one-week-and-neither-bug-was-in-kvm"
+            },
+            {
+              "label": "Honoz — serverless-isolation analysis (Nov 7)",
+              "url": "https://honoz.com/firecracker-vm-escape-why-serverless-isolation-is-a-bet-not-a-guarantee/"
+            },
+            {
+              "label": "TechCortex — escape explainer (Nov 7)",
+              "url": "https://techcortex.net/firecracker-vm-escape-root-host"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-07",
       "items": [
