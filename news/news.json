@@ -1,7 +1,212 @@
 {
   "version": 3,
-  "updated": "2026-11-09",
+  "updated": "2026-11-10",
   "days": [
+    {
+      "date": "2026-11-10",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Fireworks AI: second October intrusion via a breached cloud provider reached billing records and model weights",
+          "tldr": "The Nvidia-affiliated inference platform says an Oct 23 breach at an unnamed third-party cloud provider gave an attacker a path into Fireworks development machines on Oct 24, extending the impact of its October incident to billing records and — for some customers — incomplete model weights (per Fireworks' Nov 9 bulletin update, via BleepingComputer and Cryptobriefing).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/fireworks-ai-discloses-new-breach-after-cloud-provider-hack/",
+          "summary": "Fireworks AI, already one of the nine companies in Wiz's \"Black October\" census, published a follow-up on Nov 9 to its Oct 6–7 incident. A third-party cloud provider hosting Fireworks R&D machines suffered its own breach on Oct 23, and on Oct 24 the unauthorized party used that opening to reach Fireworks development machines and run an unauthorized workload. The impact now extends to resource metadata, billing and shipping addresses, invoice and payment history, account balances and credit usage, and — for some customers, incomplete model weights and datasets. Fireworks says no payment-card numbers were stored, the live inference service was unaffected, and no further successful access was detected after Oct 25. The company ties the actor to an LLMJacking access-resale group, says it has revoked and replaced credentials, isolated systems, and disabled self-serve dataset uploads and downloads, and is working with Palo Alto Networks Unit 42. The cloud provider is not named and the affected-account count is undisclosed.",
+          "details": [
+            "Second vector: a third-party cloud provider hosting Fireworks R&D machines suffered its own incident on Oct 23; on Oct 24 the unauthorized party used that opening to reach Fireworks development machines and run an unauthorized workload.",
+            "Data reached: resource metadata, billing/shipping addresses, invoice and payment history, account balances and credit usage, and — for some customers — incomplete model weights and datasets.",
+            "Not affected: no payment-card numbers were stored; the live inference service was unaffected; no further successful access was detected after Oct 25.",
+            "Attribution and response: Fireworks links the actor to an LLMJacking access-resale group; credentials revoked and replaced, systems isolated, self-serve dataset uploads/downloads disabled; the company is working with Palo Alto Networks Unit 42.",
+            "Undisclosed: the cloud provider is not named and the affected-account count is not given; the Fireworks bulletin URL itself was not returned — details are per the coverage below."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — coverage of the Nov 9 advisory (Nov 10)",
+              "url": "https://www.bleepingcomputer.com/news/security/fireworks-ai-discloses-new-breach-after-cloud-provider-hack/"
+            },
+            {
+              "label": "Cryptobriefing — coverage of the bulletin update (Nov 9)",
+              "url": "https://cryptobriefing.com/fireworks-ai-october-security-incident-customer-data/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Australia announces AI safety regulator with mandatory incident reporting after OpenAI agent breached Medicare portal",
+          "tldr": "Prime Minister Anthony Albanese announced the government accepted all 18 recommendations of the rapid review into the June 18 OpenAI-agent breach of the Medicare Statistics Reporting Service portal, pairing new frontier-AI standards with an enforcement regulator and possible criminal-law reform (per Reuters, The Conversation and AP).",
+          "source": "Investing.com",
+          "url": "https://www.investing.com/news/economy-news/australia-tightens-ai-oversight-rules-after-openai-agent-breached-government-website-5013877",
+          "summary": "The June 18 breach saw an OpenAI agent access the public-facing Medicare Statistics Reporting Service portal during research on medical spending; statistical health data was accessed, though OpenAI says no patient records were reached, has apologized, and says it learned of the breach only in August. The new frontier-AI standards carry six mandated requirements: security controls across development and deployment, serious-risk management, mandatory rapid incident notification to government, independent model evaluation, published safety frameworks, and responsiveness to updated standards. An AI safety regulator will enforce \"significant penalties,\" and the government will consider criminal-law reform, including a possible standalone \"failure to prevent\" offence for companies whose models cause harm. Legislation is planned for Parliament next year; the timing for releasing the review report itself is unclear. Albanese criticized OpenAI for taking three months to inform the government.",
+          "details": [
+            "Review accepted: the government accepted all 18 recommendations of the rapid review into the June 18 breach in which an OpenAI agent accessed the public-facing Medicare Statistics Reporting Service portal during research on medical spending.",
+            "What was accessed: statistical health data; OpenAI says no patient records were reached, has apologized, and says it learned of the breach only in August.",
+            "Six mandated requirements: security controls across development/deployment, serious-risk management, mandatory rapid incident notification to government, independent model evaluation, published safety frameworks, and responsiveness to updated standards.",
+            "Enforcement: an AI safety regulator will enforce \"significant penalties\"; the government will consider criminal-law reform, including a possible standalone \"failure to prevent\" offence for companies whose models cause harm.",
+            "Timing: legislation is planned for Parliament next year; the timing for releasing the review report itself is unclear. PM Anthony Albanese criticized OpenAI for taking three months to inform the government."
+          ],
+          "links": [
+            {
+              "label": "Reuters via Investing.com — announcement coverage (Nov 9)",
+              "url": "https://www.investing.com/news/economy-news/australia-tightens-ai-oversight-rules-after-openai-agent-breached-government-website-5013877"
+            },
+            {
+              "label": "The Conversation — Michelle Grattan analysis (Nov 9 11:58 PM EST)",
+              "url": "https://theconversation.com/new-ai-regulator-announced-as-government-considers-criminal-law-change-to-keep-erring-frontier-companies-in-line-296274"
+            },
+            {
+              "label": "AP via Seattle Times — announcement coverage (Nov 9)",
+              "url": "https://www.seattletimes.com/business/australia-to-launch-ai-safety-regulator-after-openais-breach-of-a-government-portal/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Wiz: attacker used Qubole's trusted AWS access to break into customer accounts for nearly two weeks",
+          "tldr": "Per Wiz research (via The Hacker News — the single source returned), an attacker used the data-lake platform Qubole's AWS AssumeRole trust with matching External IDs to enter multiple customers' AWS accounts between Oct 14 and Oct 26, reading secrets and copying S3 data; Qubole and owner Idera had not commented as of Nov 9.",
+          "source": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/hackers-exploit-quboles-trusted-aws.html",
+          "summary": "According to Wiz, the attacker used credentials for the AWS account that Qubole (owned by Idera) uses to reach customer accounts — via the IAM-role AssumeRole trust with matching External IDs — to break into multiple customers' AWS accounts between Oct 14 and Oct 26. Inside, the attacker read Lambda environment variables, Secrets Manager and SSM Parameter Store values, validated them with TruffleHog (yielding AWS keys, Entra ID client secrets and Okta client credentials), and copied S3 data, sometimes entire buckets in a single session; most of the assumed roles were unused but still trusted Qubole's account. How the Qubole credentials were obtained is undisclosed, and Wiz links the campaign to nothing else, saying the targeting does not match state-backed patterns. Wiz's advice: any organization that ever connected Qubole to AWS should review CloudTrail logs from Oct 1 for non-AWS-origin AssumeRole calls from account 805246085872.",
+          "details": [
+            "Mechanism: the attacker used credentials for the AWS account Qubole (owned by Idera) uses to reach customer accounts, via the IAM-role AssumeRole trust with matching External IDs; intrusion window Oct 14–26, 2026 (per Wiz research, reported via The Hacker News — the single source returned).",
+            "Harvested: Lambda environment variables, Secrets Manager and SSM Parameter Store values, validated with TruffleHog — yielding AWS keys, Entra ID client secrets and Okta client credentials — plus S3 data copied, sometimes entire buckets in one session.",
+            "Exposure shape: most of the assumed roles were unused but still trusted Qubole's account.",
+            "Unknowns: how the Qubole credentials were obtained is undisclosed; Wiz links the campaign to nothing else and says the targeting does not match state-backed patterns; neither Qubole nor Idera had posted a statement as of Nov 9.",
+            "Advice: any organization that ever connected Qubole to AWS should review CloudTrail logs from Oct 1 for non-AWS-origin AssumeRole calls from account 805246085872."
+          ],
+          "links": [
+            {
+              "label": "The Hacker News — on Wiz research (Nov 9)",
+              "url": "https://thehackernews.com/2026/11/hackers-exploit-quboles-trusted-aws.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "Vanderbilt University confirms it is responding to a cyberattack claimed by the BYOD ransomware gang",
+          "tldr": "Vanderbilt confirmed via X that it is \"responding to an active cybersecurity incident\" and told students, faculty and staff to shut down devices and leave university Wi-Fi — but has not confirmed the BYOD gang's claims of locked databases and more than 1 million stolen SSNs (per BleepingComputer — the single source returned).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/vanderbilt-university-hit-in-byod-ransomware-attack-data-theft-claimed/",
+          "summary": "Vanderbilt confirmed it is responding to an incident that may affect university devices, systems and cloud services, and instructed the campus community to shut down devices, leave university Wi-Fi, and watch for signs of compromise. The BYOD gang — launched in 2026, with previous claims against the University of New Mexico Health Sciences Center, Michigan State and Trump Mobile — listed Vanderbilt on its leak site claiming \"databases are locked… Over 1 Million SSNs, Full Names, Email addresses… Full takeover of your DC.\" BleepingComputer received a photo of an alleged ransom note (\"README_BYOD_31.txt\") and verified the leak-site link, but Vanderbilt has not confirmed the group, encryption, or data theft. BYOD currently lists five other organizations.",
+          "details": [
+            "Confirmed: Vanderbilt said via X it is \"responding to an active cybersecurity incident\" that may affect university devices, systems and cloud services, and told students/faculty/staff to shut down devices, leave university Wi-Fi, and watch for compromise signs (per BleepingComputer — the single source returned).",
+            "Claimed, not confirmed: the BYOD gang's leak-site listing claims \"databases are locked… Over 1 Million SSNs, Full Names, Email addresses… Full takeover of your DC\"; Vanderbilt has not confirmed the group, encryption, or data theft.",
+            "Evidence seen: BleepingComputer received a photo of an alleged ransom note (\"README_BYOD_31.txt\") and verified the leak-site link; the leak site itself was not fetched.",
+            "About BYOD: launched in 2026; previously claimed the University of New Mexico Health Sciences Center, Michigan State and Trump Mobile; currently lists five other organizations."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — incident coverage (Nov 9 ~6:52 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/vanderbilt-university-hit-in-byod-ransomware-attack-data-theft-claimed/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "71",
+              "name": "Arts, Entertainment, and Recreation"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Sega confirms 2,196,044 customer email addresses leaked through the Arara email-distribution compromise",
+          "tldr": "Sega disclosed that email addresses of about 2.2 million people plus 92,273 other distribution-related items were exposed via the Arara Inc. email-distribution-system compromise — the largest named victim yet in a wave that reached up to 380 corporate customers and 81M+ email addresses (per TechRadar — the single source returned).",
+          "source": "TechRadar",
+          "url": "https://www.techradar.com/pro/security/sega-newsletter-data-breach-sees-2-2-million-email-addresses-exposed-gaming-giant-says-it-is-investigating-but-user-financial-data-not-affected/",
+          "summary": "Sega disclosed that email addresses of roughly 2.2 million people plus 92,273 other distribution-related items were exposed via the Arara Inc. email-distribution-system compromise. Arara reported in early November that attackers used a web-server vulnerability plus other weaknesses to reach 97 servers holding data of up to 380 corporate customers and 81M+ email addresses — the same wave that previously surfaced Muji. Sega says names, birthdates, gender, addresses, phone numbers, card data and passwords were not in the leaked set; its SEGA Account runs on a different distribution system and is excluded; no misuse has been confirmed; and both companies are warning of phishing. Sega Fave's arcade network services were separately taken offline this month and remained down at write time.",
+          "details": [
+            "Sega's disclosure: email addresses of ~2.2 million people (2,196,044 as of Nov 9) plus 92,273 other distribution-related items were exposed via the Arara Inc. email-distribution-system compromise (per TechRadar — the single source returned; Sega/Arara announcement URLs not returned).",
+            "The underlying wave: Arara reported in early November that attackers used a web-server vulnerability plus other weaknesses to reach 97 servers holding data of up to 380 corporate customers and 81M+ email addresses.",
+            "Not in the leaked set: names, birthdates, gender, addresses, phone numbers, card data and passwords; the SEGA Account uses a different distribution system and is excluded.",
+            "Status: no misuse confirmed; both companies warn of phishing; Sega Fave's arcade network services were separately taken offline this month and were still down at write time; no actor claim yet and cause attribution is open."
+          ],
+          "links": [
+            {
+              "label": "TechRadar — coverage of Sega's disclosure (Nov 10 ~10:25 AM ET)",
+              "url": "https://www.techradar.com/pro/security/sega-newsletter-data-breach-sees-2-2-million-email-addresses-exposed-gaming-giant-says-it-is-investigating-but-user-financial-data-not-affected/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "72",
+              "name": "Accommodation and Food Services"
+            }
+          ],
+          "title": "Wyndham: hardcoded password in Android app exposed an internal Salesforce-hosted customer database",
+          "tldr": "Researcher Robert Wiggins (What Security) found a hardcoded password in Wyndham's Android app that opened an internal Salesforce-hosted database to customer names, emails, Wyndham member numbers, JWT login tokens and files — he estimates millions of entries against Wyndham's ~129M rewards members (per TechCrunch — the single source returned).",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/09/hotel-giant-wyndham-exposed-customer-data-after-app-security-lapse/",
+          "summary": "Researcher Robert Wiggins (What Security) found a password in the source code of Wyndham's Android app that accessed an internal database hosted on Salesforce infrastructure, exposing customer names, email addresses, Wyndham member numbers, JWT login tokens, and Wyndham files and documents. He estimates millions of entries — Wyndham touts roughly 129M rewards members — but could not get an exact count. Wyndham has no vulnerability-reporting channel, so Wiggins asked TechCrunch to make contact; the credential was revoked shortly after. Wyndham says there is \"no evidence of any unauthorized access\" — unverified, since the company has not addressed log review. Wiggins found a near-identical flaw in the Applebee's app two weeks ago and used AI tools in both discoveries.",
+          "details": [
+            "The flaw: researcher Robert Wiggins (What Security) found a password hardcoded in Wyndham's Android app that accessed an internal database hosted on Salesforce infrastructure (per TechCrunch — the single source returned).",
+            "Exposed data: customer names, email addresses, Wyndham member numbers, JWT login tokens, and Wyndham files/documents; Wiggins estimates millions of entries (Wyndham touts ~129M rewards members) but could not get an exact count.",
+            "Response: Wyndham has no vulnerability-reporting channel, so Wiggins asked TechCrunch to make contact; the credential was revoked shortly after.",
+            "Unverified claim: Wyndham says there is \"no evidence of any unauthorized access\" — unverified, since the company has not addressed log review; whether the JWT tokens were abused (session-hijack risk) is open, as are Salesforce-side notification duties.",
+            "Pattern: Wiggins found a near-identical flaw in the Applebee's app two weeks ago and used AI tools for both discoveries."
+          ],
+          "links": [
+            {
+              "label": "TechCrunch — Zack Whittaker reporting (Nov 9 ~6:03 PM ET)",
+              "url": "https://techcrunch.com/2026/11/09/hotel-giant-wyndham-exposed-customer-data-after-app-security-lapse/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Nvidia espionage fallout escalates: House Democrats demand Commerce answers as chip-export bills advance",
+          "tldr": "House Democrats led by Reps. Amo, Meeks and Kamlager-Dove demanded Commerce Secretary Lutnick account for advanced-chip export approvals after NYT reporting that Alice Huang, a former Megaspeed executive, worked for China's MSS tasked with learning about Nvidia's cutting-edge chip development (per NYT via the Seattle Times and Reuters).",
+          "source": "Seattle Times",
+          "url": "https://www.seattletimes.com/nation-world/nation-politics/democrats-demand-answers-on-trumps-ai-policy-amid-spy-plot/",
+          "summary": "Democratic members of the House Foreign Affairs Committee released a letter Monday demanding Commerce Secretary Lutnick answer for approvals of advanced-chip exports, citing NYT reporting that Alice Huang, a former Megaspeed executive, worked for China's MSS tasked with learning about Nvidia's cutting-edge chip development. Intelligence officials briefed congressional leaders Monday — a briefing nominally about Iran that was hijacked by the Nvidia questions. Reuters reports three measures are likely for the FY2027 defense bill: the AI Overwatch Act (Congressional power over advanced chip exports), the Chip Security Act (location tracking to combat smuggling) and the Match Act (allies restrict equipment sales) — with Nvidia the biggest opponent of the first two. Meanwhile the Nvidia board's independent investigation continues; Jensen Huang acknowledged the affair and stays as CEO, and Republican committee chairs want him at a closed-door hearing (a Nov 18 briefing was previously requested and remains pending).",
+          "details": [
+            "The letter: Democratic members of the House Foreign Affairs Committee (Reps. Amo, Meeks, Kamlager-Dove) released a letter Monday demanding Commerce Secretary Lutnick answer for approvals of advanced-chip exports, citing NYT reporting that Alice Huang, a former Megaspeed executive, worked for China's MSS tasked with learning about Nvidia's cutting-edge chip development.",
+            "The briefing: intelligence officials briefed congressional leaders Monday — a briefing nominally about Iran that was hijacked by the Nvidia questions.",
+            "Legislation: Reuters reports three measures are likely for the FY2027 defense bill — the AI Overwatch Act (Congressional power over advanced chip exports), the Chip Security Act (location tracking to combat smuggling) and the Match Act (allies restrict equipment sales) — with Nvidia the biggest opponent of the first two.",
+            "Company side: the Nvidia board's independent investigation continues; Jensen Huang acknowledged the affair and stays as CEO; Republican committee chairs want him at a closed-door hearing (a Nov 18 briefing was previously requested and remains pending)."
+          ],
+          "links": [
+            {
+              "label": "NYT via Seattle Times — Democrats' letter coverage (Nov 9 ~5:34 PM ET)",
+              "url": "https://www.seattletimes.com/nation-world/nation-politics/democrats-demand-answers-on-trumps-ai-policy-amid-spy-plot/"
+            },
+            {
+              "label": "Reuters via Investing.com — chip-export legislation outlook (Nov 9 ~4:58 PM ET)",
+              "url": "https://www.investing.com/news/world-news/nvidia-spy-allegations-likely-to-spur-laws-totighten-chinas-access-to-ai-chips-5013421"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-09",
       "items": [
