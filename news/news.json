@@ -1,7 +1,256 @@
 {
   "version": 3,
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "days": [
+    {
+      "date": "2026-11-11",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Fireworks AI breach widens: Notion AI chat transcripts exposed, fewer than 1% of workspaces touched",
+          "tldr": "Fireworks AI's updated bulletin confirms a second October intrusion — a breach at a third-party cloud provider that reached incomplete model weights, datasets and billing records — and Notion has separately disclosed it was caught in the spill, with fewer than 1% of its workspaces affected and Notion AI chat transcripts among the exposed data.",
+          "source": "The Record",
+          "url": "https://therecord.media/ai-company-fireworks-says-hackers-stole-data-in-oct-attacks",
+          "summary": "Fireworks AI published an updated bulletin on Nov 10 confirming a second October intrusion: a third-party cloud provider hosting Fireworks R&D machines was breached on Oct 23, and on Oct 24 the attacker used that access to reach Fireworks development machines and run an unauthorized workload. The exposure reached resource metadata, billing information (addresses, invoices and payment history, balances, credit usage), and — for some customers, incomplete model weights and datasets. Fireworks links the actor to a financially motivated cybercriminal group tied to LLMJacking, has engaged Palo Alto Networks Unit 42, and says payment-card numbers were not stored. Separately, Notion disclosed that the incident touched fewer than 1% of Notion workspaces; per The Record, Notion was notified Nov 2, disconnected its systems from Fireworks and deleted its data there. The Hacker News reports the exposed set included Notion AI chat transcripts used for the Insights feature, described by Notion as mostly \"unattributable\" — not labeled with author or workspace and without tool-call results — though potential customer data may be involved. This is the first named downstream victim of the Fireworks incident.",
+          "details": [
+            "Second vector: a third-party cloud provider hosting Fireworks R&D machines was breached Oct 23; on Oct 24 the attacker used it to reach Fireworks development machines and run an unauthorized workload (per Fireworks’ Nov 10 bulletin, via The Record, The Hacker News and BleepingComputer).",
+            "Data reached: resource metadata, billing information — addresses, invoices and payment history, balances, credit usage — and incomplete model weights and datasets for some customers; payment-card numbers were not stored.",
+            "Attribution and response: Fireworks links the actor to a financially motivated cybercriminal group tied to LLMJacking and has engaged Palo Alto Networks Unit 42.",
+            "Notion’s disclosure: fewer than 1% of Notion workspaces were touched; per The Record, Notion was notified Nov 2, disconnected its systems from Fireworks and deleted its data there (notice plus Reddit acknowledgment).",
+            "Chat transcripts: per The Hacker News, the exposed set included Notion AI chat transcripts used for the Insights feature, described by Notion as mostly \"unattributable\" — not labeled with author or workspace and without tool-call results — though potential customer data may be involved.",
+            "Open questions: Fireworks’ cloud provider remains unnamed; Notion’s customer-notification scope; whether the incomplete weights are exploitable."
+          ],
+          "links": [
+            {
+              "label": "The Record — Fireworks stole data/billing info in Oct attacks (Nov 10)",
+              "url": "https://therecord.media/ai-company-fireworks-says-hackers-stole-data-in-oct-attacks"
+            },
+            {
+              "label": "The Hacker News — Fireworks breach widens; Notion AI chats (Nov 10)",
+              "url": "https://thehackernews.com/2026/11/fireworks-ai-breach-widens-to-expose.html"
+            },
+            {
+              "label": "BleepingComputer — Fireworks discloses new breach after cloud provider hack (Nov 10)",
+              "url": "https://www.bleepingcomputer.com/news/security/fireworks-ai-discloses-new-breach-after-cloud-provider-hack/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Railway's October breach: ~$740,000 in fraudulent AI charges, secrets for up to ~100,000 workspaces decrypted",
+          "tldr": "Cloud platform Railway's full incident report says attackers exploited an unknown vulnerability in its build infrastructure starting Oct 20 and a misconfigured trust relationship to decrypt customer environment variables for at most 1.85% of workspaces (~100,000, a maximum not a confirmed count), with stolen AI provider keys generating ~$740,000 in unauthorized AI usage that Railway will cover.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/",
+          "summary": "Railway — one of Wiz’s \"Black October\" nine, first disclosed Oct 22 — published a full incident report. Attackers began on Oct 20 by exploiting an unknown vulnerability in Railway’s build infrastructure to escape filesystem isolation and steal internal source code, then exploited a misconfigured trust relationship to obtain credentials that decrypted customer environment variables for at most 1.85% of workspaces (~100,000 — a maximum, not a confirmed count). The attackers’ queries specifically hunted AI provider credentials; stolen keys generated ~$740,000 in unauthorized AI usage, which Railway says it will cover where providers will not refund. Also exposed: linked-account tokens for 1,852 users (GitHub OAuth and BYOK agent keys, all reset) and 353 build histories with their secrets. Railway describes a ~26-hour battle against attackers using AI-powered agents to find and exploit vulnerabilities, links the incident to the \"Black October\" wave (Northflank, OpenCode, Warp, Lightning AI), and suspects the AI keys were resold or used for model distillation. No customer databases or Git repositories were accessed.",
+          "details": [
+            "Entry: attackers began Oct 20 by exploiting an unknown vulnerability in Railway’s build infrastructure to escape filesystem isolation and steal internal source code; Railway first disclosed the incident Oct 22 as one of Wiz’s \"Black October\" nine.",
+            "Escalation: a misconfigured trust relationship let the attacker obtain credentials that decrypted customer environment variables for at most 1.85% of workspaces (~100,000 — a maximum, not a confirmed count).",
+            "AI focus: the attackers’ queries specifically hunted AI provider credentials; stolen keys generated ~$740,000 in unauthorized AI usage, which Railway will cover where providers will not refund.",
+            "Also exposed: linked-account tokens for 1,852 users (GitHub OAuth, BYOK agent keys — all reset) and 353 build histories with their secrets; no customer databases or Git repos accessed.",
+            "AI-powered attackers: Railway describes a ~26-hour battle against attackers using AI-powered agents to find and exploit vulnerabilities, links the incident to the \"Black October\" cluster (Northflank, OpenCode, Warp, Lightning AI), and suspects the AI keys were resold or used for model distillation.",
+            "Open questions: attacker unnamed; Railway’s reimbursement mechanics; whether the \"Black October\" cluster gets a joint attribution."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — Railway breach leads to $740,000 in fraudulent AI charges (Nov 10)",
+              "url": "https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/"
+            },
+            {
+              "label": "The Hacker News — Railway says stolen AI keys led to $740K (Nov 11)",
+              "url": "https://thehackernews.com/2026/11/railway-says-stolen-customer-ai-keys.html"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Phala: DeepSeek V4 Flash request contents exposed via OpenRouter for 18 days, KMS-derived secrets from unauthorized VMs",
+          "tldr": "Per Phala's preliminary incident report — the single source returned — an attacker chained a legacy unauthenticated service to create unauthorized confidential VMs, and a third-party researcher's evidence showed request data sent to Phala's DeepSeek V4 Flash 0731 deployment (routed by OpenRouter) had been exposed between Oct 21 and Nov 8.",
+          "source": "Phala",
+          "url": "https://phala.com/posts/phala-november-preliminary-incident-report",
+          "summary": "Per Phala’s preliminary incident report (the single source returned — verify before relying on it), unauthorized activity was detected on one server on Nov 5. The attacker chained a legacy internet-facing service whose management interfaces trusted loopback access without authenticating, creating unauthorized confidential VMs and obtaining application credentials. Phala rotated its KMS root key on Nov 6 and contained the incident on Nov 8, after a third-party researcher provided evidence that request data sent to Phala’s DeepSeek V4 Flash 0731 deployment — routed by OpenRouter — had been exposed: an inference VM serving production traffic without full hardening made in-flight request contents visible. Phala treats both intrusions as one actor and advises anyone who sent requests between Oct 21 00:00 UTC and Nov 8 05:35 UTC to treat their contents as exposed and rotate any secrets they contained; a researcher’s canary-credential test (July 1–Nov 7) confirmed misuse only of canaries sent Oct 21–22. Affected CVM tenants may have had KMS-derived secrets exposed, and misuse of one tenant’s stolen credentials was confirmed.",
+          "details": [
+            "Detection and entry: unauthorized activity was detected Nov 5 on one server; the attacker chained a legacy internet-facing service whose management interfaces trusted loopback access without authenticating, creating unauthorized confidential VMs and obtaining application credentials (per Phala’s preliminary incident report — the single source returned; verify before relying on it).",
+            "The bigger exposure: a third-party researcher provided evidence that request data sent to Phala’s DeepSeek V4 Flash 0731 deployment — routed by OpenRouter — had been exposed; an inference VM serving production traffic without full hardening made in-flight request contents visible.",
+            "Timeline for requesters: anyone who sent requests between Oct 21 00:00 UTC and Nov 8 05:35 UTC should treat contents as exposed and rotate any secrets they contained (18 days).",
+            "Containment: Phala rotated its KMS root key Nov 6 and contained the incident Nov 8; a researcher’s canary-credential test (July 1–Nov 7) confirmed misuse only of canaries sent Oct 21–22.",
+            "CVM tenants: affected tenants may have had KMS-derived secrets exposed; misuse of one tenant’s stolen credentials was confirmed.",
+            "Open questions: OpenRouter’s own customer notice; the final report; whether other routed-model deployments were hit."
+          ],
+          "links": [
+            {
+              "label": "Phala — November Preliminary Incident Report (Nov 10) — single source",
+              "url": "https://phala.com/posts/phala-november-preliminary-incident-report"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "NEAR AI: SGLang RCE exposed ~100 users' account details and data from 18 agents, including confidential-mode requests",
+          "tldr": "Per NEAR AI’s security incident report, an attacker exploited a remote code execution vulnerability in the open-source SGLang inference engine to reach one inference server, downloading account details for ~100 users, chat history and logs from 18 agents, and API keys of two cloud customers — and on Nov 8 could also have observed requests being processed, including confidential-mode ones.",
+          "source": "NEAR AI",
+          "url": "https://near.ai/blog/security-incident-report-sglang-vulnerability",
+          "summary": "Per NEAR AI’s security incident report (Nov 9), an attacker exploited a remote code execution vulnerability in SGLang, the open-source inference engine, gaining code execution on one inference server and reaching NEAR AI’s infrastructure. They downloaded account details — emails, names, and for some accounts plan and balance information — for ~100 users from an internal system behind the deprecated Private Chat product, took chat history, settings and logs from 18 agents on a legacy non-TEE deployment, and exposed API keys of two cloud customers (since revoked). On Nov 8 the attacker could also have observed requests being processed on the accessed server — including confidential-mode ones; NEAR AI notes its TEE \"does not protect against a vulnerability in the software running inside the environment.\" Stored Private Chat conversations and uploads show no indication of access. NEAR AI revoked sessions and admin credentials, patched its SGLang fleet-wide, completed a forensic review, and reported the flaw to the SGLang project — but has not given a CVE id, affected versions, or fix status. This is distinct from the October cross-tenant SGLang research: it is a live intrusion via an SGLang RCE.",
+          "details": [
+            "The flaw: an attacker exploited a remote code execution vulnerability in SGLang, the open-source inference engine, gaining code execution on one inference server and reaching NEAR AI’s infrastructure (per NEAR AI’s Nov 9 incident report).",
+            "User data taken: account details — emails, names, and for some accounts plan/balance info — for ~100 users, from an internal system behind the deprecated Private Chat product.",
+            "Agent data taken: chat history, settings and logs from 18 agents on a legacy non-TEE deployment; API keys of two cloud customers were exposed and revoked.",
+            "Confidential-mode exposure: on Nov 8 the attacker could also have observed requests being processed on the accessed server, including confidential-mode ones; NEAR AI notes its TEE \"does not protect against a vulnerability in the software running inside the environment.\"",
+            "Not accessed: stored Private Chat conversations and uploads show no indication of access.",
+            "Response and gaps: sessions/admin credentials revoked, SGLang patched fleet-wide, forensic review completed, flaw reported to the SGLang project — but no CVE id, affected versions, or fix status given; SGLang CVE/patch status is an open question."
+          ],
+          "links": [
+            {
+              "label": "NEAR AI — Security Incident Report: SGLang Vulnerability (Nov 9)",
+              "url": "https://near.ai/blog/security-incident-report-sglang-vulnerability"
+            },
+            {
+              "label": "The Hacker News — SGLang RCE exploit breaches NEAR AI (Nov 10)",
+              "url": "https://thehackernews.com/2026/11/sglang-rce-exploit-breaches-near-ai.html"
+            },
+            {
+              "label": "Decrypt — NEAR AI breach exposes user details (Nov 10)",
+              "url": "https://decrypt.co/382965/near-ai-breach-exposes-user-details-data-ai-agents"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "title": "Maersk confirms data extraction from legacy LF Logistics system; WhiteArmor claims ~100 GB and $5M demand (unconfirmed)",
+          "tldr": "A.P. Moller–Maersk confirmed an IT security incident involving unauthorized access and data extraction from a legacy system from a previous acquisition, identified by Ingeniøren as the LF Logistics platform — while the previously unknown WhiteArmor group claims ~100 GB of data including tens of thousands of plaintext passwords and demands ~$5M in bitcoin by Dec 7, a claim Maersk has not confirmed.",
+          "source": "Ingeniøren",
+          "url": "https://ing.dk/artikel/maersk-bekraefter-datalaek-efter-ingenioerens-afsloering-her-broed-hackerne-ind",
+          "summary": "A.P. Moller–Maersk on Wednesday confirmed an IT security incident involving unauthorized access and data extraction from a local legacy system \"from a previous acquisition\" — identified by Ingeniøren as the LF Logistics platform (acquired 2022) — while saying findings \"strongly suggest no sensitive data has been disclosed,\" the incident is isolated, and there is no operational impact or effect on customer or partner API/EDI integrations. The previously unknown WhiteArmor group claims roughly 100 GB from the LF Logistics platform: 29,297 driver profiles including 16,093 plaintext passwords, 16,123 employee accounts (33 with SUPER_ADMIN rights), ~18,913 delivery recipients’ names and addresses, 64,665 signed delivery receipts, 14.44M warehouse records, purchase orders, ASNs, and 27,842 mobile-device logs with IMEIs — demanding ~$5M in bitcoin by Dec 7. Specialists cited by Ingeniøren find the claims credible, but Maersk has not confirmed WhiteArmor is behind the confirmed incident, and no independent verification ties the claimed dataset to the acknowledged extraction — do not present the WhiteArmor claim as fact. The claim reads as data-theft extortion, not encryption-based ransomware.",
+          "details": [
+            "Maersk’s confirmation: on Wednesday, A.P. Moller–Maersk confirmed an IT security incident involving unauthorized access and data extraction from a local legacy system \"from a previous acquisition\" — identified by Ingeniøren as the LF Logistics platform (acquired 2022).",
+            "Company’s read: findings \"strongly suggest no sensitive data has been disclosed\"; the incident is isolated, with no operational impact and no effect on customer or partner API/EDI integrations.",
+            "The WhiteArmor claim (do not present as fact): the previously unknown group claims ~100 GB — 29,297 driver profiles including 16,093 plaintext passwords, 16,123 employee accounts (33 SUPER_ADMIN), ~18,913 delivery recipients’ names/addresses, 64,665 signed delivery receipts, 14.44M warehouse records, purchase orders, ASNs, and 27,842 mobile-device logs with IMEIs — demanding ~$5M in bitcoin by Dec 7.",
+            "Verification status: Maersk has not confirmed WhiteArmor is behind the confirmed incident; no independent verification ties the claimed dataset to the acknowledged extraction; specialists cited by Ingeniøren find the claims credible. The claim reads as data-theft extortion, not encryption-based ransomware.",
+            "Open questions: whether Maersk attributes the incident to WhiteArmor; leak-site posting; the Dec 7 deadline; plaintext-password scale if confirmed."
+          ],
+          "links": [
+            {
+              "label": "Ingeniøren — Mærsk bekræfter datalæk; WhiteArmor claims detailed (Nov 11, Danish)",
+              "url": "https://ing.dk/artikel/maersk-bekraefter-datalaek-efter-ingenioerens-afsloering-her-broed-hackerne-ind"
+            },
+            {
+              "label": "The Register — Maersk probes IT security incident (Nov 11)",
+              "url": "https://www.theregister.com/security/2026/11/11/shipping-giant-maersk-probes-it-security-incident-data-theft/5309096"
+            },
+            {
+              "label": "Container News — Maersk confirms security breach (Nov 11)",
+              "url": "https://container-news.com/maersk-confirms-security-breach-amid-hacker-claims-of-major-data-theft/"
+            },
+            {
+              "label": "CNA — Maersk investigates IT security incident (Nov 11)",
+              "url": "https://www.channelnewsasia.com/business/shipping-firm-maersk-investigates-it-security-incident-6542751"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA KEV wave: Operation Snowball Cisco BroadWorks XXE, Barracuda ESG chain, Faspex, FreeSWITCH, SSHole",
+          "tldr": "CISA added eight actively exploited vulnerabilities to its KEV catalog on Nov 10 — including the Cisco BroadWorks XXE used for initial access in the Operation Snowball jailbroken-DeepSeek-agent campaign and the Barracuda ESG auth-bypass-plus-command-injection chain — with federal patch deadlines of Nov 24 or, for four of them, just three days.",
+          "source": "SecurityWeek",
+          "url": "https://www.securityweek.com/threat-actors-exploit-openwave-cisco-broadworks-vulnerabilities/",
+          "summary": "CISA’s Nov 10 KEV additions connect several recent stories to federal patch deadlines. The catalog now includes CVE-2026-20320, a Cisco BroadWorks unauthenticated XXE in the OCI XML parser — the initial-access flaw in Malbear Labs’ Operation Snowball, the jailbroken-DeepSeek-agent campaign against a European telecom provider and 13 organizations reported Nov 8 — and CVE-2026-111793 (Openwave Webtop Media Transcoder, flagged exploited by Japan’s JVN on Nov 9), both with a federal patch deadline of Nov 24. It also added the Barracuda chain CVE-2026-116606 (ESG auth bypass, CVSS 9.3) plus CVE-2026-111560 (command injection, CVSS 8.6) — Barracuda updated Nov 9 to say the chained pair is being exploited \"against a small number of organizations,\" and Previdian counted 17 attempts Nov 9–11 — plus CVE-2026-123218 (IBM Aspera Faspex 9.8 auth bypass, patched Nov 6) and CVE-2026-116779 (SignalWire FreeSWITCH 9.8 code injection; SignalWire said Oct 28 that exploitation was observed in the wild), each with three-day deadlines. Rounding out the wave: CVE-2026-123158 (\"SSHole\" OpenSSH auth bypass — exploitation attempts since Nov 6, 22 attempts from 14 IPs per Previdian; GreyNoise first saw it Nov 7 with 18 post-exploitation chains) and CVE-2026-102895 (GPUStack 9.8 unauthenticated admin access, exploited since late July). The Snowball and SSHole items are KEV confirmations of stories covered Nov 9; the rest are new entries.",
+          "details": [
+            "Nov 24 deadline: CVE-2026-20320 (Cisco BroadWorks unauthenticated XXE in the OCI XML parser) — the initial-access flaw in Malbear Labs’ Operation Snowball, the jailbroken-DeepSeek-agent campaign against a European telecom provider and 13 organizations reported Nov 8; and CVE-2026-111793 (Openwave Webtop Media Transcoder, flagged exploited by Japan’s JVN Nov 9).",
+            "Barracuda chain: CVE-2026-116606 (ESG auth bypass, CVSS 9.3) plus CVE-2026-111560 (command injection, CVSS 8.6) added to KEV; Barracuda updated Nov 9 to say the chained pair is being exploited \"against a small number of organizations\"; Previdian counted 17 attempts Nov 9–11.",
+            "Three-day deadlines: CVE-2026-123218 (IBM Aspera Faspex 9.8 auth bypass, patched Nov 6) and CVE-2026-116779 (SignalWire FreeSWITCH 9.8 code injection; SignalWire said Oct 28 exploitation was observed in the wild).",
+            "SSHole: CVE-2026-123158 (OpenSSH auth bypass) — exploitation attempts since Nov 6, 22 attempts from 14 IPs per Previdian; GreyNoise first saw it Nov 7 with 18 post-exploitation chains.",
+            "GPUStack: CVE-2026-102895 (9.8 unauthenticated admin access), exploited since late July.",
+            "Context: the Snowball and SSHole items are KEV confirmations of the Nov 9-edition main and quick hit; the rest are new KEV entries. Watch: whether the Snowball telecom victims are ever named; FCEB patch compliance."
+          ],
+          "links": [
+            {
+              "label": "SecurityWeek — Openwave, Cisco BroadWorks vulnerabilities exploited (Nov 11)",
+              "url": "https://www.securityweek.com/threat-actors-exploit-openwave-cisco-broadworks-vulnerabilities/"
+            },
+            {
+              "label": "BleepingComputer — CISA flags Cisco BroadWorks flaw as actively exploited (Nov 11)",
+              "url": "https://www.bleepingcomputer.com/news/security/cisa-flags-cisco-broadworks-flaw-as-actively-exploited-in-attacks/"
+            },
+            {
+              "label": "SecurityWeek — Barracuda vulnerabilities exploited (Nov 11)",
+              "url": "https://www.securityweek.com/recently-patched-barracuda-vulnerabilities-exploited-in-attacks/"
+            },
+            {
+              "label": "SecurityWeek — IBM Aspera Faspex, SignalWire FreeSwitch exploited (Nov 10)",
+              "url": "https://www.securityweek.com/ibm-aspera-faspex-signalwire-freeswitch-vulnerabilities-exploited-in-attacks/"
+            },
+            {
+              "label": "The Hacker News — CISA warns of active exploitation of OpenSSH, GPUStack, FreeSWITCH, IBM flaws (Nov 10)",
+              "url": "https://thehackernews.com/2026/11/cisa-warns-of-active-exploitation-of.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "BYOD wave widens: Vanderbilt restores core services; gang claims Medicaid/SNAP data on 2 million Texans at Texas HHSC",
+          "tldr": "Vanderbilt has restored Wi-Fi, email, Zoom, Okta and enrollment services after the BYOD ransomware attack but still has not answered questions about data theft or ransom, while the gang has added a claim — single-source and unverified — of Medicaid, SNAP and banking data on 2 million Texans at the Texas Health and Human Services Commission.",
+          "source": "CyberScoop",
+          "url": "https://cyberscoop.com/vanderbilt-university-ransomware-attack-byod/",
+          "summary": "Vanderbilt — the Nov 10 edition’s main story — continued its recovery: Wi-Fi returned Monday night, and by Tuesday email, Zoom, Brightspace, Okta and enrollment services were back, though \"all other systems and applications remain restricted\" and spring-registration disruption persists (the registration window closes Friday). The university has not answered questions about what data was taken or whether ransom was paid, while BYOD maintains its claim of more than 1 million SSNs; the gang, launched in September with about 19 claimed victims including the University of New Mexico Health Sciences Center and Michigan State, has posted a video of a compromised Vanderbilt machine announcing the compromise. Separately, BYOD added the Texas Health and Human Services Commission to its leak site on Nov 9, claiming Medicaid, SNAP, TANF and disaster-assistance records plus banking information on 2 million Texans; HHSC has not confirmed, and BYOD posted no samples or file listings — the post instead taunts the agency over its real, unrelated 2025 insider improper-access incident involving roughly 94,000 records. The HHSC claim is single-source (databreach.com) — treat it as unverified.",
+          "details": [
+            "Vanderbilt recovery: Wi-Fi returned Monday night; by Tuesday email, Zoom, Brightspace, Okta and enrollment services were back, though \"all other systems and applications remain restricted\"; spring-registration disruption persists (window closes Friday).",
+            "Unanswered: the university has not answered questions about what data was taken or whether ransom was paid.",
+            "The standing claim: BYOD maintains its claim of more than 1 million SSNs; the gang (launched September, ~19 claimed victims including the University of New Mexico Health Sciences Center and Michigan State) has a video of a compromised Vanderbilt machine announcing the compromise.",
+            "New target: BYOD added Texas Health and Human Services Commission to its leak site Nov 9, claiming Medicaid, SNAP, TANF and disaster-assistance records plus banking information on 2 million Texans — single-source (databreach.com), unverified; HHSC has not confirmed and BYOD posted no samples or file listings.",
+            "Taunt detail: the HHSC post references the agency’s real, unrelated 2025 insider improper-access incident (~94k records). Watch: HHSC confirmation; whether Public Administration is added as an industry if HHSC confirms."
+          ],
+          "links": [
+            {
+              "label": "CyberScoop — Vanderbilt reels following ransomware attack claimed by BYOD (Nov 10)",
+              "url": "https://cyberscoop.com/vanderbilt-university-ransomware-attack-byod/"
+            },
+            {
+              "label": "Inside Higher Ed — Ransomware gang says it hacked Vanderbilt (Nov 11)",
+              "url": "https://www.insidehighered.com/news/tech-innovation/administrative-tech/2026/11/11/ransomware-gang-says-it-hacked-vanderbilt"
+            },
+            {
+              "label": "DataBreach.com — BYOD says it breached Texas HHSC, claims data on 2 million (Nov 10) — single source",
+              "url": "https://databreach.com/news/78-byod-ransomware-gang-says-it-breached-texas-hhsc-claims-medicaid-and-snap-data-on-2-million"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-10",
       "items": [
