@@ -1,7 +1,165 @@
 {
   "version": 3,
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "days": [
+    {
+      "date": "2026-11-12",
+      "items": [
+        {
+          "category": "ai",
+          "title": "\"wfx-loot\" campaign used 4,837 compromised GitHub accounts to push a CI secret-stealer hunting cloud and AI credentials",
+          "tldr": "Per Aikido Security — the single source returned so far — a threat actor using 4,837 compromised GitHub accounts opened probe pull requests into 61,764 repositories starting Nov 10, pushing a malicious GitHub Actions workflow that steals Actions secrets, tokens and cloud/AI-provider credentials; at least 1,835 repositories ran the payload and had credentials exfiltrated.",
+          "source": "Aikido",
+          "url": "https://www.aikido.dev/blog/compromised-github-accounts-push-ci-secret-stealer-to-tens-of-thousands-of-repositories",
+          "summary": "Per Aikido Security (the primary and so far sole source returned — verify before relying on it), a campaign Aikido tracks as wfx-loot began Nov 10 and was still active at publication: 4,837 compromised GitHub accounts opened probe pull requests into 61,764 repositories, pushing a malicious GitHub Actions workflow that steals Actions secrets, the workflow GITHUB_TOKEN, OIDC tokens and cloud/AI-provider credentials — filtered on keywords including openai and anthropic, plus credential files for AWS, Azure, GCP, npm, PyPI and Kubernetes and AI tools including Cursor, Copilot, Codex, Hugging Face, Weights & Biases and Ollama — along with shell histories and process memory on runners. At least 1,835 repositories ran the payload and had credentials exfiltrated, and at least 50 compromised users publish packages across npm, Go, Packagist, PyPI and crates. Proliferation into published packages so far: Packagist digitalelvis/neuronai-studio 3.14.3 (treat any installer as compromised) and Go module github.com/onuragtas/docker-env v1.0.278/280 (payload in the workflow file only; Go builds don't run it). Aikido says the actor appears to target CI secrets rather than supply-chain spread.",
+          "details": [
+            "Scale: 4,837 compromised GitHub accounts opened probe pull requests into 61,764 repositories; the campaign started Nov 10, 2026 and was still active at publication (per Aikido — the single source returned in this window).",
+            "Payload: a malicious GitHub Actions workflow that steals Actions secrets, the workflow GITHUB_TOKEN, OIDC tokens and cloud/AI-provider credentials, with keyword filters including openai and anthropic.",
+            "Also collected: credential files for AWS, Azure, GCP, npm, PyPI and Kubernetes; AI-tool credential files (Cursor, Copilot, Codex, Hugging Face, Weights & Biases, Ollama); shell histories; and process memory on runners.",
+            "Confirmed exfiltration: at least 1,835 repositories ran the payload and had credentials exfiltrated.",
+            "Compromised publishers: at least 50 compromised users publish packages across npm, Go, Packagist, PyPI and crates.",
+            "Malicious releases identified so far: Packagist digitalelvis/neuronai-studio 3.14.3 (treat any installer as compromised) and Go module github.com/onuragtas/docker-env v1.0.278/280 (payload in the workflow file only; Go builds don't run it).",
+            "Actor intent: Aikido says the actor appears to target CI secrets rather than supply-chain spread; the pattern is distinct from the separate sapho11 wallet-crate campaign covered Nov 11."
+          ],
+          "links": [
+            {
+              "label": "Aikido — wfx-loot campaign pushes CI secret stealer to tens of thousands of repositories (Nov 12)",
+              "url": "https://www.aikido.dev/blog/compromised-github-accounts-push-ci-secret-stealer-to-tens-of-thousands-of-repositories"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Actively exploited Xen Orchestra auth bypass turns empty-JSON cookie into admin access and full root takeover of XCP-ng",
+          "tldr": "Vates' Critical advisory (published Nov 10) says an empty-JSON authenticationToken cookie makes xo-server's token lookup return the first stored token, giving an unauthenticated attacker admin access and \"full XCP-ng node takeover as root\" — and Vates confirms active exploitation, with no CVE assigned yet.",
+          "source": "Vates",
+          "url": "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062/",
+          "summary": "Vates' Critical advisory VSA-2026-062, published Nov 10 ~1:25 PM ET, describes an authentication bypass in Xen Orchestra (xo-server): a request whose authenticationToken cookie contains empty JSON ({}, sent URL-encoded as j:%7B%7D) makes the token lookup return the first stored token, handing an unauthenticated attacker admin access and, from there, \"full XCP-ng node takeover as root\" over virtualization pools. Vates confirms active exploitation in the wild from the IP 91.211.251.112:8001 — flagged as a RedLine infostealer command-and-control address on VirusTotal per The Hacker News — and a Tor endpoint, with persistence via /etc/cron.d/zz-ustar* cron files and a VM named \"pivot2\". Fixes ship in Xen Orchestra 6.9.2 (stable) / 6.10.1 (latest) and xo-server 5.211.2 / 5.213.1 — note a version discrepancy: BleepingComputer and The Hacker News wrote 6.9.1/6.10.0, while the Vates advisory and a French write-up say 6.9.2/6.10.1. No CVE has been assigned yet.",
+          "details": [
+            "The flaw: an authenticationToken cookie containing empty JSON ({}, sent URL-encoded as j:%7B%7D) makes xo-server's token lookup return the first stored token — unauthenticated admin access (Vates advisory VSA-2026-062, rated Critical, published Nov 10 ~1:25 PM ET).",
+            "Impact: from admin, \"full XCP-ng node takeover as root\" over virtualization pools.",
+            "Active exploitation confirmed by Vates: source IP 91.211.251.112:8001 — flagged as a RedLine infostealer C2 on VirusTotal per The Hacker News — plus a Tor endpoint.",
+            "Persistence IOCs: /etc/cron.d/zz-ustar* cron files and a VM named \"pivot2\".",
+            "Fixes: Xen Orchestra 6.9.2 (stable) / 6.10.1 (latest) and xo-server 5.211.2 / 5.213.1 — with a version discrepancy: BleepingComputer and The Hacker News wrote 6.9.1/6.10.0, while the Vates advisory and a French write-up say 6.9.2/6.10.1; check xo-server versions against the advisory.",
+            "No CVE yet: the advisory carries no CVE id — watch for assignment."
+          ],
+          "links": [
+            {
+              "label": "Vates — security advisory VSA-2026-062 (Nov 10)",
+              "url": "https://docs.vates.tech/security-advisories/advisories/2026/vates-sa-2026-062/"
+            },
+            {
+              "label": "BleepingComputer — critical Xen Orchestra auth-bypass flaw exploited to hijack VM servers (Nov 10)",
+              "url": "https://www.bleepingcomputer.com/news/security/critical-xen-orchestra-auth-bypass-flaw-exploited-to-hijack-vm-servers/"
+            },
+            {
+              "label": "The Hacker News — hackers exploit critical Xen Orchestra flaw (Nov 10)",
+              "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-xen-orchestra.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "WhiteArmor wave: employees sue J.B. Hunt, Ryder and Echo Global Logistics while Maersk holds its no-disclosure line",
+          "tldr": "Per FreightWaves, employees are suing three logistics companies in federal court — J.B. Hunt, Ryder System and Echo Global Logistics — over alleged failures to protect personal information in WhiteArmor ransomware attacks, while Maersk's Nov 11 confirmation (unauthorized access and data extraction from a legacy system, \"no sensitive data\" suggested disclosed) stands and Maersk still has not attributed the incident to the group.",
+          "source": "FreightWaves",
+          "url": "https://www.freightwaves.com/news/new-cyber-thief-gang-targets-transports-hunt-ryder-and-echo-hit",
+          "summary": "FreightWaves reports employees are suing three logistics companies in federal court over alleged failures to protect personal information in WhiteArmor ransomware attacks: J.B. Hunt (attack Oct 23 per ransomware.live; the group claims 140,838 employee records with PII and national IDs, 1.7M carrier contacts, 38.2M invoices and a $5M demand in bitcoin and Monero), Ryder System (attack Oct 28; $20M demand; at least five suits in the Southern District of Florida) and Echo Global Logistics (Oct 28; one known suit in the Northern District of Illinois alleging employee, customer and carrier records plus freight data — the only suit alleging customer data). The National Motor Freight Traffic Association's cybersecurity director Ben Wilkens tells FreightWaves Whitearmor \"came on the scene very recently, October of this year,\" and engages in \"very targeted attacks of vulnerable webservers.\" Maersk's Nov 11 confirmation stands — unauthorized access plus data extraction from a local legacy system from a previous acquisition, findings that \"strongly suggest no sensitive data has been disclosed,\" isolated, with no operational, API or EDI impact — and BleepingComputer and SecurityAffairs add WhiteArmor's leak-site message ($5M in bitcoin, 30 days, the \"four hours of that EBITDA\" framing, the claimed OCF/LF Logistics haul) while neither outlet reports attribution by Maersk. Industrial Cyber recaps the tracker timeline — ransomware.live discovered the Maersk claim Nov 7, with the page last updated Nov 10 — and notes a second recent claimed WhiteArmor victim, Clínica La Sagrada Familia (Colombia), a tracker-level claim that remains unverified.",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "details": [
+            "The new development — lawsuits: per FreightWaves, employees are suing three logistics companies in federal court over alleged failures to protect personal information in WhiteArmor ransomware attacks.",
+            "J.B. Hunt: attack Oct 23 per ransomware.live; the group claims 140,838 employee records with PII/national IDs, 1.7M carrier contacts, 38.2M invoices and a $5M demand in BTC/Monero.",
+            "Ryder System: attack Oct 28; $20M demand; at least five suits in the Southern District of Florida.",
+            "Echo Global Logistics: attack Oct 28; one known suit in the Northern District of Illinois alleging employee, customer and carrier records plus freight data — the only suit alleging customer data.",
+            "Group profile: National Motor Freight Traffic Association cybersecurity director Ben Wilkens — Whitearmor \"came on the scene very recently, October of this year,\" with \"very targeted attacks of vulnerable webservers.\"",
+            "Maersk status quo: the Nov 11 confirmation stands — unauthorized access plus data extraction from a local legacy system from a previous acquisition, findings that \"strongly suggest no sensitive data has been disclosed,\" isolated, with no operational/API/EDI impact; no attribution reported by any outlet.",
+            "Headline caution: Lloyd's List's Nov 11 headline reads \"Maersk cyber attack 'connected to' hacking group claims, company confirms\" — paywalled and unverifiable, and The Register's same-day reporting says Maersk has NOT attributed; do not treat the headline as an attribution claim.",
+            "Tracker timeline: ransomware.live discovered the Maersk claim Nov 7 03:48 UTC; the page was last updated Nov 10 21:50 UTC (per Industrial Cyber).",
+            "Second claimed victim: Clínica La Sagrada Familia (Colombia), per Pulse/Kalir tracker records — a tracker-level claim, still unverified."
+          ],
+          "links": [
+            {
+              "label": "FreightWaves — new cyber thief gang targets transports; Hunt, Ryder and Echo hit (Nov 11)",
+              "url": "https://www.freightwaves.com/news/new-cyber-thief-gang-targets-transports-hunt-ryder-and-echo-hit"
+            },
+            {
+              "label": "BleepingComputer — Maersk confirms data breach as WhiteArmor demands $5 million (Nov 11)",
+              "url": "https://www.bleepingcomputer.com/news/security/maersk-confirms-data-breach-as-whitearmor-ransomware-demands-5-million/"
+            },
+            {
+              "label": "Industrial Cyber — Maersk investigates legacy-system breach (Nov 12)",
+              "url": "https://industrialcyber.co/ransomware/maersk-investigates-legacy-system-breach-after-whitearmor-ransomware-group-claims-100gb-logistics-data-theft/"
+            },
+            {
+              "label": "SecurityAffairs — WhiteArmor demands $5M from Maersk (Nov 11)",
+              "url": "https://securityaffairs.com/202869/data-breach/whitearmor-demands-5-million-from-maersk-claims-theft-of-100gb-of-data.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "KEV: Outlook CVE-2026-124194 leaks NTLMv2 hashes, Chrome CVE-2026-125350 the 8th Chrome zero-day; deadline Nov 24",
+          "tldr": "Two zero-days in CISA's Nov 10 KEV additions are actively exploited with a federal patch deadline of Nov 24: CVE-2026-124194, an Outlook crafted-message flaw whose exploit triggers a silent outbound connection that leaks the NTLMv2 hash, and CVE-2026-125350, a Chrome/Chromium XML use-after-free fixed in 157.0.8103.50.",
+          "source": "Security Online",
+          "url": "https://securityonline.info/cisa-kev-six-vulnerabilities-november-2026/",
+          "summary": "Two of the six additions CISA made to its KEV catalog on Nov 10 (~7:45 PM ET, per Security Online) get their own story — both actively exploited, both with a federal patch deadline of Nov 24. CVE-2026-124194 is a Microsoft Outlook flaw in which a crafted message file triggers a silent outbound connection that leaks the user's NTLMv2 hash — a credential that can be relayed to authenticate as the user without knowing the password. Affected products include Microsoft 365 Apps and Office LTSC 2021/2024; per Security Online and cyber-threat.net's Patch Tuesday coverage, mitigations include blocking outbound SMB (port 445), enforcing SMB and LDAP signing, and Protected Users group membership. CVE-2026-125350 is a use-after-free in Chrome/Chromium's XML handling, fixed in Chrome 157.0.8103.50 — counted by cyber-threat.net as the eighth Chrome zero-day of 2026. Corgea's Nov 11 research covers both alongside the same patch wave.",
+          "details": [
+            "CVE-2026-124194 (Microsoft Outlook): a crafted message file triggers a silent outbound connection that leaks the user's NTLMv2 hash — a credential that can be relayed to authenticate as the user without knowing the password.",
+            "Affected (Outlook): Microsoft 365 Apps and Office LTSC 2021/2024.",
+            "Outlook mitigations: block outbound SMB (port 445), enforce SMB and LDAP signing, and use Protected Users group membership.",
+            "CVE-2026-125350 (Chrome/Chromium): XML use-after-free, actively exploited, fixed in Chrome 157.0.8103.50 — counted by cyber-threat.net as the eighth Chrome zero-day of 2026.",
+            "KEV timing: both were added to CISA's KEV catalog on Nov 10 (~7:45 PM ET, six additions per Security Online); federal patch deadline Nov 24 for both.",
+            "Same wave: Corgea's Nov 11 research ties both to the same November patch wave as the Plone and MongoDB fixes in the quick hits below."
+          ],
+          "links": [
+            {
+              "label": "Security Online — CISA KEV six additions (Nov 10)",
+              "url": "https://securityonline.info/cisa-kev-six-vulnerabilities-november-2026/"
+            },
+            {
+              "label": "cyber-threat.net — November Patch Tuesday: what to patch first (Nov 11)",
+              "url": "https://cyber-threat.net/november-2026-patch-tuesday-outlook-zero-day/"
+            },
+            {
+              "label": "Corgea — Xen Orchestra/Chrome/Outlook KEV + Plone + MongoDB research (Nov 11)",
+              "url": "https://corgea.com/research/vsa-2026-062-cve-2026-125350-124194-116606-ghsa-67qm-q795-jh7h-xen-orchestra-chrome-outlook-kev-plone-dotnet-november-2026"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Capital A (AirAsia Group) confirms ransomware hit redundant systems; Daixin Team claim and data samples unverified",
+          "tldr": "Per The Edge Malaysia — the single source returned — Capital A told Bursa Malaysia the cyberattack \"was on redundant systems and did not affect its critical systems,\" while the reports that Daixin Team is behind the attack and provided two CSV data samples (named-passenger and employee information) remain claim-level.",
+          "source": "The Edge Malaysia",
+          "url": "https://theedgemalaysia.com/article/capital-says-recent-cyberattack-did-not-affect-its-critical-systems",
+          "summary": "Per The Edge Malaysia (the single source returned — verify before relying on it), Capital A Bhd (formerly AirAsia Group) told Bursa Malaysia in a filing dated Thursday Nov 12 that the recent cyberattack \"was on redundant systems and did not affect its critical systems,\" and that it \"had taken all measures to immediately resolve this data incident and prevent such future incidents.\" It was reported that Capital A fell victim to Daixin Team ransomware on Nov 11 and 12; per The Edge, DataBreaches (the breach-reporting site) was provided two .csv files by Daixin Team — one with named-passenger information, one with employee information including name, date of birth, country of birth, employment start date, and secret question and answer fields. The company's filing acknowledges the attack, but the Daixin attribution and the data samples are claim-level — do not present them as fact. The article itself contains an internal date inconsistency (\"Thursday 12 Nov 2026 … on Thursday (Nov 24)\"); the core facts rest on the Bursa filing. Shares closed up 0.5 sen (+0.89%) at 56.5 sen, market cap RM2.35 billion.",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "details": [
+            "Confirmed by the company: a Bursa Malaysia filing dated Thursday Nov 12 says the cyberattack \"was on redundant systems and did not affect its critical systems\" and that Capital A \"had taken all measures to immediately resolve this data incident and prevent such future incidents.\"",
+            "Claim-level: the reports that Capital A fell victim to Daixin Team ransomware on Nov 11–12, and the leak-site data samples, are claim-level — per The Edge Malaysia, the single source returned; no independent verification.",
+            "The samples: per The Edge, DataBreaches received two .csv files from Daixin Team — one with named-passenger information, one with employee information including name, date of birth, country of birth, employment start date, and secret question and answer fields.",
+            "Source caveat: the article contains an internal date inconsistency (\"Thursday 12 Nov 2026 … on Thursday (Nov 24)\"); the core facts rest on the Bursa filing.",
+            "Market reaction: shares closed up 0.5 sen (+0.89%) at 56.5 sen; market cap RM2.35 billion."
+          ],
+          "links": [
+            {
+              "label": "The Edge Malaysia — Capital A says recent cyberattack did not affect its critical systems (Nov 12) — single source",
+              "url": "https://theedgemalaysia.com/article/capital-says-recent-cyberattack-did-not-affect-its-critical-systems"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-11",
       "items": [
