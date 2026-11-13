@@ -1,7 +1,351 @@
 {
   "version": 3,
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "days": [
+    {
+      "date": "2026-11-13",
+      "items": [
+        {
+          "category": "security",
+          "title": "N-central second zero-day wave roots 21 hosted servers within hours — 19 already on the newest hotfix",
+          "tldr": "Per BleepingComputer, researcher Sean Bales published proof-of-concept exploits Nov 12 for two new N-able N-central flaw sets — 4EverAble2Shell and Agent2Shell — and threat-intel firms Lupovis and Huntback observed successful root compromises roughly five hours later, with Huntback attributing 21 compromised hosted servers, 19 of them already running N-able's newest hotfix.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/new-n-able-4everable2shell-zero-day-exploited-hours-after-poc-released/",
+          "summary": "Researcher Sean Bales — who dropped the first \"Able2Shell\" N-central zero-day set over the weekend (fixed by N-able's emergency Hotfix 2, build 2026.4.1.26, released Nov 10) — published PoCs Nov 12 for two new flaw sets. 4EverAble2Shell is an unauthenticated root RCE that chains the bundled Apache Axis bug CVE-2026-90436 (CVSS 9.8) with an N-central privilege-escalation flaw and requires the Legacy API to be enabled (per Bales — single-source claims attributed inline); Agent2Shell bundles about a dozen flaws for SYSTEM-level commands on managed Windows agents. Threat-intel firms Previdian (tracking the privilege escalation as VULN-2026-0009 in its own KEV) and WatchTowr saw probes within hours, and Lupovis and Huntback observed successful root compromises roughly 5 hours after publication — Huntback attributes 21 compromised hosted N-central servers (9 US, 4 South Africa, 4 Canada, plus UK/Germany/France/Sweden) to one operator at 157.20.241[.]16 deploying an XMRig Monero miner (half-core throttle, systemd/cron persistence) via jup.sh. 19 of the 21 victims were already running Hotfix 2, meaning the newest fix did not stop the wave. N-able said Thursday it is restricting N-central features and integrations (the Legacy API and the Intune integration) and has identified additional IoCs; Microsoft's Aug 7 alert tied Storm-1175's banking and extortion activity to a likely N-central flaw.",
+          "details": [
+            "Who/what: Researcher Sean Bales — who published the first \"Able2Shell\" N-central zero-day set over the weekend (fixed by N-able's emergency Hotfix 2, build 2026.4.1.26, released Nov 10) — published PoCs Nov 12 for two new flaw sets: 4EverAble2Shell and Agent2Shell.",
+            "4EverAble2Shell: unauthenticated root RCE on N-central; chains the bundled Apache Axis bug CVE-2026-90436 (CVSS 9.8) with an N-central privilege-escalation flaw; requires the Legacy API to be enabled (per Bales — single-source claims attributed inline).",
+            "Agent2Shell: about a dozen flaws for SYSTEM-level commands on managed Windows agents.",
+            "Probes: Previdian (tracking the privilege escalation as VULN-2026-0009 in its own KEV) and WatchTowr saw probes within hours of publication.",
+            "Successful exploitation: Lupovis and Huntback observed successful root compromises roughly 5 hours after publication.",
+            "Victims: Huntback attributes 21 compromised hosted N-central servers (9 US, 4 South Africa, 4 Canada, plus UK/Germany/France/Sweden) to one operator at 157.20.241[.]16, deploying an XMRig Monero miner (half-core throttle, systemd/cron persistence) via jup.sh.",
+            "Patch status: 19 of the 21 victims were already running Hotfix 2.",
+            "Vendor response: N-able said Thursday it is restricting N-central features and integrations (the Legacy API and the Intune integration) and identified additional IoCs.",
+            "Context: Microsoft's Aug 7 alert tied Storm-1175's banking and extortion activity to a likely N-central flaw."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — new N-able 4EverAble2Shell zero-day exploited hours after PoC released (Nov 12, 2:51 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/new-n-able-4everable2shell-zero-day-exploited-hours-after-poc-released/"
+            },
+            {
+              "label": "SecurityWeek — hackers exploit new N-central zero-day hours after PoC publication (Nov 13, 2:20 AM ET)",
+              "url": "https://www.securityweek.com/hackers-exploit-new-n-central-zero-day-hours-after-poc-publication/"
+            },
+            {
+              "label": "The Hacker News — 21 servers infected, 19 on Hotfix 2 (Nov 13, 1:43 AM ET)",
+              "url": "https://thehackernews.com/2026/11/hackers-exploit-n-central-flaws-to.html"
+            },
+            {
+              "label": "SecureResearch — daily briefing (Nov 12)",
+              "url": "https://secureresearch.com/briefings/2026-11-12.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Expedia confirms breach via a third-party data-platform provider; n0n's 830-million-row claim unverified",
+          "tldr": "Expedia told Skift it is \"aware of a supply chain attack\" in which attackers compromised a third-party data platform provider and used its trusted access to reach systems at multiple companies including Expedia — it contained the issue and is investigating, but did not name the vendor or confirm any link to the n0n group's claimed 830,069,282-row haul, which remains unverified.",
+          "source": "Skift",
+          "url": "https://skift.com/2026/11/12/expedia-confirms-cyberattack-through-third-party-vendor/",
+          "summary": "Expedia told Skift it is \"aware of a supply chain attack, reported by security researchers, in which attackers compromised a third-party data platform provider and used [its trusted access]\" to reach systems at multiple companies including Expedia; the company says it contained the issue as soon as it became aware, is investigating with outside experts, and that its platforms remain safe. It did not name the vendor, say what data was exposed, or confirm any link to n0n. The extortion group's claims — 830,069,282 loyalty rows, 333M credential pairs, 58M traveller profiles, 22M journeys and live production cloud/source-code access — all remain unverified; per CyberDaily, the archive published Nov 12 shows hundreds of thousands of emails with travel data, possibly historical, many never seen in prior breaches (per HIBP). Separately, Wiz and Sentra documented an Oct 14–26 attack abusing Qubole (a onetime Expedia vendor) credentials to reach former customers' cloud environments; n0n has claimed the Qubole campaign per Risky Business (relayed by Dr. Web), but researchers have not publicly named Expedia among the victims and Expedia did not confirm a Qubole link. No 8-K had been filed as of Nov 9 (per Twoscotsabroad).",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Confirmation: Expedia says it is \"aware of a supply chain attack, reported by security researchers, in which attackers compromised a third-party data platform provider and used [its trusted access]\" to reach systems at multiple companies including Expedia (statement to Skift, published Nov 12, 8:53 PM ET).",
+            "Response: contained the issue as soon as it became aware; investigating with outside experts; platforms remain safe.",
+            "Not confirmed: the vendor's identity, what data was exposed, and any link to n0n.",
+            "n0n claims — all still unverified: 830,069,282 loyalty rows, 333M credential pairs, 58M traveller profiles, 22M journeys, and live production cloud/source-code access; the group published a dump Nov 12 (per CyberDaily) — hundreds of thousands of emails with travel data, possibly historical, many never seen in prior breaches (per HIBP).",
+            "Qubole angle: Wiz and Sentra documented an Oct 14–26 attack abusing Qubole (a onetime Expedia vendor) credentials to reach former customers' cloud environments; n0n has claimed the Qubole campaign per Risky Business (relayed by Dr. Web), but researchers have not publicly named Expedia among the victims and Expedia did not confirm a Qubole link.",
+            "Markets: no 8-K had been filed as of Nov 9 (per Twoscotsabroad)."
+          ],
+          "links": [
+            {
+              "label": "Skift — Expedia confirms cyberattack through third-party vendor (Nov 12, 8:53 PM ET)",
+              "url": "https://skift.com/2026/11/12/expedia-confirms-cyberattack-through-third-party-vendor/"
+            },
+            {
+              "label": "Cyber Daily — n0n claim and dump publication (Nov 12)",
+              "url": "https://www.cyberdaily.au/security/14440-exclusive-cyber-extortion-group-claims-breach-of-expedia-millions-of-customers-allegedly-exposed"
+            },
+            {
+              "label": "Twoscotsabroad — what Expedia confirmed (Nov 12/13)",
+              "url": "https://twoscotsabroad.com/830-million-loyalty-rows-claimed-expedia-admits-a-supplier-was-breached/"
+            },
+            {
+              "label": "SECNEWS — leak claim unverified (Nov 12)",
+              "url": "https://secnews.co.uk/2026/11/n0n-expedia-data-leak-claim-unverified/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "FBI and DOJ disrupt North Korea's FaceStealer scheme — $400M+ stolen, 900+ webcam videos seized",
+          "tldr": "The Justice Department announced the seizure of cloud infrastructure used in North Korea's \"FaceStealer\" scheme, which per the FBI stole more than $400M in cryptocurrency over the last 18 months, alongside a separate $1.2B seizure tied to the Binance theft — with 900+ secretly recorded victim webcam videos seized and warnings that the group uses AI deepfakes and targets open-source developers for supply-chain access.",
+          "source": "DOJ",
+          "url": "https://www.justice.gov/opa/pr/justice-department-announces-actions-disrupt-north-koreas-massive-theft-cryptocurrency",
+          "summary": "The Justice Department announced coordinated actions against DPRK crypto theft: the seizure of cloud infrastructure used in FaceStealer (Central District of California / FBI Los Angeles), which stole $400M+ in cryptocurrency in the last 18 months, and the separate court-authorized seizure and restraint of $1.2B stolen from Binance — attributed to other North Korean actors and separate from FaceStealer. Mechanics per the FBI: targets are lured from hijacked Telegram, LinkedIn, Slack and Discord accounts into imposter Zoom/Teams/Meet calls showing pre-recorded videos of prior victims; a fake audio error prompts a \"fix\" that installs malware (keystroke and screen capture, persistence), and the victim's webcam is then recorded to fuel the next round — the FBI says the actors also use AI-generated deepfakes of prominent crypto figures. Attribution: Sapphire Sleet / UNC1069 (a.k.a. Dangerous Password, CryptoCore, APT38, BlueNoroff, Stardust Chollima). The FBI seized 900+ victim webcam videos and warns the group increasingly targets open-source developers to reach repository accounts \"calculated to enable software supply-chain attacks\" — in one case a maintainer's machine was breached and malicious code inserted, detected before wide spread. FBI cyber director Brett Leatherman said North Korea \"relies on proceeds from large-scale cryptocurrency theft to fund its illicit weapons program\"; the action follows Binance's $6.3B breach disclosure last week.",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Actions: seizure of cloud infrastructure used in FaceStealer (Central District of California / FBI Los Angeles), which stole $400M+ in cryptocurrency in the last 18 months; separately, the court-authorized seizure and restraint of $1.2B stolen from Binance — attributed to other North Korean actors, separate from FaceStealer.",
+            "Mechanics: targets lured from hijacked Telegram/LinkedIn/Slack/Discord accounts to imposter Zoom/Teams/Meet calls showing pre-recorded videos of prior victims; a fake audio error prompts a \"fix\" that installs malware (keystroke and screen capture, persistence); the victim's webcam is then recorded to fuel the next round.",
+            "Deepfakes: the FBI says the actors also use AI-generated deepfakes of prominent crypto figures.",
+            "Attribution: Sapphire Sleet / UNC1069 (a.k.a. Dangerous Password, CryptoCore, APT38, BlueNoroff, Stardust Chollima).",
+            "Evidence seized: the FBI seized 900+ victim webcam videos.",
+            "Supply-chain warning: the group increasingly targets open-source developers to reach repository accounts \"calculated to enable software supply-chain attacks\"; in one case a maintainer's machine was breached and malicious code inserted, detected before wide spread.",
+            "Quote: FBI cyber director Brett Leatherman said North Korea \"relies on proceeds from large-scale cryptocurrency theft to fund its illicit weapons program.\"",
+            "Context: follows Binance's $6.3B breach disclosure last week."
+          ],
+          "links": [
+            {
+              "label": "DOJ — press release on actions to disrupt North Korea's massive theft of cryptocurrency (Nov 12)",
+              "url": "https://www.justice.gov/opa/pr/justice-department-announces-actions-disrupt-north-koreas-massive-theft-cryptocurrency"
+            },
+            {
+              "label": "Reuters via Investing.com — North Korean hackers steal more than $400M using video, images, FBI says (Nov 12, 4:40 PM ET)",
+              "url": "https://www.investing.com/news/world-news/north-korean-hackers-steal-more-than-400-million-using-video-images-fbi-says-5023365"
+            },
+            {
+              "label": "Nextgov/FCW — FBI disrupts intricate North Korean fake-call scheme tied to $400M crypto theft (Nov 12, 1:21 PM ET)",
+              "url": "https://www.nextgov.com/cybersecurity/2026/11/fbi-disrupts-intricate-north-korean-fake-call-scheme-tied-400m-crypto-theft/417200/"
+            },
+            {
+              "label": "BBC — coverage (Nov 13)",
+              "url": "https://www.bbc.com/news/articles/cqdj1ellpd70o"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Notion confirms hackers stole Notion AI Insights transcripts in the Fireworks breach; Yayoi discloses leak",
+          "tldr": "Notion confirmed the attackers in the Fireworks AI breach took chat transcripts of Notion AI customers who used the Insights feature — affecting under 1% of workspaces, most unattributable to a customer — and Japanese accounting-software firm Yayoi separately said content its employees entered into Notion AI may have leaked through the same intrusion.",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/12/cyberattack-on-fireworks-ai-allowed-hackers-to-access-notion-customers-chat-transcripts/",
+          "summary": "Notion confirmed the attackers in the Fireworks AI breach (an Oct 24 intrusion via a breached third-party cloud provider hosting Fireworks R&D machines — the second Fireworks incident in a month) took chat transcripts of Notion AI customers who used the Insights feature — \"any input to or output from the model that was written to the chat\" — affecting under 1% of workspaces, with most transcripts unattributable to a customer or workspace. Notion is contacting affected customers and urging rotation of any passwords, API keys or credentials pasted into Notion AI during the incident window; it also found and revoked its own API keys inside affected messages (per BleepingComputer). Fireworks says the attackers are financially motivated — an LLMjacking scheme reselling stolen model access — with Unit 42 assisting forensics and law enforcement notified (per BleepingComputer). New downstream disclosure: Yayoi said Nov 12 that content its employees entered into internally used Notion AI — and some AI responses — may have leaked via the same Fireworks intrusion (Oct 5–24 Insights records); customer-facing services are unaffected and it is unconfirmed whether customer personal data or credentials were included. Fireworks' Nov 9 bulletin said its zero-data-retention products were unaffected — the Insights dataset sat on the stored side of its \"ZDR by default\" policy.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Intrusion: Oct 24 breach of Fireworks AI via a breached third-party cloud provider hosting Fireworks R&D machines — the second Fireworks incident in a month.",
+            "What Notion confirmed: the attackers took chat transcripts of Notion AI customers who used the Insights feature — \"any input to or output from the model that was written to the chat\" — affecting under 1% of workspaces; most transcripts are unattributable to a customer or workspace.",
+            "Notion's response: contacting affected customers; urging rotation of any passwords, API keys or credentials pasted into Notion AI during the incident window; found and revoked its own API keys inside affected messages (per BleepingComputer).",
+            "Motive per Fireworks: financially motivated LLMjacking — reselling stolen model access; Unit 42 assisting forensics; law enforcement notified (per BleepingComputer).",
+            "Downstream (Yayoi): the Japanese accounting-software firm said Nov 12 that content its employees entered into internally used Notion AI — and some AI responses — may have leaked via the same Fireworks intrusion (Oct 5–24 Insights records); customer-facing services unaffected; unconfirmed whether customer personal data or credentials were included.",
+            "ZDR note: Fireworks' Nov 9 bulletin said its zero-data-retention products were unaffected — the Insights dataset sat on the stored side of its \"ZDR by default\" policy."
+          ],
+          "links": [
+            {
+              "label": "TechCrunch — cyberattack on Fireworks AI allowed hackers to access Notion customers' chat transcripts (Nov 12, 10:02 AM ET)",
+              "url": "https://techcrunch.com/2026/11/12/cyberattack-on-fireworks-ai-allowed-hackers-to-access-notion-customers-chat-transcripts/"
+            },
+            {
+              "label": "SecurityWeek — Notion customer data compromised in Fireworks AI hack (Nov 12, 6:08 AM ET)",
+              "url": "https://www.securityweek.com/notion-customer-data-compromised-in-fireworks-ai-hack/"
+            },
+            {
+              "label": "BetaNews — Notion AI chats exposed in Fireworks breach (Nov 12, 2:47 PM ET)",
+              "url": "https://betanews.com/article/notion-ai-chats-exposed-fireworks-breach/"
+            },
+            {
+              "label": "ASCII.jp — Yayoi disclosure (Nov 13, AI-translated)",
+              "url": "https://ascii.jp/en/elem/000/004/451/4451348/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Nitori Holdings: up to 37.62 million customer records may have leaked (Nov 9 disclosure)",
+          "tldr": "In a Nov 9 disclosure, Nitori Holdings said unauthorized access (confirmed Nov 6, attacker access likely since mid-October) may have leaked up to 37.62 million customer records including names, addresses, phone numbers, dates of birth and membership numbers, with no passwords or card data confirmed taken; the figures reach this edition via a weekly digest only, so treat them as reported, not confirmed.",
+          "source": "The Cybersecurity Club",
+          "url": "https://thecybersecurityclub.substack.com/p/wk-46-nitori-breach-puts-376m-records",
+          "summary": "Nitori Holdings, Japan's largest furniture retailer, disclosed on Nov 9 that unauthorized access to its systems may have leaked up to 37.62 million customer records — names, addresses, phone numbers, dates of birth and membership numbers. The company said the unauthorized access was confirmed Nov 6, that attacker access likely dates back to mid-October, that no passwords or card data are confirmed taken, and that regulators and police have been informed. The disclosure did not surface in primary security-press coverage in the days after it was made; the only fresh source this edition's searches returned is a weekly digest, so the figures above are reported, not confirmed — verify at the primary source before relying on them.",
+          "details": [
+            "Who: Nitori Holdings — Japan's largest furniture retailer.",
+            "What: unauthorized access may have leaked up to 37.62 million customer records — names, addresses, phone numbers, dates of birth and membership numbers.",
+            "Timeline: unauthorized access confirmed Nov 6; attacker access likely since mid-October; disclosed Nov 9.",
+            "Not confirmed taken: passwords or card data — none confirmed.",
+            "Response: regulators and police informed.",
+            "Verification flag: the only fresh source returned is a weekly digest (The Cybersecurity Club, Nov 13) — figures are reported, not confirmed; verify at the primary source before relying on them."
+          ],
+          "links": [
+            {
+              "label": "The Cybersecurity Club — weekly digest item on the Nitori disclosure (Nov 13; digest source — verify at origin)",
+              "url": "https://thecybersecurityclub.substack.com/p/wk-46-nitori-breach-puts-376m-records"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Jensen Huang resigns as Nvidia CEO amid Megaspeed espionage scandal; Malaysia opens chip re-export probe",
+          "tldr": "Nvidia co-founder Jensen Huang resigned as CEO Thursday with CFO Colette Kress named interim chief (per AI Policy Daily; CSMonitor), days after US authorities reportedly assessed former Megaspeed executive Alice Huang as a Chinese intelligence asset — and Malaysia's trade ministry is now investigating whether AI chips imported by Megaspeed's local unit were re-exported.",
+          "source": "CSMonitor",
+          "url": "https://www.csmonitor.com/Business/2026/1112/huang-nvidia-chips-china-ai",
+          "summary": "Nvidia co-founder Jensen Huang resigned as CEO Thursday, with CFO Colette Kress named interim chief while the board searches for a successor (per AI Policy Daily; CSMonitor). The resignation follows NYT/Reuters reporting that Alice Huang, a former executive at Singapore cloud firm Megaspeed with which Huang had a relationship, was assessed by US authorities as a Chinese intelligence asset — allegations China denies and Nvidia says did not compromise company or national security. Megaspeed bought $4.8B of advanced Nvidia chips since June 2024 (per NYT); Singapore is probing possible domestic-law violations while rejecting reports it is investigating Alice Huang herself. New in this window: Malaysia's Investment, Trade and Industry Ministry is investigating whether AI chips imported by Speedmatrix (Megaspeed's local unit) were re-exported, following a US senator's allegation that Megaspeed may have been used to circumvent US controls. Reuters separately reports Chinese AI firms are rushing to rent offshore Nvidia compute fearing a crackdown (the RASA bill is pending in the Senate) and grey-market stockpiling is rising. Per a single source (insideai.news — single source, verify before treating as fact), White House officials are weighing whether Commerce Secretary Lutnick keeps his post; Lutnick is summoned before the Senate Banking Committee in December, and Commerce has added no Chinese entity to the entity list since October 2025 — the longest gap in a decade, per that report.",
+          "industry": [
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            }
+          ],
+          "details": [
+            "Resignation: Nvidia co-founder Jensen Huang resigned as CEO Thursday; CFO Colette Kress named interim chief while the board searches for a successor (per AI Policy Daily; CSMonitor).",
+            "Backdrop: NYT/Reuters reporting that Alice Huang, a former executive at Singapore cloud firm Megaspeed with which Huang had a relationship, was assessed by US authorities as a Chinese intelligence asset — allegations China denies and Nvidia says did not compromise company or national security.",
+            "Scale: Megaspeed bought $4.8B of advanced Nvidia chips since June 2024 (per NYT); Singapore is probing possible domestic-law violations while rejecting reports it is investigating Alice Huang herself.",
+            "New — Malaysia: the Investment, Trade and Industry Ministry is investigating whether AI chips imported by Speedmatrix (Megaspeed's local unit) were re-exported, following a US senator's allegation that Megaspeed may have been used to circumvent US controls.",
+            "Market fallout: per Reuters, Chinese AI firms are rushing to rent offshore Nvidia compute fearing a crackdown (the RASA bill is pending in the Senate); grey-market stockpiling is rising.",
+            "Single-source flag: per insideai.news — single source, verify before treating as fact — White House officials are weighing whether Commerce Secretary Lutnick keeps his post; Lutnick is summoned before the Senate Banking Committee in December, and Commerce has added no Chinese entity to the entity list since October 2025 (the longest gap in a decade, per that report)."
+          ],
+          "links": [
+            {
+              "label": "CSMonitor — Huang out at Nvidia (Nov 12, 8:26 PM ET)",
+              "url": "https://www.csmonitor.com/Business/2026/1112/huang-nvidia-chips-china-ai"
+            },
+            {
+              "label": "TNW — Malaysia probes Speedmatrix chips (Nov 12/13, Reuters)",
+              "url": "https://thenextweb.com/news/malaysia-speedmatrix-megaspeed-ai-chip-probe"
+            },
+            {
+              "label": "AI Policy Daily — digest (Nov 12)",
+              "url": "https://aipolicydaily.org/archive/daily/2026-11-12/"
+            },
+            {
+              "label": "Inside AI — White House weighs Lutnick's ouster (Nov 13 — single source, unconfirmed)",
+              "url": "https://insideai.news/news/ai-policy-and-regulation/howard-lutnick-nvidia-spy-scandal/15168/"
+            },
+            {
+              "label": "Reuters via Investing.com — Chinese AI firms rush to secure Nvidia chip capacity as spy scandal stirs fear of US curbs (Nov 12, 12:35 AM ET)",
+              "url": "https://www.investing.com/news/economy-news/exclusivechinese-ai-firms-rush-to-secure-nvidia-chip-capacity-as-spy-scandal-stirs-fear-of-us-curbs-5020406"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Check Point hotfixes actively exploited Gaia OS zero-day that gave root via a world-writable socket",
+          "tldr": "Check Point released emergency hotfixes for CVE-2026-123039, a high-severity local privilege escalation in Gaia OS's DynamicCLI IPC interface — a world-writable, unauthenticated local socket — and says it observed active exploitation against a couple of dozen customers since late October (per BleepingComputer — the single outlet returned; the vendor advisory is cited within).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/",
+          "summary": "Check Point released emergency hotfixes for CVE-2026-123039, a high-severity local privilege escalation in the DynamicCLI IPC interface of Gaia OS: the root-level dynamic_server daemon listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes, so an authenticated local user can have commands executed as root. Check Point says it observed an active exploit against a couple of dozen customers since late October, gaining root and persistence (per BleepingComputer — the single outlet returned this run; the vendor advisory is cited within). Affected products: Quantum Firewall, Multi-Domain Security Management Server, Scalable Platforms, Security Gateway and Security Management Server. Check Point published IOCs; detection tips include system() sink usage and non-Clish command execution; the temporary mitigation is to stop and disable dynamic_server. Context per BleepingComputer: CISA has added five Check Point flaws to KEV over two years, two of them abused by ransomware gangs.",
+          "details": [
+            "Flaw: CVE-2026-123039, high-severity local privilege escalation in the DynamicCLI IPC interface of Gaia OS — the root-level dynamic_server daemon listens on a world-writable local socket (/tmp/dynamic_socket) without authenticating connecting processes, so an authenticated local user can have commands executed as root.",
+            "Exploitation: Check Point says it observed an active exploit against a couple of dozen customers since late October, gaining root and persistence (per BleepingComputer — the single outlet returned this run; the vendor advisory is cited within).",
+            "Affected products: Quantum Firewall, Multi-Domain Security Management Server, Scalable Platforms, Security Gateway, Security Management Server.",
+            "Detection and response: IOCs published; detection tips include system() sink usage and non-Clish command execution; temporary mitigation is to stop and disable dynamic_server.",
+            "Context: CISA has added five Check Point flaws to KEV over two years, two of them abused by ransomware gangs (per BleepingComputer)."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — Check Point patches zero-day that lets hackers get root access (Nov 13, 5:44 AM ET); vendor advisory cited within",
+              "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Belgium says supermarket-refrigeration attacks may have Iranian links as Iran denies blame",
+          "tldr": "Belgian Interior and Security Minister Bernard Quintin said security services see \"indications of possible links to known Iranian actors\" in the attacks that disrupted cooling at Belgian retailers earlier this month, while Iran called the French allegations \"baseless and hostile\" — and CISA is urging US food retailers to harden cold-chain systems.",
+          "source": "Anadolu Agency",
+          "url": "https://www.aa.com.tr/en/europe/belgium-says-cyberattacks-on-supermarket-refrigeration-systems-may-have-iranian-links/4122532",
+          "summary": "Belgian Interior and Security Minister Bernard Quintin said security services see \"indications of possible links to known Iranian actors\" in attacks that disrupted cooling at Belgian supermarkets and retailers earlier this month (food discarded worth tens of thousands of euros); the federal prosecutor's office is investigating, and Iran called the French allegations \"baseless and hostile\" (per ACR Journal). Backdrop: France on Nov 9–10 attributed the Oct 11–12 attacks — roughly 700 stores, temperatures forced to 50 °C via continuous defrost cycles, tens of millions of euros in food losses and at least 15 fires — to Shahid Kaveh, an IRGC-linked unit, citing Farsi traces; a second wave on Nov 2–3 hit 100+ retailers across Belgium, Luxembourg, Sweden, Ireland, the Netherlands, Estonia and Finland with the same signature (Danfoss AK-SM/AK-SC controllers, many end-of-life and internet-exposed; CERT-FR also flags Copeland and Dixell XWEB). Two Russian-aligned hacktivist groups claimed the attacks Nov 11 with limited credibility, and France's foreign minister publicly accused the IRGC Nov 9. A joint CISA/FBI/HHS/USDA/DOT advisory (CSA 261105, published Nov 10) urges hardening of industrial refrigeration and cold-chain monitoring — FoodNavigator reports CISA specifically warning US food retailers — and the FBI cited an attempted attack on three French national blood service sites (alarms worked; no blood lost). The European Correspondent adds Lupovis decoy telemetry (a surge on fridge honeypots Oct 20–30 in later-hit countries) and notes no ransom was ever demanded.",
+          "industry": [
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            }
+          ],
+          "details": [
+            "Belgium: Interior and Security Minister Bernard Quintin said security services see \"indications of possible links to known Iranian actors\" in attacks that disrupted cooling at Belgian supermarkets and retailers earlier this month (food discarded worth tens of thousands of euros); the federal prosecutor's office is investigating.",
+            "Iran: called the French allegations \"baseless and hostile\" (per ACR Journal).",
+            "France's attribution (Nov 9–10): the Oct 11–12 attacks — roughly 700 stores, temperatures forced to 50 °C via continuous defrost cycles, tens of millions of euros in food losses, at least 15 fires — attributed to Shahid Kaveh, an IRGC-linked unit, citing Farsi traces; France's foreign minister publicly accused the IRGC Nov 9.",
+            "Second wave (Nov 2–3): 100+ retailers across Belgium, Luxembourg, Sweden, Ireland, the Netherlands, Estonia and Finland — same signature; Danfoss AK-SM/AK-SC controllers, many end-of-life and internet-exposed; CERT-FR also flags Copeland and Dixell XWEB.",
+            "Claims: two Russian-aligned hacktivist groups claimed the attacks Nov 11 with limited credibility.",
+            "US response: joint CISA/FBI/HHS/USDA/DOT advisory CSA 261105 (published Nov 10) urges hardening of industrial refrigeration and cold-chain monitoring — FoodNavigator reports CISA specifically warning US food retailers; the FBI cited an attempted attack on three French national blood service sites (alarms worked; no blood lost).",
+            "Telemetry and motive: Lupovis decoy telemetry showed a surge on fridge honeypots Oct 20–30 in later-hit countries; no ransom was ever demanded."
+          ],
+          "links": [
+            {
+              "label": "Anadolu Agency — Belgium says cyberattacks on supermarket refrigeration systems may have Iranian links (Nov 12)",
+              "url": "https://www.aa.com.tr/en/europe/belgium-says-cyberattacks-on-supermarket-refrigeration-systems-may-have-iranian-links/4122532"
+            },
+            {
+              "label": "FoodNavigator — CISA warns food retailers of refrigeration cyberattacks (Nov 12)",
+              "url": "https://www.foodnavigator.com/Article/2026/11/12/cisa-warns-food-retailers-of-refrigeration-cyberattacks/"
+            },
+            {
+              "label": "ACR Journal — Iran rejects French allegations over supermarket refrigeration cyber attacks (Nov 12)",
+              "url": "https://www.acrjournal.uk/industry-news/iran-rejects-french-allegations-over-supermarket-refrigeration-cyber-attacks/"
+            },
+            {
+              "label": "The European Correspondent — investigation (Nov 12)",
+              "url": "https://europeancorrespondent.com/en/r/who-keeps-cooking-europes-frozen-peas"
+            },
+            {
+              "label": "Axios — France blames Iran (Nov 10 — pre-window context)",
+              "url": "https://www.axios.com/2026/11/10/france-iran-supermarket-refridgerator-hacks"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "wfx-loot GitHub campaign matures: Telegram-only exfiltration and poisoning reach Packagist, Go modules and npm",
+          "tldr": "The wfx-loot GitHub CI secret-stealing campaign first documented by Aikido Security is now multi-source: BleepingComputer confirms Aikido's numbers (4,837 compromised accounts, 61,764 repositories probed, secrets taken from at least 1,835), OX Security independently documents the self-erasing stealer, and the poisoning has spilled into Packagist, Go modules and npm.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-compromise-4-800-github-accounts-to-steal-cloud-credentials/",
+          "summary": "BleepingComputer confirms Aikido Security's numbers: 4,837 compromised GitHub accounts probed 61,764 repositories from about 12:45 UTC Nov 10, and secrets were exfiltrated from at least 1,835 repos — about 50 of the accounts have publishing rights on npm, PyPI, Go, crates and Packagist. OX Security (\"wfx-loot\") independently documents the self-erasing CI stealer — a roughly 1,500-line shell script harvesting GitHub, AWS, Azure, GCP, Kubernetes, Vault and registry credentials plus AI-provider keys (OpenAI, Anthropic, Gemini, Hugging Face, Cursor, Copilot) — with more than 66,000 probe pull requests and more than 8,000 repos pushed. Corgea (\"WFX Phantom\") adds memory scraping of Runner.Worker/Runner.Listener via /proc, AWS IAM backdoors (trust policies rewritten to \"Principal\": {\"AWS\": \"*\"}), Azure Entra federated-credential injection (wfx-ci-), and an exfiltration shift from HTTP callbacks to Telegram-only on Nov 12 — IP blocklists no longer stop current payloads. Ecosystem spillover: Packagist digitalelvis/neuronai-studio v3.14.3 was malicious (fixed in v3.14.4 Nov 12), Go modules vkuznet/gocurl and onuragtas/redock/docker-env had even tags v1.0.278–v1.0.290 poisoned, and npm pdf-html5-page-flip 2.0.1/2.0.2 was pulled Nov 12 (GHSA-j3hx-5mxx-43qh, overlapping the GhostAction campaign). Semgrep's post mortem details four injection vectors and roughly 21,000 \"ci: refresh build cache\" commits.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Confirmed numbers: BleepingComputer confirms Aikido Security's figures — 4,837 compromised GitHub accounts probed 61,764 repositories from about 12:45 UTC Nov 10; secrets exfiltrated from at least 1,835 repos — about 50 of the accounts have publishing rights on npm, PyPI, Go, crates and Packagist.",
+            "OX Security (\"wfx-loot\"): independently documents the self-erasing CI stealer — a roughly 1,500-line shell script harvesting GitHub, AWS, Azure, GCP, Kubernetes, Vault and registry credentials plus AI-provider keys (OpenAI, Anthropic, Gemini, Hugging Face, Cursor, Copilot) — with more than 66,000 probe pull requests and more than 8,000 repos pushed.",
+            "Corgea (\"WFX Phantom\"): memory scraping of Runner.Worker/Runner.Listener via /proc; AWS IAM backdoors (trust policies rewritten to \"Principal\": {\"AWS\": \"*\"}); Azure Entra federated-credential injection (wfx-ci-); exfiltration shifted from HTTP callbacks to Telegram-only on Nov 12 — IP blocklists no longer stop current payloads.",
+            "Package spillover: Packagist digitalelvis/neuronai-studio v3.14.3 malicious (fixed in v3.14.4 Nov 12); Go modules vkuznet/gocurl and onuragtas/redock/docker-env — even tags v1.0.278–v1.0.290 poisoned; npm pdf-html5-page-flip 2.0.1/2.0.2 pulled Nov 12 (GHSA-j3hx-5mxx-43qh, overlapping the GhostAction campaign).",
+            "Named repo victims: Nextcloud and WebdriverIO, with package-registry consumers also affected.",
+            "Semgrep post mortem: four injection vectors; roughly 21,000 \"ci: refresh build cache\" commits."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — hackers compromise 4,800 GitHub accounts to steal cloud credentials (Nov 12, 5:25 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/hackers-compromise-4-800-github-accounts-to-steal-cloud-credentials/"
+            },
+            {
+              "label": "OX Security — thousands of GitHub accounts hijacked with wfx-loot CI secret-stealing malware (Nov 12, 12:35 PM ET)",
+              "url": "https://www.ox.security/blog/thousands-of-github-accounts-hijacked-with-wfx-loot-ci-secret-stealing-malware-via-github-actions-npm/"
+            },
+            {
+              "label": "Corgea — WFX Phantom analysis (Nov 12)",
+              "url": "https://corgea.com/research/wfx-phantom-wfx-loot-github-actions-secret-stealer-neuronai-studio-gocurl-redock-november-2026"
+            },
+            {
+              "label": "Semgrep — post mortem (Nov 12)",
+              "url": "https://semgrep.dev/blog/2026/seconds-from-disaster-wfx-phantom-and-the-ci-pipeline-nobody-was-watching/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-12",
       "items": [
