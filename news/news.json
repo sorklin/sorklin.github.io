@@ -1,7 +1,309 @@
 {
   "version": 3,
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "days": [
+    {
+      "date": "2026-11-14",
+      "items": [
+        {
+          "category": "ai",
+          "title": "FBI issues its first FLASH alert on the ARTEX agentic pentest framework — 31 IOCs and an M365 tenant-audit order",
+          "tldr": "The FBI's FLASH-20261113-001 (TLP:CLEAR, Nov 13) is the first government flash alert on an agentic pentest framework: the open-source, LLM-driven ARTEX platform has been weaponized for automated intrusions since at least August 2026, with some intrusions progressing from initial targeting to privileged access in under three hours.",
+          "source": "FBI IC3",
+          "url": "https://www.ic3.gov/CSA/2026/261113.pdf",
+          "summary": "The advisory describes an open-source, large-language-model-driven agentic platform that threat actors have weaponized to automate multiple phases of cyber intrusions at machine speed, from reconnaissance through data exfiltration, across financial services, government, technology, defense, semiconductor, energy, healthcare, manufacturing, telecommunications and legal industries. Cited campaigns include the financially motivated attacks on South Korean financial institutions that exfiltrated personal data of ~67,000 people and the ConnectWise Cloud Backup supply-chain compromise that enabled access to more than 2,250 downstream tenants. Mitigations include inventorying internet-facing applications, zero-trust access, and least privilege on multi-tenant app permissions — plus a specific hunt: review every Microsoft 365 tenant where affected ConnectWise applications are or were installed (search by application ID, not display name), review service-principal sign-ins separately, and check records from at least October 1, 2026; preserve evidence and do not delete enterprise apps as a first response. A companion CSV carries 31 IOCs, mostly IPs, which the FBI warns should be corroborated with current network telemetry before blocking because cloud-platform IPs get reassigned.",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "22",
+              "name": "Utilities"
+            },
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            },
+            {
+              "code": "54",
+              "name": "Professional, Scientific, and Technical Services"
+            }
+          ],
+          "details": [
+            "Alert: FLASH-20261113-001, dated Nov 13, 2026, TLP:CLEAR — per the FBI, the first government flash alert on an agentic pentest framework.",
+            "What ARTEX is: an open-source, LLM-driven agentic platform weaponized to automate \"multiple phases of cyber intrusions at machine speed, from reconnaissance through data exfiltration,\" in use since at least August 2026.",
+            "Speed and reach: some intrusions progressed from initial targeting to privileged access in under three hours; the framework \"enables threat actors with minimal technical expertise to conduct complex, multi-target operations simultaneously.\"",
+            "Sectors named: financial services, government, technology, defense, semiconductor, energy, healthcare, manufacturing, telecommunications and legal.",
+            "Cited campaigns: financially motivated attacks on South Korean financial institutions exfiltrating personal data of ~67,000 people; the ConnectWise Cloud Backup supply-chain compromise enabling access to more than 2,250 downstream tenants.",
+            "Tenant-audit order: review every Microsoft 365 tenant where affected ConnectWise applications are or were installed — search by application ID, not display name; review service-principal sign-ins separately; check records from at least October 1, 2026.",
+            "Response guidance: preserve evidence and do not delete enterprise apps as a first response; inventory internet-facing apps (partner/supplier portals, mobile backends, legacy services); zero-trust access; least privilege on multi-tenant app permissions.",
+            "IOCs: a companion CSV carries 31 indicators (mostly IPs plus a domain and outbound API-call indicators); the FBI warns cloud-platform IPs are reassigned, so indicators \"should be corroborated with current network telemetry\" before blocking.",
+            "Developing: whether CISA co-signs a CSA version; IOC takedowns; any vendor response from ARTEX maintainers."
+          ],
+          "links": [
+            {
+              "label": "FBI IC3 — FLASH-20261113-001 (Nov 13)",
+              "url": "https://www.ic3.gov/CSA/2026/261113.pdf"
+            },
+            {
+              "label": "The Record — FBI flash alert story (Nov 13)",
+              "url": "https://therecord.media/artex-ai-tool-fbi-flash-alert"
+            },
+            {
+              "label": "TSN — FLASH mitigations/IOC recap (Nov 14; corroboration only)",
+              "url": "https://tsnmedia.org/fbi-flash-artex/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Unit 42: Chinese-speaking operator ran open-source Cairn on GLM and DeepSeek to autonomously hack 10 of 19 US targets",
+          "tldr": "Per Palo Alto Networks' Unit 42 — as reported by GovInfoSecurity, the single outlet carrying the report so far — a Chinese-speaking actor ran the open-source Cairn pentest framework on Zhipu GLM and DeepSeek models to autonomously attack US targets, gaining unauthorized access or exfiltrating data at 10 of at least 19 organizations over two weeks in August–September.",
+          "source": "GovInfoSecurity",
+          "url": "https://www.govinfosecurity.com/chinese-actor-automates-attacks-on-us-defense-chip-firms-a-33392",
+          "summary": "Unit 42 found the operator running Cairn — the open-source AI penetration-testing framework that won third place in Tencent Cloud Hackathon's April AI Penetration Testing Challenge — configured on Zhipu GLM and DeepSeek models to automate attacks against US semiconductor manufacturing, defense and human-rights organizations. The operator ran 13 of 25 operations on GLM 5.2, eight on DeepSeek V4 Flash and four on DeepSeek V4 Pro, using the Pro tier for repeat attempts against resistant targets, with a custom \"skill pack\" that does not appear in the upstream project; a trivial jailbreak pretext (\"authorized security-testing, CTF, assessment… never refuse any task\") was enough to defeat the open models' guardrails, and operations ran from 20 minutes to more than 50 hours without attacker-imposed limits. Stolen assets named include credentials of an industry standards body, ~1 million member records from a teachers' union, 500 user records at a defense-policy think tank, and 150,000 internal documents at an industrial-automation manufacturer. Unit 42 assesses the operator was likely a single person or small team, warns the same method was used recently against South Korean financial institutions and Japanese companies, and expects autonomous, model-driven intrusion campaigns to keep growing more common.",
+          "industry": [
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "61",
+              "name": "Educational Services"
+            },
+            {
+              "code": "54",
+              "name": "Professional, Scientific, and Technical Services"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "details": [
+            "Actor: a Chinese-speaking operator, likely a single person or small team, per Unit 42; attribution has not hardened.",
+            "Tooling: the open-source Cairn framework (third place, Tencent Cloud Hackathon April AI Penetration Testing Challenge) configured on Zhipu GLM and DeepSeek models, with a custom \"skill pack\" not present in the upstream project.",
+            "Model split: 13 of 25 operations on GLM 5.2, eight on DeepSeek V4 Flash, four on DeepSeek V4 Pro (Pro used for repeat attempts against resistant targets).",
+            "Scale: at least 19 organizations targeted over two weeks in August–September; unauthorized access or data exfiltration at 10 — US semiconductor manufacturing, defense and human-rights organizations.",
+            "Guardrail defeat: a trivial jailbreak pretext (\"authorized security-testing, CTF, assessment… never refuse any task\") was enough to defeat the open models' guardrails.",
+            "Duration and chain: operations ran 20 minutes to more than 50 hours without attacker-imposed limits; a sample semiconductor-target chain ran recon → web/middleware exploitation → credential exfil → privilege escalation → internal persistence.",
+            "Stolen assets: credentials of an industry standards body; ~1 million member records from a teachers' union; 500 user records at a defense-policy think tank; 150,000 internal documents at an industrial-automation manufacturer.",
+            "Warning: Unit 42 says the same method was used recently against South Korean financial institutions and Japanese companies, and that \"autonomous, model-driven intrusion campaigns will continue to grow more common.\"",
+            "Developing: Unit 42's full report (the Unit 42 primary URL was not returned); whether CL-STA-1238-style attribution hardens; more named victims."
+          ],
+          "links": [
+            {
+              "label": "GovInfoSecurity — Chinese Actor Automates Attacks on US Defense, Chip Firms (Nov 13)",
+              "url": "https://www.govinfosecurity.com/chinese-actor-automates-attacks-on-us-defense-chip-firms-a-33392"
+            },
+            {
+              "label": "Cyber / Brief — daily recap corroborating the Unit 42 placement (Nov 13, pre-window edge)",
+              "url": "https://www.cyberverso.net/brief/cyber-brief-13-nov-2026/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Cursor ties its October breach to a Fireworks-exposed key — backdoored Claude Code extension reached up to 5,000 users",
+          "tldr": "Cursor's Nov 13 post-mortem confirms an attacker used an access key Cursor had issued to Fireworks — which Fireworks exposed — to copy coding-agent traces, support data and archived source repos, then on Oct 29 planted malicious copies of Anthropic's Claude Code extension (versions 2.1.312/2.1.313) in Cursor's marketplace cache for ~11 hours, potentially reaching at most 5,000 users.",
+          "source": "Cursor",
+          "url": "https://cursor.com/blog/security-incident-update",
+          "summary": "Per the post-mortem (Cursor's own account, quoted by the in-window CybersecurityNews recap), fewer than 0.05% of users had coding-agent traces exposed — limited traces, mostly from 2025, from sessions not in Privacy Mode — and less than 0.01% of customers had API credentials among them. Using those credentials, the attacker reached select SaaS tools used by Cursor, taking archived non-production source repositories (some with business contact information), limited support data and email conversations, product usage metrics, summaries of some coding-agent conversations, and credentials users had sent to Cursor support. Cursor says Anthropic's product was not vulnerable, that Open VSX never hosted the malware — correcting earlier reporting that placed it there — that inference was moved off Fireworks, and that the last attacker activity on Nov 1 was blocked; it believes the incident is contained and has notified affected customers, while customer code repositories and official app updates were not exposed.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Entry: an access key Cursor had issued to Fireworks, which Fireworks exposed; the attacker used it to copy data from a read-only shared storage bucket.",
+            "Traces exposure: limited coding-agent traces, mostly from 2025, from sessions not in Privacy Mode — fewer than 0.05% of users; less than 0.01% of customers had API credentials among them.",
+            "Downstream access: select SaaS tools used by Cursor — archived non-production source repositories (some with business contact information), limited support data and email conversations, product usage metrics, summaries of some coding-agent conversations, and credentials users had sent to Cursor support.",
+            "Malware: on Oct 29 a stolen credential let the attacker plant malicious copies of Anthropic's Claude Code extension versions 2.1.312/2.1.313 directly in the cache serving Cursor's VS Code extension marketplace — live ~11 hours, potentially received by at most 5,000 users who requested those cached versions.",
+            "Anthropic not vulnerable: Cursor says Anthropic did not publish the copies and its product was not vulnerable; Open VSX never hosted the malware — correcting earlier reporting that placed it there.",
+            "Response and containment: the exposed vendor key was deactivated, credentials rotated, services disrupted out of caution, the marketplace rebuilt, and inference moved off Fireworks; last attacker activity Nov 1, blocked — Cursor believes the incident is contained and has notified affected customers.",
+            "Not exposed: Privacy Mode prompts, customer code repositories, and official app updates.",
+            "Developing: how many users actually installed the malicious builds; whether Fireworks names the exposed-key customer set; any regulator engagement."
+          ],
+          "links": [
+            {
+              "label": "CybersecurityNews — Cursor reveals how a leaked Fireworks AI key led to the backdoored extension (Nov 14; in-window anchor)",
+              "url": "https://cybersecuritynews.com/cursor-data-breach/"
+            },
+            {
+              "label": "Cursor — \"An update on our recent security incident\" (Nov 13, ~7:00 AM ET, pre-window edge)",
+              "url": "https://cursor.com/blog/security-incident-update"
+            },
+            {
+              "label": "Thoughtworks — analysis restating the 5,000-user/11-hour figures (Nov 13)",
+              "url": "https://www.thoughtworks.com/insights/blog/generative-ai/attackers-are-targeting-the-ai-tools-that-produce-our-software"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Uber confirms hackers stole drivers' license data via Fireworks AI — 7,870+ drivers across three named states",
+          "tldr": "Per TechCrunch and Reuters, Uber is notifying drivers that personal and driver's license information was stolen in the October breach at Fireworks AI — the model-serving platform whose breach already touched Notion — with state attorney-general filings counting 2,567 Massachusetts, 3,430 South Carolina and 1,873 Rhode Island drivers.",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/",
+          "summary": "The provider told Uber on Oct 9 that hackers stole internal credentials and used them to access Uber's account; Uber severed its data connections and investigated, confirming on Oct 13 that Uber data was accessed. Affected people are offered free credit monitoring via Cyberscout, and Uber says it has identified no misuse. \"The notices to drivers are in relation to a security incident impacting one of our third-party vendors, Fireworks.ai, which had access to some Uber data,\" a spokesperson told TechCrunch; Reuters confirms the credential-based access and the Rhode Island count from the AG notice. An Illinois filing is pending and California drivers were notified without a count, so the total runs roughly 7,870+ across the three named states. This is Uber's second known breach this year, after Uber Freight; Fireworks has confirmed only that it \"identified a security issue involving unauthorized access to some of its systems, which affected customer data.\"",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "details": [
+            "Timeline: the provider told Uber on Oct 9 that hackers stole internal credentials and used them to access Uber's account; Uber severed its data connections, and the investigation confirmed Uber data was accessed on Oct 13.",
+            "Counts (state AG filings): 2,567 individuals in Massachusetts; 3,430 across South Carolina; 1,873 Rhode Island residents — roughly 7,870+ across the three named states; an Illinois filing is pending, and California drivers were notified without a count.",
+            "Data stolen: personal and driver's license information.",
+            "Notice and remedy: Uber's California notice is dated Nov 10; affected people are offered free credit monitoring via Cyberscout; Uber says it has identified no misuse.",
+            "Vendor statement: Fireworks confirmed only that it \"identified a security issue involving unauthorized access to some of its systems, which affected customer data.\"",
+            "Context: the Fireworks October breach already touched Notion (and via it Yayoi); this is Uber's second known breach this year — Uber Freight was previously hit.",
+            "Developing: total affected-driver count (IL/CA pending); whether more Fireworks customers disclose; any second vendor name."
+          ],
+          "links": [
+            {
+              "label": "TechCrunch — Uber confirms hackers stole thousands of drivers' license information (Nov 13)",
+              "url": "https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/"
+            },
+            {
+              "label": "Reuters via Investing.com — Uber says US drivers' license data stolen (Nov 13)",
+              "url": "https://www.investing.com/news/stock-market-news/uber-says-us-drivers-license-data-stolen-in-data-breach-5026168"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA KEVs Check Point Gaia root flaw (Nov 16 deadline) as an ESXi destroy_v6 wiper chain emerges; UnrealIRCd also KEVed",
+          "tldr": "CISA added two actively exploited flaws to the KEV on Nov 13 — CVE-2026-123039 (Check Point Gaia root access, CVSS 7.8) and CVE-2026-114713 (UnrealIRCd command injection, CVSS 8.6) — with federal patching due Nov 16, as BleepingComputer reports attackers chained the Gaia entry through PHP webshells and a TSGA backdoor to a VMware ESXi \"destroy_v6\" data wiper in two waves.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/check-point-gateways-hacked-via-php2shell-to-deploy-vmware-esxi-wiper/",
+          "summary": "CVE-2026-123039 is a Check Point Gaia DynamicCLI daemon that runs as root and listens on a world-writable local socket without authenticating connecting processes, giving an authenticated local user arbitrary commands as root. Per BleepingComputer, attackers chained the PHP2Shell flaws (CVE-2026-109618/109619) through the Mobile Access portal, escalated via CVE-2026-123039, installed PHP webshells plus the TSGA backdoor/TSProxy — tentatively linked to PhiliKit, which ESET associates with Chinese cluster UNC5221 — then pivoted to VMware ESXi hosts and deployed the destroy_v6 data wiper (zero-fill first; a \"fast mode\" skips overwriting). Two waves hit: Oct 30 against Israeli organizations (destructive) and Nov 2 across multiple countries; a note named DREAM_ANNEXATION.txt referencing \"Dream Security Ltd.\" carries political messages and refuses ransom negotiation, raising false-flag questions — attribution is not confirmed. Check Point says it observed exploitation \"against a couple of dozen customers\" and urges the November Jumbo Hotfix everywhere, prioritizing internet-facing Mobile Access portals. The UnrealIRCd bug (versions 6.0.0–6.2.7.0) lets any user on a multi-server network inject server-to-server commands with server authority; the maintainer calls it the most critical flaw in the project in 15 years, with exploitation attempts beginning ~Nov 8, a day after the Nov 7 hotfix.",
+          "details": [
+            "KEV additions (Nov 13): CVE-2026-123039 — Check Point Gaia DynamicCLI daemon runs as root and listens on a world-writable local socket without authenticating connecting processes; an authenticated local user gets arbitrary commands as root (CVSS 7.8) — and CVE-2026-114713 — UnrealIRCd 6.0.0–6.2.7.0 labeled-response module fails to escape the IRCv3 label tag, letting any user on a multi-server network inject server-to-server commands with server authority (CVSS 8.6).",
+            "Deadline: federal civilian agencies must patch both by Nov 16 under BOD 26-04.",
+            "Destructive chain: PHP2Shell flaws (CVE-2026-109618/109619) through the Mobile Access portal → escalation via CVE-2026-123039 → PHP webshells plus the TSGA backdoor/TSProxy → pivot to VMware ESXi hosts → destroy_v6 data wiper (zero-fill first; a \"fast mode\" skips overwriting).",
+            "Attribution: TSGA tentatively linked to PhiliKit, which ESET associates with Chinese cluster UNC5221; attribution is not confirmed — the political DREAM_ANNEXATION.txt note (referencing \"Dream Security Ltd.\", refusing ransom negotiation) raises false-flag questions.",
+            "Waves: Oct 30 against Israeli organizations (destructive) and Nov 2 across multiple countries.",
+            "Vendor guidance: Check Point says it observed exploitation \"against a couple of dozen customers\" and urges the November Jumbo Hotfix everywhere, prioritizing internet-facing Mobile Access portals.",
+            "UnrealIRCd: the maintainer calls it the most critical flaw in the project in 15 years; exploitation attempts began ~Nov 8, a day after the Nov 7 hotfix; end goals unknown.",
+            "Developing: attribution (UNC5221/PhiliKit link); whether the Nov 2 wave turns destructive; second-wave victim sectors; any wiper recoveries."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper (Nov 13)",
+              "url": "https://www.bleepingcomputer.com/news/security/check-point-gateways-hacked-via-php2shell-to-deploy-vmware-esxi-wiper/"
+            },
+            {
+              "label": "Security Affairs — CISA adds Check Point and UnrealIRCd flaws to KEV (Nov 14)",
+              "url": "https://securityaffairs.com/203040/hacking/u-s-cisa-adds-check-point-and-unrealircd-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+            },
+            {
+              "label": "The Hacker News — attackers exploit UnrealIRCd flaw (Nov 14)",
+              "url": "https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html"
+            },
+            {
+              "label": "BleepingComputer — Check Point patches zero-day (Nov 13, 5:44 AM ET; pre-window edge)",
+              "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Operation Endgame disrupts Gootloader, CastleRAT and StealC — 235 servers, 257 domains seized, 6.4M credentials secured",
+          "tldr": "Europol's Nov 12 announcement — made before this edition's ~24-hour window opened — confirmed an international Operation Endgame wave: 235 servers and 257 domains seized across nine countries, Gootloader, CastleRAT and StealC infrastructures disrupted, and 6.4 million victim credentials (BKA: more than 40,000 victims) being pushed to Have I Been Pwned, DIVD, Shadowserver and other notification partners.",
+          "source": "Europol",
+          "url": "https://www.europol.europa.eu/media-press/newsroom/news/64-million-victim-datasets-secured-in-international-operation-against-malware-networks",
+          "summary": "The action disrupted three malware families with no arrests announced. Gootloader: 14 servers, 218 domains and 681 WordPress sites cleaned — per the DOJ, more than 100 servers in the US, roughly 25,000 infected computers, 44 US ransomware victims and about $28.8M in losses since 2018. CastleRAT: 120 servers and 39 domains. StealC: 102 servers, a follow-on to the June action whose revival ran on bulletproof hoster Virtualine/Omegatech, shut down late October. The 6.4 million victim credentials are being pushed to Have I Been Pwned, DIVD, Shadowserver and other partners so victims can be notified; fresh in-window coverage from heise and The Hacker News adds the DOJ and victim-notification detail to the Nov 12 announcements.",
+          "details": [
+            "Scope: 235 servers and 257 domains seized across nine countries (Europol, Nov 12); no arrests announced.",
+            "Timing: the announcement predates this edition's ~24-hour window; carried here on the strength of fresh in-window coverage from heise and The Hacker News alongside the Nov 12 reporting.",
+            "Gootloader: 14 servers, 218 domains and 681 WordPress sites cleaned — per the DOJ, 100+ servers in the US, ~25,000 infected computers, 44 US ransomware victims, ~$28.8M losses since 2018.",
+            "CastleRAT: 120 servers and 39 domains seized.",
+            "StealC: 102 servers — a follow-on to the June action; the revival ran on bulletproof hoster Virtualine/Omegatech, shut down late October.",
+            "Victim notification: 6.4M victim credentials (BKA: 40,000+ victims) being pushed to Have I Been Pwned, DIVD, Shadowserver and other partners.",
+            "Developing: follow-on seizures; whether victim-notification coverage widens the named victim set."
+          ],
+          "links": [
+            {
+              "label": "Europol — 6.4 million victim datasets secured in international operation against malware networks (Nov 12)",
+              "url": "https://www.europol.europa.eu/media-press/newsroom/news/64-million-victim-datasets-secured-in-international-operation-against-malware-networks"
+            },
+            {
+              "label": "CyberScoop — Operation Endgame malware takedown (Nov 12)",
+              "url": "https://www.cyberscoop.com/operation-endgame-malware-takedown-gootloader-stealc-europol/"
+            },
+            {
+              "label": "heise — Operation Endgame: Global crackdown on cybercrime (Nov 13)",
+              "url": "https://www.heise.de/en/news/Operation-Endgame-Global-crackdown-on-cybercrime-11524697.html"
+            },
+            {
+              "label": "The Hacker News — Operation Endgame takes down Gootloader (Nov 13; pre-window edge)",
+              "url": "https://thehackernews.com/2026/11/operation-endgame-takes-down-gootloader.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Nvidia fallout escalates: Lutnick to testify Dec 10, Huang summoned for Dec 3, board names its first-ever chair",
+          "tldr": "Per an SEC filing and multi-outlet Washington coverage, Nvidia's board has named Harvey C. Jones its first-ever Chair with Colette Kress interim CEO after Jensen Huang's resignation — while Senate Banking Chair Tim Scott summoned Huang (Dec 3) and Commerce Secretary Lutnick (Dec 10, voluntarily agreed), and House Foreign Affairs Chair Brian Mast asked Huang for a Dec 1 closed-door interview under subpoena threat.",
+          "source": "Nvidia SEC 8-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvidiaannouncesceotransiti.htm",
+          "summary": "The SEC filing (primary) confirms Huang resigned as President, CEO and a board member effective immediately, with Kress interim CEO while remaining CFO and a permanent-CEO search underway. In Washington, Sen. Warren and Sen. Coons demanded preservation of all documents on Nvidia's China chip exports, Schumer demanded answers, and per CNBC the NYT reported Nvidia's general counsel claimed contact with BIS head Jeffrey Kessler during the Megaspeed probe, which was transferred to the Justice Department. Treasury Secretary Bessent publicly rebuked Commerce — Treasury, DoD, USTR and State had backed blacklisting Singapore's Megaspeed \"for months,\" but \"Commerce has the pen\" — a rare cabinet-against-cabinet attack; Megaspeed reportedly traded $4B+ of Nvidia chips over two years. Speaker Johnson says Congress is building consensus to tighten China chip exports. Internationally, Malaysia's MITI is working with customs on whether Speedmatrix re-imported chips were re-exported (stressing it \"has never cleared\" Megaspeed), Singapore charged another executive over 917 servers possibly containing Nvidia accelerators — the case now spans five individuals and six companies — and Megaspeed announced an inventory audit of all restricted GPUs.",
+          "details": [
+            "Board/CEO (SEC filing, Nov 12 — primary): Jensen Huang resigned as President, CEO and a board member effective immediately; Colette Kress is interim CEO while remaining CFO; a permanent-CEO search (internal and external) is underway; Harvey C. Jones (ex-Synopsys CEO) appointed the board's first-ever Chair.",
+            "Senate: Banking Chair Tim Scott summoned Huang (Dec 3) and Commerce Secretary Lutnick (Dec 10); Commerce says Lutnick \"proactively agreed to appear voluntarily\" — closing out the single-source \"weighing his ouster\" item.",
+            "House: Foreign Affairs Chair Brian Mast asked Huang for a Dec 1 closed-door transcribed interview, with a subpoena if not confirmed by Friday evening.",
+            "Document preservation: Sen. Warren and Sen. Coons wrote Wednesday to Lutnick, Rubio and chief of staff Miller demanding preservation of all documents on Nvidia's China chip exports; Schumer demanded answers.",
+            "BIS contact claim: per CNBC, the NYT reported Nvidia's general counsel claimed contact with BIS head Jeffrey Kessler during the Megaspeed probe, which was transferred to the Justice Department.",
+            "Bessent rebuke: Treasury, DoD, USTR and State had backed blacklisting Singapore's Megaspeed \"for months\" — \"But Commerce has the pen\" — a rare cabinet-against-cabinet attack; Megaspeed reportedly traded $4B+ of Nvidia chips over two years.",
+            "Exports policy: Speaker Johnson says Congress is building consensus to tighten China chip exports.",
+            "International probes: Malaysia's MITI is working with customs on whether Speedmatrix re-imported chips were re-exported (stressing it \"has never cleared\" Megaspeed); Singapore charged another executive over 917 servers possibly containing Nvidia accelerators — the case now spans five individuals and six companies; Megaspeed announced an inventory audit of all restricted GPUs.",
+            "Developing: Dec 1/3/10 testimony milestones; whether chip-export riders attach to the defense bill; BIS/DOJ probe posture; Kress-era policy shifts (NPR flags a more finance-cautious CEO)."
+          ],
+          "links": [
+            {
+              "label": "Nvidia SEC 8-K — CEO transition (Nov 12)",
+              "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvidiaannouncesceotransiti.htm"
+            },
+            {
+              "label": "CNBC — Nvidia is done with Jensen Huang. Washington fallout is just beginning (Nov 13)",
+              "url": "https://www.cnbc.com/2026/11/13/nvidia-jensen-huang-washington-congress.html"
+            },
+            {
+              "label": "AFP — Political fallout widens in Nvidia spy scandal (Nov 13)",
+              "url": "https://www.afp.com/en/political-fallout-widens-nvidia-spy-scandal"
+            },
+            {
+              "label": "Tom's Hardware — Malaysia and Singapore step up chip probes as charges brought over 917 servers (Nov 13)",
+              "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/malaysia-and-singapore-step-up-nvidia-ai-chip-probes-as-charges-brought-against-chinese-national-over-917-smuggled-servers-firm-at-center-of-jensen-huang-controversy-announces-inventory-audit-to-account-for-all-restricted-gpus"
+            },
+            {
+              "label": "NBC News — Lutnick agrees to testify (Nov 12, 9:45 PM ET; pre-window edge)",
+              "url": "https://www.nbcnews.com/politics/congress/commerce-secretary-howard-lutnick-testify-pressure-nvidia-scandal-rcna609093"
+            },
+            {
+              "label": "CNA — Malaysia probing Megaspeed subsidiary (Nov 12, 11:51 PM ET; pre-window edge)",
+              "url": "https://www.channelnewsasia.com/asia/malaysia-probe-megaspeed-speedmatrix-ai-alice-huang-nvidia-6548491"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-13",
       "items": [
