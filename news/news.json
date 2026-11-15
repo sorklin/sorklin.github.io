@@ -1,7 +1,343 @@
 {
   "version": 3,
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "days": [
+    {
+      "date": "2026-11-15",
+      "items": [
+        {
+          "category": "security",
+          "title": "Baker Tilly breach verified in state AG filings — 195,512 people, SSNs exposed, class action filed Nov 12",
+          "tldr": "State attorney-general filings now verify the Baker Tilly breach first disclosed last week: the advisory firm's notice letters count 195,512 affected individuals nationwide — including 10,456 Texans — with names, addresses and Social Security numbers exposed after a September incident at an unnamed third-party service provider, and a class action was filed Nov 12 in federal court in Manhattan.",
+          "source": "California AG",
+          "url": "https://oag.ca.gov/ecrime/databreach/reports/sb24-632686",
+          "summary": "The notice letter says Baker Tilly Advisory Group, LP became aware on September 6, 2026 of a potential cybersecurity incident involving information stored on a platform operated by an unnamed third-party service provider, and that the unauthorized actor obtained data relating to certain Baker Tilly clients; the breach window given to the Texas AG is September 2–8, 2026. The California AG filing (Nov 9) carries the official sample letter, and the Texas AG filing (Nov 10) lists 195,512 affected individuals nationwide with exposure of names, addresses, Social Security numbers and \"other\"; Massachusetts lists 2,689 residents (filed Nov 10), South Carolina 1,359 and Rhode Island 111. Consumers were notified by U.S. Mail with letters dated Nov 9, and the firm offers 24 months of Experian IdentityWorks credit and identity monitoring; the review of affected data was completed October 28. Per breach-record aggregators, a class action was filed Nov 12 against Baker Tilly Advisory Group, LP in the U.S. District Court for the Southern District of New York.",
+          "industry": [
+            {
+              "code": "54",
+              "name": "Professional, Scientific, and Technical Services"
+            }
+          ],
+          "details": [
+            "What the notice says: on September 6, 2026 Baker Tilly Advisory Group, LP became aware of a potential cybersecurity incident involving information stored on a platform operated by an unnamed third-party service provider; the unauthorized actor obtained data relating to certain Baker Tilly clients.",
+            "Breach window: September 2–8, 2026, per the Texas AG filing.",
+            "Counts: 195,512 affected individuals nationwide, including 10,456 Texans (Texas AG, filed Nov 10); Massachusetts 2,689 (Nov 10); South Carolina 1,359; Rhode Island 111.",
+            "Data exposed: names, addresses, Social Security numbers and \"other\" — the \"other\" categories not yet specified.",
+            "Notification and remedy: consumers notified by U.S. Mail with letters dated Nov 9; 24 months of Experian IdentityWorks credit and identity monitoring offered; the review of affected data was completed October 28.",
+            "Class action: filed Nov 12 in the U.S. District Court for the Southern District of New York against Baker Tilly Advisory Group, LP (per breach-record aggregators).",
+            "Developing: identity of the third-party provider; whether more state filings and the \"other\" data categories get specified; early class-action developments."
+          ],
+          "links": [
+            {
+              "label": "California AG — official submitted breach-notification sample, Baker Tilly Advisory Group, LP (filed Nov 9)",
+              "url": "https://oag.ca.gov/ecrime/databreach/reports/sb24-632686"
+            },
+            {
+              "label": "California AG — searchable data breach list showing the Baker Tilly row (breach 09/02/2026, reported 11/09/2026)",
+              "url": "https://oag.ca.gov/privacy/databreach/list"
+            },
+            {
+              "label": "BleepingComputer — Baker Tilly notifies clients of data breach at third-party provider (Nov 11)",
+              "url": "https://www.bleepingcomputer.com/news/security/baker-tilly-notifies-clients-of-data-breach-at-third-party-provider/"
+            },
+            {
+              "label": "Dapeer Law — filing analysis: 195,512 total, TX/MA/SC/RI counts, SSNs (updated Nov 11)",
+              "url": "https://www.dapeer.com/databreaches/baker-tilly-data-breach-investigation"
+            },
+            {
+              "label": "Breachtally — case file: three filings Nov 9–10, notice-timing analysis",
+              "url": "https://breachtally.com/company/baker-tilly-advisory/case-file"
+            },
+            {
+              "label": "BreachRecord — filing timeline including the Nov 12 S.D.N.Y. class action",
+              "url": "https://breachrecord.com/breach/baker-tilly-advisory-group-2026-11/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "La Poste subsidiary Maileva breach exposed names and postal addresses of 22 million people in France",
+          "tldr": "Maileva, a document-delivery subsidiary of France's La Poste group, was hit in mid-September in what SecurityAffairs — the single direct report returned this run — calls one of the biggest cyberattacks France has seen, with first names, last names and postal addresses of 22 million people stolen; La Poste confirmed the breach to AFP.",
+          "source": "SecurityAffairs",
+          "url": "https://securityaffairs.com/203126/data-breach/data-breach-at-la-poste-subsidiary-maileva-affects-22-million-people-in-france.html",
+          "summary": "The stolen data covers recipients of documents that Maileva's client companies send through its platform — payslips, registered letters, invoices and shareholder meeting notices — not Maileva's own customers. The company says bank details were not compromised; it has notified the CNIL (France's data-protection authority), filed a criminal complaint, and says a judicial investigation is underway, while affected client companies have been informed. Per Le Monde figures carried by SecurityAffairs, Maileva serves more than 70,000 users and sent 180 million documents in 2024. The claim rests on a single direct report this run — SecurityAffairs citing AFP, Le Monde and the French specialist sites FrenchBreaches and Cyberattaque.org, which flagged the breach first — so scale beyond names and addresses remains to be confirmed.",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "What happened: Maileva — a document-delivery subsidiary of France's La Poste group, part of Docaposte — was attacked in mid-September 2026; La Poste confirmed the breach to AFP.",
+            "Data stolen: first names, last names and postal addresses of 22 million people — recipients of documents Maileva's client companies send through its platform (payslips, registered letters, invoices, shareholder meeting notices), not Maileva's own customers.",
+            "What the company says: bank details were not compromised; the CNIL has been notified, a criminal complaint filed, and a judicial investigation is underway; affected client companies have been informed.",
+            "Scale context (per Le Monde via SecurityAffairs): Maileva serves more than 70,000 users and sent 180 million documents in 2024.",
+            "Single-source hedge: the only direct report returned this run is SecurityAffairs citing AFP/Le Monde and the French specialist sites FrenchBreaches and Cyberattaque.org, which flagged the breach first — treat further detail as unconfirmed until corroborated.",
+            "Developing: Le Monde/AFP primary text; scale beyond names/addresses; whether client companies (employers, healthcare, housing) begin notifying individuals; CNIL response."
+          ],
+          "links": [
+            {
+              "label": "SecurityAffairs — Data breach at La Poste subsidiary Maileva affects 22 million people in France (Nov 15, 5:43 AM ET; single direct report returned)",
+              "url": "https://securityaffairs.com/203126/data-breach/data-breach-at-la-poste-subsidiary-maileva-affects-22-million-people-in-france.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "South Korea's SME ministry weighs sanctions over a breach of 20,028 startup-program records at AI provider Amicus",
+          "tldr": "South Korea's Ministry of SMEs and Startups says a hack of \"Rofom/Roform\" — an AI solution operated by private firm Amicus for the government's \"Everyone's Startup\" program — leaked personal data of 20,028 individuals, and the ministry will deliberate sanctions including cancellation of the firm's supplier designation and a participation ban of up to one year.",
+          "source": "Aju Press",
+          "url": "https://www.ajupress.com/view/20261115151270254",
+          "summary": "The leak includes 818 participants in the second round of the government startup-support program \"Modu-ui Changup\" (\"Everyone's Startup\"), with names, phone numbers and email addresses exposed. The operator detected signs of an external hacking attempt Wednesday at 8:30 a.m. KST, and a subsequent investigation confirmed the leak. On Nov 15 the ministry said its business-operation committee will weigh canceling Amicus's supplier designation and banning it from participation for up to one year; if imposed, Amicus must immediately destroy all participant personal data it holds for account issuance, with the Korea Entrepreneurship Foundation verifying deletion, and users will be moved to alternative solutions with the support period extended one month. The ministry will also audit the remaining 49 AI solution providers with a private security firm by November 20 — covering data retention, access rights, encryption, vulnerability management and incident response — referring non-compliant firms to the committee; the ministry and the Startup Promotion Agency issued an apology on the program website Nov 14. Provider-name note: the disclosure is rendered \"Amicus Rex\" per Aju Press and \"Amicus Lex\" per The Herald Business — transliteration variants of the same operator. Korean corporate-disclosure caveat: affiliate and group waves repeat, so watch for connected filings.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "details": [
+            "Incident: a hack of \"Rofom/Roform,\" an AI solution operated by private firm Amicus (rendered \"Amicus Rex\" per Aju Press, \"Amicus Lex\" per The Herald Business — transliteration variants of the same disclosure), leaked personal data of 20,028 individuals.",
+            "Program exposure: 818 participants in the second round of the government startup-support program \"Modu-ui Changup\" (\"Everyone's Startup\") — names, phone numbers and email addresses.",
+            "Detection: signs of an external hacking attempt detected Wednesday at 8:30 a.m. KST (Nov 11); a subsequent investigation confirmed the leak.",
+            "Sanctions path: on Nov 15 the Ministry of SMEs and Startups said it will convene its business-operation committee to deliberate cancellation of the firm's supplier designation and a participation ban of up to one year.",
+            "Data destruction: if sanctions are imposed, Amicus must immediately destroy all participant personal data it holds for account issuance, with the Korea Entrepreneurship Foundation verifying deletion; users move to alternative solutions with the support period extended one month.",
+            "Wider audit: the ministry will audit the remaining 49 AI solution providers with a private security firm by November 20 — data retention, access rights, encryption, vulnerability management, incident response — referring non-compliant firms to the committee.",
+            "Apology: the ministry and the Startup Promotion Agency apologized on the program website Nov 14.",
+            "Caveat: Korean corporate-disclosure waves repeat across affiliates — watch for connected filings.",
+            "Developing: the sanctions decision; audit findings by Nov 20; whether participant numbers rise."
+          ],
+          "links": [
+            {
+              "label": "Aju Press — Ministry of SMEs takes strict action against AI firm for data breach (Nov 15, 1:12 AM ET)",
+              "url": "https://www.ajupress.com/view/20261115151270254"
+            },
+            {
+              "label": "The Herald Business — ministry weighs sanctions, orders emergency security audit (Nov 15, 12:03 AM ET)",
+              "url": "https://biz.heraldcorp.com/article/10937484"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Coinone discloses MetaM support-provider breach — 11 data categories, passwords and bank accounts included",
+          "tldr": "The South Korean cryptocurrency exchange Coinone disclosed Nov 14 that an attacker accessed a server of MetaM, its outsourced customer-support provider, on Nov 11, and that customer-support records may have been viewed or leaked across 11 data categories — including passwords, bank account numbers and resident registration numbers.",
+          "source": "TokenPost",
+          "url": "https://www.tokenpost.com/news/technology/57666",
+          "summary": "Potentially affected information spans names, phone numbers, email addresses, birth dates, bank account numbers, passwords, South Korean resident registration numbers, ID issue dates, home addresses, crypto wallet addresses and transaction IDs — data provided through support calls or chats — and Coinone has not said how many customers are affected. The exchange says MetaM's server operated separately from its account, trading and wallet systems and it found no signs of direct intrusion into those; it blocked the access route, increased monitoring, and reported the incident to KISA, the Personal Information Protection Commission and the Financial Supervisory Service, with customers to be notified or offered a breach-lookup service. Per Seoul Economic Daily, MetaM — which runs outsourced call-center and customer-support services — detected unusual activity after a customer-service outage at 6:03 a.m. on Nov 12, and its Nov 14 notice says phone numbers and consultation conversations in some systems were accessed or taken out of the company, with exposure varying by client company; MetaM is working with an outside breach-response firm, has restricted some connections to clients, changed administrator passwords and is analyzing access logs. The disclosure follows the Kakao Work/DK Tech incident that ran Nov 13 — a pattern of Korean support-chain breaches.",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "56",
+              "name": "Administrative and Support and Waste Management and Remediation Services"
+            }
+          ],
+          "details": [
+            "What happened: an attacker accessed a server of MetaM, Coinone's outsourced customer-support provider, at about 2 PM ET on Wednesday, Nov 11; Coinone disclosed Nov 14 (6 PM ET, per TokenPost) that customer-support records may have been viewed or leaked.",
+            "Data categories (11): names, phone numbers, email addresses, birth dates, bank account numbers, passwords, South Korean resident registration numbers, ID issue dates, home addresses, crypto wallet addresses and transaction IDs — provided through support calls or chats; no affected-customer count given.",
+            "Exchange systems: Coinone says MetaM's server operated separately from its account, trading and wallet systems, and it found no signs of direct intrusion into those.",
+            "Response: the access route was blocked and monitoring increased; the incident was reported to KISA, the Personal Information Protection Commission and the Financial Supervisory Service; customers will be notified or offered a breach-lookup service.",
+            "MetaM side (per Seoul Economic Daily): unusual activity detected after a customer-service outage at 6:03 a.m. on Nov 12; its Nov 14 notice says phone numbers and consultation conversations in some systems were accessed or taken out of the company, with exposure varying by client company; an outside breach-response firm is engaged, some client connections restricted, administrator passwords changed, and access logs under analysis.",
+            "Pattern: follows the Kakao Work/DK Tech disclosure that ran Nov 13 — a wave of Korean support-chain breaches.",
+            "Developing: affected-customer counts; other MetaM client-company disclosures (watch for affiliate waves); KISA/PIPC findings."
+          ],
+          "links": [
+            {
+              "label": "TokenPost — Coinone discloses MetaM server breach involving customer support data (Nov 14, 10:26 PM ET)",
+              "url": "https://www.tokenpost.com/news/technology/57666"
+            },
+            {
+              "label": "Seoul Economic Daily — MetaM customer service system hacked, phone numbers leaked (Nov 14/15)",
+              "url": "https://en.sedaily.com/business/2026/11/15/metam-customer-service-system-hacked-phone-numbers-leaked"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Berlin senate administrations' data theft published — 1.4 million files, ~6 TB, central Germany residents included",
+          "tldr": "Per MDR — the single outlet carrying the report this run — criminals stole and published data of two Berlin senate administrations, 1.4 million files and almost six terabytes, including sensitive personal information, and MDR's research found data relating to people in central Germany as well.",
+          "source": "MDR",
+          "url": "https://www.mdr.de/nachrichten/deutschland/politik/it-sicherheit-berlin-attacke-mitteldeutschland,hackerangriff-162.html",
+          "summary": "The haul MDR reviewed includes fishing licenses with names, addresses and birth dates, gynecological medical findings, password lists, employees' rent-income and loan documents, a side-job application, and a certificate from a Saxon state agency; MDR is withholding names and roles to protect those affected and says the number of people affected outside Berlin is unclear. Saxony's IT commissioner Daniela Dylakiewicz says the attack method used in Berlin was registered in Saxony's systems in May and was automatically blocked; Thuringia says possible attacks were prevented and a suspicion did not confirm; Saxony-Anhalt's digital ministry concedes detection is \"unfortunately not complete\" and that top state agencies carry their own responsibility — the state still has no IT-security law, which MDR notes the EU actually requires. The report does not name an actor, and this edition draws no connection to any earlier Berlin incident beyond what MDR states.",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "details": [
+            "Scope: data of two Berlin senate administrations stolen and published — 1.4 million files, almost six terabytes — including sensitive personal information.",
+            "Outside Berlin: MDR's research found data relating to people in central Germany (Mitteldeutschland); the number of affected people outside Berlin is unclear.",
+            "What's in the haul: fishing licenses with names, addresses and birth dates; gynecological medical findings; password lists; employees' rent-income and loan documents; a side-job application; a certificate from a Saxon state agency.",
+            "State responses: Saxony's IT commissioner Daniela Dylakiewicz says the attack method used in Berlin was registered in Saxony's systems in May and automatically blocked; Thuringia says possible attacks were prevented and a suspicion did not confirm.",
+            "Policy gap: Saxony-Anhalt's digital ministry concedes detection is \"unfortunately not complete\" and says top state agencies carry their own responsibility — the state has no IT-security law, which MDR notes the EU requires.",
+            "Hedge: MDR is the single source returned this run; the report does not name an actor, and no connection to earlier Berlin incidents is drawn beyond what MDR states. MDR is withholding names/roles to protect those affected.",
+            "Developing: which senate administrations; actor attribution; state-level responses and any Saxony-Anhalt legislation push; follow-up MDR reporting."
+          ],
+          "links": [
+            {
+              "label": "MDR — Sechs Terabyte gestohlene Daten: Auch Mitteldeutschland ist betroffen (Nov 15; single source returned)",
+              "url": "https://www.mdr.de/nachrichten/deutschland/politik/it-sicherheit-berlin-attacke-mitteldeutschland,hackerangriff-162.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Maersk says its breach and the WhiteArmor extortion claims \"are connected\" — 12+ employee suits now filed",
+          "tldr": "Per Lloyd's List — republished by the World Ports Organization after the Lloyd's List URL was not returned — a Maersk spokesperson said the confirmed Nov 11 breach of its legacy system and the reported WhiteArmor extortion claims \"are connected,\" the company's first statement linking the two, while FreightWaves counts at least 12 employee lawsuits across J.B. Hunt, Ryder and Echo Global Logistics.",
+          "source": "World Ports Organization",
+          "url": "https://www.worldports.org/maersk-cyber-attack-connected-to-hacking-group-claims-company-confirms/",
+          "summary": "Maersk was asked whether reports that it had been subjected to a WhiteArmor extortion threat were credible, and a spokesperson replied: \"We cannot provide additional comments about the incident. But I can say that the two mentioned incidents in your email are connected.\" That is the first company statement linking the confirmed unauthorized access and data extraction from a system inherited with an acquisition to the reported extortion claims. The claim details remain unverified: WhiteArmor claims ~100 GB from the OCF/LF Logistics platform (acquired from Li & Fung in 2022) — ~29,297 driver profiles (16,093 with plaintext passwords), 16,123 employee accounts including 33 super-admins, 19,000 delivery recipients, 64,000+ signed delivery receipts, 14M+ inventory records and 27,842 mobile-device logs — and demanded $5M in bitcoin by December 7. Separately, per FreightWaves (relayed by Lanta LLC), demands run $5M at J.B. Hunt, $20M at Ryder and $10M at Echo Global Logistics, and at least 12 employee suits are now filed — up from the \"at least five\" southern-Florida count carried Nov 12. Container News frames the acquisition-legacy-system lesson, and NMFTA's Nov 12 alert that no validated encryptor has been found stands.",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "details": [
+            "The statement: asked whether reports of a WhiteArmor extortion threat against Maersk were credible, a spokesperson said: \"We cannot provide additional comments about the incident. But I can say that the two mentioned incidents in your email are connected\" (per Lloyd's List, republished by the World Ports Organization — the Lloyd's List URL was not returned).",
+            "What it links: the confirmed Nov 11 breach — unauthorized access and data extraction from a legacy system inherited with an acquisition — and the reported WhiteArmor extortion claims; the first company statement connecting the two.",
+            "Claim details (unverified): WhiteArmor claims ~100 GB from the OCF/LF Logistics platform (acquired from Li & Fung in 2022) — ~29,297 driver profiles (16,093 with plaintext passwords), 16,123 employee accounts including 33 super-admins, 19,000 delivery recipients, 64,000+ signed delivery receipts, 14M+ inventory records, 27,842 mobile-device logs — with a $5M bitcoin demand due December 7.",
+            "The wider wave (per FreightWaves, relayed by Lanta LLC): demands of $5M at J.B. Hunt, $20M at Ryder and $10M at Echo Global Logistics; at least 12 employee lawsuits now filed — up from \"at least five\" in the Nov 12 count.",
+            "Context: Container News (Nov 14) frames the acquisition-legacy-system lesson; NMFTA's Nov 12 alert — no validated encryptor — stands.",
+            "Developing: whether the \"connected\" statement hardens into attribution; the Dec 7 deadline; Echo's statement; more suits; J.B. Hunt findings."
+          ],
+          "links": [
+            {
+              "label": "World Ports Organization — Maersk cyber attack 'connected to' hacking group claims, company confirms (Nov 15, 10:57 PM ET Nov 14)",
+              "url": "https://www.worldports.org/maersk-cyber-attack-connected-to-hacking-group-claims-company-confirms/"
+            },
+            {
+              "label": "Container News — why Maersk's latest hack matters more than it looks (Nov 14, 9:43 AM ET)",
+              "url": "https://container-news.com/why-maersks-latest-hack-matters-more-than-it-looks/"
+            },
+            {
+              "label": "Lanta LLC — freight pulse & law update, citing FreightWaves on 12 suits (Nov 14, 8:01 PM ET)",
+              "url": "https://www.lantallc.com/post/freight-pulse-law-update-a-ransomware-gang-is-holding-freight-data-as-cbp-weighs-new-disclosure-r"
+            },
+            {
+              "label": "SecuringYourBiz — WhiteArmor trucking/logistics status recap, J.B. Hunt acknowledgment (Nov 14, 2:41 AM ET)",
+              "url": "https://securingyourbiz.com/resources/whitearmor-trucking-logistics-cyberattacks"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Nonprofits sue five AI labs for a frontier-development freeze — Unfair Competition Law action filed Nov 12",
+          "tldr": "Four nonprofits led by the Irreplaceable Education Fund and Public Citizen sued Anthropic, Google, Meta, OpenAI and SpaceX's AI unit in San Francisco Superior Court on Nov 12, asking a California court under the state's Unfair Competition Law to halt frontier-model development — per Al Jazeera as carried by TechTimes, with no freeze order reported as of Nov 14.",
+          "source": "TechTimes",
+          "url": "https://www.techtimes.com/articles/330616/20261114/ai-development-freeze-lawsuit-nonprofits-sue-5-labs-say-real-freeze-needs-government-inspections.htm",
+          "summary": "The suit — brought under California's Unfair Competition Law — targets five frontier developers: Anthropic, Google, Meta, OpenAI and SpaceX's AI unit. A plaintiff told Al Jazeera that a real freeze would require government inspections of compute facilities, and no freeze order has been reported as of Nov 14. The piece is research-and-policy rather than an incident: no victims, no breach, no named affected systems. The report reached this edition through TechTimes (Nov 14), with the AP/Reuters/Al Jazeera URLs not returned in this run's searches, so the pleadings' full detail rests on that single secondary account until the primary filings surface.",
+          "details": [
+            "Plaintiffs: four nonprofits — the Irreplaceable Education Fund, Public Citizen and two others.",
+            "Defendants: Anthropic, Google, Meta, OpenAI and SpaceX's AI unit.",
+            "Filing: Thursday, Nov 12, 2026, in the San Francisco Superior Court.",
+            "Demand: a halt to frontier-model development, sought under California's Unfair Competition Law (UCL).",
+            "Inspection demand: a plaintiff told Al Jazeera that a real freeze would require government inspections of compute facilities.",
+            "Status: no freeze order reported as of Nov 12–14.",
+            "Source hedge: the account reached this edition via TechTimes (Nov 14); the AP/Reuters/Al Jazeera URLs were not returned in this run's searches, so pleading detail rests on that single secondary account until primary filings surface.",
+            "Developing: whether the court takes up the freeze request; any defendant responses; whether the government-inspection argument gains traction."
+          ],
+          "links": [
+            {
+              "label": "TechTimes — AI development freeze lawsuit: nonprofits sue 5 labs (Nov 14, 5:35 AM ET)",
+              "url": "https://www.techtimes.com/articles/330616/20261114/ai-development-freeze-lawsuit-nonprofits-sue-5-labs-say-real-freeze-needs-government-inspections.htm"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "NHN's Dooray! discloses account-takeover breach leaking client business data and API keys",
+          "tldr": "NHN Dooray, a subsidiary of South Korea's NHN, disclosed Nov 14 that an external party compromised some client accounts of its Dooray! business-collaboration service, leaking business data and client-company employees' personal information — per EDAILY, the single outlet carrying the report so far.",
+          "source": "EDAILY",
+          "url": "https://en.edaily.co.kr/news/eda202611155223/",
+          "summary": "Per EDAILY, the attacker repeatedly entered verification codes during the password-recovery process to change passwords of some accounts and logged in; an open-API vulnerability leaked authentication (API) keys, with unauthorized API calls confirmed. Compromised data includes work content in some clients' projects, drives, messengers and calendars, plus IDs, names, external email addresses, phone numbers, departments, job titles, positions and company names of client-company employees. The response includes blocking attack IPs, strengthening password-reset verification, revoking all service and administrator API keys — with related functions suspended — resetting affected-account passwords and recommending 2FA; reports were filed with KISA and the Personal Information Protection Commission, and clients and account holders were notified. Dooray! is used by private companies and government ministries and public institutions, and was recently utilized in the development of \"Gukbang I-eum,\" a defense collaboration platform used by ~300,000 military personnel — EDAILY frames this as platform adjacency, and nothing in the report claims defense systems or military data were compromised.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "What happened: an external party compromised some client accounts of the Dooray! business-collaboration service, leaking business data and client-company employees' personal information; the incident window ran ~10 PM Nov 12 to early Nov 13 KST, with a website notice Nov 14.",
+            "Method (per EDAILY): repeated entry of verification codes during the password-recovery process to change passwords of some accounts and log in; an open-API vulnerability leaked authentication (API) keys, with unauthorized API calls confirmed.",
+            "Data exposed: work content in some clients' projects, drives, messengers and calendars; IDs, names, external email addresses, phone numbers, departments, job titles, positions and company names of client-company employees.",
+            "Response: attack IPs blocked, password-reset verification strengthened, all service and administrator API keys revoked with related functions suspended, affected-account password resets, 2FA recommended.",
+            "Regulatory: reports filed with KISA and the Personal Information Protection Commission; clients and account holders notified.",
+            "Sensitivity: Dooray! is used by private companies and government ministries and public institutions, and was recently utilized in the development of \"Gukbang I-eum,\" a defense collaboration platform used by ~300,000 military personnel — EDAILY frames this as platform adjacency only; nothing in the report claims defense systems or military data were compromised.",
+            "Single-source flag: EDAILY is the only report returned this run — treat further detail as unconfirmed until corroborated.",
+            "Developing: affected client counts; any government-ministry disclosures; KISA/PIPC findings; any connection to the Nov 12–13 Kakao Work/DK Tech pattern."
+          ],
+          "links": [
+            {
+              "label": "EDAILY — NHN Durey security breach… leak of client business data (Nov 15, 3:02 AM ET; single source returned)",
+              "url": "https://en.edaily.co.kr/news/eda202611155223/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Brazil's National Treasury breach — ~30,000 e-Serviços portal records and ~4,000 PIX keys exposed",
+          "tldr": "Brazil's Tesouro Nacional (National Treasury) says unauthorized access identified Wednesday, Nov 4 touched ~30,000 records on its e-Serviços portal (name, CPF, email) plus an internal analytics base holding ~4,000 PIX keys of federal-payment beneficiaries — per the ministry's own announcement on gov.br, with no financial impact or structural systems hit.",
+          "source": "Ministério da Fazenda / Tesouro Nacional",
+          "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/tesouro-nacional-comunica-incidente-de-seguranca-no-seu-ambiente-tecnologico",
+          "summary": "Per the announcement published on the Ministry of Finance's gov.br portal on Nov 13, the unauthorized access was identified on Wednesday, Nov 4 and affected the e-Serviços portal — roughly 30,000 records carrying name, CPF (Brazil's individual taxpayer registry) and email — plus an internal analytics base containing about 4,000 PIX keys of federal-payment beneficiaries. The Treasury says there was no financial impact and no structural systems were hit, and that it notified the ANPD (Brazil's data-protection authority) and CTIR Gov, the federal government's incident-response center. The figures come from the ministry's own announcement — a primary government source — so the counts are as-disclosed rather than independently verified.",
+          "details": [
+            "What happened: unauthorized access identified Wednesday, Nov 4, 2026, in Tesouro Nacional's (National Treasury's) technology environment.",
+            "Portal records: ~30,000 e-Serviços portal records, carrying name, CPF (Brazil's individual taxpayer registry) and email.",
+            "PIX keys: an internal analytics base with ~4,000 PIX keys of federal-payment beneficiaries.",
+            "What the Treasury says: no financial impact; no structural systems hit.",
+            "Notifications: the ANPD (Brazil's data-protection authority) and CTIR Gov (the federal government's incident-response center) were notified.",
+            "Source: the announcement is the ministry's own (gov.br, published Nov 13) — a primary government source; the counts are as-disclosed, not independently verified.",
+            "Developing: any updated counts or category detail; regulator follow-up; whether beneficiaries receive direct notification guidance."
+          ],
+          "links": [
+            {
+              "label": "Ministério da Fazenda / Tesouro Nacional — incident announcement (Nov 13)",
+              "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/tesouro-nacional-comunica-incidente-de-seguranca-no-seu-ambiente-tecnologico"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Kaspersky profiles Citrus, a Russia-focused ransomware group — Sn00py encryptor, AD CS attempts, Yandex-mirror tunnels",
+          "tldr": "Per Kaspersky's Securelist research (Nov 11), Citrus is a new ransomware group hitting Russia-only victims so far — a Sn00py Go encryptor delivered over VLESS/REALITY tunnels disguised as mirror.yandex.ru HTTPS traffic, attempted AD CS exploitation tied to CVE-2026-54121, and scripts that Kaspersky assesses were LLM-generated.",
+          "source": "Kaspersky Securelist",
+          "url": "https://securelist.com/citrus-ransomware/121879/",
+          "summary": "Kaspersky's profile describes Citrus operators tunneling their traffic through VLESS/REALITY configurations disguised as HTTPS connections to mirror.yandex.ru, running a Go-based encryptor dubbed Sn00py, and attempting to exploit Certighost, an AD CS attack path tracked as CVE-2026-54121, while creating GHOST* machine accounts. The toolkit also includes scripts exploiting CVE-2020-1337, and Kaspersky assesses some scripts were generated with LLM assistance. Kaspersky links the group to the Toy Ghouls crew. All victims observed so far are in Russia, and no named victims have been disclosed — the value for defenders is the tradecraft picture: Go-based ransomware, AD CS abuse, and generative-AI assistance in attacker tooling.",
+          "details": [
+            "The group: Citrus, a new ransomware group profiled by Kaspersky's Securelist (research published Nov 11); victims observed so far are Russia-only, with no named victims disclosed.",
+            "Encryptor: a Go-based encryptor dubbed Sn00py.",
+            "Tunneling: VLESS/REALITY tunnels disguised as HTTPS connections to mirror.yandex.ru.",
+            "AD CS attempts: exploitation attempts against Certighost — an AD CS attack path tracked as CVE-2026-54121 — with GHOST* machine accounts created.",
+            "Older bug: scripts exploiting CVE-2020-1337 are also in the toolkit.",
+            "LLM angle: Kaspersky assesses some of the group's scripts were LLM-generated.",
+            "Attribution: Kaspersky links the group to the Toy Ghouls crew.",
+            "Developing: victims beyond Russia; encryptor samples at independent trackers; whether the LLM-generated tooling assessment is corroborated."
+          ],
+          "links": [
+            {
+              "label": "Kaspersky Securelist — Citrus ransomware research (Nov 11)",
+              "url": "https://securelist.com/citrus-ransomware/121879/"
+            },
+            {
+              "label": "Yaamlabs — Citrus ransomware Certighost explainer (Nov 14, 3:21 AM ET)",
+              "url": "https://yaamlabs.com/blog/citrus-ransomware-adcs-certighost"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-14",
       "items": [
