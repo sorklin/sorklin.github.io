@@ -1,7 +1,202 @@
 {
   "version": 3,
-  "updated": "2026-11-15",
+  "updated": "2026-11-16",
   "days": [
+    {
+      "date": "2026-11-16",
+      "items": [
+        {
+          "category": "security",
+          "title": "N0n extortion group lists Starbucks, Samsung Electronics, Gap and others — unverified, no confirmations yet",
+          "tldr": "The N0n extortion group — active since mid-September 2026 and behind the unverified \"nearly a billion Expedia records\" claim — has added Starbucks, Samsung Electronics, Gap Inc., VF Corporation (Timberland), Alo Yoga, Pollstar and other firms to its leak site; per tracker summaries of the attacker-controlled listings, no company had confirmed an incident as of Nov 16 morning.",
+          "source": "RansomLook",
+          "url": "https://www.ransomlook.io/recent?window=30",
+          "summary": "The listings, first captured Nov 14 and re-captured as a batch Nov 15, name Starbucks, Samsung Electronics, Gap Inc., VF Corporation (Timberland), Alo Yoga, Pollstar, Airport Appliance, Steeden Financial (CA) and MM Insurance Agency (CA). Per tracker summaries of the attacker-controlled listings, Samsung's claimed corpus is a smart-TV advertising/viewing (ACR) dataset, VF's is shopper chat transcripts from its footwear storefront, Gap's is 345 staff identity records, and the Alo Yoga and Timberland entries are shopper search sessions. No company had confirmed an incident as of Nov 16 morning, no proof or deadlines were published, and there is no evidence yet beyond the claims themselves — this is a claims round-up, not confirmed breaches.",
+          "industry": [
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "72",
+              "name": "Accommodation and Food Services"
+            },
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "71",
+              "name": "Arts, Entertainment, and Recreation"
+            }
+          ],
+          "details": [
+            "Who: N0n, active since mid-September 2026 and the group behind the unverified \"nearly a billion Expedia records\" claim, added the brand batch to its leak site.",
+            "Listings (attacker-controlled, unverified, per tracker summaries): Samsung — a smart-TV advertising/viewing (ACR) corpus; VF Corporation — shopper chat transcripts from its footwear storefront; Gap — 345 staff identity records; Alo Yoga and Timberland — shopper search sessions; Steeden Financial — 600K+ documents.",
+            "Timing: first captured Nov 14, ~4:30 PM ET (HIFY Radar), re-captured as a batch Nov 15, ~4:25 PM ET (RansomLook); re-reported Nov 15–16.",
+            "Status: no company confirmation as of Nov 16 morning; per cypro, Gap had no newsroom, IR or regulatory acknowledgment as of Nov 15; no proof or deadlines published.",
+            "Claimed access path (speculative, single-source): HIFY-sourced analysis speculates access came through third-party data platforms — do not present as fact.",
+            "What to watch: company confirmations or 8-Ks; proof samples or countdown timers; whether the batch ties to the Expedia/Qubole access path."
+          ],
+          "links": [
+            {
+              "label": "RansomLook — leak-site capture log, tracker (Nov 15 batch)",
+              "url": "https://www.ransomlook.io/recent?window=30"
+            },
+            {
+              "label": "HIFY Radar — first batch capture, single secondary of unknown quality (Nov 14, 4:30 PM ET)",
+              "url": "https://hify.ai/radar/en/n0n-claims-attacks-on-samsung-starbucks-timberland-and-gap"
+            },
+            {
+              "label": "Undercode News — re-report with claimed data types (Nov 15)",
+              "url": "https://undercodenews.com/n0n-extortion-group-targets-starbucks-samsung-gap-and-other-global-brands-in-new-leak-site-listing-video/"
+            },
+            {
+              "label": "Cypro — Gap claim unverified, no company acknowledgment (checked as of Nov 15)",
+              "url": "https://cypro.co.uk/insights/cyber-bulletins/gap-ransomware-claim-by-n0n-remains-unverified/"
+            },
+            {
+              "label": "GalaxyWarden — N0n claim tracker (listing summaries)",
+              "url": "https://www.galaxywarden.com/blog/threat/n0n"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Amazon decoy servers catch AI agents autonomously hunting exposed AI apps to harvest and reuse provider API keys",
+          "tldr": "Amazon's threat-intelligence team captured AI agents that scan for internet-exposed AI apps — LiteLLM, One API, Dify, FastGPT, Langflow and Ollama among them — steal the provider API keys stored inside, and pool them to fuel more key theft (per The Hacker News — the single source returned).",
+          "source": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html",
+          "summary": "Using decoy servers, Amazon's team recovered the agents' own operational records: the agents found exposed AI apps, extracted the provider keys stored inside, verified they worked, and pooled them — then used the stolen keys to run the very models powering the search for more keys. The recovered playbook covers LLM gateways and proxies (One API, New API, Veloera, Sub2API, LiteLLM) and app builders (Dify, FastGPT, Langflow, RAGFlow, Open WebUI, LobeChat, Ollama), exploiting management endpoints that need no login, an isCliRequest-header authentication bypass in the One API family, SSRF via URL-fetch features to reach cloud metadata services, and secrets left in client-side JavaScript, source maps, debug routes and environment files. Amazon has moderate confidence the agents ran on ARTEX — the open-source AI pentest framework the FBI FLASH of Nov 14 also flagged — and a separate Cloudflare IR case in the same report shows ARTEX using a stolen CI/CD API token with no IP restrictions or rate limits, followed by 400 database-dump requests in an hour. No confirmed victims — the campaign evidence is decoy telemetry.",
+          "details": [
+            "Method: the agents scanned for internet-exposed AI apps, extracted the provider keys stored inside, verified they worked, and pooled them — then used stolen keys to run the very models powering the search for more keys.",
+            "Targets: LLM gateways/proxies One API, New API, Veloera, Sub2API and LiteLLM; app builders Dify, FastGPT, Langflow, RAGFlow, Open WebUI, LobeChat and Ollama.",
+            "Entry points: management/provider endpoints needing no login; an isCliRequest-header authentication bypass in the One API family; SSRF via URL-fetch features to reach cloud metadata services; secrets left in client-side JavaScript, source maps, debug routes and environment files.",
+            "Attribution (moderate confidence): Amazon assesses the agents ran on ARTEX — the open-source AI pentest framework the FBI FLASH (Nov 14) also flagged; the outcomes the agents recorded cannot be verified.",
+            "Cloudflare IR case (same report): ARTEX used a stolen CI/CD API token with no IP restrictions or rate limits, followed by 400 database-dump requests in an hour; Cloudflare hasn't said whether data was returned.",
+            "Amazon's read: \"None of the techniques in these campaigns were new. What AI agents change is the speed and persistence of the attacker.\"",
+            "Status: reported Nov 16, ~2:34 AM ET; the team says the activity began \"this week\"; no confirmed victims — the campaign evidence is decoy telemetry, so no industries are tagged."
+          ],
+          "links": [
+            {
+              "label": "The Hacker News — report on the Amazon team's findings (Nov 16, 2:34 AM ET)",
+              "url": "https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "China's comment period on MOFCOM Announcement No. 48 closes with frontier model weights in export-control scope",
+          "tldr": "The comment period on China's MOFCOM Announcement No. 48 closed Nov 15 — the draft would for the first time restrict the trained weights and know-how of frontier models, and per Bloomberg and AP reporting cited by The Next Web, both Alibaba's Qwen3.8-Max and Moonshot's Kimi K3 clear the 2-trillion-parameter line.",
+          "source": "MOFCOM",
+          "url": "https://exportcontrol.mofcom.gov.cn/article/zcfg/gnzcfg/zcfggzqd/202610/1319.html",
+          "summary": "The draft adds 40 technologies to China's prohibited/restricted export catalogue — 23 of them AI — and would catch a model by any one of three tests: ≥10^26 training FLOPs, ≥2 trillion parameters, or a global top-10 rank on performance/safety/call-volume measures at export. Prohibited outright: agents built for critical infrastructure, defense or core government use, and tools that generate or mutate malicious code. API/SaaS access and technology already in the public domain via open-source release are explicitly exempt — but a future open-weights release of a covered model would need a license, with open-sourcing of restricted tech qualifying for \"report-and-go\" automatic licensing per the ministry. The interim registration requirement has been in force since Oct 16, so unregistered covered transfers since then are technically in breach; DeepSeek and MiniMax registered and were cleared for overseas use by Oct 25 (state media). Both Washington's and Beijing's regimes now sit at the same 10^26-FLOP frontier — the first simultaneous outbound AI-control threshold.",
+          "details": [
+            "Scope: the draft adds 40 technologies to China's prohibited/restricted export catalogue — 23 of them AI — and would for the first time restrict the \"technical essence\" of large models: trained weights, key checkpoints, source code, architecture and optimization know-how.",
+            "Three tests (any one catches a model): ≥10^26 training FLOPs, ≥2 trillion parameters, or a global top-10 rank on performance/safety/call-volume measures at export.",
+            "Prohibited outright: agents built for critical infrastructure, defense or core government use; tools that generate or mutate malicious code.",
+            "Exempt: API/SaaS access and technology already in the public domain via open-source release — but a future open-weights release of a covered model would need a license (open-sourcing restricted tech qualifies for \"report-and-go\" automatic licensing per the ministry).",
+            "Who's caught: per Bloomberg and AP reporting cited by The Next Web (URL not returned), Alibaba's Qwen3.8-Max and Moonshot's Kimi K3 both clear the 2T-parameter line.",
+            "Timing: comment period closed Nov 15 (draft published Oct 16); the interim registration requirement has been in force since Oct 16, so unregistered covered transfers since then are technically in breach; the final catalogue is expected in Q1 2027.",
+            "Registrations: DeepSeek and MiniMax registered and were cleared for overseas use by Oct 25 (state media).",
+            "Context: both Washington's and Beijing's regimes now sit at the same 10^26-FLOP frontier — the first simultaneous outbound AI-control threshold."
+          ],
+          "links": [
+            {
+              "label": "TechFastForward — consolidation of Bloomberg/AP/TNW reporting (Nov 16, 3:41 AM ET)",
+              "url": "https://techfastforward.com/articles/china-advances-ai-export-curbs-covering-qwen-and-kimi"
+            },
+            {
+              "label": "Asia AI Policy Monitor — consultation tracker with official MOFCOM notice link (Nov 15)",
+              "url": "https://asiaaipolicymonitor.substack.com/p/52-asia-ai-policy-monitor"
+            },
+            {
+              "label": "MOFCOM — official Announcement No. 48 notice page",
+              "url": "https://exportcontrol.mofcom.gov.cn/article/zcfg/gnzcfg/zcfggzqd/202610/1319.html"
+            },
+            {
+              "label": "AI Lately — deadline-day explainer with event timeline (Nov 15)",
+              "url": "https://ailately.com/articles/china-ai-export-rule-comment-deadline"
+            },
+            {
+              "label": "Cloud Security Alliance — research note on No. 48 thresholds",
+              "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-china-ai-export-controls-announcement-48-2/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Uber's Fireworks-breach notifications now cover roughly 150,000 drivers — a ~19-fold jump from the 7,870+ floor",
+          "tldr": "Uber is notifying roughly 150,000 drivers — the Texas AG filing alone lists 149,346 — that driver's-license and government-ID data was stolen after hackers used compromised credentials at a third-party AI services provider, Fireworks AI, on Oct 7 (per SecurityWeek).",
+          "source": "SecurityWeek",
+          "url": "https://www.securityweek.com/uber-data-breach-impacts-150000-people/",
+          "summary": "Notifications went to at least six states — California, Iowa, Massachusetts, South Carolina, Texas and Vermont — covering names, addresses, dates of birth, driver's license numbers/images and government-ID numbers stolen from data Uber had shared with the vendor. Uber learned of the intrusion Oct 9 and confirmed access Oct 13; alerts existed but never fired because the attacker used valid credentials, and the stolen provider credentials did not reach other Uber systems. Free credit monitoring via Cyberscout is offered. Context on the vendor (per TechTimes): Fireworks detected the intrusion Oct 6, notified customers Oct 7–9 and published its bulletin Oct 10 — and a second intrusion Oct 23–24, via a third-party R&D cloud provider, exposed billing data and incomplete model weights/datasets for some customers, with Unit 42 engaged; Fireworks' Nov 9 update acknowledged account/billing data, some customer datasets and incomplete models were affected.",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Scale: Uber is notifying ~150,000 drivers; the Texas AG filing lists 149,346 people — a ~19-fold jump from the 7,870+ floor across Massachusetts, South Carolina and Rhode Island reported earlier.",
+            "What was stolen: names, addresses, dates of birth, driver's license numbers/images and government-ID numbers, from data Uber had shared with the vendor.",
+            "How: hackers used compromised credentials at a third-party services provider — Fireworks AI, per Uber's spokesperson to TechCrunch — on Oct 7; Uber learned Oct 9 and confirmed access Oct 13.",
+            "Why alerts missed it: alerts existed but never fired because the attacker used valid credentials; the stolen provider credentials did not reach other Uber systems.",
+            "Notifications: at least six states — California, Iowa, Massachusetts, South Carolina, Texas and Vermont; free credit monitoring via Cyberscout is offered.",
+            "Vendor context (per TechTimes, Nov 16): Fireworks detected the intrusion Oct 6, notified customers Oct 7–9 and published its bulletin Oct 10; a second intrusion Oct 23–24 via a third-party R&D cloud provider exposed billing data and incomplete model weights/datasets for some customers, with Unit 42 engaged; Fireworks' Nov 9 update acknowledged account/billing data, some customer datasets and incomplete models were affected.",
+            "What to watch: a national total; additional state filings; whether Fireworks' second-intrusion customers (incomplete model weights/datasets) draw their own notifications."
+          ],
+          "links": [
+            {
+              "label": "SecurityWeek — total count and filing detail (Nov 16, 6:02 AM ET)",
+              "url": "https://www.securityweek.com/uber-data-breach-impacts-150000-people/"
+            },
+            {
+              "label": "TechTimes — Fireworks timeline and state filings (Nov 16, 12:10 AM ET)",
+              "url": "https://www.techtimes.com/articles/330780/20261115/uber-data-breach-hackers-compromised-ai-vendor-fireworks-stole-drivers-license-data.htm"
+            },
+            {
+              "label": "The Hacker News — Cursor/Fireworks chain for context (Nov 15, 3:22 AM ET)",
+              "url": "https://thehackernews.com/2026/11/stolen-fireworks-ai-key-led-to-cursor.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Airtasker discloses a support-system breach — tickets with ID documents, card numbers and passwords likely downloaded",
+          "tldr": "Airtasker says an intruder accessed its third-party-run customer-support system on Nov 10 and likely downloaded support tickets — including, in a small number of cases, ID documents, card numbers or passwords customers typed into tickets — and warns the intruder appeared to be preparing a payment scam (per Privacy Affairs and Airtasker's help-centre notice).",
+          "source": "Airtasker",
+          "url": "https://support.airtasker.com/hc/en-au/articles/64280722804505-November-2026-Third-Party-Security-Incident",
+          "summary": "The gig-services platform disclosed on Nov 13 that an intruder accessed its third-party-run customer-support system on Nov 10 — access was closed the same day — and likely downloaded support tickets containing contact details and, in a small number of cases, ID documents, card numbers or passwords customers had typed into tickets. Account-stored payment details were unaffected and the affected count has not been disclosed. Airtasker says the intruder \"appeared to be preparing a payment scam,\" so unexpected payment-related requests deserve caution.",
+          "details": [
+            "What happened: an intruder accessed Airtasker's third-party-run customer-support system on Nov 10; access was closed the same day.",
+            "What was exposed: contact details plus, in a small number of cases, ID documents, card numbers or passwords customers typed into support tickets — the intruder likely downloaded tickets.",
+            "Not affected: payment details stored on accounts were unaffected; the affected count has not been disclosed.",
+            "Scam warning: Airtasker says the intruder \"appeared to be preparing a payment scam.\"",
+            "Disclosure timing: help-centre notice posted Nov 13 and updated Nov 14 (1:00); per Privacy Affairs, disclosure came ~4:30 PM ET Nov 13.",
+            "What to watch: an affected-user count has not been disclosed; any follow-up from Airtasker or regulators."
+          ],
+          "links": [
+            {
+              "label": "Privacy Affairs — report on the disclosure (Nov 14, 3:30 AM ET)",
+              "url": "https://www.privacyaffairs.com/airtasker-data-breach/"
+            },
+            {
+              "label": "Airtasker support notice",
+              "url": "https://support.airtasker.com/hc/en-au/articles/64280722804505-November-2026-Third-Party-Security-Incident"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-15",
       "items": [
