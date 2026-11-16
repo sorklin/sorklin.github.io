@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rolling Thunder · MAME compiled to WebAssembly · The Sorklin Group</title>
+<title>Rolling Thunder — MAME compiled to WebAssembly — The Sorklin Group</title>
 <meta name="description" content="Rolling Thunder (Namco, 1986) playable in the browser: MAME 0.277's Namco System 86 driver compiled to WebAssembly with Emscripten. Exact ROM match, save states, DIP switches.">
-<meta property="og:title" content="Rolling Thunder in your browser · The Sorklin Group">
+<meta property="og:title" content="Rolling Thunder in your browser — The Sorklin Group">
 <meta property="og:description" content="MAME 0.277, compiled to WebAssembly. Namco System 86, 1986, in a tab.">
 <meta name="theme-color" content="#05070b">
   <script>try{var t=localStorage.getItem("sorklin:theme");document.documentElement.setAttribute("data-theme",t||"daylight")}catch(e){}</script>
@@ -54,7 +54,7 @@
       </h1>
       <p class="lede">
         <span data-joke>MAME 0.277's Namco System 86 driver, compiled to WebAssembly with Emscripten on my own machine.
-          Exact ROM match, real save states, the Tab menu, DIP switches: the whole cabinet, minus the coin slot
+          Exact ROM match, real save states, the Tab menu, DIP switches — the whole cabinet, minus the coin slot
           and the carpet that arcade carpet is famous for.</span>
         <span data-corp>A browser build of the 1986 arcade title, running the reference MAME driver compiled to
           WebAssembly. No plugins, no ads, no external services.</span>
@@ -65,7 +65,7 @@
         <a class="btn btn-ghost" href="#build">How it's built</a>
       </div>
       <p class="dim mono reveal" style="margin-top:20px;font-size:12.5px">
-        First load pulls a ~56 MB WebAssembly core: a whole arcade emulator. Be patient once.
+        First load pulls a ~56 MB WebAssembly core — it's a whole arcade emulator, not a thumbnail. Be patient once.
       </p>
     </div>
   </header>
@@ -84,7 +84,7 @@
                 <tr><td>Move / aim</td><td>Arrow keys, or <b>W A S D</b></td></tr>
                 <tr><td>Shot (button 1)</td><td><b>Ctrl</b>, <b>J</b> or <b>Z</b></td></tr>
                 <tr><td>Button 2</td><td><b>Alt</b>, <b>K</b> or <b>X</b></td></tr>
-                <tr><td>Insert coin</td><td><b>5</b> (yes, actually press it)</td></tr>
+                <tr><td>Insert coin</td><td><b>5</b> — yes, actually press it</td></tr>
                 <tr><td>Start</td><td><b>1</b></td></tr>
                 <tr><td>Player 2</td><td><b>I J K U</b> + <b>F</b> / <b>G</b></td></tr>
                 <tr><td>MAME menu (DIPs, graphics)</td><td><b>Tab</b></td></tr>
@@ -100,15 +100,15 @@
           <p class="kicker">Build notes</p>
           <h2 class="title">What's actually running.</h2>
           <ul class="ticks">
-            <li><b>Driver:</b> <span class="mono">src/mame/namco/namcos86.cpp</span>, machine <span class="mono">rthunder</span> (“Rolling Thunder (rev 3)”).</li>
-            <li><b>Emulator:</b> MAME 0.277 itself, compiled to WebAssembly with Emscripten.</li>
+            <li><b>Driver:</b> <span class="mono">src/mame/namco/namcos86.cpp</span>, machine <span class="mono">rthunder</span> — “Rolling Thunder (rev 3)”.</li>
+            <li><b>Emulator:</b> MAME 0.277, compiled to WebAssembly with Emscripten — not a reimplementation, not a JS port.</li>
             <li><b>ROM set:</b> all 28 files verified byte-for-byte and CRC-for-CRC against MAME master's <span class="mono">ROM_START(rthunder)</span>.</li>
             <li><b>Runtime:</b> ROM mounted into the in-memory filesystem at boot; save states, NVRAM and F12 screenshots all work.</li>
-            <li><b>Single-threaded</b> on purpose: no cross-origin isolation headers needed, so it runs on plain static hosting.</li>
+            <li><b>Single-threaded</b> on purpose — no cross-origin isolation headers needed, so it runs on plain static hosting.</li>
           </ul>
           <div class="callout info" style="margin-top:20px" data-joke>
             <span class="ico">[i]</span>
-            <div>Why this exists: it's the same muscle as the day job, take something complicated and opaque,
+            <div>Why this exists: it's the same muscle as the day job — take something complicated and opaque,
               compile it down until you can observe it, and make the numbers legible. One of those numbers is a high score.</div>
           </div>
         </div>
@@ -124,18 +124,18 @@
           <div>
             <p class="kicker">Where the 56 MB lives</p>
             <h2 class="title">In this repo. On purpose.</h2>
-            <p class="dim">The whole build (the 56 MB WebAssembly core, the ROM set and the EmulatorJS fallback)
+            <p class="dim">The whole build — the 56 MB WebAssembly core, the ROM set and the EmulatorJS fallback —
               is committed under <span class="mono">projects/rthunder/play/assets/</span>, so the play page is
-              self-contained: GitHub Pages, a laptop, a phone on the LAN. Any static server that sends the right
+              self-contained: GitHub Pages, a laptop, a phone on the LAN — any static server that sends the right
               MIME for <span class="mono">.wasm</span> will do. The page still resolves its assets at boot and
               verifies each file by CRC32 before it will boot it.</p>
             <ol class="dashes" style="list-style:none;padding:0;margin:0;display:grid;gap:14px">
-              <li><b>Ships with the site</b>: <span class="mono">play/assets/</span> is committed; a first visit
+              <li><b>Ships with the site</b> — <span class="mono">play/assets/</span> is committed; a first visit
                 pulls the core once, after that it is just the browser cache.</li>
-              <li><b>Re-staging (after a rebuild)</b>: point the packer at a build and commit the result:
+              <li><b>Re-staging (after a rebuild)</b> — point the packer at a build and commit the result:
                 <div class="mono" style="margin-top:8px;color:var(--cyan)">node scripts/package-rthunder.mjs --install-local --src D:\work\rthunder\app</div>
                 then <span class="mono">node serve.mjs</span> and open <a href="/projects/rthunder/play/" target="_blank" rel="noopener">the game</a>.</li>
-              <li><b>Separate origin (optional)</b>: publish <span class="mono">dist/rthunder-build/</span> anywhere that sends
+              <li><b>Separate origin (optional)</b> — publish <span class="mono">dist/rthunder-build/</span> anywhere that sends
                 <span class="mono">Access-Control-Allow-Origin: *</span>, and set <span class="mono">RT_REMOTE_BASE</span>
                 at the top of <span class="mono">play/index.html</span> to test it:
                 <div class="mono" style="margin-top:8px;color:var(--cyan)">node scripts/package-rthunder.mjs</div></li>
@@ -145,8 +145,8 @@
             <div class="callout todo" style="margin-bottom:16px">
               <span class="ico">[!]</span>
               <div><b>The ROM is not mine.</b> The emulator is; the arcade ROM's copyright belongs to its owner.
-                The full set is provided here so the project actually runs for anyone who opens the site.
-                Every file is CRC-verified against MAME's <span class="mono">ROM_START(rthunder)</span> at boot,
+                The full set is provided here so the project actually runs for anyone who opens the site —
+                every file is CRC-verified against MAME's <span class="mono">ROM_START(rthunder)</span> at boot,
                 so a truncated download refuses to start instead of showing a black canvas.</div>
             </div>
             <div class="callout" data-joke>
@@ -157,7 +157,7 @@
             </div>
             <p class="dim mono" style="font-size:12px;margin-top:16px">
               <a href="/projects/rthunder/play/" target="_blank" rel="noopener">Direct link to the game →</a> · fullscreen, sound on.<br>
-              <a href="/projects/rthunder/BUILD-NOTES.md">Build notes: how MAME got compiled (markdown) →</a>
+              <a href="/projects/rthunder/BUILD-NOTES.md">Build notes — how MAME got compiled (markdown) →</a>
             </p>
           </div>
         </div>
@@ -190,7 +190,7 @@
         <p class="foot-blurb" data-joke>A private company of exactly one, measuring the unfashionable kind of risk
           and shipping the tooling to keep up with it.</p>
         <p class="foot-blurb" data-corp>The personal site of Brendan Fitzpatrick: cyber risk quantification, security assessment and applied AI engineering.</p>
-        <p class="foot-blurb dim mono" style="font-size:12.5px">Reachable on <a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>. The only address here that is definitely real.</p>
+        <p class="foot-blurb dim mono" style="font-size:12.5px">Reachable on <a href="https://www.linkedin.com/in/brendan-j-fitzpatrick/" rel="noopener me" target="_blank"><svg class="li-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a> &mdash; the only address here that is definitely real.</p>
       </div>
       <div>
         <h4>Sections</h4>

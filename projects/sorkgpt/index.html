@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SorkGPT · self-hosted model interface · The Sorklin Group</title>
-<meta name="description" content="SorkGPT: a chat interface for the models running on Spark-I-Tron 6000. Interface built, endpoint pending. An honest stub.">
+<title>SorkGPT — self-hosted model interface — The Sorklin Group</title>
+<meta name="description" content="SorkGPT: a chat interface for the models running on Spark-I-Tron 6000. Interface built, endpoint pending — an honest stub.">
 <meta name="theme-color" content="#05070b">
   <!-- SorkGPT is theme-frozen: it always renders in Midnight, whatever the site theme is -->
   <script>try{document.documentElement.setAttribute("data-theme","midnight")}catch(e){}</script>
@@ -53,7 +53,7 @@
       <button class="link open-settings">Endpoint &amp; model settings</button>
       <button class="link" id="wipe">Delete all local conversations</button>
       <p class="dim mono" style="font-size:11px;line-height:1.6;margin:4px 0 0">
-        Everything stays in this browser. Nothing is sent anywhere; there's nowhere to send it yet.
+        Everything stays in this browser. Nothing is sent anywhere — there's nowhere to send it yet.
       </p>
     </div>
   </aside>
@@ -61,7 +61,7 @@
   <section class="chat-main">
     <div class="stub-banner">
       <b>Stub · honest</b>
-      <span>The interface is finished; the wire to Spark-I-Tron 6000 isn't. Until it is, answers come from a clearly-labelled demo brain.</span>
+      <span>The interface is finished; the wire to Spark-I-Tron 6000 isn't. Until it is, answers come from a clearly-labelled demo brain, not a model.</span>
       <button class="btn btn-ghost open-settings" type="button">Wire it up</button>
     </div>
 
@@ -71,7 +71,7 @@
 
     <div class="composer-wrap">
       <div class="composer">
-        <textarea id="input" rows="1" placeholder="Ask SorkGPT something, or just test the interface; it's all that's live right now"></textarea>
+        <textarea id="input" rows="1" placeholder="Ask SorkGPT something — or just test the interface; it's all that's live right now"></textarea>
         <div class="composer-bar">
           <span class="mono dim" id="cfg-model-chip" style="font-size:12px">spark-i-tron-6000</span>
           <span class="mono dim" style="font-size:11px;opacity:.7">simulated answers</span>
@@ -97,28 +97,28 @@
     <div class="callout info" style="margin-bottom:22px">
       <span class="ico">[!]</span>
       <div>These settings live in <b>your browser only</b>. When this becomes family-only, the gate goes on a server in
-        front of Spark-I-Tron 6000, never in this file. Anything a browser can hold, a curious kid can read.</div>
+        front of Spark-I-Tron 6000 — never in this file. Anything a browser can hold, a curious kid can read.</div>
     </div>
 
     <div class="field">
       <label for="cfg-url">Base URL</label>
       <input id="cfg-url" type="url" placeholder="https://spark-i-tron-6000.lan/proxy" autocomplete="off" spellcheck="false">
       <div class="help">OpenAI-compatible: the client posts to <code>&lt;base&gt;/v1/chat/completions</code> and probes
-        <code>&lt;base&gt;/v1/models</code>. It must send CORS headers for <code>www.sorklin.com</code>; a bare model
+        <code>&lt;base&gt;/v1/models</code>. It must send CORS headers for <code>www.sorklin.com</code> — a bare model
         server won't, which is why a small proxy sits in front.</div>
     </div>
 
     <div class="field">
       <label for="cfg-key">API key (optional)</label>
       <input id="cfg-key" type="password" placeholder="leave blank until there's something to authenticate to" autocomplete="off">
-      <div class="help">Stored in localStorage on this device. Fine for a personal tool; don't use it for anything shared.</div>
+      <div class="help">Stored in localStorage on this device. Fine for a personal tool, not fine for anything shared.</div>
     </div>
 
     <div class="field">
       <label for="cfg-model">Model</label>
       <input id="cfg-model" list="model-hints" type="text" placeholder="spark-i-tron-6000" autocomplete="off" spellcheck="false">
       <datalist id="model-hints"></datalist>
-      <div class="help">Free text: type whatever Spark-I-Tron 6000 actually answers to. The list is a guess about the future.</div>
+      <div class="help">Free text — type whatever Spark-I-Tron 6000 actually answers to. The list is a guess about the future.</div>
     </div>
 
     <div class="field">
