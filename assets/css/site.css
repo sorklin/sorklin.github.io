@@ -13,7 +13,11 @@
   --line-2: rgba(255, 255, 255, 0.16);
   --ink: #e9eef5;
   --dim: #93a1b3;
-  --dim-2: #6a7786;
+  --dim-2: #7f8c9d;
+  /* Aliases that rules referenced without ever being defined; they ride the
+     theme overrides like the tokens they point at. */
+  --ink-2: var(--dim);
+  --ink-3: var(--dim-2);
 
   --cyan: #5de1ff;
   --violet: #b085f5;
@@ -122,6 +126,17 @@ svg { display: block; }
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
+/* The skip link becomes visible when keyboard-focused (token-built, every theme). */
+.sr-only:focus,
+.sr-only:focus-visible {
+  position: fixed; top: 12px; left: 12px; width: auto; height: auto;
+  margin: 0; padding: 10px 14px; overflow: visible; clip: auto;
+  white-space: nowrap; z-index: 200;
+  background: var(--panel); color: var(--ink);
+  border: 1px solid var(--line-2); border-radius: var(--r-sm);
+  outline: 2px solid var(--cyan); outline-offset: 2px;
+}
+
 /* ----------------------------------------------------------------- nav -- */
 .site-nav {
   position: fixed;
@@ -166,7 +181,7 @@ svg { display: block; }
 .brand small {
   display: block;
   font-family: var(--mono);
-  font-size: 9.5px;
+  font-size: 11px;
   letter-spacing: 0.19em;
   text-transform: uppercase;
   color: var(--dim-2);
@@ -463,33 +478,9 @@ svg { display: block; }
 }
 @keyframes blink { to { visibility: hidden; } }
 
-/* ------------------------------------------------------------- ticker -- */
-.ticker {
-  border-block: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.018);
-  overflow: hidden;
-  padding: 13px 0;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-.ticker-track {
-  display: flex;
-  width: max-content;
-  gap: 44px;
-  animation: slide 42s linear infinite;
-}
-.ticker:hover .ticker-track { animation-play-state: paused; }
-.ticker-track span {
-  font-family: var(--mono);
-  font-size: 12.5px;
-  letter-spacing: 0.06em;
-  color: var(--dim-2);
-  display: inline-flex;
-  align-items: center;
-  gap: 44px;
-  white-space: nowrap;
-}
-.ticker-track span::after { content: "◆"; color: rgba(93, 225, 255, 0.4); font-size: 9px; }
+/* ------------------------------------------------------------- ticker --
+   (removed 2026-11-16: no page has shipped ticker markup for a long time;
+   the dead subsystem went with the reduced-motion reference below) */
 @keyframes slide { to { transform: translateX(-50%); } }
 
 /* ------------------------------------------------------------ sections -- */
@@ -641,7 +632,7 @@ a.card:hover { text-decoration: none; }
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 4px 9px;
@@ -785,8 +776,10 @@ ul.dashes li::before { content: "—"; position: absolute; left: 0; color: var(-
 .crumbs .sep { opacity: 0.5; }
 
 /* ------------------------------------------------------------- reveal -- */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
+/* Hidden state is gated on html.js (set at the top of site.js): without
+   JavaScript the content renders normally instead of staying invisible. */
+html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+html.js .reveal.in { opacity: 1; transform: none; }
 
 /* --------------------------------------------------- corporate mode -- */
 /* The "Make it corporate" toggle. Hides the jokes, swaps in board-safe copy. */
@@ -1041,7 +1034,7 @@ figure.chart { margin: 0; }
 .news-date-d { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
 .news-date-tag {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--bg);
@@ -1098,7 +1091,7 @@ figure.chart { margin: 0; }
 .news-tldr .lbl {
   flex: none;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -1134,7 +1127,7 @@ figure.chart { margin: 0; }
 .news-details-body { padding: 14px 16px 16px; display: grid; gap: 12px; }
 .news-sub {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--dim-2);
@@ -1195,7 +1188,7 @@ figure.chart { margin: 0; }
 .dd-tldr .lbl {
   flex: none;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -1233,7 +1226,7 @@ figure.chart { margin: 0; }
   align-items: center;
   gap: 8px;
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -1278,8 +1271,7 @@ figure.chart { margin: 0; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .reveal { opacity: 1; transform: none; }
-  .ticker-track { animation: none; }
+  html.js .reveal { opacity: 1; transform: none; }
   #field { display: none; }
 }
 
@@ -1303,7 +1295,7 @@ figure.chart { margin: 0; }
   --line-2: #c3ccd9;
   --ink: #17233b;
   --dim: #4a5872;
-  --dim-2: #8593aa;
+  --dim-2: #5f6f85;
   --cyan: #1f5aa8;
   --violet: #6d5bd0;
   --amber: #b45309;
@@ -1340,7 +1332,7 @@ figure.chart { margin: 0; }
   --line-2: #1c150e;
   --ink: #1c150e;
   --dim: #5c5142;
-  --dim-2: #97896f;
+  --dim-2: #6f6449;
   --cyan: #e11d48;
   --violet: #5b4bc4;
   --amber: #c2410c;
@@ -1384,7 +1376,7 @@ figure.chart { margin: 0; }
   --line-2: #c9b28d;
   --ink: #201a12;
   --dim: #5f5344;
-  --dim-2: #94836c;
+  --dim-2: #6d5f4b;
   --cyan: #0f5499;
   --violet: #8a4b0f;
   --amber: #b45309;
