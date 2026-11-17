@@ -6,6 +6,11 @@
 (function () {
   "use strict";
 
+  // Marks that site behaviour is running. CSS gates key off html.js (the
+  // .reveal scroll animation in particular) so content is never hidden
+  // when this file fails to load or JavaScript is off.
+  document.documentElement.classList.add("js");
+
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
@@ -187,13 +192,6 @@
     }
   }
 
-  /* ----------------------------------------------------------- ticker -- */
-  var track = $(".ticker-track");
-  if (track && !reduced) {
-    // duplicate the strip so the -50% translate loops seamlessly
-    track.innerHTML += track.innerHTML;
-  }
-
   /* ------------------------------------------------------ daily brief -- */
   // Homepage strip: upgrade the static fallback link with the latest
   // headlines once /news/news.json loads. Silent on any failure — the
@@ -340,11 +338,22 @@
         ctx.fillStyle = "rgba(120, 200, 235," + lit.toFixed(3) + ")";
         ctx.fill();
       }
-      requestAnimationFrame(frame);
+      if (running) requestAnimationFrame(frame);
     };
-    var raf;
-    var start = function () { cancelAnimationFrame(raf); resize(); raf = requestAnimationFrame(frame); };
+    var raf, running = false;
+    var start = function () { cancelAnimationFrame(raf); resize(); raf = requestAnimationFrame(frame); running = true; };
+    var stop = function () { running = false; cancelAnimationFrame(raf); };
     window.addEventListener("resize", start);
+    // Draw only while the field can actually be seen: a hidden tab or one
+    // where the canvas is scrolled out of view costs zero frames.
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting && !document.hidden) { start(); } else { stop(); }
+      }).observe(cv);
+    }
     start();
   }
 })();

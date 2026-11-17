@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.sorklin.com/">
 <meta name="theme-color" content="#05070b">
-  <script>try{var t=localStorage.getItem("sorklin:theme");document.documentElement.setAttribute("data-theme",t||"daylight")}catch(e){}</script>
+  <script>try{var t=localStorage.getItem("sorklin:theme");document.documentElement.setAttribute("data-theme",t||"daylight";var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="midnight"?"#05070b":t==="arcade"?"#fff9ef":t==="press"?"#fdf1e3":"#f7f8fa")}catch(e){}</script>
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://www.sorklin.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -197,7 +197,7 @@
         <p class="kicker">AI projects &amp; other dangerous ideas</p>
         <h2 class="title">Things “I” built because waiting for someone else was slower.</h2>
         <p>Everything below is hosted here and runs on hardware I can unplug.
-          Some of it is serious. One of it is an arcade cabinet from 1986.</p>
+          Some of it is serious. One of them is an arcade cabinet from 1986.</p>
       </div>
 
       <div class="grid c3">
