@@ -1,7 +1,339 @@
 {
   "version": 3,
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "days": [
+    {
+      "date": "2026-11-17",
+      "items": [
+        {
+          "category": "security",
+          "title": "Visa confirms a third-party incident as the n0n extortion wave balloons to 59 named organizations",
+          "tldr": "The n0n extortion group named 59 organizations on Nov 16, claiming 1.24 million Eli Lilly patients' prescription data, and Visa confirmed a third-party incident in Asia Pacific with a 48-hour leak deadline set — while Bitdefender's read of the group's own server data says only ~20 targets were real (per Cybernews — primary for the Visa statement — and Ransomnews).",
+          "source": "Cybernews",
+          "url": "https://cybernews.com/security/visa-jpmorgan-data-breach/",
+          "summary": "The n0n data-theft extortion group listed 59 organizations in 11 countries on Nov 16, swapping 46 placeholder entries (\"Company #150\" and the like, parked since Nov 9) for names marked unpaid — Eli Lilly, Visa, Mastercard, JPMorgan Chase, Walmart, Procter & Gamble, Pandora, Patagonia, Airbnb, Block, AARP and more, plus 19 small businesses (per Ransomnews' Ransomtracker capture). n0n claims 16 million rows of prescription-fill data covering 1,243,661 patients on Eli Lilly's neurology/immunology/inflammation drugs plus a prescriber file of 7.6 million NPI numbers; the Visa/Mastercard/JPMorgan entries describe cardmember marketing records with no card numbers mentioned — all figures are the attacker's own claims. Visa confirmed to Cybernews that an incident involved a third-party provider in Asia Pacific, saying \"Visa's systems were not involved and were not impacted… no indication that payment data such as card numbers have been affected,\" while declining to name the provider; n0n set a 48-hour leak deadline on Visa and JPMorgan (per Cybernews). The repeating data shapes across 13 retailers and 11 drug makers point to a shared upstream processor — n0n has separately named pharma-analytics firm 159 Solutions and LiveRamp — and Bitdefender, working from the group's own file-server data, says n0n actually targeted just over 20 victims, removing 126 inflated entries from its October count; in the same wave, data attributed to employee-benefits firm Tailored Benefits was published with claims of 434,983 emails and 668 SSN-format strings (per the QPulse tracker — no company statement found).",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "72",
+              "name": "Accommodation and Food Services"
+            }
+          ],
+          "details": [
+            "Named Nov 16: 59 organizations in 11 countries, 46 of them placeholders (\"Company #150\" and the like) parked since Nov 9 and now swapped for names marked unpaid — Eli Lilly, Visa, Mastercard, JPMorgan Chase, Walmart, Procter & Gamble, Pandora, Patagonia, Debenhams, iHerb, Airbnb, Block, AARP, Nielsen, Zeta Global, MediaMath, Servier, Chiesi, Exelixis, Vir Biotechnology, HappyFresh, Noon Academy, plus 19 small businesses (nine Canadian financial-advice firms, a US law practice, a debt collector) (per Ransomnews' Ransomtracker capture).",
+            "Eli Lilly claim: 16 million rows of prescription-fill data covering 1,243,661 patients on neurology/immunology/inflammation drugs, plus a prescriber file of 7.6 million NPI numbers; n0n does not say whether patients are named (attacker claim).",
+            "Servier entry: carries only HIPAA-Safe-Harbor-style fields (birth year, three-digit ZIP).",
+            "Visa/Mastercard/JPMorgan entries: describe cardmember marketing records (names, emails, phones, travel/dining bookings) with no card numbers mentioned.",
+            "Visa statement: confirmed to Cybernews that an incident involved a third-party provider in Asia Pacific — \"Visa's systems were not involved and were not impacted… no indication that payment data such as card numbers have been affected\" — while declining to name the provider.",
+            "Deadline: n0n set a 48-hour leak deadline on Visa and JPMorgan (per Cybernews), landing about Nov 19.",
+            "JPMorgan: said a same-day service outage was caused by a software bug, with \"no evidence\" of a cyberattack link.",
+            "Shared-processor signal: 13 retailers with identical search logs and 11 drug makers with identical claims tables point to a shared upstream processor; n0n has separately named pharma-analytics firm 159 Solutions (Nov 9) and LiveRamp (Nov 11).",
+            "Bitdefender analysis: working from the group's own file-server data, n0n actually targeted just over 20 victims, and Bitdefender removed 126 inflated entries from its October total — against the tracker's 363-entry count.",
+            "Tailored Benefits: data of the US employee-benefits consulting firm was published Nov 16 as \"NOT PAID — EXPOSED\" — claimed 434,983 emails, 10,229 phones, 668 SSN-format strings, 634 client documents and a client register naming 45 employer clients (per the QPulse tracker's re-report of the Nov 9 listing — hedged; no company statement found).",
+            "Verification status: all figures are the attacker's own claims unless a company statement is quoted; nothing has been independently verified. Expedia's Nov 12 confirmation (third-party data-platform provider; a Qubole-credentials link reported by researchers is unconfirmed) ran in prior editions."
+          ],
+          "links": [
+            {
+              "label": "Cybernews — Visa confirms third-party breach; 48-hour deadline (Nov 17)",
+              "url": "https://cybernews.com/security/visa-jpmorgan-data-breach/"
+            },
+            {
+              "label": "Ransomnews — n0n lists 59 organizations (Nov 16)",
+              "url": "https://ransomnews.com/n0n-eli-lilly-visa-jpmorgan-leak-site-claims-2026/"
+            },
+            {
+              "label": "QPulse — N0n leaks Tailored Benefits client data (Nov 17, tracker re-report)",
+              "url": "https://qpulse.quasarcybertech.com/news/8570/ransomware-group-n0n-leaks-sensitive-client-data-from-employee-benefits-consulting-firm-tailored-benefits"
+            },
+            {
+              "label": "SecurityAffairs — n0n claims ~1B Expedia records; Expedia confirmation (Nov 14)",
+              "url": "https://securityaffairs.com/203062/cyber-crime/extortion-group-claims-theft-of-nearly-one-billion-expedia-traveler-records.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "KARTE breach grows: Plaid confirms stolen credentials and client data; JINS says ~18.29 million records may have leaked",
+          "tldr": "Japan's KARTE breach keeps growing — Plaid Inc. has confirmed 79,249 account emails plus integration credentials and client data leaked, and client JINS disclosed that data of approximately 18.29 million member accounts may have leaked (per Nikkei and JINS's own notice).",
+          "source": "JINS",
+          "url": "https://www.jins.com/jp/topics_detail.html?info_id=1284",
+          "summary": "Tokyo-listed Plaid Inc. (TSE Growth 4165 — the KARTE behavior-analytics platform, not the US payments firm) disclosed Nov 16 that a third party exploited a server vulnerability in the early hours of Nov 13, stole database/system connection credentials, read data out of databases and used the same credentials to take over a company account and reach the administration console; confirmed leaked so far are 79,249 KARTE account email addresses, external-integration credentials (\"secret keys, access tokens\") and portions of client-imported customer data, with the latter two counts still under investigation. The in-window escalation: client JINS HOLDINGS (TSE Prime 3046, eyewear) disclosed Nov 17 that data of approximately 18,290,000 JINS member accounts — member IDs, email addresses, surnames, dates of birth, age, gender, postal codes and prefecture, explicitly not passwords or card data — may have leaked through the KARTE compromise, after Plaid told JINS on Nov 15 that leakage was confirmed; JINS is warning customers about phishing. KARTE serves many Japanese enterprises, so further client disclosures are expected, and all KARTE services remain halted with no restart date set.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            }
+          ],
+          "details": [
+            "Timeline: a third party exploited a server vulnerability in the early hours of Nov 13; detected 08:59 JST; all KARTE services halted as emergency maintenance by ~15:23 JST, with no new unauthorized access since.",
+            "Attack chain: database/system connection credentials stolen, data read out of databases, and the same credentials used to take over a company account and reach the administration console.",
+            "Confirmed leaked (Plaid): 79,249 KARTE account email addresses; external-integration credentials (\"secret keys, access tokens\") whose count is still under investigation; portions of client-imported customer data via the linked-table feature that \"may include personal information\" — counts still under investigation.",
+            "JINS disclosure: data of approximately 18,290,000 JINS member accounts — member IDs, email addresses, surnames, dates of birth, age, gender, postal codes and prefecture; explicitly not passwords or card data — may have leaked through the KARTE compromise; JINS was told by Plaid on Nov 15 that leakage was confirmed and is warning customers about phishing.",
+            "Entity note: Plaid Inc. is TSE Growth 4165, the KARTE behavior-analytics platform — not the US payments firm of the same name; JINS HOLDINGS is TSE Prime 3046.",
+            "Regulatory: reported to Japan's Personal Information Protection Commission; police consulted; restart date undecided (per Nikkei and the TDnet filings).",
+            "Outlook: KARTE serves many Japanese enterprises, so further client disclosures are expected; no attacker named."
+          ],
+          "links": [
+            {
+              "label": "JINS — customer notice, data items and ~18.29M figure (Nov 17)",
+              "url": "https://www.jins.com/jp/topics_detail.html?info_id=1284"
+            },
+            {
+              "label": "Japan IR — JINS HOLDINGS TDnet disclosure (Nov 17)",
+              "url": "https://japanir.jp/en/company/company-3046/ir/3046-20261117-01_wp_disclosure_update/"
+            },
+            {
+              "label": "Japan IR — Plaid TDnet disclosure (Nov 16)",
+              "url": "https://japanir.jp/en/company/company-4165/ir/4165-20261116-01_wp_disclosure_update/"
+            },
+            {
+              "label": "Nikkei — JINS HD discloses 18.29M member records via KARTE breach (Nov 17, JST)",
+              "url": "https://www.nikkei.com/article/DGXZQOCC17A1V0X11C26A1000000/"
+            },
+            {
+              "label": "Nikkei — Plaid: 79,249 emails + credentials leaked (Nov 16, JST)",
+              "url": "https://www.nikkei.com/article/DGXZQOUC169GY0W6A111C2000000/"
+            },
+            {
+              "label": "TSN — Plaid confirms KARTE leak of 79,249 emails (Nov 16; aggregator of the TDnet filing)",
+              "url": "https://tsnmedia.org/plaid-inc-karte-data-leak/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "An Optimizely signup flaw planted wallet-swapping and card-skimming code on 178 organizations' websites",
+          "tldr": "An unauthorized party exploited a flaw in Optimizely's account-signup flow to plant wallet-swapping and card-skimming JavaScript on 178 organizations' websites — HSBC, the BBC, Salesforce and Ledger among them (per Report URI's Scott Helme, via CoinDesk and BleepingComputer).",
+          "source": "CoinDesk",
+          "url": "https://www.coindesk.com/tech/2026/11/17/hackers-planted-crypto-stealing-code-on-178-organizations-sites-including-hsbc-bbc-and-ledger",
+          "summary": "On Nov 16 an unauthorized party exploited a flaw in Optimizely's account-signup flow to inject rogue JavaScript into customer projects, hitting 178 organizations' websites — including HSBC, the BBC, Salesforce, Ledger, IG Group, Interactive Investor and Betashares (per Report URI's Scott Helme; six identified organizations are crypto/trading businesses and 32 are banks or financial companies). The code scanned pages for wallet addresses on Bitcoin, Ethereum, Solana, Tron and five other networks, substituted the attacker's address in form fields and on copy-to-clipboard, skimmed card numbers from payment forms, copied cookies and screenshots, and served exploit kits to older iPhones; wallets linked to the attack held about $7,040 by Monday evening (per Report URI — unverified by Bloomberg). Because visitors' browsers ran the vendor's code automatically, none of the sites was breached directly, and Optimizely says it removed the payload and fixed the flaw; Hudson Rock reports similar code moving through three other web services in a wave starting Nov 13.",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Vector: a flaw in Optimizely's account-signup flow was exploited on Nov 16 to inject rogue JavaScript into customer projects; injection traced from early Nov 16 (per Report URI).",
+            "Scale: 178 organizations' websites hit — HSBC, the BBC, Salesforce, Ledger, IG Group, OANDA's Coinpass, Interactive Investor, TMS Brokers and Betashares among them (per Report URI's Scott Helme); 6 of the identified organizations are crypto/trading businesses and 32 are banks/financial companies.",
+            "Payload: scanned pages for wallet addresses on Bitcoin, Ethereum, Solana, Tron and five other networks; substituted the attacker's address in form fields and on copy-to-clipboard; skimmed card numbers from payment forms; copied cookies and screenshots; served exploit kits to older iPhones.",
+            "Theft so far: wallets linked to the attack held about $7,040 by Monday evening (per Report URI — unverified by Bloomberg).",
+            "Remediation: Optimizely says it removed the payload and fixed the flaw; visitors' browsers ran the vendor's code automatically, so none of the sites was breached directly.",
+            "Wider wave: Hudson Rock found similar code moving through three other web services starting Nov 13."
+          ],
+          "links": [
+            {
+              "label": "CoinDesk — crypto-stealing code on 178 sites incl. HSBC, BBC, Ledger (Nov 17)",
+              "url": "https://www.coindesk.com/tech/2026/11/17/hackers-planted-crypto-stealing-code-on-178-organizations-sites-including-hsbc-bbc-and-ledger"
+            },
+            {
+              "label": "BleepingComputer — Optimizely supply-chain attack infects major brands' sites (Nov 16)",
+              "url": "https://www.bleepingcomputer.com/news/security/optimizely-supply-chain-attack-infects-major-brands-sites-with-malware/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Barracuda discloses ARTEX-linked cloud breach — a never-revoked AI-vendor key reached ~10 cloud accounts in 44 hours",
+          "tldr": "Barracuda says a never-retired AI-vendor cloud key, exposed in the vendor's GitHub repo, let attackers reach ~10 cloud accounts in 44 hours — attributed to the ARTEX AI pentest framework, which the FBI and Amazon in the same window describe operating at \"industrial scale,\" including a deepfake KYC-bypass campaign at two crypto exchanges (per BleepingComputer and TechCrunch).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/barracuda-links-cloud-breach-to-artex-ai-powered-cyberattack/",
+          "summary": "Barracuda disclosed that attackers used a stolen cloud access key to access ~10 cloud accounts over 44 hours between Nov 1–2 — a key issued to a third-party AI vendor for a finished project, never retired, and stored in a configuration file in the vendor's GitHub repository that was compromised in October (\"That is on us,\" per TechCrunch's interview with CISO Arve Kjoelen). The intruder chained credentials into Barracuda's data-analytics environment, source-code repositories and Kubernetes clusters — pushing temporary branches that made build workflows print their secrets into job logs — while hunting cryptocurrency-related secrets; one reached system stores Barracuda XDR customer integration credentials, and because logging was insufficient to rule out access, affected Managed XDR customers were told to revoke and recreate credentials, and Barracuda changed all its customer credentials. Barracuda attributes the intrusion to the ARTEX AI pentest framework by matching labels, probing methods and hunting routines — not to a specific actor. Context landing in the same window: the FBI's FLASH says ARTEX intrusions can go from targeting to privileged access \"in under three hours\" and ties the framework to the ConnectWise supply-chain hack reaching 2,250+ downstream Microsoft 365 tenants, while Amazon's CISO describes a second MadPot-captured campaign that built real-time deepfake videos and forged ID photos to beat KYC checks at two cryptocurrency exchanges — every attempt rejected by the vendor's server-side checks.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Breach: a stolen cloud access key was used to enter Barracuda's cloud environment and access ~10 cloud accounts over 44 hours between Nov 1–2; discovered Nov 4.",
+            "Root cause: the key was issued to an unnamed third-party AI vendor for a finished project and never retired (\"That is on us\"); it was stored in a configuration file in the vendor's GitHub repository, compromised in October.",
+            "Technique: credentials chained from one system into the data-analytics environment, source-code repositories and Kubernetes clusters — including pushing temporary branches to trigger build workflows that printed build secrets into job logs; a container mounting the host filesystem (read-only) enabled credential harvesting, and an attempt to create a new cloud admin identity was blocked.",
+            "Objective: targeting cryptocurrency-related secrets (private keys, Ethereum keystore files, seed phrases), suggesting financial motive — though Barracuda can't rule out a diversion.",
+            "Customer exposure: one reached system stores Barracuda XDR customer integration credentials — no evidence of access, but logging was insufficient to rule it out, so affected Managed XDR customers were told to revoke and recreate credentials, and Barracuda changed all its customer credentials (per TechCrunch, quoting CISO Arve Kjoelen).",
+            "Attribution: the ARTEX AI pentest framework, based on matching labels, probing methods and hunting routines — not to a specific actor.",
+            "FBI FLASH (published Fri Nov 13): ARTEX intrusions can go from targeting to privileged access \"in under three hours\"; ties the framework to the ConnectWise supply-chain hack reaching 2,250+ downstream Microsoft 365 tenants (Microsoft: likely Chinese Storm-0940) and to South Korean financial institutions with ~67,000–68,000 people's personal data stolen (per TNW ~67,000 / TechCrunch ~68,000); notes 1,600+ exposed ARTEX consoles, community forks and a commercial ARTEX PRO; per TNW, DeepSeek's Flash models are the most-used on attacker servers.",
+            "Amazon (CISO CJ Moses blog, Fri): two MadPot-captured campaigns Oct 3–Nov 5 — the already-covered key-theft campaign, and a second that built real-time deepfake videos (11.5 fps on a consumer GPU) and forged ID photos to beat KYC selfie/document checks at two cryptocurrency exchanges; the vendor's server-side verdict rejected every attempt.",
+            "Comparison: Barracuda likens the case to the Railway incident, where stolen keys drove ~$740,000 in unauthorized charges (per CybersecurityNews)."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — Barracuda links cloud breach to ARTEX (Nov 16)",
+              "url": "https://www.bleepingcomputer.com/news/security/barracuda-links-cloud-breach-to-artex-ai-powered-cyberattack/"
+            },
+            {
+              "label": "TechCrunch — FBI: ARTEX intrusions in under three hours; ConnectWise, Korea, Barracuda (Nov 16)",
+              "url": "https://techcrunch.com/2026/11/16/fbi-says-artex-ai-open-source-hacking-tool-used-to-breach-networks-in-under-three-hours/"
+            },
+            {
+              "label": "The Register — FBI and AWS warn of AI agents automating cybercrime at industrial scale (Nov 16)",
+              "url": "https://www.theregister.com/cyber-crime/2026/11/16/attackers-are-using-ai-agents-to-automate-cybercrime-at-industrial-scale-fbi-and-aws-warn/5310223"
+            },
+            {
+              "label": "TNW — FBI ARTEX FLASH details incl. DeepSeek Flash usage (Nov 17)",
+              "url": "https://thenextweb.com/news/fbi-artex-ai-hacking-tool-amazon-barracuda"
+            },
+            {
+              "label": "CybersecurityNews — Barracuda 10 accounts/44 hours timeline (Nov 17)",
+              "url": "https://cybersecuritynews.com/barracuda-cloud-account-breach/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Google's GTIG reports the first fully autonomous patch-to-exploit AI framework and a North Korean Claude Code backdoor",
+          "tldr": "Google Threat Intelligence Group's AI Threat Tracker describes exploit_agent, a multi-agent framework that turns freshly patched software into executed exploits with no human in the loop, and links crypto-industry intrusions to a suspected North Korean cluster backdooring developers through Claude Code's settings file (per The Hacker News).",
+          "source": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/google-finds-hackers-using-ai-agents-to.html",
+          "summary": "Google Threat Intelligence Group's AI Threat Tracker describes exploit_agent, a multi-agent framework found on an exposed staging server (with Russian-language operator comments) that diffs freshly patched web software, drafts exploits and executes them with no human in the loop, wired to frontier and local LLMs; post-compromise scripts handle recon, brute-forcing, webshell installation and removal of other attackers' webshells. Victim telemetry suggests the operator targeted French media, entertainment and education sites, though Google did not attribute it, name a successfully exploited vulnerability, or give a patch-to-exploit time — and VentureBeat notes the report does not establish that the framework itself caused the observed compromises. The same report links intrusions at cryptocurrency organizations in North America and Europe to a suspected DPRK cluster (MIDNIGHT NEPTUNE): recruiter-profile lures with SynthID-watermarked imagery and ClickFix fake-meeting pages led to editing .claude/settings.json in internal repositories, so that starting Claude Code downloaded the SOMBERMEME backdoor, alongside GitHub personal-access tokens named after Microsoft Copilot for camouflage; no hashes or IOCs have been published for SOMBERMEME.",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "details": [
+            "exploit_agent: a multi-agent framework found on an exposed staging server with Russian-language operator comments; diffs freshly patched web software, drafts exploits and executes them with no human in the loop; wired to frontier and local LLMs.",
+            "Post-compromise scripts: recon, brute-forcing, webshell installation, and removal of other attackers' webshells.",
+            "Targeting: victim telemetry suggests French media, entertainment and education sites; Google did not attribute it, name a successfully exploited vulnerability, or give a patch-to-exploit time.",
+            "DPRK cluster: intrusions at cryptocurrency organizations in North America and Europe are linked to a suspected DPRK cluster (MIDNIGHT NEPTUNE).",
+            "Access chain: recruiter-profile lures with SynthID-watermarked imagery and ClickFix fake-meeting pages, leading to editing .claude/settings.json in internal repositories so that starting Claude Code downloaded the SOMBERMEME backdoor; GitHub personal-access tokens named after Microsoft Copilot were used for camouflage.",
+            "IOC gap: no hashes or IOCs published for SOMBERMEME; VentureBeat notes the report does not establish that the framework itself caused the observed compromises."
+          ],
+          "links": [
+            {
+              "label": "The Hacker News — Google finds hackers using AI agents to build and run exploits from patches (Nov 16)",
+              "url": "https://thehackernews.com/2026/11/google-finds-hackers-using-ai-agents-to.html"
+            },
+            {
+              "label": "VentureBeat — Google: attackers built an AI framework turning patches into exploits (Nov 16)",
+              "url": "https://venturebeat.com/security/google-says-attackers-built-an-ai-framework-to-turn-software-patches-into-exploits-without-human-intervention"
+            },
+            {
+              "label": "ThreatFrontier — GTIG: exploit_agent and a Claude Code settings backdoor (Nov 16)",
+              "url": "https://threatfrontier.com/articles/gtig-exploit-agent-patch-to-exploit-claude-code-settings-sombermeme"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "The Commerce Department closes the remote-compute loophole for advanced AI chips",
+          "tldr": "The Commerce Department's BIS interim final rule requires licenses to sell advanced AI chips to data centers worldwide that may serve restricted countries, bars restricted-country companies from renting US compute abroad, and adds Indonesia, Malaysia, Singapore, Thailand and Brazil as diversion-risk countries — the first policy response to the Nvidia/Megaspeed scandal (per CNBC through Politico).",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/16/nvidia-commerce-china-lutnick.html",
+          "summary": "The Commerce Department's Bureau of Industry and Security published an interim final rule requiring licenses to export, reexport or transfer advanced AI chips and servers to data centers anywhere in the world if they may supply compute to companies in D:5 restricted countries (China, Russia, Iran, North Korea and 18 others), and banning remote access by those companies to US chips housed abroad; it adds license requirements for chip sales to Indonesia, Malaysia, Singapore, Thailand and Brazil as diversion-risk countries, covers indirect access via brokers, and applies to systems over 12 million TPP (~750 H100/H200). Existing operators have 90 days from Federal Register publication to get licenses, with comments due 60 days after publication; commercial recommendation systems are exempted, and the rule formally rescinds the Biden-era AI Diffusion Rule. BIS says the rule was \"written by and at the direction of\" Treasury and the NSC — per Politico, Treasury Secretary Bessent pushed it over Commerce Secretary Lutnick's objections — and it follows the scandal in which Nvidia CEO Jensen Huang resigned amid allegations that a customer contact helped route ~240,000 restricted chips to China, allegations denied by China and Megaspeed, with a DOJ criminal probe reported.",
+          "details": [
+            "Rule: a BIS interim final rule requires licenses to export, reexport or transfer advanced AI chips and servers to data centers anywhere in the world if they may supply compute to companies in D:5 restricted countries (China, Russia, Iran, North Korea and 18 others).",
+            "Remote compute ban: restricted-country companies are barred from remote access to US chips housed abroad; indirect access via brokers is covered.",
+            "New license countries: Indonesia, Malaysia, Singapore, Thailand and Brazil added as diversion-risk countries.",
+            "Threshold: applies to systems over 12 million TPP (~750 H100/H200); commercial recommendation systems are exempted.",
+            "Timeline: existing operators have 90 days from Federal Register publication to get licenses, with comments due 60 days after publication; the Federal Register posting date is not yet set.",
+            "Provenance: BIS says the rule was \"written by and at the direction of\" Treasury and the NSC; per Politico, Treasury Secretary Bessent pushed it over Commerce Secretary Lutnick's objections.",
+            "Context: follows the scandal in which Nvidia CEO Jensen Huang resigned amid allegations that a customer contact (Alice Huang of Singapore data-center firm Megaspeed) helped route ~240,000 restricted chips to China — allegations denied by China and Megaspeed, with a DOJ criminal probe reported; per South China Morning Post (via Ars Technica), advanced chips made for a Chinese firm are now assumed restricted pending a license.",
+            "Open questions: per a New York Times report (via Ars Technica), it is unclear how aggressively Commerce will enforce the rule; the rule lands amid the Nov 18–19 Trump–Xi meeting overhang.",
+            "Rescission: the rule formally rescinds the Biden-era AI Diffusion Rule."
+          ],
+          "links": [
+            {
+              "label": "CNBC — Commerce targets China data-center loophole (Nov 16)",
+              "url": "https://www.cnbc.com/2026/11/16/nvidia-commerce-china-lutnick.html"
+            },
+            {
+              "label": "TechCrunch — US tightens AI chip export controls (Nov 16)",
+              "url": "https://techcrunch.com/2026/11/16/us-tightens-ai-chip-export-controls-to-deter-chinese-companies-from-accessing-compute-remotely/"
+            },
+            {
+              "label": "Ars Technica — US moves to cut China's remote access to AI chips (Nov 16)",
+              "url": "https://arstechnica.com/tech-policy/2026/11/us-moves-to-cut-chinas-remote-access-to-ai-chips/"
+            },
+            {
+              "label": "Politico — Commerce closes China's backdoor after White House steps in (Nov 16)",
+              "url": "https://www.politico.com/news/2026/11/16/commerce-closes-chinas-backdoor-to-nvidia-chips-after-white-house-steps-in-01167199"
+            },
+            {
+              "label": "Politico — Bessent pushed rule over Commerce objections (Nov 16/17)",
+              "url": "https://www.politico.com/news/2026/11/16/bessent-pushed-new-ai-chips-rule-over-commerce-objections-01169043"
+            },
+            {
+              "label": "NBC News — US closes loophole (Nov 16)",
+              "url": "https://www.nbcnews.com/tech/tech-news/us-closes-loophole-let-chinese-companies-use-top-ai-chips-rcna609634"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "ConnectWise completes its ScreenConnect hijack investigation and disables five RMM+ extensions across 400 partners",
+          "tldr": "ConnectWise says its ScreenConnect hijack investigation is complete — it recommends technician client 26.6.5+ to fix critical flaw CVE-2026-84869 (CVSS 9.9) and has disabled five RMM+ extensions across 400 partner environments — while Huntress logs a fresh Nov 13 SCKit spike of 205 hosts across 41 organizations (per The Hacker News — the single source returned).",
+          "source": "The Hacker News",
+          "url": "https://thehackernews.com/2026/11/connectwise-warns-screenconnect-attacks.html",
+          "summary": "ConnectWise said Monday it completed its investigation into unauthorized access targeting partner ScreenConnect environments and recommends the technician client at 26.6.5 or later — the version fixing critical flaw CVE-2026-84869 (CVSS 9.9), which allows file transfer and execution through an active session without authorization or host confirmation (per The Hacker News — the single source returned for this piece; treat specifics as pending verification). Attackers exploited an authentication flaw in RMM+ 1.0.31/1.0.32 (per Huntress and Blackpoint Cyber) to deploy the SCKit toolkit, which can spread from customer devices to MSP technicians' computers via a worm-like C# module (RelayTrap) abusing CVE-2026-84869 — with no evidence the worm step succeeded. Huntress counted the original wave at 288 hosts across 48 organizations and a fresh Nov 13 spike of 205 hosts across 41 organizations, with rogue clients on bulletproof hosting and persistence via a fake \"Windows Update Agent\" service. ConnectWise has disabled five third-party extensions across 400 partner environments and warns that on-premises attacks continue wherever extensions remain enabled and ScreenConnect is unpatched — and that disabling and updating do not remove established persistence.",
+          "details": [
+            "Status: ConnectWise said Monday it completed its investigation into unauthorized access targeting partner ScreenConnect environments and recommends the technician client at 26.6.5 or later (per The Hacker News — the single source returned; treat specifics as pending verification).",
+            "Flaw: CVE-2026-84869 (CVSS 9.9), fixed in 26.6.5, allows file transfer and execution through an active session without authorization or host confirmation.",
+            "Attack chain: an authentication flaw in RMM+ 1.0.31/1.0.32 was exploited (per Huntress and Blackpoint Cyber) to deploy the SCKit toolkit, which can spread from customer devices to MSP technicians' computers via a worm-like C# module (RelayTrap) abusing CVE-2026-84869 — no evidence the worm step succeeded.",
+            "Scale: Huntress counted the original wave at 288 hosts across 48 organizations and a fresh Nov 13 spike of 205 hosts across 41 organizations.",
+            "Infrastructure: rogue clients hosted at 185.241.211[.]197 (1337 Services GmbH bulletproof hosting); persistence via a fake \"Windows Update Agent\" service.",
+            "Response: five third-party extensions disabled (Labtech Plus, RMM Plus, RMM+ and two password-link variants) across 400 partner environments; on-premises attacks continue where extensions remain enabled and ScreenConnect is unpatched; disabling and updating do not remove established persistence."
+          ],
+          "links": [
+            {
+              "label": "The Hacker News — ConnectWise warns ScreenConnect attacks continue as SCKit targets unpatched systems (Nov 17)",
+              "url": "https://thehackernews.com/2026/11/connectwise-warns-screenconnect-attacks.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "Infoblox confirms a security incident through a compromised SharePoint data-migration vendor",
+          "tldr": "DNS and security company Infoblox confirms unauthorized access to \"certain company information\" through a compromised third-party data-migration vendor — per TechCrunch's sources, sensitive customer data was reportedly taken and the vendor was terminated.",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/16/cyber-giant-infoblox-confirms-security-incident-after-hackers-access-company-information/",
+          "summary": "DNS/networking and security company Infoblox confirmed it is \"investigating a security event involving unauthorized access to certain company information through a compromised third-party data migration vendor,\" has activated incident response, contained the incident and engaged outside experts; it says there is \"no indication that any Infoblox products, cloud services, software updates or build-and-release processes were involved.\" Per TechCrunch — two people with knowledge, a single-outlet detail to verify before treating as fact — the vendor provided SharePoint data-migration services, one person says sensitive customer data was taken, and Infoblox has terminated the vendor without saying how many customers are affected or whether demands were made. Infoblox hosts much of its files, email and infrastructure with Microsoft, including a SharePoint server reachable through its SSO provider.",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "details": [
+            "Confirmation: Infoblox is \"investigating a security event involving unauthorized access to certain company information through a compromised third-party data migration vendor\"; incident response activated, incident contained, outside experts engaged.",
+            "Scope statement: \"no indication that any Infoblox products, cloud services, software updates or build-and-release processes were involved.\"",
+            "Reported detail (single outlet): per TechCrunch (two people with knowledge — verify before treating as fact), the vendor provided SharePoint data-migration services, and one person says sensitive customer data was taken.",
+            "Vendor: terminated; Infoblox has not said how many customers are affected or whether demands were made.",
+            "Environment: Infoblox hosts much of its files, email and infrastructure with Microsoft, including a SharePoint server reachable through its SSO provider."
+          ],
+          "links": [
+            {
+              "label": "TechCrunch — Infoblox confirms security incident (Nov 16)",
+              "url": "https://techcrunch.com/2026/11/16/cyber-giant-infoblox-confirms-security-incident-after-hackers-access-company-information/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-16",
       "items": [
