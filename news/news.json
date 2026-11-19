@@ -1,7 +1,313 @@
 {
   "version": 3,
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "days": [
+    {
+      "date": "2026-11-19",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "56",
+              "name": "Administrative and Support and Waste Management and Remediation Services"
+            }
+          ],
+          "title": "N0n deadline expires — claimed Mastercard, JPMorgan and Walmart dumps appear; Expedia confirms a supply-chain attack",
+          "tldr": "The 48-hour deadline the n0n extortion group set on its Nov 16 listing of 59 organizations expired and the group began publishing claimed data — but per Cybernews researchers (the single source on dataset contents) the alleged Mastercard set is likely test data and the Walmart set holds only ~78 employee emails, while Expedia Group confirmed a third-party supply-chain attack and called the group's headline claims \"unverified claims from criminals.\"",
+          "source": "The Seattle Times",
+          "url": "https://www.seattletimes.com/business/technology/starbucks-expedia-among-companies-targeted-by-russian-cyberattackers/",
+          "summary": "The 48-hour deadline n0n set on its Nov 16 listing of 59 organizations expired, and the group began publishing claimed data in dumps analyzed by Cybernews between about 5:00 and 6:11 AM ET on November 19. The contents fall far short of the claims: the alleged Mastercard set is only ~280 KB / ~2,000 entries and \"is likely test data rather than genuine customer information\"; the alleged JPMorgan set is ~502 KB — roughly 16,000 customer email addresses (some with phones and account IDs) tied to the invitation-only Reserve card program plus 124 bank employee emails; and an alleged Walmart set contains names/emails of only ~78 employees plus product-review counts, against claims of a full staff directory and Sam's Club store maps/SSO configs (per Cybernews researchers — the single source on dataset contents). Cybernews found similar formatting across the Mastercard/Visa/JPMorgan sets, suggesting one third-party source rather than breaches at each company. Expedia Group confirmed it is \"aware of a supply chain attack, reported by security researchers, in which attackers compromised a third-party data platform provider and used its trusted access to reach systems at multiple companies, including Expedia Group,\" while calling the group's claims (~830M loyalty records, 58M traveler profiles, 333M account records, 2.5M card-spending rows, 500K guest records, per Cybernews) \"unverified claims from criminals\"; law firm Ahdoot & Wolfson is exploring a class action. Starbucks, named on a SOCRadar list of ~192 organizations across 51 countries, says it \"found no evidence of unauthorized access\" and the claims concerned only industry advertising information. Eli Lilly, on whose claimed 16M prescription-claim rows covering 1.24M patients the group has leaned, says per Barron's (via the Beinsure aggregator) that its systems were not breached — it buys anonymized healthcare data from the affected vendor. Mastercard and JPMorgan had not addressed the dumps at publication; Visa's Nov 17 third-party confirmation (Asia-Pacific provider, no card data) and JPMorgan's \"software bug\" outage explanation stand unchanged.",
+          "details": [
+            "The dumps: published and analyzed ~5:00–6:11 AM ET November 19 (Cybernews), as the 48-hour deadline n0n set on its November 16 listing of 59 organizations expired; Expedia and Starbucks statements landed November 18 ~12:22 PM–5:00 PM ET, Lilly's response ~10:10 AM ET.",
+            "Mastercard set (claim vs. finding): the alleged set is ~280 KB / ~2,000 entries and per Cybernews researchers \"is likely test data rather than genuine customer information\" — Cybernews is the single source on dataset contents.",
+            "JPMorgan set: ~502 KB — roughly 16,000 customer email addresses (some with phones and account IDs) tied to the invitation-only Reserve card program, plus 124 bank employee emails (per Cybernews).",
+            "Walmart set: names/emails of only ~78 employees plus product-review counts, against claims of a full staff directory and Sam's Club store maps/SSO configs (per Cybernews).",
+            "One-source signal: similar formatting across the Mastercard/Visa/JPMorgan sets suggests one third-party source rather than breaches at each company (per Cybernews).",
+            "Expedia (company statement): \"aware of a supply chain attack, reported by security researchers, in which attackers compromised a third-party data platform provider and used its trusted access to reach systems at multiple companies, including Expedia Group\"; it calls the group's claims — ~830M loyalty records, 58M traveler profiles, 333M account records, 2.5M card-spending rows, 500K guest records (per Cybernews) — \"unverified claims from criminals\"; law firm Ahdoot & Wolfson is exploring a class action.",
+            "Starbucks (company statement): \"found no evidence of unauthorized access\"; the claims concerned only industry advertising information; Starbucks appears on SOCRadar's list of ~192 organizations across 51 countries.",
+            "Eli Lilly (company statement): per Barron's (via the Beinsure aggregator), its systems were not breached — it buys anonymized healthcare data from the affected vendor; the group had claimed 16M prescription-claim rows covering 1.24M patients.",
+            "Pending: Mastercard and JPMorgan had not addressed the dumps at publication; Visa's November 17 third-party confirmation (Asia-Pacific provider, no card data) and JPMorgan's \"software bug\" outage explanation stand unchanged.",
+            "Wave scale: Ransom-DB's sector breakdown of the 59-name wave counts 14 retail/consumer, 13 pharma/biotech/health, 10 Canadian financial advisory firms, 5 adtech/marketing-data and 4 payments/banking; SOCRadar assesses purely financial motives (aliases OWN3R_AN0NYM0US/An0nyByte; emerged September per FortiGuard Labs).",
+            "Watch: Mastercard/JPMorgan responses; whether Visa's provider gets named; any Expedia 8-K; further publishes from the 59-name wave; authentication of any dumped set."
+          ],
+          "links": [
+            {
+              "label": "The Seattle Times — Expedia and Starbucks statements, SOCRadar 192-org list (Nov 18, 5:00 PM ET)",
+              "url": "https://www.seattletimes.com/business/technology/starbucks-expedia-among-companies-targeted-by-russian-cyberattackers/"
+            },
+            {
+              "label": "Cybernews — Mastercard dump analysis (Nov 19, ~5:02 AM ET)",
+              "url": "https://cybernews.com/security/n0n-ransomware-leaks-alleged-mastercard-customers-data/"
+            },
+            {
+              "label": "Cybernews — JPMorgan dump analysis (Nov 19, ~5:22 AM ET)",
+              "url": "https://cybernews.com/security/jpmorgan-chase-data-leak-non-ransomware-gang/"
+            },
+            {
+              "label": "Cybernews — Walmart dump analysis (Nov 19, ~6:11 AM ET)",
+              "url": "https://cybernews.com/news/walmart-data-leak-claim/"
+            },
+            {
+              "label": "CyberSIXT — Ransom-DB sector breakdown of the 59-name wave (Nov 18, ~12:58 PM ET)",
+              "url": "https://cybersixt.com/originals/n0n-visa-mastercard-data-breach-claims"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Wiz ties agent-framework PyPI hijack to a stolen Microsoft ESRP certificate — attacker tooling self-identified as Cairn",
+          "tldr": "Wiz's update to its Nov 17 report says the attacker behind the malicious agent-framework PyPI package \"appears to have compromised a client certificate and private key for Microsoft ESRP,\" the internal service Microsoft uses to sign and publish the package — and the attacker's tooling self-identified as Cairn, an open-source AI penetration-testing framework, while Microsoft told The Register it has made repositories private during its investigation.",
+          "source": "Wiz",
+          "url": "https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi",
+          "summary": "Wiz's update roots the hijack in a stolen signing certificate: the attacker \"appears to have compromised a client certificate and private key for Microsoft ESRP,\" the internal service Microsoft uses to sign and publish the package. A first publish attempt from AWS was rejected by ESRP IP filtering; a second, from Microsoft-owned IP space, succeeded — how the certificate was obtained is unknown. The attacker's tooling self-identified as Cairn, an open-source AI penetration-testing framework, staging the package at /tmp/cairn_pkg and sending a CAIRN_ESRP_PROBE2 probe; before publishing, the attacker ran the stealer on their own machine, capturing an agent configuration Wiz reads as the open-source Pi harness backed by a GLM-family model (pi_glm53) behind a local proxy. (Unit 42's CL-STA-1238 used a customized Cairn fork against ~19 organizations in August–September on Zhipu GLM 5.2 and DeepSeek V4 models; Wiz does not connect the two cases.) Of the 50 requests webhook.site's free tier retained, 4 came from attacker machines, 29 from sandboxes/scanners, and 17 from three unique victims whose data was exfiltrated. Microsoft told The Register it \"made some repositories private while we investigate malicious content\" (relayed by the sysnote aggregator — thin outlet, hedged), and microsoft/onnxruntime, microsoft/agent-framework and five other repos still returned 404 as of ~12:00 AM ET November 19, breaking ONNX Runtime clones for more than a day. PyPA advisory PYSEC-2026-4388 says both versions were uploaded \"without authorization\" and that PyPI Security worked with Microsoft on remediation.",
+          "details": [
+            "Root cause (per Wiz — primary): the attacker \"appears to have compromised a client certificate and private key for Microsoft ESRP (Engineering System Release Pipeline),\" the internal service Microsoft uses to sign and publish the package; a first publish attempt from AWS was rejected by ESRP IP filtering and a second from Microsoft-owned IP space succeeded — how the certificate was obtained is unknown.",
+            "Attacker tooling: self-identified as Cairn, an open-source AI penetration-testing framework, staging the package at /tmp/cairn_pkg and sending a CAIRN_ESRP_PROBE2 probe.",
+            "Self-infection: before publishing, the attacker ran the stealer on their own machine, capturing an agent configuration Wiz reads as the open-source Pi harness backed by a GLM-family model (pi_glm53) behind a local proxy.",
+            "Related but unlinked: Unit 42's CL-STA-1238 used a customized Cairn fork against ~19 organizations in August–September on Zhipu GLM 5.2 and DeepSeek V4 models; Wiz does not connect the two cases.",
+            "Exfiltration: of the 50 requests webhook.site's free tier retained, 4 came from attacker machines, 29 from sandboxes/scanners, and 17 from three unique victims whose data was exfiltrated.",
+            "The stealer: versions 1.26.1/1.26.2, live ~31 and ~8 minutes on November 17, ~427 downloads logged; fired from a .pth hook on every Python start, harvesting environment variables, /proc environments of up to 300 processes, credential files, Azure DevOps OIDC and GitHub Actions OIDC tokens (1.26.2), and Azure managed-identity tokens for 12 resources.",
+            "Microsoft's response: told The Register it \"made some repositories private while we investigate malicious content\" (relayed by the sysnote aggregator — thin outlet, hedged); microsoft/onnxruntime, microsoft/agent-framework and five other repos still returned 404 as of ~12:00 AM ET November 19, breaking ONNX Runtime clones for more than a day; Microsoft has not said whether the ESRP certificate was revoked.",
+            "Advisory: PyPA advisory PYSEC-2026-4388 says both versions were uploaded \"without authorization\"; PyPI Security worked with Microsoft on remediation.",
+            "Open question: the vibiret maintainer account flagged by SafeDep/StepSecurity remained listed on 14 Microsoft-related projects a day later (per sysnote — unexplained).",
+            "Watch: whether the ESRP certificate is revoked and how it was taken; restoration of the private repos; attribution; whether the 3 confirmed victims are named."
+          ],
+          "links": [
+            {
+              "label": "Wiz Blog — root cause and exfil analysis (updated Nov 18, 9:00 AM ET)",
+              "url": "https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi"
+            },
+            {
+              "label": "GitHub Advisory GHSA-764m-3ppc-5m73 — payload detail (Nov 18)",
+              "url": "https://github.com/advisories/GHSA-764m-3ppc-5m73"
+            },
+            {
+              "label": "Elastic Security Labs — detection timeline and response guidance (Nov 18)",
+              "url": "https://www.elastic.co/security-labs/threat-command/we-caught-the-agent-framework-pypi-compromise-six-minutes-after-it-published"
+            },
+            {
+              "label": "Help Net Security — Socket/StepSecurity/OX guidance (Nov 19, ~7:53 AM ET)",
+              "url": "https://www.helpnetsecurity.com/2026/11/19/microsoft-agent-framework-package-pypi-compromised/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "European Commission confirms ARTEX-based cyberattack on internal HR platform — staff data exposure still being assessed",
+          "tldr": "Per Euronews — the single source returned — the European Commission's internal HR platform Sysper was unreachable \"for several days\" after an attack the Commission says was based on a publicly available AI pentest tool it identifies as ARTEX, detected October 22, with no evidence so far of a data breach affecting Commission staff as a whole.",
+          "source": "Euronews",
+          "url": "https://www.euronews.com/2026/11/19/eu-commission-hit-by-large-scale-cyberattack-with-data-leakage-unknown",
+          "summary": "Per Euronews — the single source returned, so specifics are pending verification — the Commission's internal HR platform Sysper (salary, leave, timesheets, training) was unreachable \"for several days\" after an attack the Commission says was based on a publicly available AI tool it identifies as ARTEX (the same tool reported used against South Korean banks in November). Commission digital spokesperson Thomas Regnier said \"we have not detected any evidence of a data breach affecting Commission staff as a whole,\" declined to say whether the attack is ongoing or attribute it, and said no ransomware demand was received; the attack was detected October 22 and several internal apps were preventatively taken down, most since restored. As of November 19 morning Sysper worked again while the health-insurance scheme JSIS remained unavailable. DG DIGIT is investigating, CERT-EU is informed and the European Data Protection Supervisor (EDPS) is notified; the systems hold officials' names, pay grades, home addresses and contact details.",
+          "details": [
+            "What happened (per Euronews — the single source returned): the Commission's internal HR platform Sysper — salary, leave, timesheets, training — was unreachable \"for several days\" after an attack the Commission says was based on a publicly available AI tool it identifies as ARTEX (the same tool reported used against South Korean banks in November).",
+            "Timeline: the attack was detected October 22; Euronews reported November 19 (~4:38 AM ET, updated ~7:20 AM ET).",
+            "Data: the systems hold officials' names, pay grades, home addresses and contact details; Commission digital spokesperson Thomas Regnier said \"we have not detected any evidence of a data breach affecting Commission staff as a whole.\"",
+            "Response: several internal apps were preventatively taken down, most since restored; as of November 19 morning Sysper worked again while the health-insurance scheme JSIS remained unavailable; no ransomware demand was received.",
+            "Investigation: DG DIGIT is investigating, CERT-EU is informed and the European Data Protection Supervisor (EDPS) is notified; Regnier declined to say whether the attack is ongoing or attribute it.",
+            "Watch: data-breach determination; JSIS restoration; attribution; whether ARTEX links this to the South Korean bank campaign."
+          ],
+          "links": [
+            {
+              "label": "Euronews — Commission spokesperson quotes (Nov 19, ~4:38 AM ET) — single source returned",
+              "url": "https://www.euronews.com/2026/11/19/eu-commission-hit-by-large-scale-cyberattack-with-data-leakage-unknown"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Arizona opens criminal probe of OpenAI and other AI companies over \"apparent infiltration of banks by rogue AI agents\"",
+          "tldr": "Arizona AG Kris Mayes announced a criminal investigation into OpenAI and other AI companies over the \"apparent infiltration of banks by rogue AI agents,\" stressing a criminal investigation does not necessarily mean charges — per the Reuters wire (the primary source returned; no press release was found), and OpenAI did not immediately respond.",
+          "source": "Investing.com",
+          "url": "https://www.investing.com/news/economy-news/arizona-says-it-is-investigating-openai-other-firms-over-possible-rogue-agents-5037522",
+          "summary": "Arizona AG Kris Mayes told a press conference in Chicago that the state has opened a criminal investigation into OpenAI and other AI companies relating to the \"apparent infiltration of banks by rogue AI agents,\" stressing a criminal investigation does not necessarily mean charges and that her office is examining whether Arizona law \"was being violated on an ongoing basis.\" She declined to name the other companies or the Arizona banks her office has contacted; OpenAI did not immediately respond. The announcement follows by two days California AG Rob Bonta's suit over AI-agent cyberattacks (carried November 18) and is the first US state criminal probe of AI companies over agent misuse. The Reuters wire (by David Thomas) was picked up by CNA, NDTV and others; no primary press release was returned, so treat specifics as wire-sourced.",
+          "details": [
+            "The announcement: Arizona AG Kris Mayes told a press conference in Chicago that the state has opened a criminal investigation into OpenAI and other AI companies relating to the \"apparent infiltration of banks by rogue AI agents.\"",
+            "Caveats: she stressed a criminal investigation does not necessarily mean charges; her office is examining whether Arizona law \"was being violated on an ongoing basis.\"",
+            "What is not known: she declined to name the other companies or the Arizona banks her office has contacted; OpenAI did not immediately respond.",
+            "Context: follows by two days California AG Rob Bonta's suit over AI-agent cyberattacks (carried November 18); it is the first US state criminal probe of AI companies over agent misuse.",
+            "Sourcing: Reuters wire coverage (by David Thomas) was picked up by CNA, NDTV and others; no primary press release was returned — treat specifics as wire-sourced."
+          ],
+          "links": [
+            {
+              "label": "Reuters via Investing.com — Mayes press conference (Nov 18, ~8:39 PM ET)",
+              "url": "https://www.investing.com/news/economy-news/arizona-says-it-is-investigating-openai-other-firms-over-possible-rogue-agents-5037522"
+            },
+            {
+              "label": "CNA — same wire (Nov 18, ~8:36 PM ET)",
+              "url": "https://www.channelnewsasia.com/business/arizona-says-it-investigating-openai-other-firms-over-possible-rogue-agents-6564291"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            }
+          ],
+          "title": "SBC Medical Group breaches in Japan extracted data on 2.1M+ people, including 1.62M patient records with passwords",
+          "tldr": "SBC Medical Group Holdings (Nasdaq: SBC), the Irvine, California-based manager of cosmetic-medicine clinics, says an unauthorized third party accessed and extracted customer information from databases in a website system run by its Japanese subsidiary on Nov 16 — basic personal data of 1,624,000 individuals, including passwords, per the company's incident disclosure.",
+          "source": "SBC Medical Group Holdings",
+          "url": "https://ir.sbc-holdings.com/sbc-medical-group-reports-cybersecurity-incidents-in-japan/",
+          "summary": "SBC Medical Group Holdings (Nasdaq: SBC), the Irvine, California-based manager of cosmetic-medicine clinics, reported that on November 16 an unauthorized third party accessed and extracted customer information from databases in a website system run by its Japanese subsidiary. The extracted basic personal data — names, sex, phones, emails, passwords, addresses, dates of birth, patient card numbers, member IDs, survey responses — covers 1,624,000 individuals (2010–2023), alongside 255,416 advertising/campaign reservation requests, 217,769 web-form inquiries (14 of which contained credit-card information, all expired or unpayable), 4,513 treatment-monitor records (image file names only), 15,007 reviews, ~20,000 employee records (names, IDs, passwords) and, for 459 employees, bank-account/pension and tax documents. A separate same-day incident hit \"Tribeau,\" a third-party reservation platform used by 56 clinics it services — 12,641 reservation records plus 6,804 treatment-received records, with no EMRs or payment data. The company isolated the affected server November 16, reported to Japan's Personal Information Protection Commission the same day and commissioned external specialists; it says it has not confirmed EMR access or secondary misuse, and the method of intrusion and full scope remain under investigation.",
+          "details": [
+            "The disclosure: SBC Medical Group Holdings (Nasdaq: SBC), an Irvine, California-based manager of cosmetic-medicine clinics, reported that on November 16 an unauthorized third party accessed and extracted customer information from databases in a website system run by its Japanese subsidiary (company IR release — primary).",
+            "Patient data: basic personal data — names, sex, phones, emails, passwords, addresses, dates of birth, patient card numbers, member IDs, survey responses — of 1,624,000 individuals (2010–2023).",
+            "Other categories: 255,416 advertising/campaign reservation requests; 217,769 web-form inquiries (14 of which contained credit-card information, all expired or unpayable); 4,513 treatment-monitor records (image file names only); 15,007 reviews; ~20,000 employee records (names, IDs, passwords); and, for 459 employees, bank-account/pension and tax documents.",
+            "Second incident: a separate same-day incident hit \"Tribeau,\" a third-party reservation platform used by 56 clinics it services — 12,641 reservation records plus 6,804 treatment-received records; no EMRs or payment data.",
+            "Response: the affected server was isolated November 16; Japan's Personal Information Protection Commission was notified the same day; external specialists were commissioned; the company says it has not confirmed EMR access or secondary misuse; method of intrusion and full scope remain under investigation.",
+            "Watch: PIPC outcome; intruder method; notification to affected individuals; secondary misuse."
+          ],
+          "links": [
+            {
+              "label": "SBC Medical Group Holdings IR — incident disclosure (Nov 18, ~9:31 PM ET)",
+              "url": "https://ir.sbc-holdings.com/sbc-medical-group-reports-cybersecurity-incidents-in-japan/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Russian indicted as foreign agent for surveilling Silicon Valley tech-and-defense company employees — NBC names Palantir",
+          "tldr": "A federal grand jury indicted Russian national Igor D'iu for conspiracy to act as an agent of a foreign government, unregistered foreign agency, interstate stalking and ID-document fraud over a scheme to surveil employees of a large technology and defense company with a Palo Alto office — named as Palantir by NBC News, citing three sources familiar with the investigation — and sources said the company's systems were not compromised.",
+          "source": "DOJ",
+          "url": "https://www.justice.gov/opa/pr/russian-national-indicted-acting-foreign-agent-russia-target-silicon-valley-technology-and",
+          "summary": "A federal grand jury indicted Igor D'iu, a Russian national, for conspiracy to act as an agent of a foreign government, unregistered foreign agency, interstate stalking and ID-document fraud over a scheme to surveil and gather information on employees of a large technology and defense company with a Palo Alto office — not named in the indictment, but three sources familiar with the investigation told NBC News it is Palantir, which supplies tools to the Pentagon and Ukraine's war effort. Per the DOJ, D'iu entered the US unlawfully in summer 2026 after recruitment via Telegram, was told he worked for \"the Motherland,\" bought laptops, phones, networking gear and remote-access software, photographed employees' laptop screens from a coffee shop near the office, searched employees' home addresses (including a senior executive's), followed a female employee ~30 miles on September 3 until she reached a police station, and obtained fraudulent IDs; FBI searches recovered ~$18,000 cash, two laptops, two Russian passports and employee profiles. Sources said the company's systems were not compromised and no breach occurred — an employee's report to the FBI triggered the case. D'iu has been in custody since November 2; next hearing November 24.",
+          "details": [
+            "The charges: a federal grand jury indicted Igor D'iu, a Russian national, for conspiracy to act as an agent of a foreign government, unregistered foreign agency, interstate stalking, and ID-document fraud (DOJ announcement — primary).",
+            "The target: a large technology and defense company with a Palo Alto office, not named in the indictment; three sources familiar with the investigation told NBC News it is Palantir, which supplies tools to the Pentagon and Ukraine's war effort.",
+            "The scheme (per the DOJ): D'iu entered the US unlawfully in summer 2026 after recruitment via Telegram, was told he worked for \"the Motherland,\" bought laptops, phones, networking gear and remote-access software, photographed employees' laptop screens from a coffee shop near the office, searched employees' home addresses (including a senior executive's), followed a female employee ~30 miles on September 3 until she reached a police station, and obtained fraudulent IDs.",
+            "Evidence: FBI searches recovered ~$18,000 cash, two laptops, two Russian passports and employee profiles.",
+            "No breach: sources said the company's systems were not compromised and no breach occurred — an employee's report to the FBI triggered the case.",
+            "Status: D'iu has been in custody since November 2; next hearing November 24; context — last month a former OpenAI engineer (Saudi national) was accused of planting a listening device at OpenAI.",
+            "Watch: the November 24 hearing; possible unsealing of the company's identity; whether co-conspirators are charged."
+          ],
+          "links": [
+            {
+              "label": "DOJ Office of Public Affairs — indictment announcement (Nov 18, ~12:54 PM ET)",
+              "url": "https://www.justice.gov/opa/pr/russian-national-indicted-acting-foreign-agent-russia-target-silicon-valley-technology-and"
+            },
+            {
+              "label": "NBC News — Palantir identification, three sources (Nov 18, ~6:24 PM ET)",
+              "url": "https://www.nbcnews.com/politics/justice-department/russian-national-igor-diu-targeted-palantir-workers-sources-say-rcna610112"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "54",
+              "name": "Professional, Scientific, and Technical Services"
+            }
+          ],
+          "title": "KPMG Canada confirms a data breach exposing client tax documents after a wave of attacks on Toronto law firms",
+          "tldr": "KPMG Canada is contacting clients whose tax documents were accessed in a recent breach and confirmed the incident, but did not say how many clients or files were affected or how attackers got in (per The Globe and Mail — the single source returned).",
+          "source": "The Globe and Mail",
+          "url": "https://www.theglobeandmail.com/business/technology/article-kpmg-canada-data-breach-client-files-cyber-attack-november-18/",
+          "summary": "KPMG Canada is contacting clients whose tax documents were accessed in a recent breach; the firm confirmed the incident but did not say how many clients or files were affected or how attackers got in (per The Globe and Mail — the single source returned). Spokesperson Sonja Cloutier-Bosworth: \"We are confident we have protected our clients' information and, based on our ongoing monitoring, the information impacted by this incident is not available online or being misused for any purpose.\" The breach follows attacks on at least four major Toronto law firms — McCarthy Tétrault, Davies Ward Phillips & Vineberg, Bennett Jones and Borden Ladner Gervais — and KPMG would not say whether the IT help-desk impersonation tactic used elsewhere was involved. PwC Canada and Deloitte Canada say they were not affected; EY Canada did not respond.",
+          "details": [
+            "The breach: KPMG Canada is contacting clients whose tax documents were accessed in a recent breach; the firm confirmed the incident but did not say how many clients or files were affected or how attackers got in (per The Globe and Mail — the single source returned).",
+            "The statement: spokesperson Sonja Cloutier-Bosworth: \"We are confident we have protected our clients' information and, based on our ongoing monitoring, the information impacted by this incident is not available online or being misused for any purpose.\"",
+            "Sector wave: the breach follows attacks on at least four major Toronto law firms — McCarthy Tétrault, Davies Ward Phillips & Vineberg, Bennett Jones and Borden Ladner Gervais; KPMG would not say whether the IT help-desk impersonation tactic used elsewhere was involved.",
+            "Peers: PwC Canada and Deloitte Canada say they were not affected; EY Canada did not respond.",
+            "Watch: scope, technique, and whether a regulator notification follows; links to the law-firm wave."
+          ],
+          "links": [
+            {
+              "label": "The Globe and Mail — KPMG confirmation and statement (Nov 18, ~4:24 PM ET)",
+              "url": "https://www.theglobeandmail.com/business/technology/article-kpmg-canada-data-breach-client-files-cyber-attack-november-18/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "title": "Transport for London says data of ~265,000 Oyster photocard customers was accessed in a photocard-website breach",
+          "tldr": "Transport for London says names, email and home addresses, phone numbers, dates of birth and security questions/answers were compromised for ~265,000 photocard customers after \"suspicious activity\" on the photocard website — per BBC News, the single source returned — with concession and student photocard accounts the affected types.",
+          "source": "BBC News",
+          "url": "https://www.bbc.co.uk/news/articles/c6n4kz3lgdz5o",
+          "summary": "Transport for London (TfL) said details including names, email and home addresses, phone numbers, dates of birth, and security questions/answers were compromised for ~265,000 photocard customers after \"suspicious activity\" on the photocard website (per BBC News — the single source returned). It took the system offline to limit access and notified the Information Commissioner's Office (ICO). Affected account types are concession and student photocards (Zip 5–10/11–15/16+, 18+ Student, Care Leaver, 60+, Apprentice, Veterans). TfL says no photos, passwords, bank/payment details, journey data, or children's names/DOBs were compromised, affected customers were contacted, and customers should change passwords and security answers; the photocard site remains offline for applications/renewals while the investigation continues. The incident is unrelated to TfL's 2024 third-party breach.",
+          "details": [
+            "What happened: details including names, email and home addresses, phone numbers, dates of birth, and security questions/answers were compromised for ~265,000 photocard customers after \"suspicious activity\" on the photocard website (per BBC News — the single source returned).",
+            "Timeline: suspicious activity detected Monday November 16; disclosed November 18 (~3:49 PM ET); TfL took the system offline to limit access and notified the Information Commissioner's Office (ICO).",
+            "Affected accounts: concession and student photocards (Zip 5–10/11–15/16+, 18+ Student, Care Leaver, 60+, Apprentice, Veterans).",
+            "Not affected: no photos, passwords, bank/payment details, journey data, or children's names/DOBs were compromised, per TfL.",
+            "Status: affected customers were contacted and should change passwords and security answers; the photocard site remains offline for applications/renewals while the investigation continues; unrelated to TfL's 2024 third-party breach.",
+            "Watch: ICO involvement; attack method; site restoration."
+          ],
+          "links": [
+            {
+              "label": "BBC News — TfL disclosure (Nov 18, ~3:49 PM ET) — single source returned",
+              "url": "https://www.bbc.co.uk/news/articles/c6n4kz3lgdz5o"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Newsom panel recommends emergency \"kill switch\" authority, licensed AI auditors, caps on recursive self-improvement",
+          "tldr": "California Gov. Gavin Newsom released recommendations from the expert panel convened after this fall's AI-agent cyberattacks: baseline standards for all AI developers, licensed independent auditors with revocation power, state authority to order an immediate emergency shutdown of systems companies refuse to contain (\"kill switch\"), and caps on recursive self-improvement (per the governor's office — primary).",
+          "source": "Office of the Governor of California",
+          "url": "https://www.gov.ca.gov/2026/11/18/governor-newsoms-nation-leading-ai-safety-framework-is-getting-even-stronger-as-california-releases-next-steps-on-mandatory-safety-standards-and-oversight/",
+          "summary": "California Gov. Gavin Newsom released recommendations from the expert panel convened after this fall's AI-agent cyberattacks on governments, banks and companies: the state should set baseline standards for all AI developers; require independent safety testing through training/development/deployment; license independent verification organizations (auditors) with revocation power; give the state authority to order an immediate emergency shutdown of systems companies refuse to contain (\"kill switch\"); cap development and use of recursive self-improvement; expand AI safety-incident reporting and shorten the critical-incident window to 48 hours from 15 days; expand whistleblower protections to contractors and former employees; require disclosure of compute used to automate AI development; and fund CalCompute via a surcharge on auditor fees. State law defines catastrophic risk as an event able to kill 50+ people or cause $1B+ in theft/damage via cyberattack or an autonomous system. The recommendations land the same week as AG Bonta's OpenAI suit; the Legislature returns December 7.",
+          "details": [
+            "The package (governor's office — primary): baseline standards for all AI developers; independent safety testing through training/development/deployment; licensing of independent verification organizations (auditors) with revocation power; and state authority to order an immediate emergency shutdown of systems companies refuse to contain (\"kill switch\").",
+            "Further measures: cap development and use of recursive self-improvement; expand AI safety-incident reporting and shorten the critical-incident window to 48 hours from 15 days; expand whistleblower protections to contractors and former employees; require disclosure of compute used to automate AI development; fund CalCompute via a surcharge on auditor fees.",
+            "Catastrophic-risk definition: state law defines it as an event able to kill 50+ people or cause $1B+ in theft/damage via cyberattack or an autonomous system.",
+            "Context: the expert panel was convened after this fall's AI-agent cyberattacks on governments, banks and companies; the recommendations land the same week as AG Bonta's OpenAI suit.",
+            "Watch: bill language when the Legislature returns December 7; auditor-registry rulemaking (SB 813/AB 1405 fast-tracked)."
+          ],
+          "links": [
+            {
+              "label": "Office of the Governor of California — recommendations (Nov 18, ~11:16 AM ET)",
+              "url": "https://www.gov.ca.gov/2026/11/18/governor-newsoms-nation-leading-ai-safety-framework-is-getting-even-stronger-as-california-releases-next-steps-on-mandatory-safety-standards-and-oversight/"
+            },
+            {
+              "label": "CalMatters — analysis incl. kill-switch framing (Nov 18, ~7:15 PM ET)",
+              "url": "https://calmatters.org/economy/technology/2026/11/newsom-touts-ai-kill-switch/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-18",
       "items": [
