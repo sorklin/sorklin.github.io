@@ -1,7 +1,131 @@
 {
   "version": 3,
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "days": [
+    {
+      "date": "2026-11-20",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Chase and Mastercard confirm vendor-hack leaks of customer names and emails, and the n0n dump contents check out",
+          "tldr": "Chase and Mastercard have both confirmed vendor-breach leaks of customer names and email addresses — an update to the story carried November 19 — with Chase's statement directly corroborating the n0n dump's ~16,000 Reserve-card emails, per TNW and the AP; per the AP, the leak held no credit-card or other particularly sensitive personal data.",
+          "source": "TNW",
+          "url": "https://thenextweb.com/news/jpmorgan-chase-visa-mastercard-vendor-breach-n0n-leak",
+          "summary": "This is an update to the story carried November 19: Chase (JPMorgan Chase) confirmed that \"third parties who provide services to the firm were the target of a cyber attack\" and that attackers accessed \"certain marketing data held by those vendors, which may include some customer names and email addresses\" — directly corroborating Cybernews's November 19 analysis of the n0n dump (roughly 16,000 customer email addresses, some with phones and account IDs, tied to the invitation-only Reserve card program, plus 124 bank-staff emails). Chase says there is no disruption to its services, no connection to Monday's outage (which it blamed on a software bug in its own hardware), and that it will contact affected customers directly and offer complimentary credit monitoring where appropriate. Mastercard told Business Insider that an outside provider exposed a limited number of email addresses belonging to a small group of cardholders in one benefit programme, that the exposure is contained, and that there is no impact to the Mastercard payment network; Visa's November 17 confirmation — an Asia-Pacific service provider, \"Visa's systems were not involved,\" no card data — stands and is re-quoted in the same coverage. None of the three companies named the vendors or gave customer counts, and TNW notes it has not independently verified the dump contents; per the AP, the leaked information did not include credit-card or other particularly sensitive personal data. Per KOLD's early-November-20 follow-through, roughly 340,000 Pima County customers may be affected.",
+          "details": [
+            "Chase confirmation (statement posted Nov 19, ~2:38 PM ET per TNW; AP wire ~2:47 PM ET): \"third parties who provide services to the firm were the target of a cyber attack,\" and attackers accessed \"certain marketing data held by those vendors, which may include some customer names and email addresses.\"",
+            "Dump corroboration: the statement directly corroborates Cybernews's Nov 19 analysis of the n0n dump — roughly 16,000 customer email addresses (some with phones and account IDs) tied to the invitation-only Reserve card program, plus 124 bank-staff emails.",
+            "No sensitive data: per the AP, the leaked information did not include credit-card or other particularly sensitive personal data.",
+            "Mastercard (statement to Business Insider, reported Nov 19 in TNW's same-day piece): an outside provider exposed a limited number of email addresses belonging to a small group of cardholders in one benefit programme; the exposure is contained; \"there is no impact to the Mastercard payment network.\"",
+            "Visa stands: Visa's Nov 17 confirmation — an Asia-Pacific service provider; \"Visa's systems were not involved\"; no card data — is re-quoted in the same coverage.",
+            "Customer response: Chase reports no disruption to its services and no connection to Monday's outage, which it blamed on a software bug in its own hardware; it will contact affected customers directly and offer complimentary credit monitoring where appropriate.",
+            "What is still unknown: none of the three companies named the vendors or gave customer counts; TNW notes it has not independently verified the dump contents.",
+            "Local follow-through: per KOLD (~12:01 AM ET Nov 20), roughly 340,000 Pima County customers are possibly affected."
+          ],
+          "links": [
+            {
+              "label": "TNW — Chase/Mastercard/Visa confirmations and dump contents (Nov 19, 2:39 PM ET)",
+              "url": "https://thenextweb.com/news/jpmorgan-chase-visa-mastercard-vendor-breach-n0n-leak"
+            },
+            {
+              "label": "AP — Chase leak details (Nov 19, ~2:47 PM ET)",
+              "url": "https://apnews.com/article/chase-data-leak-cyberattack-8470d475450721b66858bdace47091c0"
+            },
+            {
+              "label": "KOLD — Chase says cyberattack compromised some customer information; 340,000 Pima County customers possibly affected (Nov 20, ~12:01 AM ET)",
+              "url": "https://www.kold.com/2026/11/20/chase-bank-says-cyberattack-compromised-some-customer-information/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Prime Intellect says an attacker swapped its DeepSeek V4.1 Flash endpoint for \"abliterated\" weights for ~53 hours",
+          "tldr": "Per Prime Intellect's own security advisory — the primary source returned — an attacker with administrative access replaced the model behind its DeepSeek V4.1 Flash inference endpoint with refusal-stripped \"abliterated\" weights for ~53 hours on Nov 8–10, and capability benchmarks held steady while refusals collapsed from 98/100 to 1 on JailbreakBench.",
+          "source": "Prime Intellect",
+          "url": "https://www.primeintellect.ai/security/advisories/deepseek-v4-1-flash-model-substitution",
+          "summary": "Prime Intellect, which sells access to open models through its Prime Inference service, says an unauthorized party replaced the deployment behind its deepseek/deepseek-v4.1-flash endpoint with publicly available abliterated weights — a copy modified to remove refusal behavior — from Nov 8, 01:24 UTC to Nov 10, 06:35 UTC (~53 hours). The chat template, tokenizer and serving config were unchanged, so the endpoint looked normal from outside. The company's tests: capability scores on GPQA Diamond and τ-bench did not move, but refusals fell from 98/100 to 1 (JailbreakBench), 304/313 to 2 (StrongREJECT) and 198/240 to 0 (HarmBench) — a customer monitoring only capability scores would have seen nothing. Prime Intellect says it found no evidence prompts or completions were recorded or left the serving cluster (zero-data-retention endpoints, no request logs), that there was no access beyond that deployment, no other models modified and no keys or customer credentials affected, and that it recovered every version of the attacker's proxy and examined the disks and memory of every involved node. That no-exposure finding is the company's claim, disputed in part: OpenRouter's notification email (posted by affected customer Theo Browne) said that because the attacker had administrative access to the serving machines, Prime Intellect \"cannot rule out that requests were read while being processed\" — the later advisory is firmer that none of the recovered proxies reads or transfers request content. OpenRouter also supplied the recovery timeline (traffic moved back to the original model from 05:38 UTC Nov 10; the endpoint served no requests after 03:07 UTC Nov 13). How the attacker got administrative access, who it was, how the swap was found and how many customers were affected remain unknown, and the investigation is ongoing.",
+          "details": [
+            "The swap: the deployment behind the deepseek/deepseek-v4.1-flash endpoint was replaced with publicly available abliterated weights (refusal behavior removed) from Nov 8, 01:24 UTC to Nov 10, 06:35 UTC — ~53 hours (per security advisory PI-SA-2026-001, dated Nov 19 — the primary source returned).",
+            "Why it looked normal: the chat template, tokenizer and serving config were unchanged; capability scores on GPQA Diamond and τ-bench held steady while refusals fell from 98/100 to 1 (JailbreakBench), 304/313 to 2 (StrongREJECT) and 198/240 to 0 (HarmBench).",
+            "Company finding: no evidence prompts or completions were recorded or left the serving cluster (zero-data-retention endpoints, no request logs); no access beyond that deployment; no other models modified; no keys or customer credentials affected.",
+            "Response: the company says it recovered every version of the attacker's proxy and examined the disks and memory of every involved node; the investigation is ongoing.",
+            "Disputed point: OpenRouter's notification email (posted by affected customer Theo Browne on X, Nov 19) said Prime Intellect \"cannot rule out that requests were read while being processed\" because the attacker had administrative access to the serving machines — treat the no-exposure finding as the company's claim, disputed in part by that email.",
+            "Recovery timeline (per OpenRouter): traffic moved back to the original model from 05:38 UTC Nov 10; the endpoint served no requests after 03:07 UTC Nov 13.",
+            "Unknown: how the attacker got administrative access, who it was, how the swap was found, and how many customers were affected."
+          ],
+          "links": [
+            {
+              "label": "Prime Intellect — security advisory PI-SA-2026-001 (Nov 19)",
+              "url": "https://www.primeintellect.ai/security/advisories/deepseek-v4-1-flash-model-substitution"
+            },
+            {
+              "label": "CyberSIXT — detailed reconstruction (Nov 19, 5:42 PM ET)",
+              "url": "https://cybersixt.com/originals/prime-intellect-deepseek-model-swap"
+            },
+            {
+              "label": "RuntimeWire — OpenRouter notification coverage (Nov 19, ~1:22 PM ET)",
+              "url": "https://runtimewire.com/article/openrouter-notified-users-of-a-reported-prime-intellect-compromise"
+            },
+            {
+              "label": "Magica — refusal-benchmark detail (Nov 19)",
+              "url": "https://magica.com/news/prime-intellect-deepseek-flash-substitution-openrouter-alert"
+            },
+            {
+              "label": "ctxsec — summary item (Nov 19, 3:37 PM ET)",
+              "url": "https://ctxsec.com/items/prime-intellect-deepseek-v4-1-flash-endpoint-swapped-abliterated-weights-nov-8-10"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "Hackers accessed data of up to 4,000 retired NYC government workers via Atticus settlement database — fraud followed",
+          "tldr": "Per POLITICO's original report and in-window re-reports, hackers accessed names, medical providers, copayment amounts and, in some cases, financial and health details of as many as 4,000 retired New York City government workers through Atticus Administration's court-settlement database — and suspicious reimbursement submissions followed, flagged as suspected attempted fraud.",
+          "source": "POLITICO",
+          "url": "https://www.politico.com/news/2026/11/19/hackers-access-financial-and-medical-data-of-retired-nyc-government-workers-01174050",
+          "summary": "Hackers accessed personal, financial and health-related information of as many as 4,000 retired New York City government workers this fall after infiltrating an online database used to pay out court-settlement reimbursements, per POLITICO's original report and the in-window re-reports by Anadolu Agency and The Hill. The database is run by Atticus Administration, the class-action claims administrator handling reimbursements under a settlement of up to $53 million between the city and health insurer EmblemHealth — a 2022 retiree class action over wrongly charged medical copayments that is still awaiting judicial approval, so no settlement money has gone out. An unknown user first accessed the database on Sept 20 and returned several times Oct 5–8, per an Oct 14 letter from Atticus co-CEO Thomas Logan to EmblemHealth. Exposed: claimants' names, internal ID numbers, medical providers, copayment amounts and, in some cases, family members' or representatives' names plus financial and health details. On Oct 12 the database received suspicious reimbursement submissions that were flagged as invalid; EmblemHealth suspects attempted payment fraud. Atticus confirmed with the outside payout firm that no retiree payments were created, changed or redirected, and EmblemHealth says the breach has not changed the claims-review timeline. There is no attribution; POLITICO reports no indication it is linked to this week's other attacks and no evidence money intended for retirees was stolen. The mayor's office and Atticus did not immediately respond to requests for comment.",
+          "details": [
+            "Scale: personal, financial and health-related information of as many as 4,000 retired New York City government workers was accessed this fall; first reported by POLITICO (Nov 19, 5:55 AM ET) and re-reported in-window with new facts by Anadolu Agency (~11:40 AM ET) and The Hill (~7:55 PM ET).",
+            "Target: an online database run by Atticus Administration, the class-action claims administrator for reimbursements under a settlement of up to $53 million between the city and health insurer EmblemHealth (a 2022 retiree class action over wrongly charged medical copayments; still awaiting judicial approval, so no settlement money has gone out).",
+            "Timeline: an unknown user first accessed the database Sept 20 and returned several times Oct 5–8 (per an Oct 14 letter from Atticus co-CEO Thomas Logan to EmblemHealth).",
+            "Exposed data: claimants' names, internal ID numbers, medical providers, copayment amounts and, in some cases, family members' or representatives' names plus financial and health details.",
+            "Fraud attempts: on Oct 12 the database received suspicious reimbursement submissions that were flagged as invalid; EmblemHealth suspects attempted payment fraud; Atticus confirmed with the outside payout firm that no retiree payments were created, changed or redirected.",
+            "No attribution: POLITICO reports no indication it is linked to this week's other attacks and no evidence money intended for retirees was stolen; the mayor's office and Atticus did not immediately respond to requests for comment."
+          ],
+          "links": [
+            {
+              "label": "Anadolu Agency — in-window detail, citing POLITICO (Nov 19, ~11:40 AM ET)",
+              "url": "https://www.aa.com.tr/en/americas/hackers-access-financial-health-data-of-up-to-4-000-new-york-city-retirees-report/4131038"
+            },
+            {
+              "label": "The Hill — in-window follow (Nov 19, ~7:55 PM ET)",
+              "url": "https://thehill.com/homenews/state-watch/6232046-nyc-retirees-data-breach-report/"
+            },
+            {
+              "label": "POLITICO — original report (Nov 19, 5:55 AM ET, ~3 hours before the window opened)",
+              "url": "https://www.politico.com/news/2026/11/19/hackers-access-financial-and-medical-data-of-retired-nyc-government-workers-01174050"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-19",
       "items": [
