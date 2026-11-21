@@ -1,7 +1,237 @@
 {
   "version": 3,
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "days": [
+    {
+      "date": "2026-11-21",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "Amazon: autonomous AI agents found and exploited a MONAI Label zero-day to root a university server",
+          "tldr": "Per Amazon's incident report (via The Register), a China-nexus actor ran autonomous agents through the open-source Cairn pentesting framework for ~48 hours with little human direction — the agents found a path-traversal zero-day in medical-imaging tool MONAI Label (now CVE-2026-133968, CVSS 9.8) and planted a root reverse shell on one university server.",
+          "source": "The Register",
+          "url": "https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382",
+          "summary": "Amazon's Threat Intelligence Team says it found an exposed operator panel for Cairn, an open-source AI penetration-testing framework whose operator left the control panel on the internet without authentication, on September 10, and reconstructed a roughly 48-hour campaign that began September 8. The agents first failed against a university Redis server (~16 hours, 148 sequential actions), tried Log4Shell and an SSRF against a co-located Qdrant instance, and ran credential sprays — one over six hours against a GPU server using 80 usernames compiled from public sources — before finding a path-traversal zero-day in MONAI Label and going from API mapping to arbitrary file writes in ~11 minutes. In a later session they planted a Python startup file and triggered a training feature to obtain a root reverse shell on one university server; a second university network may also have been hit (unconfirmed). The flaw — in the upload filename parameter, affecting MONAI Label ≤0.8.5 with authentication off by default — is now CVE-2026-133968 (CVSS 9.8); maintainers merged a source fix October 19 but no patched release exists yet. Attribution is China-nexus at moderate confidence (Simplified Chinese prompts, China Standard Time script settings, strategically interesting targets); not linked to a named group or government. Amazon says the account is its own reconstruction and there is no evidence patient scans or records were taken. Why it matters: it is the most detailed public account yet of AI agents autonomously discovering and weaponizing a zero-day, end to end.",
+          "details": [
+            "What happened: Per Amazon CISO CJ Moses (The Register), a China-nexus actor used Cairn, an open-source AI penetration-testing framework whose operator left the control panel on the internet without authentication — exposing prompts, task settings and run history.",
+            "Timeline: The campaign ran ~48 hours from September 8; Amazon's Threat Intelligence Team found the exposed operator panel September 10; the disclosure landed Friday, November 20.",
+            "Failed attempts first: ~16 hours and 148 sequential actions against a university Redis server (replication abuse, sandbox escape, config writes, memory corruption); an attempted Log4Shell exploit; an SSRF against a co-located Qdrant instance; credential sprays including one over six hours against a GPU server using 80 usernames compiled from public sources.",
+            "The zero-day: A path-traversal flaw in MONAI Label's upload filename parameter writes files outside the storage folder; from API mapping to arbitrary file writes took ~11 minutes; it affects MONAI Label ≤0.8.5, which ships with authentication off by default.",
+            "Impact: In a later session the agents planted a Python startup file and triggered a training feature to obtain a root reverse shell on one university server; via an operator-provided tunnel, a second university network running the same code was likely hit (unconfirmed).",
+            "CVE and patch status: CVE-2026-133968 (CVSS 9.8); maintainers merged a source fix October 19, but no patched release exists yet — the latest release is still 0.8.5, from 2024.",
+            "Attribution: China-nexus, moderate confidence (Simplified Chinese prompts, China Standard Time script settings, strategically interesting targets); not linked to a named group or government.",
+            "Caveats: Amazon says the account is its own reconstruction, not independently confirmed; there is no evidence patient scans or records were taken, or that clinical systems were touched.",
+            "Wider Cairn context: A separate September Gambit Security report documented a Cairn operator running ≥105 attacks that compromised, to varying degrees, ≥27 companies — a Fortune 500 hospitality firm, a major US airline, a large private US industrial-supplies distributor and a US online fashion retailer."
+          ],
+          "links": [
+            {
+              "label": "The Register — report on Amazon's disclosure, quoting Amazon CISO CJ Moses (Nov 20, 17:30 UTC)",
+              "url": "https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382"
+            },
+            {
+              "label": "The Hacker News — write-up (Nov 21, 11:03 UTC)",
+              "url": "https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html"
+            },
+            {
+              "label": "SecurityWeek — write-up (Nov 21, 12:08 UTC)",
+              "url": "https://www.securityweek.com/amazon-china-linked-hackers-ai-agents-exploited-medical-software-zero-day/"
+            },
+            {
+              "label": "BleepingComputer — write-up (Nov 20, 17:30 UTC)",
+              "url": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "White House ousts National Cyber Director Cairncross; Pentagon CIO Kirsten Davies takes over as acting director",
+          "tldr": "Sean Cairncross is out as National Cyber Director — chief of staff Stephen Miller told Axios he \"lacked the strong cyber credentials to perform the job\" — and Pentagon CIO Kirsten A. Davies takes over in an acting capacity per NBC News, as the administration fields a week of major outages.",
+          "source": "White House",
+          "url": "https://www.whitehouse.gov/releases/2026/11/president-trump-taps-pentagon-cyber-chief-kirsten-davies-as-national-cyber-director/",
+          "summary": "Cairncross, head of the Office of the National Cyber Director since August 2025, is out: Axios first reported the move Thursday evening, Bloomberg Law reports he was dismissed (~1:07 PM ET Friday), and a source told CNBC the president fully supported the firing. The White House announced Kirsten A. Davies — DoD chief information officer since December 2025, previously Unilever CISO (Estée Lauder, Barclays-Africa, HP, Siemens) — at ~11:53 AM ET Friday; per NBC News she takes over in an acting capacity, and she has prior Senate confirmation as DoD CIO (the director post requires Senate confirmation). The change lands amid a week of outages — a nationwide aviation ground stop, a worldwide Microsoft Outlook outage, bank outages and a reported multi-day blackout of the NSA's classified internal network (resolved Friday, attributed to maintenance during work, no sign of a cyberattack per NBC News). The administration maintains the outages were not cyberattacks; Democrats have criticized its response. Cairncross had been involved in AI-policy deliberations, including technical meetings with Anthropic after Commerce export controls scrubbed its models.",
+          "details": [
+            "The change: Sean Cairncross, head of the Office of the National Cyber Director since August 2025, is out; Axios first reported it Thursday ~5:12 PM ET, and Bloomberg Law reports he was dismissed (~1:07 PM ET Friday).",
+            "Why, per Axios: Two White House officials said chief of staff Stephen Miller sought the change, saying Cairncross \"lacked the strong cyber credentials to perform the job\"; a source told CNBC the president fully supported the firing.",
+            "The successor: Kirsten A. Davies, DoD chief information officer since December 2025 (previously Unilever CISO; Estée Lauder, Barclays-Africa, HP, Siemens), takes over in an acting capacity per NBC News; the post requires Senate confirmation, and Davies has prior Senate confirmation as DoD CIO.",
+            "Timeline of the announcement: White House announcement ~11:53 AM ET Friday; Breaking Defense reports Davies has assumed the role (11:31 AM ET).",
+            "Context: The move lands amid a week of outages — a nationwide aviation ground stop, a worldwide Microsoft Outlook outage, bank outages, and a reported multi-day blackout of the NSA's classified internal network (resolved Friday, attributed to maintenance during work, no sign of a cyberattack per NBC News); the administration maintains the outages were not cyberattacks, and Democrats have criticized its response.",
+            "AI-policy tie: Cairncross had been involved in AI-policy deliberations, including technical meetings with Anthropic after Commerce export controls scrubbed its models; his policy chief left for OpenAI in October.",
+            "Statement: Cairncross called serving \"the honor of a lifetime.\"",
+            "The release: The White House announcement touts an \"America First cyber strategy.\""
+          ],
+          "links": [
+            {
+              "label": "Axios — first report (Nov 19, ~5:12 PM ET)",
+              "url": "https://www.axios.com/2026/11/19/trump-national-cyber-director-sean-cairncross-leaving"
+            },
+            {
+              "label": "White House — Davies announcement (Nov 20, ~11:53 AM ET)",
+              "url": "https://www.whitehouse.gov/releases/2026/11/president-trump-taps-pentagon-cyber-chief-kirsten-davies-as-national-cyber-director/"
+            },
+            {
+              "label": "Bloomberg Law — dismissal report (Nov 20, ~1:07 PM ET)",
+              "url": "https://news.bloomberglaw.com/artificial-intelligence/white-house-dismisses-trumps-cyber-security-chief-cairncross"
+            },
+            {
+              "label": "NBC News — acting-capacity reporting (Nov 19, 7:48 PM ET, updated 11:02 PM ET)",
+              "url": "https://www.nbcnews.com/politics/white-house/national-cyber-director-sean-cairncross-leaving-kirsten-davies-replaci-rcna610329"
+            },
+            {
+              "label": "CNBC — reporting on presidential support (Nov 20, 5:59 AM ET)",
+              "url": "https://www.cnbc.com/2026/11/20/sean-cairncross-white-house-cyber-director.html"
+            },
+            {
+              "label": "Breaking Defense — Davies assumes the role (Nov 20, 11:31 AM ET)",
+              "url": "https://breakingdefense.com/2026/11/pentagon-cio-davies-tapped-as-acting-national-cyber-director/"
+            },
+            {
+              "label": "ABC News — replacement reporting amid outages (Nov 20, 9:43 AM ET)",
+              "url": "https://abcnews.com/Politics/white-house-replaces-national-cyber-director-amid-widespread/story?id=138310514"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            },
+            {
+              "code": "11",
+              "name": "Agriculture, Forestry, Fishing and Hunting"
+            }
+          ],
+          "title": "USDA confirms hackers breached its farmer-payment system; FBI probes apparent breach of NCIC database",
+          "tldr": "Per NBC News, hackers accessed the system USDA uses to facilitate payments to farmers — GIS mapping, payments and contracting shut down since a Monday breach notice — while the FBI investigates an apparent breach of the National Crime Information Center, the nationwide law-enforcement database.",
+          "source": "NBC News",
+          "url": "https://www.nbcnews.com/politics/national-security/agriculture-department-breached-hackers-sources-say-rcna610497",
+          "summary": "USDA's Farm Production and Conservation mission area sent notice Monday of \"a security breach involving all Geographic Information System (GIS) mapping, payments and contracting,\" per ABC News, with systems shut down until further notice and two former officials saying hackers accessed the payment-facilitation system. Under Secretary Richard Fordyce called it a \"cyberthreat,\" not a \"software update,\" and said most systems should be back by close of business Friday; per the Iowa Farmers Union the disruption was in its fifth day as of Friday, and officials fear the breach could expose more sensitive information. Separately, the FBI is investigating an apparent breach of the National Crime Information Center per two people briefed (NBC News, citing CNN's earlier Friday-evening report); the FBI had no comment. Backdrop: a GAO report Thursday found USDA and FDA lack resources for food-sector cyber emergency preparedness and haven't run attack-response exercises since 2024. NBC also confirms the NSA classified-network outage was maintenance-related and resolved Friday with no sign of hacking, and that Sen. Warner said Wednesday the evidence shows the week's tech outages were not cyberattacks.",
+          "details": [
+            "USDA breach: Hackers accessed the system the agency uses to facilitate payments to farmers, per two former officials (NBC News, Nov 20, 5:12 PM ET).",
+            "Notice and shutdown: USDA's Farm Production and Conservation (FPAC) mission area sent notice Monday of \"a security breach involving all Geographic Information System (GIS) mapping, payments and contracting,\" with systems shut down until further notice (ABC News).",
+            "Status: Under Secretary Richard Fordyce called it a \"cyberthreat,\" not a \"software update,\" and said most systems should be back by close of business Friday; per the Iowa Farmers Union the disruption was in its fifth day as of Friday, and officials fear the breach could expose more sensitive information.",
+            "FBI/NCIC: The FBI is investigating an apparent breach of the National Crime Information Center — the nationwide law-enforcement information system — per two people briefed (NBC News, Nov 20, 11:19 PM ET, citing CNN's earlier Friday-evening report); the FBI had no comment.",
+            "GAO backdrop: A GAO report Thursday found USDA and FDA lack resources for food-sector cyber emergency preparedness and haven't run attack-response exercises since 2024.",
+            "Related confirmations: NBC also confirms the NSA classified-network outage (down Tuesday, multi-day, maintenance-related, resolved Friday, no sign of hacking) and Sen. Warner's Wednesday statement that evidence shows the week's tech outages were not cyberattacks."
+          ],
+          "links": [
+            {
+              "label": "NBC News — USDA breach reporting (Nov 20, 5:12 PM ET)",
+              "url": "https://www.nbcnews.com/politics/national-security/agriculture-department-breached-hackers-sources-say-rcna610497"
+            },
+            {
+              "label": "ABC News — USDA notice details (Nov 20, 6:54 PM ET)",
+              "url": "https://abcnews.com/GMA/Food/new-government-report-sparks-concern-potential-cyberattack-us/story?id=138316014"
+            },
+            {
+              "label": "NBC News — FBI NCIC investigation (Nov 20, 11:19 PM ET)",
+              "url": "https://www.nbcnews.com/politics/justice-department/fbi-investigating-potential-breach-crime-database-rcna610536"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA KEVs VMware vCenter 9.8 zero-day used by suspected PRC-nexus ARMORY CASTLE — plus three more exploited flaws",
+          "tldr": "CISA added CVE-2026-123890 — a CVSS 9.8 unauthenticated VMware vCenter authentication bypass with no workaround — to the KEV catalog, after Google's GTIG/Mandiant reported suspected PRC-nexus group ARMORY CASTLE exploited it as a zero-day starting early September with a purpose-built BONESAW exploit chain; three more exploited flaws joined the same batch.",
+          "source": "Google Cloud blog",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-vsphere",
+          "summary": "The flaw is an unauthenticated SRP-6a session-key disclosure over DCE/RPC in vCenter's vmdir that yields an authenticated session as administrator@vsphere.local; network reachability suffices and patching is the only fix. Broadcom shipped emergency patches November 19 (VMSA-2026-0009; fixed in 9.1.1.0200, 9.0.2.0200 and 8.0 U3m) — SecurityWeek notes no public patch for vCenter 7.0, past end-of-support. Per GTIG/Mandiant, ARMORY CASTLE (formerly UNC5221) used BONESAW, a Golang utility that exfiltrates the vCenter LMDB database, hijacks the SAML STS and creates SSO admin accounts; the recovered binary's July 13 build timestamp predates the July 29 disclosure of a related vCenter flaw — evidence of zero-day knowledge. The chain ran from a BeyondTrust Remote Support zero-day (CVE-2026-102764) through webshells SLIMSAVAGE and CAGEMATCH, the BEARBONES SSH backdoor, BONESAW and the SAWSNAKE golden-SAML tool, plus the previously seen LAZYBONES Slack backdoor — credential theft of vCenter master keys and PostgreSQL passwords, then ESXi root access and data staging. GTIG says two zero-days and three malware sets in one campaign indicate significant resourcing; a \"small number of organizations\" are confirmed compromised. The same KEV batch (federal due dates November 23): Cisco Expressway CVE-2026-76466 (9.8, hard-coded credentials enabling unauthenticated root OS command execution; a Russian organization was reportedly breached shortly after a public PoC — per an aggregator report, unverified); Apache Roller CVE-2026-129448 (9.8, unauthenticated deserialization via the XML-RPC endpoint, versions 4.0.0–6.1.4, fixed in 6.1.6); SAP NetWeaver Enterprise Portal CVE-2025-42884 (6.5, unauthenticated JNDI injection).",
+          "details": [
+            "The flaw: CVE-2026-123890 (CVSS 9.8) — an unauthenticated SRP-6a session-key disclosure over DCE/RPC in vCenter's vmdir that yields an authenticated session as administrator@vsphere.local; network reachability suffices; no workaround — patching is the only fix.",
+            "Patches: Broadcom shipped emergency patches November 19 (VMSA-2026-0009; fixed in 9.1.1.0200, 9.0.2.0200 and 8.0 U3m); SecurityWeek notes no public patch for vCenter 7.0, past end-of-support; Broadcom says it affects vCenter regardless of Enhanced Linked Mode (BleepingComputer).",
+            "The actor: Suspected PRC-nexus ARMORY CASTLE (formerly UNC5221), per Google GTIG/Mandiant; exploited the flaw in early September as a zero-day; a \"small number of organizations\" are confirmed compromised, with more likely impacted (Cybersecurity Dive).",
+            "The tooling: BONESAW — a Golang utility that exfiltrates the vCenter LMDB database, hijacks the SAML STS and creates SSO admin accounts; its build timestamp (July 13) predates the July 29 disclosure of a related vCenter flaw — evidence of zero-day knowledge.",
+            "Full chain: Lateral movement from a BeyondTrust Remote Support zero-day (CVE-2026-102764, patched BT26-05) through five newly named tools — SLIMSAVAGE and CAGEMATCH webshells, the BEARBONES (Dropbear SSH) backdoor, BONESAW, and SAWSNAKE (golden-SAML against vCenter) — plus the previously seen LAZYBONES Slack backdoor; credential theft of vCenter master keys and PostgreSQL passwords, then ESXi root access and data staging.",
+            "Resourcing signal: GTIG notes two zero-days and three malware sets in one campaign indicate significant resourcing.",
+            "Same KEV batch (November 20; FCEB due November 23): Cisco Expressway CVE-2026-76466 (9.8, hard-coded credentials, unauthenticated root OS command execution; exploited — a Russian organization was reportedly breached shortly after a public PoC, per an aggregator report not independently returned, unverified); Apache Roller CVE-2026-129448 (9.8, unauthenticated deserialization via the XML-RPC endpoint, versions 4.0.0–6.1.4, same underlying flaw as CVE-2026-82384 but a wider version range, actively exploited, fixed in 6.1.6 — disabling XML-RPC in the UI does not protect older versions); SAP NetWeaver Enterprise Portal CVE-2025-42884 (6.5, unauthenticated JNDI injection, no availability impact)."
+          ],
+          "links": [
+            {
+              "label": "Google Cloud blog — GTIG/Mandiant analysis (Nov 19, ~8:12 AM ET)",
+              "url": "https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-vsphere"
+            },
+            {
+              "label": "CISA — KEV alert (Nov 20)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "BleepingComputer — coverage of Broadcom's emergency update (Nov 19, 7:26 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/vmware-patches-vcenter-zero-day-exploited-in-attacks-since-september/"
+            },
+            {
+              "label": "SecurityWeek — zero-day exploitation coverage (Nov 19, 19:21 UTC)",
+              "url": "https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/"
+            },
+            {
+              "label": "DarkReading — ARMORY CASTLE reporting (Nov 20, 21:03 UTC)",
+              "url": "https://www.darkreading.com/cyberattacks-data-breaches/china-armory-castle-vmware-vcenter-zero-day"
+            },
+            {
+              "label": "Cybersecurity Dive — impact reporting (Nov 19, 16:36 UTC)",
+              "url": "https://www.cybersecuritydive.com/news/chinese-espionage-zero-day-flaw-vmware-vcenter/875273/"
+            },
+            {
+              "label": "Threat Times — Apache Roller KEV coverage (Nov 20, ~3:02 PM ET)",
+              "url": "https://threattimes.com/category/vulnerabilities/cve-2026-129448-apache-roller-flaw-under-active/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "F5 ships emergency BIG-IP hotfixes for five critical flaws, no mitigations — 177,000+ instances exposed",
+          "tldr": "F5 shipped out-of-band emergency hotfixes Wednesday for five critical stack-overflow flaws in BIG-IP — unauthenticated TMM crash/DoS with RCE possible on vulnerable configurations — plus a high-severity SAML DoS, with no mitigations available and Shadowserver tracking 177,000+ internet-exposed instances (per BleepingComputer).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/f5-releases-emergency-patches-for-critical-big-ip-rce-flaws/",
+          "summary": "The five critical flaws — CVE-2026-121805, CVE-2026-120292, CVE-2026-120285, CVE-2026-116953 and CVE-2026-123637 — are unauthenticated stack overflows that crash BIG-IP's TMM data plane, with remote code execution possible on vulnerable configurations; a sixth, CVE-2026-126822 (high), is a SAML denial-of-service flaw in F5's Access Policy Manager (APM), fixed in the same release. F5 published no mitigations, so patching is the only defense, and no exploitation has been flagged so far. BleepingComputer's report on the release ran Friday, November 20, at ~5:57 AM ET. With Shadowserver tracking more than 177,000 internet-exposed BIG-IP instances and no mitigations available, unpatched deployments have a short runway once the flaws are public.",
+          "details": [
+            "The fixes: F5 shipped out-of-band emergency hotfixes Wednesday, November 18, for five critical stack-overflow flaws in BIG-IP (per BleepingComputer's Friday report).",
+            "The critical CVEs: CVE-2026-121805, CVE-2026-120292, CVE-2026-120285, CVE-2026-116953 and CVE-2026-123637 — unauthenticated stack overflows that crash BIG-IP's TMM data plane (DoS), with remote code execution possible on vulnerable configurations.",
+            "The sixth flaw: CVE-2026-126822 (high severity) — a SAML denial-of-service flaw in F5's Access Policy Manager (APM), fixed in the same release.",
+            "No mitigations: F5 published no workarounds — patching is the only defense; no exploitation has been flagged so far.",
+            "Exposure: Shadowserver tracks more than 177,000 internet-exposed BIG-IP instances (per BleepingComputer).",
+            "Timing note: The hotfixes shipped Wednesday, November 18; BleepingComputer's report on the release ran November 20 at ~5:57 AM ET."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — report on F5's emergency patches (Nov 20, 5:57 AM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/f5-releases-emergency-patches-for-critical-big-ip-rce-flaws/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Researcher's ~2 million canary secrets expose a leaky AI inference chain — compromised hosts, logging resellers",
+          "tldr": "Per Ars Technica — the single source returned — researcher HD Moore seeded nearly 2 million AI prompts, each carrying a unique never-before-used canary secret, and watched where they surfaced: attackers compromised at least three AI hosting providers, resellers logged prompts, and a Chinese AI lab fetched secret URLs from over half the prompts it saw.",
+          "source": "Ars Technica",
+          "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
+          "summary": "Moore (chief research officer at Dragos, per Ars) pushed the prompts through the AI-router/inference-reseller ecosystem — OpenRouter and Vercel are named as router examples — using unused AWS access keys, SSH passwords, unique URLs and DNS names, and private git repo references as canaries. Findings per Ars: attackers compromised at least three AI hosting providers and used that access to siphon prompts — one reused \"a couple hundred\" AWS keys with every request in the late-October seeding windows stolen, including some rejected before ever reaching a model; stolen keys were tested within hours, used to enumerate S3 and secrets managers, enable Bedrock models, add IAM users, and fired \"tens of thousands\" of times in AWS API calls. Resellers in the inference marketplace offered low prices, logged prompts and passed credentials to people who used them. A Chinese AI lab's systems fetched secret URLs from more than half of prompts sent July–October — including about two-thirds of requests flagged \"no data collection\"/Zero Data Retention, and including prompts routed through US resellers of that lab — and a git client later tried to clone the referenced private repos. Moore's bottom line: on-premises model hosting is the most effective prevention. The underlying blog post was not returned, so treat specifics as reported, not confirmed.",
+          "details": [
+            "Method: HD Moore (chief research officer at Dragos, per Ars Technica) sent nearly 2 million AI prompts through the AI-router/inference-reseller ecosystem — OpenRouter and Vercel are named as router examples — each containing exactly one unique, never-before-used canary secret: AWS access keys on empty accounts, SSH passwords, unique URLs and DNS names, and private git repo references.",
+            "Compromised providers: At least three AI hosting providers were compromised by attackers who used that access to siphon prompts; one reused \"a couple hundred\" AWS keys, with every request in the late-October seeding windows stolen — including some rejected pre-model (\"copying requests at the provider's front door\").",
+            "Key abuse: Stolen keys were tested within hours, used to enumerate S3 and secrets managers, enable Bedrock models, and add IAM users; they were fired \"tens of thousands\" of times in AWS API calls.",
+            "Same adversary likely: Two of the hacked providers' stolen secrets were used from the same rented server — likely the same adversary.",
+            "Resellers: Resellers in the inference marketplace offered low prices, logged prompts and passed credentials to people who used them.",
+            "Chinese lab: A Chinese AI lab's systems fetched secret URLs from more than half of prompts sent July–October, including ~two-thirds of requests flagged \"no data collection\"/Zero Data Retention — including prompts routed through US resellers of that lab; a git client later tried to clone the referenced private repos.",
+            "Long tail: One US hosting provider crawled a secret URL more than two months after a single call.",
+            "Mitigation takeaway: Moore says on-premises model hosting is the most effective prevention.",
+            "Verification caveat: Single source returned — the underlying blog post was not returned, so treat the specifics as reported, not confirmed."
+          ],
+          "links": [
+            {
+              "label": "Ars Technica — Dan Goodin's report on Moore's experiment (Nov 20, 3:59 PM ET); single source returned",
+              "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-20",
       "items": [
