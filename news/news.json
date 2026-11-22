@@ -1,7 +1,135 @@
 {
   "version": 3,
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "days": [
+    {
+      "date": "2026-11-22",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "OpenRouter offboards three providers, strips 125 endpoints of ZDR eligibility; Phala, Together AI, Novita disclose",
+          "tldr": "A week after researcher HD Moore's Dragos canary experiment showed how often AI inference providers leak and exploit planted credentials, OpenRouter says it has off-boarded three providers and removed 125 endpoints from Zero-Data-Retention eligibility — and Phala, Together AI and Novita have each published incident disclosures (per OpenRouter's announcement, The Hacker News and the-decoder).",
+          "source": "OpenRouter",
+          "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/",
+          "summary": "OpenRouter, one of the routers named in the canary research, said the findings \"did not show any breach or unauthorized access of OpenRouter\" itself, but it off-boarded three providers, removed 125 endpoints from ZDR eligibility (flagged providers plus precautionary removals; re-listing requires assurances and validation) and notified all potentially affected customers; it is adapting the researchers' canary method into ongoing checks and verifying network paths for hidden forwarding. Phala's preliminary report says a legacy internet-facing service chained with unauthenticated management interfaces exposed a production GPU server's inference VM, and that DeepSeek V4 Flash 0731 requests routed via OpenRouter between Oct 21 00:00 UTC and Nov 8 05:35 UTC should be treated as exposed (keys rotated; the first intrusion was detected Nov 5 and request-exposure confirmed Nov 8 after the researcher sent evidence). Together AI said an unauthorized party downloaded stored prompt samples (MiniMax M3, GLM-5.2, Kimi K2.6, June–July) after an AI coding agent committed a credential to Together's public GitHub repo; five of the tested credentials were the researchers' canaries, and Together says the data was deleted and ZDR is now the default for new accounts. Novita reported a routing configuration issue that sent some MiniMax requests to MiniMax's official API beyond intent. The underlying research found planted AWS keys copied at first arrival (some from requests rejected pre-inference), tested within hours, and fired in tens of thousands of AWS API calls; on Nov 1 the same attacker deployed ARTEX, an AI-driven pentest framework (user agents artex-agent, artex-judge-r121), to validate held keys; a marketplace seller logged requests, a router silently forwarded traffic, and an unnamed Chinese AI lab fetched secret links from over half of seeded prompts — including ~two-thirds of ZDR/no-collection-marked requests, also via US resellers. Dragos and OpenRouter have not named the three off-boarded providers, and it is not confirmed the disclosing companies are the same three; ~a dozen providers are still being worked with, and canary accesses were still occurring this week.",
+          "details": [
+            "The action: OpenRouter off-boarded three inference providers and removed 125 endpoints from Zero-Data-Retention eligibility — flagged providers plus precautionary removals; re-listing requires assurances and validation — and notified all potentially affected customers.",
+            "OpenRouter's own finding: The canary results \"did not show any breach or unauthorized access of OpenRouter\" itself.",
+            "Ongoing defenses: OpenRouter is adapting the researchers' canary method into ongoing checks and verifying network paths for hidden forwarding; ~a dozen providers are still being worked with, and canary accesses were still occurring this week.",
+            "Phala (preliminary report): A legacy internet-facing service chained with unauthenticated management interfaces exposed a production GPU server's inference VM; DeepSeek V4 Flash 0731 requests routed via OpenRouter between Oct 21 00:00 UTC and Nov 8 05:35 UTC should be treated as exposed (keys rotated); the first intrusion was detected Nov 5 and request-exposure was confirmed Nov 8 after the researcher sent evidence.",
+            "Together AI: An unauthorized party downloaded stored prompt samples — MiniMax M3, GLM-5.2 and Kimi K2.6 from June–July — after an AI coding agent committed a credential to Together's public GitHub repo; five of the tested credentials were the researchers' canaries; the samples were searched for other credentials; Together says the data was deleted and ZDR is now the default for new accounts.",
+            "Novita: A routing configuration issue sent some MiniMax requests to MiniMax's official API beyond intent.",
+            "The open question: Dragos and OpenRouter have not named the three off-boarded providers, and neither has said whether they are the same three companies that disclosed.",
+            "The underlying research: Planted AWS keys were copied at first arrival (some from requests rejected pre-inference), tested within hours, and fired in tens of thousands of AWS API calls; on Nov 1 the same attacker deployed ARTEX, an AI-driven pentest framework (user agents artex-agent, artex-judge-r121), to validate held keys; a marketplace seller logged requests, a router silently forwarded traffic, and an unnamed Chinese AI lab fetched secret links from over half of seeded prompts — including ~two-thirds of ZDR/no-collection-marked requests, also via US resellers; a planted link surfaced in Feishu 24 days later."
+          ],
+          "links": [
+            {
+              "label": "OpenRouter — company announcement (Nov 22 UTC)",
+              "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
+            },
+            {
+              "label": "The Hacker News — write-up of the disclosures (Nov 22, ~12:06 AM ET)",
+              "url": "https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html"
+            },
+            {
+              "label": "the-decoder — analysis of the research and disclosures (Nov 22, ~7:08 AM ET)",
+              "url": "https://the-decoder.com/security-researchers-show-how-cheap-ai-inference-providers-steal-keys-and-snoop-on-users/"
+            },
+            {
+              "label": "LAVA Security — Phala disclosure analysis (Nov 21)",
+              "url": "https://lava.security/blog/ai-inference-canary-research-prompts-exposed"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "House report: PLA at Zhipu HQ and DeepSeek/Qwen in military cyber procurement; Nvidia stops H200 shipments to China",
+          "tldr": "A joint House investigation says personnel associated with the PLA's 1st Bureau of the Cyberspace Force visited Zhipu's Beijing headquarters — most recently in August 2026 — and that PLA procurement records build DeepSeek and Qwen into military cyber operations; the same coverage carries Commerce's 879,868-chip approval count and Nvidia's confirmation it has stopped H200 shipments to China (per the House report and AP).",
+          "source": "House Select Committee on the CCP",
+          "url": "https://chinaselectcommittee.house.gov/media/reports/joint-investigation-report-china-is-trying-to-get-us-companies-addicted-to-chinese-ai-models",
+          "summary": "Chairmen John Moolenaar (Select Committee on the CCP) and Andrew Garbarino (Homeland Security) released a joint investigation into Chinese open-weight models in US companies. It says personnel associated with the PLA 1st Bureau of the Cyberspace Force — the cyber-espionage/attack unit — were present on multiple occasions at Zhipu's Beijing headquarters, most recently in August 2026, and that PLA procurement records show a July 2026 cyber-range project requiring DeepSeek integration for \"intelligent attack\" and \"intelligent penetration,\" a command information system built on Alibaba's Qwen and DeepSeek, and a 2026 air-gapped project running DeepSeek, Alibaba, Moonshot and MiniMax models for military AI-agent development. The report also details US adoption — Airbnb's Qwen-based support assistant handling ~80,000 interactions/day, Anysphere's Cursor Composer 2 built on a Moonshot base model, DoorDash's 25 authorized PRC model families — and says PRC models were 41% of downloads on the leading open-model repository over the prior year; its 12 policy recommendations include a model-provenance standard, keeping China-developed models out of federal contracts and critical-infrastructure high-risk functions, and making CISA the single AI-incident reporting point. The same-day companion chip story moved, too: per AP, Commerce/BIS approved 879,868 Nvidia H200/AMD MI325X chips for Chinese-tied companies across 21 licenses as of May 11, 2026 (~75,000 Alibaba, 150,000 Tencent, 43,000 Baidu, 4,000 BYD — all on the Pentagon's Chinese-military list) of 3.4M+ requested; Treasury Secretary Scott Bessent said Friday \"the proper chip restrictions are in place... the remote access has been curtailed\" and that no further restrictions on older chips are needed; Nvidia said its \"limited shipments... were legal and authorized\" and that it has since stopped shipping H200s to China; AMD said it complies with export laws, and a BIS spokesperson pointed to the January 2026 Federal Register rule. OpenAI the same day published a post on combating adversarial distillation, citing average attack success against GPT-6 Astra falling from 54.0% to 0.2% under updated safeguards (per the SEN-X recap).",
+          "details": [
+            "The report: A joint investigation released November 20 (~2:25 PM ET) by Chairmen John Moolenaar (Select Committee on the CCP) and Andrew Garbarino (Homeland Security) into Chinese open-weight models in US companies.",
+            "PLA at Zhipu: Personnel associated with the PLA 1st Bureau of the Cyberspace Force — the cyber-espionage/attack unit — were present on multiple occasions at Zhipu's Beijing headquarters, most recently in August 2026.",
+            "Military procurement: PLA procurement records show a July 2026 cyber-range project requiring DeepSeek integration for \"intelligent attack\" and \"intelligent penetration,\" a command information system built on Alibaba's Qwen and DeepSeek, and a 2026 air-gapped project running DeepSeek, Alibaba, Moonshot and MiniMax models for military AI-agent development.",
+            "US adoption (per the report): Airbnb's Qwen-based support assistant handles ~80,000 interactions/day; Anysphere's Cursor Composer 2 is built on a Moonshot base model; DoorDash has 25 authorized PRC model families; PRC models were 41% of downloads on the leading open-model repository over the prior year.",
+            "Recommendations: 12 policy recommendations, including a model-provenance standard, keeping China-developed models out of federal contracts and critical-infrastructure high-risk functions, and making CISA the single AI-incident reporting point.",
+            "Chip approvals (companion story): Per AP, Commerce/BIS approved 879,868 Nvidia H200/AMD MI325X chips for Chinese-tied companies across 21 licenses as of May 11, 2026 — ~75,000 Alibaba, 150,000 Tencent, 43,000 Baidu and 4,000 BYD, all on the Pentagon's Chinese-military list — of 3.4M+ requested.",
+            "Statements: Treasury Secretary Scott Bessent said Friday \"the proper chip restrictions are in place... the remote access has been curtailed\" and that no further restrictions on older chips are needed; Nvidia said its \"limited shipments... were legal and authorized\" and that it has since stopped shipping H200s to China; AMD said it complies with export laws; a BIS spokesperson pointed to the January 2026 Federal Register rule.",
+            "OpenAI counterpart: The same day, OpenAI published a post on combating adversarial distillation, citing average attack success against GPT-6 Astra falling from 54.0% to 0.2% under updated safeguards (per the SEN-X recap — the single source returned for that figure).",
+            "Background and what's next: California's Bonta investigation into Nvidia (reported November 18) and the Megaspeed affair continue in the background per the same coverage; the December 1 Lutnick deadline (Reps. Meeks and Kamlager-Dove), the Bonta/Nvidia docket, whether the \"name-and-shame\" Chinese-AI-disclosure idea advances to rulemaking, and any Zhipu response (none in returned coverage) are the markers to watch."
+          ],
+          "links": [
+            {
+              "label": "House Select Committee on the CCP — joint report (Nov 20)",
+              "url": "https://chinaselectcommittee.house.gov/media/reports/joint-investigation-report-china-is-trying-to-get-us-companies-addicted-to-chinese-ai-models"
+            },
+            {
+              "label": "AP via Lincoln Daily News — Bessent interview and company/BIS statements (Nov 21)",
+              "url": "https://www.lincolndailynews.com/NEWS/business_d.shtml"
+            },
+            {
+              "label": "SBS News/AFP/Reuters — chip-approvals and Bessent recap (pub. Nov 21 AEDT)",
+              "url": "https://www.sbs.com.au/news/article/united-states-china-chips-ai-use/a089vwjsy"
+            },
+            {
+              "label": "SEN-X — daily briefing carrying the OpenAI distillation item (Nov 21)",
+              "url": "https://senx.ai/news/2026-11-21-daily-ai-news"
+            },
+            {
+              "label": "Al Jazeera — export-crackdown coverage (Nov 20)",
+              "url": "https://www.aljazeera.com/economy/2026/11/20/us-lawmakers-push-for-tougher-ai-chip-rules-amid-china-export-crackdown"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            }
+          ],
+          "title": "INC Ransom claims 3.6 million+ Boeing files stolen from Sikorsky Aircraft Support unit; unverified, Boeing silent",
+          "tldr": "INC Ransom claims it stole more than 3.6 million files — \"33 years of operational data\" — from Boeing, centered on the Boeing Sikorsky Aircraft Support joint venture at Fort Campbell, Kentucky; the claim is unverified and Boeing has not acknowledged it (per Cybernews, with PlayCISO re-checking Boeing's silence on November 22).",
+          "source": "ransomware.live",
+          "url": "https://www.ransomware.live/group/incransom",
+          "summary": "INC Ransom listed Boeing on its leak site; per the ransomware.live tracker copy of the post, it concerns Boeing Sikorsky Aircraft Support (BSAS) — which per Boeing's own 1997 release is the Boeing–Sikorsky joint venture supporting US Army special-operations aviation at Fort Campbell, Kentucky — though the corporate description here is the group's, and a joint venture can sit outside the parent's network. Per Cybernews, the group claims 3.6M+ files from seven production servers, \"33 years of operational data,\" and has posted only ~10 screenshots — 18 BSAS-employee email addresses, a 2025 BSAS board-meeting participant list (names, organizations, roles), financial-forecast and expense file names, and a top-vendor/subcontractor list — none of it technical aircraft data; Cybernews says the scope \"is impossible to independently verify.\" A separate tracker-indexed claim (RedPacket Security, via ThreatCluster) says the poster claims contract/pricing proposals, maintenance and supply-chain records, material described as classified or export-controlled, and Microsoft 365 email archives — the poster's claim, unverified. PlayCISO re-checked on November 22: no Boeing statement, no Item 1.05 cybersecurity 8-K (the latest 8-K, October 27, covers Q3 results), and no phased-release date given; the claim is separate from Boeing's confirmed 2023 LockBit incident. ThreatCluster notes the post threatens a phased release if Boeing does not engage.",
+          "details": [
+            "The claim: INC Ransom listed Boeing on its leak site (logged by ransomware.live November 20, 03:46 UTC) claiming more than 3.6 million files from seven production servers and \"33 years of operational data\" — per the ransomware.live tracker copy of the post; the claim is unverified.",
+            "The target unit: The post concerns Boeing Sikorsky Aircraft Support (BSAS) — which per Boeing's own 1997 release is the Boeing–Sikorsky joint venture supporting US Army special-operations aviation at Fort Campbell, Kentucky — though the corporate description here is the group's, and a joint venture can sit outside the parent's network.",
+            "Samples posted: Only ~10 screenshots — 18 BSAS-employee email addresses, a 2025 BSAS board-meeting participant list (names, organizations, roles), financial-forecast/expense file names, and a top-vendor/subcontractor list — none of it technical aircraft data; Cybernews says the scope \"is impossible to independently verify.\"",
+            "Second-hand claims: A tracker-indexed claim (RedPacket Security, via ThreatCluster) says the poster claims contract/pricing proposals, maintenance and supply-chain records, material described as classified or export-controlled, and Microsoft 365 email archives — the poster's claim, unverified.",
+            "Boeing status: PlayCISO's November 22 re-check found no Boeing statement, no Item 1.05 cybersecurity 8-K (the latest 8-K, October 27, covers Q3 results), and no phased-release date given; the claim is separate from Boeing's confirmed 2023 LockBit incident.",
+            "Leverage: ThreatCluster notes the post threatens a phased release if Boeing does not engage."
+          ],
+          "links": [
+            {
+              "label": "ransomware.live — INC Ransom group page (tracker copy of the leak-site post)",
+              "url": "https://www.ransomware.live/group/incransom"
+            },
+            {
+              "label": "Cybernews — sample analysis (Nov 20, ~8:47 AM ET)",
+              "url": "https://cybernews.com/security/boeing-data-breach-military-helicopters/"
+            },
+            {
+              "label": "PlayCISO — claim tracker with a November 22 Boeing-silence re-check",
+              "url": "https://playciso.com/blog/boeing-inc-ransom-leak-site-claim"
+            },
+            {
+              "label": "ThreatCluster — cluster page with the poster's claims",
+              "url": "https://threatcluster.io/cluster/inc-ransomware-claims-36m-file-boeing-breach-boeing-response-699f75f9"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-21",
       "items": [
