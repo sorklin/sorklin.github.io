@@ -1,7 +1,409 @@
 {
   "version": 3,
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "days": [
+    {
+      "date": "2026-11-24",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "22",
+              "name": "Utilities"
+            }
+          ],
+          "title": "South Korea's KEPCO confirms breach exposing data on 1.5M+ customers, employees and contractors; \"Noiem\" claimed theft",
+          "tldr": "KEPCO confirmed attackers reached its KEPCO ON electricity-billing platform and electronic procurement system before access was blocked, exposing data on 650,487 customers, 426,827 company representatives and 442,934 employees (per BleepingComputer — the single source returned carrying the company's breakdown) — two days after a threat actor using the \"Noiem\" alias claimed the theft on a hacker forum.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/",
+          "summary": "Attackers breached the internal network of Korea Electric Power Corporation (KEPCO) — South Korea's state-controlled main power company — reaching the KEPCO ON billing platform and the electronic procurement system (SRM) before external access was blocked and the services were suspended. Exposed per the company: 650,487 KEPCO ON customers (names, ID information, phone numbers, addresses, bank names, bank account numbers, card issuers, card numbers, cardholders and billing data), 426,827 company representatives (names, IDs, emails, company addresses) and 442,934 employees (names, affiliation, employee IDs, phones, emails) — more than 1.5 million individuals. KEPCO says the breach resulted from \"advanced technologies such as AI\" but gave no initial-access detail. A threat actor using the \"Noiem\" alias claimed the attack on a hacker forum on November 19, advertising KEPCO user data, supplier records and bidding/contract documents; Korea's Personal Information Protection Commission separately confirmed KEPCO received a hacker's data-theft email on November 19 — the claims match the evidence, but attribution to Noiem remains unconfirmed. KEPCO is notifying individuals, filed with data-protection authorities, and is coordinating with government and financial authorities to block fraudulent transactions.",
+          "details": [
+            "The systems: Attackers breached KEPCO's internal network, reaching the KEPCO ON electricity billing platform and the electronic procurement system (SRM) before external access was blocked and the services were suspended.",
+            "The exposed data (per BleepingComputer — the single source returned carrying the company's breakdown): 650,487 KEPCO ON customers (names, ID information, phone numbers, addresses, bank names, bank account numbers, account holders, card issuers, card numbers, cardholders, billing data); 426,827 company representatives (names, IDs, emails, company addresses); 442,934 employees (names, affiliation, employee IDs, mobile/company phones, emails) — 1.5M+ individuals in total.",
+            "The claimed actor: A threat actor using the \"Noiem\" alias claimed the attack on a hacker forum on November 19, advertising KEPCO user data, supplier records and bidding/contract documents; the extortion email also arrived November 19.",
+            "The regulator's confirmation: Korea's Personal Information Protection Commission separately confirmed KEPCO received a hacker's data-theft email on November 19 — the claims match the evidence, but attribution to Noiem remains unconfirmed.",
+            "The company's line: KEPCO says the breach resulted from \"advanced technologies such as AI\" but gave no initial-access detail; it is notifying individuals, filed with data-protection authorities, and is coordinating with government and financial authorities to block fraudulent transactions.",
+            "What's developing: Noiem attribution; the notification scope; whether the \"AI technologies\" line gets elaboration; any Korean regulator follow-up."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — KEPCO confirms breach impacting 1.5 million (Nov 23, 3:54 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "72",
+              "name": "Accommodation and Food Services"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "53",
+              "name": "Real Estate Rental and Leasing"
+            }
+          ],
+          "title": "Keio final report: September ransomware leak — ~12,300 confirmed, up to ~11M possibly, incl. ~1.6M guest passports",
+          "tldr": "Keio Electric Railway filed its final report with Japan's Personal Information Protection Commission on November 24 on the September 26 ransomware attack, confirming leaked data on about 12,300 people and saying up to ~11.08 million more may be affected — including passport copies of ~1.6 million foreign hotel guests and ~20,000 department-store card numbers (per the company's notice, Nikkei and Asahi).",
+          "source": "Keio Electric Railway",
+          "url": "https://www.keio.co.jp/news/update/news_release/news_release2026/pdf/nr20261124_newsrelease.pdf",
+          "summary": "The Tokyo private rail group's final report confirms leaked data on ~150 rental-property contract holders, ~160 job applicants and ~12,000 employees, retirees and dependants (names, addresses, HR data), and says data on ~10.63 million group customers and business partners may also have leaked — names, addresses, phones, emails, My Number IDs, passport copies, credit-card numbers and identity-verification documents — plus ~360,000 job applicants and ~77,000 employees and family members; the counts overlap, and Nikkei totals the possibly-affected at up to ~11.08 million people. Specifics: ~1.6 million records on foreign guests of Keio Plaza Hotel, Sapporo and Takayama Green Hotels and Keio Presso Inn including passport copies (number-only in two hotel cases), ~20,000 Keio Department Store co-branded credit-card numbers, 382 and 109 other card numbers, ~46,000 identity-verification documents from real-estate contracts, and six My Number card copies. No financial or misuse damage has been confirmed; rail operations were unaffected and Keio Presso Inn bookings stay suspended until around December. This is the first time the company has published victim counts since the September attack (per Jiji).",
+          "details": [
+            "The filing: Keio Electric Railway filed its final report with Japan's Personal Information Protection Commission on November 24 on the ransomware attack detected September 26 — the first time the company has published victim counts since the attack (per Jiji).",
+            "Confirmed leaked: ~150 rental-property contract holders, ~160 job applicants and ~12,000 employees/retirees and dependants (names, addresses, HR data) — roughly 12,300 people.",
+            "Possibly leaked: ~10.63 million group customers/business partners (names, addresses, phones, emails, My Number IDs, passport copies, credit-card numbers, identity-verification documents), ~360,000 job applicants and ~77,000 employees/family members; the counts overlap and Nikkei totals the possibly-affected at up to ~11.08 million people.",
+            "The hotel records: ~1.6 million records on foreign guests of Keio Plaza Hotel, Sapporo and Takayama Green Hotels and Keio Presso Inn, including passport copies (number-only in two of the hotel cases).",
+            "The financial records: ~20,000 Keio Department Store co-branded credit-card numbers, plus 382 and 109 other card numbers; the notice does not say whether card expiry or CVC data was included (per cybersixt).",
+            "The documents: ~46,000 identity-verification documents from real-estate contracts, and six My Number card copies.",
+            "Status: No financial or misuse damage confirmed so far; rail operations were unaffected; Keio Presso Inn bookings stay suspended until around December; the group spans rail, buses, real estate, hotels, a department store and more — 40+ listed entities.",
+            "What's developing: Individual notifications; the group-entity breakdown; whether card expiry/CVC data was included."
+          ],
+          "links": [
+            {
+              "label": "Keio Electric Railway — ransomware personal-data notice, final PPC report (Nov 24, PDF)",
+              "url": "https://www.keio.co.jp/news/update/news_release/news_release2026/pdf/nr20261124_newsrelease.pdf"
+            },
+            {
+              "label": "Nikkei — up to 11.08M people, passport copies included (Nov 24, 4:30 AM ET)",
+              "url": "https://www.nikkei.com/article/DGXZQOUC247GC0U6A121C2000000/"
+            },
+            {
+              "label": "Asahi Shimbun — 12,300 confirmed, 11M+ possible (Nov 24, 3:49 AM ET)",
+              "url": "https://www.asahi.com/articles/ASVCS2SXMVCSUTIL01DM.html"
+            },
+            {
+              "label": "NHK — 11M+, identity documents included (Nov 24, 5:36 AM ET)",
+              "url": "https://news.web.nhk/newsweb/na/nd-20261124de80816"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "21",
+              "name": "Mining"
+            },
+            {
+              "code": "22",
+              "name": "Utilities"
+            }
+          ],
+          "title": "Norway ties Equinor and Skagerak attacks to an exploited Azure API Management flaw; NSM says assume secrets stolen",
+          "tldr": "Norway's National Security Authority says an unknown actor targeted access tokens, secrets and Named Values stored in Microsoft's Azure API Management, with Equinor and Skagerak Energi among the affected organizations; Microsoft identified the flaw November 18 and closed the unauthorized path November 19, but warns its fix does not invalidate credentials taken before the patch (per NSM's advisory, The Record and BleepingComputer).",
+          "source": "NSM",
+          "url": "https://nsm.no/aktuelt/nsm-deler-tiltak-mot-sarbarhet-i-azure-api-management",
+          "summary": "Norway's National Security Authority (NSM) says an unknown actor actively targeted access tokens, secrets and Named Values in Azure API Management (APIM), and that Equinor — one of Europe's largest gas suppliers — and Skagerak Energi (a Statkraft-majority electricity producer) are among the affected organizations; Norway's energy sector first discovered the flaw, and NSM praised Equinor for early detection and rapid sharing. Microsoft's Service Health advisory (Tracking ID MZK9-GH0, per BleepingComputer) says it identified the issue November 18 and closed the unauthorized management-plane path November 19; the flaw affected APIM Classic Developer/Basic/Standard/Premium tiers (v2 and Consumption tiers not affected) and could expose Named-Value secrets, identity-provider/OpenID client secrets, subscription keys and management-API tokens. Microsoft warns the fix does not invalidate customer credentials taken before the patch and published rotation guidance November 21; NSM tells organizations to assume their secrets are compromised and rotate everything, with runtime-version patch checks (0.52.x ≥ 31936; 0.53.x ≥ 31938). Equinor disclosed its cyberattack November 17 and says it fully contained it by November 20 with no indication data was stolen or altered; Skagerak Energi disclosed November 18 with no operational impact (per SecurityWeek/The Record). NSM says exploitation scope is still unclear and affects sectors beyond Norway; the national cyber risk level is \"high.\"",
+          "details": [
+            "The advisory: Norway's National Security Authority (NSM) says an unknown actor actively targeted access tokens, secrets and Named Values stored in Microsoft's Azure API Management (APIM), and that Equinor — one of Europe's largest gas suppliers — and Skagerak Energi (Statkraft-majority electricity producer) are among the affected organizations; Norway's energy sector first discovered the flaw, and NSM praised Equinor for early detection and rapid sharing.",
+            "Microsoft's timeline: Identified the issue November 18 and closed the unauthorized management-plane path November 19 (Service Health advisory, Tracking ID MZK9-GH0, per BleepingComputer); the flaw affected APIM Classic Developer/Basic/Standard/Premium tiers — v2 and Consumption tiers not affected — and could expose Named-Value secrets, identity-provider/OpenID client secrets, subscription keys and management-API tokens.",
+            "The catch: Microsoft warns its fix does not invalidate customer credentials taken before the patch and published rotation guidance November 21; NSM tells organizations to assume their secrets are compromised and rotate everything, with runtime-version patch checks (0.52.x ≥ 31936; 0.53.x ≥ 31938).",
+            "The victims' disclosures: Equinor disclosed its cyberattack November 17 and says it fully contained it by November 20, with no indication data was stolen or altered, production normal and some internal services disrupted; Skagerak Energi disclosed November 18 with no operational impact (per SecurityWeek/The Record).",
+            "Scope: NSM says exploitation scope is still unclear and affects sectors beyond Norway; the national cyber risk level is \"high.\"",
+            "Unverified color: An unnamed administrator's allegations — a deprecated legacy API, no logs, and an initial misattribution to leaked customer credentials — are per BleepingComputer and unverified.",
+            "What's developing: How many customers were exposed; whether the same actor hit both energy companies; why NSM still warns some instances lack the update; Equinor/Skagerak follow-up statements."
+          ],
+          "links": [
+            {
+              "label": "NSM — advisory and mitigations for the APIM vulnerability (Nov 20, updated Nov 23)",
+              "url": "https://nsm.no/aktuelt/nsm-deler-tiltak-mot-sarbarhet-i-azure-api-management"
+            },
+            {
+              "label": "The Record — Norway links energy-firm cyberattacks to the Microsoft flaw (Nov 23, 1:10 PM ET)",
+              "url": "https://therecord.media/norway-microsoft-cyberattack-equinor"
+            },
+            {
+              "label": "BleepingComputer — Microsoft: Azure flaw exploited to steal customers' API credentials (Nov 23, 2:42 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/microsoft-azure-flaw-exploited-to-steal-customers-api-credentials/"
+            },
+            {
+              "label": "SecurityWeek — Azure flaw exploited to target secrets at Norwegian energy firms (Nov 23, 10:47 AM ET)",
+              "url": "https://www.securityweek.com/azure-flaw-exploited-to-target-secrets-at-norwegian-energy-firms/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "US blacklists Megaspeed and six related companies over chip-diversion risk; Nvidia reinstates Jensen Huang as CEO",
+          "tldr": "The Commerce Department added Singapore-based Megaspeed and six related companies to the Entity List citing diversion risk for advanced computing technology, and Nvidia's board reinstated Jensen Huang as CEO and director on November 23 after President Trump publicly called for his return, citing input from senior US government officials (per The Guardian, BBC and Straits Times).",
+          "source": "The Guardian",
+          "url": "https://www.theguardian.com/us-news/2026/nov/23/megaspeed-us-trade-blacklist-nvidia",
+          "summary": "The Entity List notice, published Monday, adds Megaspeed and six related companies — Apex Enterprise Solutions and Swiftdata (Singapore), MSFusion, PT Megaspeed International and Speedmatrix (Malaysia), and Megaspeed (Thailand) — citing diversion risk for advanced computing technology, with licenses likely to be denied; Megaspeed has been under US investigation since 2024 over whether it diverted Nvidia chips to China. Singapore's PM Lawrence Wong said November 24 that Singapore is working with the US on a mechanism to facilitate enforcement of American chip export controls, that not all information the US asked for \"was forthcoming,\" and that the Megaspeed probe continues. Separately, Nvidia's board reinstated Jensen Huang as CEO and director on November 23, reversing its decision less than a week earlier; the board says his reinstatement poses no national-security risk while its independent investigation into the foreign-intelligence targeting reports continues — and the shares surged 31.5%, adding ~$1T in market value. Per AI Policy Daily, Treasury Secretary Bessent said Sunday Nvidia still owes Treasury answers on China-chip compliance, and Huang is due before House panels in early December.",
+          "details": [
+            "The Entity List action: The Commerce Department added Singapore-based Megaspeed and six related companies — Apex Enterprise Solutions and Swiftdata (Singapore), MSFusion, PT Megaspeed International and Speedmatrix (Malaysia), and Megaspeed (Thailand) — to the Entity List, citing diversion risk for advanced computing technology; entities need licenses likely to be denied. The notice was published Monday, November 23.",
+            "The investigation context: Megaspeed has been under US investigation since 2024 over whether it diverted Nvidia chips to China; the listing follows the DOJ/Commerce criminal probe and the Alice Huang espionage reporting.",
+            "Singapore's response: PM Lawrence Wong said November 24 (Canberra presser) that Singapore is working with the US on a mechanism to facilitate enforcement of American chip export controls, that not all information the US was asked for \"was forthcoming,\" and that Singapore's probe into Megaspeed continues — Alice Huang received a stern warning and a re-entry ban in February, and investigations into Megaspeed and six individuals are ongoing.",
+            "The reinstatement: Nvidia's board reinstated Jensen Huang as CEO and director on November 23, reversing its decision less than a week earlier, after President Trump publicly called for his return; the board cited input from senior US government officials and says his reinstatement poses no national-security risk, while its independent investigation into the foreign-intelligence targeting reports continues.",
+            "The market reaction: Nvidia shares surged 31.5%, adding ~$1T in market value.",
+            "Per AI Policy Daily (AI-digest relay): Treasury Secretary Bessent said Sunday Nvidia still owes Treasury answers on China-chip compliance, and Huang is due before House panels in early December.",
+            "What's developing: The Federal Register text; whether the entity-listing spreads to more partners; Huang's early-December congressional interviews; the December 1 Lutnick/Megaspeed response deadline."
+          ],
+          "links": [
+            {
+              "label": "The Guardian — US adds Megaspeed to trade blacklist (Nov 23, 8:47 PM ET)",
+              "url": "https://www.theguardian.com/us-news/2026/nov/23/megaspeed-us-trade-blacklist-nvidia"
+            },
+            {
+              "label": "BBC — US to blacklist Asian AI firm Megaspeed (Nov 23, 5:15 PM ET)",
+              "url": "https://www.bbc.com/news/articles/cv98xpg5dg5zo"
+            },
+            {
+              "label": "Straits Times — S'pore working with US on chip export enforcement; Megaspeed probe continues (Nov 23, 11:36 PM ET)",
+              "url": "https://www.straitstimes.com/singapore/spore-working-with-us-on-chip-export-enforcement-as-megaspeed-probe-continues-pm-wong"
+            },
+            {
+              "label": "CNA — Singapore, US working on chip-enforcement mechanism (live blog, Nov 23, 8:18 PM ET)",
+              "url": "https://www.channelnewsasia.com/singapore/cna-now-live-blog-nov-24-6574381"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "CISA adds MONAI Label zero-day and N-able Mail Assure SSRF to KEV — both actively exploited; patch deadline Nov 26",
+          "tldr": "CISA added two actively exploited flaws to its Known Exploited Vulnerabilities catalog — CVE-2026-133968 (CVSS 9.8), the MONAI Label path traversal exploited in the wild since September, and CVE-2026-134624 (CVSS 9.3), an N-able Mail Assure SSRF that surfaced through a November 16 cyberattack on the Mail Assure/SpamExperts Hosted Cloud — with federal agencies required to remediate both by November 26 (per CISA, The Hacker News and SecurityWeek).",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/11/23/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+          "summary": "The KEV additions pair a flaw from the AI world with one from email security. CVE-2026-133968 (CVSS 9.8) is a path traversal in MONAI Label ≤0.8.5 — an unauthenticated arbitrary file write via the datastore endpoint leading to RCE — exploited in the wild since September, before its November 20 public disclosure, and the same flaw was exploited in the Amazon-documented Cairn agentic campaign against East Asian universities reported November 21; the fix shipped in MONAI Label 0.8.6 on November 22. CVE-2026-134624 (CVSS 9.3) is an SSRF in N-able Mail Assure (SpamExperts)' LDAP-synchronization connection check that lets an authenticated API user reach arbitrary internal hosts and ports; it emerged from a cyberattack on the Mail Assure/SpamExperts Hosted Cloud that disrupted services starting November 16, in which N-able says hackers hit a web server and likely accessed credentials stored there — while saying exploitation was confined to a single N-able-hosted server and that it has not confirmed the SSRF was the entry vector. FCEB agencies must remediate both by November 26 under BOD 26-04.",
+          "details": [
+            "The additions: CISA added two actively exploited flaws to the Known Exploited Vulnerabilities catalog on November 23, with FCEB agencies required to remediate both by November 26 under BOD 26-04.",
+            "CVE-2026-133968 (CVSS 9.8) — MONAI Label path traversal: affects ≤0.8.5; an unauthenticated arbitrary file write via the datastore endpoint leads to RCE; exploited in the wild since September, before its November 20 public disclosure; fixed in MONAI Label 0.8.6, which shipped November 22. The same flaw was exploited in the Amazon-documented Cairn agentic campaign against East Asian universities reported November 21.",
+            "CVE-2026-134624 (CVSS 9.3) — N-able Mail Assure (SpamExperts) SSRF: in the LDAP-synchronization connection check, an authenticated API user can reach arbitrary internal hosts and ports; fixed in build 20261121.1943.",
+            "The incident behind the N-able flaw: A cyberattack on the Mail Assure/SpamExperts Hosted Cloud disrupted services starting November 16; N-able confirmed hackers hit a web server and likely accessed credentials stored there, contained it, and restored dashboard/APIs on November 21 at 11:44 PM UTC.",
+            "The open question: A spokesperson says exploitation was confined to a single N-able-hosted server with no further malicious activity since, but N-able has not confirmed the SSRF was the entry vector and will publish a root-cause analysis within two weeks.",
+            "Also: Canada's Cyber Centre re-issued its advisory (AV26-1191 Update 1) on November 23.",
+            "What's developing: N-able's root-cause analysis (~2 weeks); whether the MailAssure attacker is identified; patch uptake."
+          ],
+          "links": [
+            {
+              "label": "CISA — Two KEV additions (Nov 23)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/11/23/cisa-adds-two-known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "The Hacker News — MailAssure exploitation + MONAI agents detail (Nov 24, 6:02 AM ET)",
+              "url": "https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html"
+            },
+            {
+              "label": "SecurityWeek — N-able patches critical flaw after Mail Assure cyberattack (Nov 23, 10:06 AM ET)",
+              "url": "https://www.securityweek.com/n-able-patches-critical-flaw-disclosed-after-mail-assure-cyberattack/"
+            },
+            {
+              "label": "Security Affairs — KEV additions (Nov 24, 7:48 AM ET)",
+              "url": "https://securityaffairs.com/203882/hacking/u-s-cisa-adds-n-able-mailassure-and-project-monai-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "European Commission confirms user data stolen in the month-long AI-assisted cyberattack; China-backed \"Panda\" suspected",
+          "tldr": "The Commission confirmed at its November 23 briefing that the EU Academy learning platform was compromised in the detected cyber campaign against it, leaking names and email addresses of external users — and per Euronews, two sources say a China-backed network of threat actors is suspected, with the codename \"Panda\" circulating internally (per The Register, Euronews, Politico and AP).",
+          "source": "The Register",
+          "url": "https://www.theregister.com/cyber-crime/2026/11/24/european-commission-confirms-personal-data-stolen-in-ai-assisted-cyberattack/5311834",
+          "summary": "The Commission says the campaign involved an AI-assisted tool and that attribution awaits the investigation's conclusion; the attack was first detected October 22, and after the November 19 disclosure of impacts on its Sysper and ARTEX internal systems, an EU official tells Politico the incident is not yet fully contained (\"It's not over yet\"). The EU Academy leak exposed external users' names and email addresses per spokesperson Thomas Regnier and an EU official; exact scale is under investigation and public access was disabled as a precaution — but users were notified only via a website notice, a notice sitting on a platform that is offline until January 14, 2027 while the Commission rebuilds it and requires users to re-register. The EDPS has been informed \"in phases\" and declined to say whether it considers that notification approach sufficient (per The Register). Euronews' exclusive, citing two sources, reports a China-backed network of threat actors is suspected — per that assessment the actor was not targeting specific systems but testing how far it could compromise the Commission's networks.",
+          "details": [
+            "The confirmation: At its November 23 midday briefing the Commission confirmed the EU Academy learning platform was compromised in the \"detected cyber campaign against the Commission,\" leaking personal data of its external users — names and email addresses per spokesperson Thomas Regnier and an EU official.",
+            "The notification gap: Exact scale is under investigation and public access was disabled as a precaution, but users were notified only via a website notice (no individual emails) — a notice sitting on a platform that is offline until January 14, 2027 while the Commission rebuilds it and requires users to re-register; the EDPS has been informed \"in phases\" and declined to say whether it considers the notification approach sufficient (per The Register).",
+            "The AI angle: The Commission says the campaign involved an AI-assisted tool and that attribution awaits the investigation's conclusion.",
+            "The attribution reporting: Per Euronews' exclusive, two sources say a China-backed network of threat actors is suspected, with the codename \"Panda\" circulating internally; per that assessment the actor was not targeting specific systems but testing how far it could compromise the Commission's networks.",
+            "The timeline: The attack was first detected October 22; the Commission disclosed impacts on its Sysper and ARTEX internal systems on November 19, and an EU official tells Politico the incident is not yet fully contained (\"It's not over yet\").",
+            "What's developing: Attribution; scale; EDPS supervisory action; whether staff-system impacts widen; the AI-assisted tool's identity."
+          ],
+          "links": [
+            {
+              "label": "The Register — Commission confirms personal data stolen in AI-assisted cyberattack (Nov 24, 6:32 AM ET)",
+              "url": "https://www.theregister.com/cyber-crime/2026/11/24/european-commission-confirms-personal-data-stolen-in-ai-assisted-cyberattack/5311834"
+            },
+            {
+              "label": "Euronews — exclusive: China-backed hackers suspected; first confirmed data leak (Nov 23, updated 10:58 AM ET)",
+              "url": "https://www.euronews.com/2026/11/23/exclusive-china-backed-hackers-suspected-behind-ongoing-eu-commission-cyberattack"
+            },
+            {
+              "label": "Politico — Commission confirms personal-data leak, warns of further disruption (Nov 23, 8:08 AM ET)",
+              "url": "https://www.politico.eu/article/european-commission-personal-data-leak-cyberattack-disruption/"
+            },
+            {
+              "label": "AP — Commission warns EU Academy users of data leak (Nov 23, 8:24 AM ET)",
+              "url": "https://apnews.com/article/european-commission-cyberattack-website-artex-ai-02e1f69e46ad9f82484b66b2f86df53b"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Oregon and Virginia sue SpaceX over Grok's sexualized-image generation — first state suits, citing millions of images",
+          "tldr": "Oregon AG Dan Rayfield and Virginia AG Jay Jones filed separate consumer-protection lawsuits alleging SpaceX — parent of X, xAI and Grok — knowingly failed to safeguard Grok's image/video generation while falsely promoting its safety, citing a CCDH study's ~3 million sexualized images created on X including ~23,000 appearing to depict children (per the Virginia AG release, NYT, CNBC and The Verge).",
+          "source": "Virginia AG",
+          "url": "https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform",
+          "summary": "The suits, filed Monday in Multnomah County Circuit Court and Richmond City Circuit Court, allege the company enabled non-consensual intimate imagery, sexualized images and CSAM while promoting Grok's safety. The Virginia release cites the CCDH study: ~3 million sexualized images created or posted on X between December 29, 2025 and January 8, 2026, ~23,000 of them appearing to depict children (~190 per minute; one child image roughly every 41 seconds), with ~30% of identified child images still publicly accessible a week or more later. The complaints themselves (per NYT/CNBC) cite at least 1.8 million sexualized images of women and at least 65 of children — the differing counts come from different studies and should not be blended. The states seek civil penalties, injunctions, disgorgement and restitution. An X Safety statement says bad actors deliberately violated the terms and that safeguards were tightened; the complaints center on Grok Imagine's \"spicy mode\" (August 2025) and the January 2026 one-tap image editing, with xAI now merged into SpaceX.",
+          "details": [
+            "The suits: Oregon AG Dan Rayfield and Virginia AG Jay Jones filed separate consumer-protection lawsuits Monday, November 23 (Oregon's submitted Sunday evening per CNBC) in Multnomah County Circuit Court and Richmond City Circuit Court, alleging SpaceX — parent of X, xAI (now \"SpaceX Super Intelligence\") and Grok — knowingly failed to safeguard Grok's image/video generation while falsely promoting its safety, enabling non-consensual intimate imagery, sexualized images and CSAM.",
+            "The CCDH study (per the Virginia release): ~3 million sexualized images created/posted on X between December 29, 2025 and January 8, 2026, ~23,000 appearing to depict children (~190/minute; one child image ~every 41 seconds), with ~30% of identified child images still publicly accessible a week or more later.",
+            "The complaints' counts (per NYT/CNBC): At least 1.8 million sexualized images of women and at least 65 of children — the differing counts come from different studies and should not be blended.",
+            "The relief sought: Civil penalties, injunctions, disgorgement and restitution.",
+            "The company's response: An X Safety statement says bad actors deliberately violated the terms and that safeguards were tightened.",
+            "Context: The complaints center on Grok Imagine's \"spicy mode\" (August 2025) and the January 2026 one-tap image editing; xAI merged into SpaceX; earlier private suits and a Baltimore xAI suit exist, with a Section 230 defense noted by CNBC.",
+            "What's developing: Court acceptance; other states joining; any SpaceX/xAI formal response beyond the X Safety statement."
+          ],
+          "links": [
+            {
+              "label": "Virginia AG — press release with filing detail (Nov 23)",
+              "url": "https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform"
+            },
+            {
+              "label": "NYT — Oregon and Virginia sue SpaceX (Nov 23, 8:40 AM ET)",
+              "url": "https://www.nytimes.com/2026/11/23/technology/spacex-lawsuit-ai-sexualized-images.html"
+            },
+            {
+              "label": "CNBC — first states to sue SpaceX over Grok safety claims (Nov 23, 7:40 AM ET)",
+              "url": "https://www.cnbc.com/2026/11/23/oregon-virginia-spacex-grok-deepfake-lawsuits.html"
+            },
+            {
+              "label": "The Verge — lawsuits and X Safety response (Nov 23, 1:26 PM ET)",
+              "url": "https://www.theverge.com/ai-artificial-intelligence/1040255/x-grok-ai-deepfakes-oregon-virginia-lawsuit"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            }
+          ],
+          "title": "Cleverbridge says hackers stole payment card numbers, expiry dates and CVV codes from its e-commerce platform",
+          "tldr": "Germany-headquartered e-commerce platform Cleverbridge says a third party copied payment card data — card numbers, expiry dates and CVV/CVC codes — stored on its platform after unauthorized activity detected November 4, and notification letters show the scope even though the company has not said how many customers were affected or how attackers got in (per BleepingComputer, The Register and Cleverbridge's incident page).",
+          "source": "Cleverbridge",
+          "url": "https://grow.cleverbridge.com/incident-update",
+          "summary": "Cleverbridge processes sales for software vendors including Red Hat, Sony, SUSE, Veeam, Tenable, Jamf and Parallels. It says unauthorized activity was detected November 4 (systems briefly taken offline the same day) and that a third party copied payment card data stored on the platform; notifications began November 20. Notification letters seen by BleepingComputer and The Register show stolen data includes card numbers, expiry dates and CVV/CVC codes, with The Register adding contact details such as email and billing addresses and phone numbers — while Cleverbridge's own FAQ says CVVs were involved only \"in a minority of cases\" and its public page says no name, contact or billing data was copied; the accounts differ. CVV storage after authorization is prohibited under PCI DSS, and Cleverbridge has not explained how the codes were captured. It has not said how many customers were affected, how attackers got in, how long they stayed, or which vendors' customers are involved, and did not answer press questions; it says it was not a ransomware attack and no systems were encrypted. Data-protection authorities, a specialist police cybercrime unit, card networks and payment partners were notified, and TransUnion Cyberscout is sending notices with 24 months of credit monitoring.",
+          "details": [
+            "The company: Cleverbridge is the Germany-headquartered e-commerce and subscription platform that processes sales for software vendors including Red Hat, Sony, SUSE, Veeam, Tenable, Jamf and Parallels.",
+            "The incident: Unauthorized activity was detected November 4 (systems briefly taken offline the same day); a third party copied payment card data stored on the platform; notifications began November 20.",
+            "The stolen data: Card numbers, expiry dates and CVV/CVC codes per notification letters seen by BleepingComputer and The Register; The Register adds contact details — email/billing addresses, phone numbers. Cleverbridge's own FAQ says CVV was involved only \"in a minority of cases,\" while its public page says no name/contact/billing data was copied — the letter accounts differ and are flagged.",
+            "The PCI problem: CVV storage after authorization is prohibited under PCI DSS, and Cleverbridge has not explained how the codes were captured.",
+            "The unknowns: How many customers were affected, how attackers got in, how long they stayed, and which vendors' customers are involved — none disclosed; the company did not answer press questions.",
+            "What it is not: Not a ransomware attack; no systems encrypted.",
+            "The response: Data-protection authorities, police (a specialist cybercrime unit), card networks and payment partners were notified; TransUnion Cyberscout is sending notices with 24 months of credit monitoring, and customers are told to watch for fraud and phishing.",
+            "What's developing: Affected-client naming; cardholder counts; how CVVs were retained/intercepted; any card-network reissue wave."
+          ],
+          "links": [
+            {
+              "label": "Cleverbridge — Incident Update & FAQs",
+              "url": "https://grow.cleverbridge.com/incident-update"
+            },
+            {
+              "label": "The Register — Cleverbridge admits attackers stole card numbers and CVVs (Nov 23, 6:48 AM ET)",
+              "url": "https://www.theregister.com/cyber-crime/2026/11/23/cleverbridge-admits-attackers-stole-customers-credit-card-and-cvv-numbers-yep-you-read-that-right/5311573"
+            },
+            {
+              "label": "BleepingComputer — Cleverbridge warns hackers stole credit card numbers, CVVs (Nov 22, 10:43 AM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/cleverbridge-warns-hackers-stole-credit-card-numbers-cvvs-in-data-breach/"
+            },
+            {
+              "label": "ThaiCERT — disclosure recap (Nov 24, 2:02 AM ET)",
+              "url": "https://www.thaicert.or.th/en/2026/11/24/cleverbridge-discloses-data-breach-affecting-customers-payment-card-information/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "OpenRouter names the three removed providers — Together AI, Phala, Novita; Phala reports 152,092 requests read",
+          "tldr": "BleepingComputer confirms the three inference providers OpenRouter removed were Together AI, Phala and Novita, after Dragos sent ~2 million canary-seeded test prompts and observed leaked credentials used against controlled test systems — and Phala's final incident report says the October rootkit read 152,092 request bodies (0.45% of traffic) and obtained the legacy KMS root key in seven November 5 handovers (per Phala's report, BleepingComputer and Axios).",
+          "source": "Phala",
+          "url": "https://phala.com/posts/phala-november-detailed-incident-report",
+          "summary": "The confirmation settles which providers were off-boarded when OpenRouter disclosed the inference-provider breaches on November 22. OpenRouter also revoked Zero-Data-Retention eligibility for 125 endpoints, notified affected customers and says its own systems were not breached; Atlas Cloud separately withdrew its models pending security testing. Phala's detailed final report supersedes its November 10 preliminary report: the October rootkit on the experimental DeepSeek V4 Flash 0731 deployment read request bodies from October 21 to November 1 — 152,092 requests (0.45% of the service's traffic) — after the experimental server took live OpenRouter traffic without attestation checks; in November the attacker reached two hosts' VMMs via a legacy dstack gateway's unauthenticated UpdateState and a tenant-CVM SLIRP forwarding path, downloaded 65 applications' code, took the gateway's admin/launch/Cloudflare tokens and obtained the legacy KMS root key in seven November 5 handovers (19 replicas shared it). Both paths were closed by November 6 and the infrastructure rebuilt with a new TEE-rooted KMS. Axios adds the China angle: OpenRouter warned customers that prompts and responses sent to MiniMax models may have been accessed by a third party between July and October; Stripe, which owns OpenRouter, confirmed the emails' legitimacy.",
+          "details": [
+            "The names: BleepingComputer confirms the three inference providers OpenRouter removed were Together AI, Phala and Novita — after Dragos alerted OpenRouter having sent ~2 million canary-seeded test prompts and observed leaked credentials used against controlled test systems and canary AWS accounts.",
+            "OpenRouter's own actions: Revoked Zero-Data-Retention eligibility for 125 endpoints, notified affected customers, and says its own systems were not breached; Atlas Cloud separately withdrew its models pending security testing.",
+            "Phala's final report (supersedes its November 10 preliminary report): The October rootkit on the experimental DeepSeek V4 Flash 0731 deployment read request bodies from October 21 to November 1 — 152,092 requests (0.45% of the service's traffic) — after the experimental server took live OpenRouter traffic without attestation checks.",
+            "The November escalation: The attacker reached two hosts' VMMs via a legacy dstack gateway's unauthenticated UpdateState and a tenant-CVM SLIRP forwarding path, downloaded 65 applications' code, obtained the gateway's admin/launch/Cloudflare tokens, and obtained the legacy KMS root key in seven November 5 handovers (19 replicas shared it); both paths were closed by November 6 and the infrastructure rebuilt with a new TEE-rooted KMS.",
+            "The remediation table: OpenRouter users of that deployment between October 21 and November 1 rotate secrets; pre-November 6 Phala Cloud getKey() apps move to new keys.",
+            "The China angle (per Axios): OpenRouter warned customers that prompts/responses sent to MiniMax models may have been accessed by a third party between July and October; Stripe, which owns OpenRouter, confirmed the emails' legitimacy.",
+            "What's developing: Whether removed providers return (validation required); Dragos's ongoing provider checks; any MiniMax statement."
+          ],
+          "links": [
+            {
+              "label": "Phala — November Detailed Incident Report (Nov 23, 10:39 AM ET)",
+              "url": "https://phala.com/posts/phala-november-detailed-incident-report"
+            },
+            {
+              "label": "BleepingComputer — OpenRouter drops AI providers over leaked prompts and secrets (Nov 23, 3:00 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/openrouter-drops-ai-providers-over-leaked-prompts-and-secrets/"
+            },
+            {
+              "label": "Axios — OpenRouter warns user data was sent to China's MiniMax (Nov 23, 11:03 AM ET)",
+              "url": "https://www.axios.com/2026/11/23/openrouter-minimax-china-customer-data"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "MoEngage says compromised vendor credentials exposed parts of its cloud; WazirX and ZebPay user data caught in breach",
+          "tldr": "Customer-engagement SaaS MoEngage says a compromised third-party vendor's credentials let an unauthorized party reach parts of its cloud in late October, affecting less than 1% of customer accounts — and exchanges WazirX and ZebPay have told users the exposed data included emails, contact identifiers, device metadata and engagement attributes, with wallets, funds and trading systems untouched (per MediaNama, Inc42 and Outlook Money).",
+          "source": "MediaNama",
+          "url": "https://www.medianama.com/2026/11/223-moengage-cyberattack-zebpay-third-party-security/",
+          "summary": "MoEngage, the Bengaluru and San Francisco-based customer-engagement platform, says a compromised third-party vendor's credentials let an unauthorized party reach parts of its cloud in late October, affecting less than 1% of customer accounts; some customers were locked out for about a week before access was restored around November 19 (per ET). WazirX, in notices published November 21–23, says the exposed data was emails, contact identifiers, device metadata and engagement attributes; ZebPay, in a November 21 email to users, adds account-activity records. Both exchanges say wallets, funds and trading systems were untouched — the exposure sits in the engagement layer, not the exchange plumbing, but it hands attackers email addresses and activity context useful for phishing and social engineering against crypto users. The disclosures landed November 20–21 and were surfaced to a wider audience by the Indian technology and personal-finance press on November 23.",
+          "details": [
+            "The breach: MoEngage — the Bengaluru/San Francisco customer-engagement SaaS — says a compromised third-party vendor's credentials let an unauthorized party reach parts of its cloud in late October; less than 1% of customer accounts were affected, and some customers were locked out for about a week before access was restored around November 19 (per ET).",
+            "WazirX's notice (published November 21–23): The exposed data was emails, contact identifiers, device metadata and engagement attributes.",
+            "ZebPay's email (November 21): Adds account-activity records to the exposed-data picture.",
+            "Both exchanges' assurance: Wallets, funds and trading systems were untouched — the exposure sits in the engagement layer, but hands attackers email addresses and activity context useful for phishing and social engineering against crypto users.",
+            "Timing: The MoEngage statement and ZebPay email landed November 20–21; the Indian technology and personal-finance press surfaced the story to a wider audience on November 23.",
+            "What's developing: Any vendor naming by MoEngage; further customer notices; regulator involvement."
+          ],
+          "links": [
+            {
+              "label": "MediaNama — MoEngage cyberattack, ZebPay third-party security (Nov 23, 8:29 AM ET)",
+              "url": "https://www.medianama.com/2026/11/223-moengage-cyberattack-zebpay-third-party-security/"
+            },
+            {
+              "label": "Inc42 — MoEngage suffers cybersecurity attack due to compromised third-party vendor (Nov 23, 12:32 AM ET)",
+              "url": "https://inc42.com/buzz/now-moengage-suffers-cybersecurity-attack-due-to-compromised-third-party-vendor/"
+            },
+            {
+              "label": "Outlook Money — WazirX, ZebPay users' data exposed in MoEngage breach; both say funds safe (Nov 23, 4:56 AM ET)",
+              "url": "https://www.outlookmoney.com/invest/wazirx-zebpay-users-data-exposed-in-moengage-breach-both-say-funds-safe"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-23",
       "items": [
