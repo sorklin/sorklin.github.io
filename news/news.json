@@ -1,7 +1,260 @@
 {
   "version": 3,
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "days": [
+    {
+      "date": "2026-11-25",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "CIA, ODNI and NGA probe a breach of an unclassified OSINT system — FinCEN discloses its own incident hours later",
+          "tldr": "An unclassified system used to analyze open-source and commercially available intelligence was breached, affecting the CIA, ODNI and — concurrently, per NYT — the National Geospatial-Intelligence Agency, with some unclassified information exposed and classified systems unaffected (per NYT, Reuters, AP, Nextgov/FCW and CyberScoop); hours later, Treasury's FinCEN disclosed unauthorized access to \"a limited subset of its systems.\"",
+          "source": "Nextgov/FCW",
+          "url": "https://www.nextgov.com/cybersecurity/2026/11/cia-odni-unclassified-intelligence-system-hacked/417438/",
+          "summary": "The intrusion into the unclassified OSINT-analysis system \"exposed some unclassified information\"; the CIA says the hack \"did not involve our classified networks or classified information, and no other systems are currently at risk,\" and ODNI says there were \"no disruptions to critical capabilities or classified systems.\" Who carried it out and what was taken remain unclear. Nextgov reports the hacker apparently used ARTEX — an AI tool developed by a Chinese cybersecurity engineer known as \"Autumn-27\" that automatically finds and breaks into systems, recently a favorite of criminal hackers — and that ARTEX was recently used to assist an intrusion into the Defense Department's Cyber Defense Command described as low-impact (per Nextgov, citing two anonymous sources). A Times reporter's early indication that China may be responsible is per ISMG and unconfirmed, and Cybernews adds Gen. Flynn's unconfirmed claim that ARTEX \"points toward China.\" Experts (Huntress' Ben Bernstein, SecurityScorecard's Yampolskiy) stress that OSINT systems reveal analyst priorities even when unclassified. Hours later FinCEN — Treasury's financial-crimes bureau, keeper of Bank Secrecy Act data and SAR filings — disclosed it is investigating \"an incident that resulted in unauthorized access to a limited subset of its systems,\" took some systems offline as a precaution, and told banks BSA E-filing remains available online with the Financial Institutions Hotline unaffected; FinCEN offered no scope, source or timing, and says it is unclear whether the incidents are related (per The Verge; DoD declined comment). ARTEX is also the tool name in JFrog's separate same-day Hugging Face report (story 5) — no connection has been established.",
+          "details": [
+            "The breach: An unclassified system used to analyze open-source and commercially available intelligence was breached, affecting the CIA, ODNI and — concurrently, per NYT — the National Geospatial-Intelligence Agency; the incident is described as resolved. NYT first reported it November 24 (the NYT URL was not returned by the searches — carried via the secondaries below).",
+            "What was exposed: \"Some unclassified information\"; the CIA says the hack \"did not involve our classified networks or classified information, and no other systems are currently at risk,\" and ODNI says there were \"no disruptions to critical capabilities or classified systems.\" Who carried it out and what was taken are unclear.",
+            "The AI tool (per Nextgov, citing two anonymous sources): The hacker apparently used ARTEX — an AI tool developed by a Chinese cybersecurity engineer known as \"Autumn-27\" that automatically finds and breaks into systems, recently a favorite of criminal hackers; ARTEX was also recently used to assist an intrusion into the Defense Department's Cyber Defense Command (DCDC), described as low-impact.",
+            "The attribution signals (unconfirmed): A Times reporter tweeted that early indications suggest China may be responsible (per ISMG — unconfirmed, not an official attribution); Cybernews adds Gen. Flynn's unconfirmed claim that ARTEX \"points toward China.\"",
+            "The expert warning: Huntress' Ben Bernstein and SecurityScorecard's Yampolskiy stress that OSINT systems reveal analyst priorities even when unclassified.",
+            "FinCEN, hours later: Treasury's financial-crimes bureau (keeper of Bank Secrecy Act data and SAR filings) disclosed it is investigating \"an incident that resulted in unauthorized access to a limited subset of its systems,\" took some systems offline as a precaution, and told banks BSA E-filing remains available online with the Financial Institutions Hotline unaffected; it offered no scope, source or timing, and says it is unclear whether the incidents are related (per The Verge; DoD declined comment).",
+            "The name overlap: ARTEX is also the tool name in JFrog's separate same-day Hugging Face report (story 5) — the same tool name reported in two different incidents; no connection has been established.",
+            "What's developing: Whether FinCEN's incident is linked; attribution; what OSINT data was exposed; NGA/DCDC statements; the FBI's role."
+          ],
+          "links": [
+            {
+              "label": "Nextgov/FCW — CIA, ODNI unclassified intelligence system hacked; ARTEX/DCDC detail (Nov 24, 5:46 PM ET)",
+              "url": "https://www.nextgov.com/cybersecurity/2026/11/cia-odni-unclassified-intelligence-system-hacked/417438/"
+            },
+            {
+              "label": "AP — unclassified CIA system breached (Nov 24, 3:29 PM ET)",
+              "url": "https://apnews.com/article/cia-cyberattack-unclassified-system-bfa6d3b02e3b0e2779dfb613c900bd77"
+            },
+            {
+              "label": "Reuters via Investing.com — CIA/ODNI breach of unclassified information (Nov 24, 2:45 PM ET)",
+              "url": "https://www.investing.com/news/world-news/us-cia-odni-suffer-cybersecurity-breach-of-some-unclassified-information-nyt-reports-5048922"
+            },
+            {
+              "label": "CyberScoop — Unclassified intel system hit, affecting CIA, ODNI (Nov 24, 6:01 PM ET)",
+              "url": "https://cyberscoop.com/cia-odni-osint-data-breach/"
+            },
+            {
+              "label": "govinfosecurity/ISMG — CIA, DNI probe hack (Nov 24, 6:56 PM ET)",
+              "url": "https://www.govinfosecurity.com/cia-dni-probe-hack-unclassified-intelligence-system-a-33514"
+            },
+            {
+              "label": "The Verge — FinCEN discloses cybersecurity incident (Nov 24, 8:00 PM ET)",
+              "url": "https://www.theverge.com/policy/1041957/fincen-treasury-cybersecurity-incident"
+            },
+            {
+              "label": "Cybernews — Treasury hit hours after CIA breach (Nov 25, 2:55 AM ET)",
+              "url": "https://cybernews.com/security/us-government-cyberattacks-treasury-cia-fbi/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "hex.pm breached via a decade-old Erlang deserialization RCE — six servers hit, credential rotation forced",
+          "tldr": "An unauthorized party exploited CVE-2026-129514 (CVSS 10.0 per Corgea) in hex.pm — the Elixir/Erlang/Gleam package registry — running OS commands on six web servers before the attack was contained within ~20 minutes; hex.pm says it cannot rule out database reads of email addresses, bcrypt password hashes, API-key hashes and 2FA secrets, and asks all users to change passwords and reset 2FA (per hex.pm's incident report — the primary — plus The Hacker News and SOCRadar).",
+          "source": "Hex",
+          "url": "https://hex.pm/blog/security-incident-on-hexpm",
+          "summary": "The exploit chain is a textbook unsafe-deserialization bug: hex.pm decoded unauthenticated application/vnd.hex+erlang request bodies with Plug.Crypto.non_executable_binary_to_term/2, letting crafted __struct__ values chain through Plug.MethodOverride → Inspect → Ecto.Query.DynamicExpr → DBConnection.Stream into an attacker-controlled {module, function, args} apply — OS command execution as the BEAM user. The vulnerable check had been sitting in the code since February 23, 2016. The attack ran November 23, 18:16–18:29 UTC: six web servers hit by 69 exploit requests, with hex.pm blocking the traffic and deploying fixes within ~20 minutes. It found no evidence of unauthorized package modifications, database changes, or persisted access — but because database reads aren't logged it cannot rule out access to email addresses, bcrypt password hashes, API-key (HMAC-SHA256) hashes, 2FA secrets, sessions and audit logs, and is rotating every credential the attacker could have read (storage, CDN, email, database, session/token-signing keys). The registry signing key stays unrotated while a new rotation-capable signing system is built — new Hex clients are due \"in the coming days,\" and users are told to fetch packages only from repo.hex.pm, not mirrors. Hex reported the personal-data breach to Sweden's IMY, the incident to CISA, and gave an early warning to ENISA. The same struct-injection class turned up in the Ash framework's keyset pagination (CVE-2026-124283, fixed in ash 3.38.0 on November 24), and a related db_connection flaw is tracked as CVE-2026-133555.",
+          "details": [
+            "The vulnerability: CVE-2026-129514 (CVSS 10.0 per Corgea) — hex.pm decoded unauthenticated application/vnd.hex+erlang request bodies with Plug.Crypto.non_executable_binary_to_term/2, letting crafted __struct__ values chain through Plug.MethodOverride → Inspect → Ecto.Query.DynamicExpr → DBConnection.Stream to an attacker-controlled {module, function, args} apply — OS command execution as the BEAM user. The vulnerable check was removed from the git history on February 23, 2016.",
+            "The attack window: November 23, 18:16–18:29 UTC; six web servers hit by 69 exploit requests; hex.pm blocked the traffic and deployed fixes within ~20 minutes.",
+            "What ran: OS commands as the BEAM user. Hex found no evidence of unauthorized package modifications, database changes, or persisted access.",
+            "What can't be ruled out: Database reads aren't logged, so access to email addresses, bcrypt password hashes, API-key (HMAC-SHA256) hashes, 2FA secrets, sessions and audit logs cannot be excluded — all users are asked to change passwords and reset 2FA.",
+            "The response: All credentials the attacker could have read were rotated (storage, CDN, email, database, session/token-signing keys); the registry signing key remains unrotated while a new rotation-capable signing system is built — new Hex clients due \"in the coming days\"; users told to fetch only from repo.hex.pm, not mirrors.",
+            "The disclosures: Personal-data breach reported to Sweden's IMY; the incident to CISA; an early warning to ENISA.",
+            "Related findings: The same struct-injection class was found in the Ash framework's keyset pagination (CVE-2026-124283, fixed in ash 3.38.0 on November 24); a related db_connection flaw is tracked as CVE-2026-133555. The Hacker News adds a maintainer clarification that users who only fetch public packages need do nothing.",
+            "What's developing: New Hex client releases with the registry-signing system; whether any database read is later confirmed; affected-organization notifications for private-package reads."
+          ],
+          "links": [
+            {
+              "label": "Hex — Security incident on hex.pm (Nov 24)",
+              "url": "https://hex.pm/blog/security-incident-on-hexpm"
+            },
+            {
+              "label": "GitHub advisory GHSA-9pmm-hf4r-27pg (Nov 24)",
+              "url": "https://github.com/hexpm/hexpm/security/advisories/GHSA-9pmm-hf4r-27pg"
+            },
+            {
+              "label": "The Hacker News — CVSS 10.0 hex.pm RCE, six servers (Nov 25, 4:06 AM ET)",
+              "url": "https://thehackernews.com/2026/11/hackers-exploited-cvss-100-hexpm-rce.html"
+            },
+            {
+              "label": "SOCRadar — hex.pm RCE exploited (Nov 25, 6:27 AM ET)",
+              "url": "https://socradar.io/blog/hex-pm-rce-cve-2026-129514-exploited/"
+            },
+            {
+              "label": "Corgea — CVE-2026-129514 write-up (Nov 24)",
+              "url": "https://corgea.com/research/cve-2026-129514-hexpm-erlang-term-struct-deserialization-rce-breach-november-2026"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Radware: unauthenticated internet-exposed Cloud WAF API exposed customer contacts and log-export credentials",
+          "tldr": "Radware — the Tel Aviv-based application-delivery/DDoS vendor with 12,500+ enterprise and carrier customers — says an unauthorized party accessed an internal-only Cloud WAF management API that was reachable from the public internet without authentication starting November 19, potentially accessing customer contact details and, for a subset of AppSec customers, the credentials configured for log export into their own storage (per BleepingComputer carrying the company's root-cause analysis — the single source returned).",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/radware-discloses-breach-exposing-customer-cloud-access-keys/",
+          "summary": "Per the root-cause analysis Radware shared with BleepingComputer, the unauthorized API access began November 19 and was detected November 20 — ten hours later. The confirmed potentially-accessed data includes customer contact details and, for a subset of AppSec (WAF/BOT) customers, the credentials configured for log export into their self-managed storage (AWS S3, Azure Blob Storage, or SFTP). Radware says it blocked the originating IP and the API and revoked and replaced internal credentials, that WAF traffic inspection and protection continued without interruption, and that there is no evidence of changes to customer security policies or of access to customer application traffic, WAF traffic inspection data, certificates, or DDoS services data. It strongly advises affected customers to rotate Cloud WAF log-export credentials and review storage access logs back to at least November 19 — and says it has already received customer reports of AWS alerts for an unfamiliar IP attempting to access their log-export buckets. Per BleepingComputer, Radware has not issued a public statement or SEC breach filing and did not answer press questions; the RCA contents are per BleepingComputer only.",
+          "details": [
+            "The company: Radware is the Tel Aviv-based application-delivery and DDoS-protection vendor with 12,500+ enterprise and carrier customers.",
+            "The exposure: On November 19, 2026, an unauthorized party accessed an internal-only Cloud WAF management API that was reachable from the public internet without requiring authentication; the breach was detected November 20 — ten hours later, per the root-cause analysis.",
+            "The data: Customer contact details and, for a subset of AppSec (WAF/BOT) customers, the credentials configured for log export into their self-managed storage (AWS S3, Azure Blob Storage, or SFTP).",
+            "The containment: Radware blocked the originating IP and the API and revoked and replaced internal credentials; WAF traffic inspection/protection continued without interruption, with no evidence of changes to customer security policies or access to customer application traffic, WAF traffic inspection data, certificates, or DDoS services data.",
+            "The advice: Affected customers are strongly advised to rotate Cloud WAF log-export credentials and review storage access logs back to at least November 19.",
+            "The customer reports: Radware says it has already received reports of AWS alerts for an unfamiliar IP attempting to access customers' log-export buckets.",
+            "The disclosure gap: Per BleepingComputer, Radware has not issued a public statement or SEC breach filing and did not answer press questions; the RCA was shared by an anonymous source — the RCA contents are per BleepingComputer only (single-source caveat).",
+            "What's developing: A Radware public statement/SEC filing; whether stolen log-export keys were used beyond the reported unfamiliar-IP attempts; the customer count."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — Radware discloses breach exposing customer cloud access keys (Nov 24, 12:49 PM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/radware-discloses-breach-exposing-customer-cloud-access-keys/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "CISA adds Drupal, Idunno AntiCsrf and Optimizely flaws to KEV — patch deadline Nov 27",
+          "tldr": "CISA added three actively exploited flaws to its Known Exploited Vulnerabilities catalog — CVE-2026-132165 (Drupal Core installer RCE), CVE-2026-131914 (Idunno AntiCsrf deserialization) and CVE-2026-132224 (Optimizely Web Experimentation external control of critical state data) — with federal remediation due November 27 and forensic triage required under BOD 26-04 (per CISA — the primary — plus SecurityWeek, Security Affairs and securityonline.info).",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/11/24/cisa-adds-three-known-exploited-vulnerabilities-catalog",
+          "summary": "The Drupal flaw (CVE-2026-132165, CVSS ~9.8, \"Highly critical 20/25\") was patched November 18 in 10.6.22/11.3.22/11.4.13: the shipped install.php can, under specific conditions, be used to reinstall Drupal over a live site, enabling site takeover or arbitrary code — and Drupal's advisory says it \"received a report this was exploited on live sites as early as 2026-11-19 19:00 UTC,\" within a day of the patch. Per the University of Toronto's advisory the flaw was found by Anthropic's OSS scanner, with a public PoC; some exploit paths are mitigated if the web server cannot write settings.php, and end-of-life branches get no fix. The Idunno AntiCsrf flaw (CVE-2026-131914, CVSS 9.8 per Security Affairs) sits in version 0.9.1 of a legacy ASP.NET anti-CSRF library that deserializes the CSRF token unsigned before page load — one crafted anonymous POST to a reachable .aspx page executes code as the IIS worker process; Mandiant, which disclosed it (MNDT-2026-0048), confirms active exploitation but attributes it to no actor, and the unmaintained library has no patch — organizations are told to remove it. The Optimizely flaw (CVE-2026-132224, CVSS 7.1, fixed November 17) is the account-signup issue behind the November 16 campaign that planted wallet-swapping and card-skimming JavaScript on 178 customer websites (reported November 17 by Report URI's Scott Helme): attackers impersonated existing users, modified Project JavaScript, and delivered card skimmers, cookie/screenshot theft and crypto-address swaps from Optimizely-hosted assets. No new victim names beyond that campaign.",
+          "details": [
+            "The additions: CISA added CVE-2026-132165 (Drupal Core RCE), CVE-2026-131914 (Idunno AntiCsrf deserialization) and CVE-2026-132224 (Optimizely Web Experimentation external control of critical state data) to the KEV catalog on November 24, with FCEB remediation due November 27 and forensic triage required per BOD 26-04.",
+            "Drupal (CVSS ~9.8, \"Highly critical 20/25\"): Patched November 18 in 10.6.22/11.3.22/11.4.13. The shipped install.php can, under specific conditions, be used to reinstall Drupal over a live site, enabling site takeover or arbitrary code; Drupal's advisory says it \"received a report this was exploited on live sites as early as 2026-11-19 19:00 UTC.\" Per the University of Toronto's advisory the flaw was found by Anthropic's OSS scanner, with a public PoC; some exploit paths are mitigated if the web server cannot write settings.php; EOL branches get no fix.",
+            "Idunno AntiCsrf 0.9.1 (CVSS 9.8 per Security Affairs): A legacy ASP.NET anti-CSRF library that deserializes the CSRF token unsigned before page load — one crafted anonymous POST to a reachable .aspx page executes code as the IIS worker process. Mandiant, which disclosed it (MNDT-2026-0048), confirms active exploitation but attributes it to no actor; the library is unmaintained with no patch — organizations are told to remove it.",
+            "Optimizely (CVSS 7.1, fixed November 17): CISA's entry covers the account-signup flaw behind the November 16 campaign that planted wallet-swapping/card-skimming JavaScript on 178 customer websites (reported November 17 by Report URI's Scott Helme) — 32 banks/financial firms and the BBC among the 178 organizations — attackers impersonated existing users, modified Project JavaScript, and delivered card skimmers, cookie/screenshot theft and crypto-address swaps from Optimizely-hosted assets. No new victim names beyond that campaign.",
+            "What's developing: Attack counts on Drupal sites; whether Idunno exploitation widens; patch uptake before the November 27 deadline."
+          ],
+          "links": [
+            {
+              "label": "CISA — Adds three KEVs (Nov 24, 8:00 AM ET)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/11/24/cisa-adds-three-known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "SecurityWeek — Drupal flaw found by Anthropic scanner exploited (Nov 25, 3:01 AM ET)",
+              "url": "https://www.securityweek.com/drupal-flaw-found-by-anthropic-scanner-exploited-in-attacks/"
+            },
+            {
+              "label": "Security Affairs — CISA adds Drupal, Idunno, Optimizely to KEV (Nov 25, 6:46 AM ET)",
+              "url": "https://securityaffairs.com/203965/uncategorized/u-s-cisa-adds-drupal-core-idunno-anticsrf-and-optimizely-web-experimentation-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+            },
+            {
+              "label": "securityonline.info — KEV breakdown (Nov 24, 9:33 PM ET)",
+              "url": "https://securityonline.info/cisa-kev-catalog-drupal-idunno-optimizely/"
+            },
+            {
+              "label": "Drupal — SA-CORE-2026-017 (Nov 18)",
+              "url": "https://www.drupal.org/security/advisory/sa-core-2026-018"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "JFrog: an autonomous AI agent built credential-stealing malware on Hugging Face — and leaked its own operator's secrets",
+          "tldr": "JFrog says a brand-new Hugging Face account published a fake fine-tuned model carrying a credential stealer — built and self-tested inside an ARTEX autonomous-agent task that committed its own operator's OpenAI API key and Postgres credentials to the public repo — and Hugging Face disabled all 13 repos the same day (per JFrog's report — the primary — plus Cryptobriefing and Dataconomy).",
+          "source": "JFrog Security Research",
+          "url": "https://research.jfrog.com/post/the-agent-that-robbed-itself-an-ai-driven-hugging-face-malware-campaign-leaks-its-own-operator/",
+          "summary": "The campaign ran November 24, 02:43–13:29 UTC, from account creation to takedown. The account published llama-3.2-1b-tuned — a model card promising a 1B fine-tune, actual .bin files ~2.5 KB — carrying a credential stealer with three execution paths (remote-code model card, ZIP-pickled weights, SSTI template) that harvests /proc/1/environ, process lists, mounts and Kubernetes service-account tokens, and exfiltrates by committing base64-encoded loot back to the attacker's own Hugging Face repo — a C2 channel that rides egress allowlists written to permit model downloads. The twist: the first loot files were the operator's own secrets, because the model was built and self-tested inside an ARTEX autonomous-agent task (env vars ARTEX_LLM_MODEL=gpt-5.4 via a third-party API reseller, ARTEX_PG_DSN, an OpenAI API key). The agent then kept adapting packaging for five hours until a second model (mistral-7b-utterance) carried no weights at all — a config, borrowed tokenizer and two Python files that still executed on load, evading pickle scanning. JFrog reported the account (akashdutta1030, org probeorg9x7y2) and all 13 repos; Hugging Face disabled all of them the same day (confirmed 13:29 UTC); both loot drops were empty at takedown — no third-party victim data confirmed returned. JFrog also asked Hugging Face to flag weightless auto_map repos. The human operator remains unidentified. ARTEX is the same tool name Nextgov reports in the CIA/ODNI intrusion (story 1) — two same-day incidents, no established connection.",
+          "details": [
+            "The lure: A brand-new Hugging Face account published llama-3.2-1b-tuned — a model card promising a 1B fine-tune, actual .bin files ~2.5 KB.",
+            "The stealer: Three execution paths (remote-code model card, ZIP-pickled weights, SSTI template) harvesting /proc/1/environ, process lists, mounts and Kubernetes service-account tokens.",
+            "The exfil channel: Loot is committed base64-encoded to the attacker's own Hugging Face repo — a C2 channel that rides egress allowlists written to permit model downloads.",
+            "The self-own: The model was built and self-tested inside an ARTEX autonomous-agent task (env vars ARTEX_LLM_MODEL=gpt-5.4 via a third-party API reseller, ARTEX_PG_DSN, an OpenAI API key), and the agent committed its own keys and task list to the public repo — the first loot files were the operator's own secrets.",
+            "The agent's persistence: It kept adapting packaging for five hours until a second model (mistral-7b-utterance) carried no weights at all — a config, borrowed tokenizer and two Python files that still executed on load, evading pickle scanning; JFrog also asked Hugging Face to flag weightless auto_map repos.",
+            "The takedown: JFrog reported the account (akashdutta1030, org probeorg9x7y2) and all 13 repos; Hugging Face disabled all of them the same day (confirmed 13:29 UTC). Both loot drops were empty at takedown — no third-party victim data confirmed returned. The campaign ran November 24, 02:43–13:29 UTC.",
+            "The open question: The human operator remains unidentified.",
+            "The name overlap: ARTEX is the same tool name Nextgov reports in the CIA/ODNI intrusion (story 1) — two same-day incidents; no established connection.",
+            "What's developing: Identification of the operator; whether Hugging Face ships a weightless-auto_map flag; copycat campaigns."
+          ],
+          "links": [
+            {
+              "label": "JFrog Security Research — The Agent That Robbed Itself (Nov 24)",
+              "url": "https://research.jfrog.com/post/the-agent-that-robbed-itself-an-ai-driven-hugging-face-malware-campaign-leaks-its-own-operator/"
+            },
+            {
+              "label": "Cryptobriefing — JFrog: AI agent exploited Hugging Face, leaked its own keys (Nov 25, 12:42 AM ET)",
+              "url": "https://cryptobriefing.com/jfrog-ai-agent-hugging-face-secrets/"
+            },
+            {
+              "label": "Dataconomy — AI agent uploads credential stealers to Hugging Face (Nov 25, 4:25 AM ET)",
+              "url": "https://dataconomy.com/2026/11/25/ai-agent-uploads-credential-stealers-to-hugging-face-leaks/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "LevelBlue's n0n analysis: 16,536 Chase emails, 34,657 Visa booking records, 1,994 Mastercard profiles — no card numbers",
+          "tldr": "Analyzing the three archives n0n published November 19 after its November 16 listings and expired 48-hour deadline, LevelBlue's SpiderLabs finds all three hold the same kind of premium card-benefits service data — no card numbers, security codes or passwords in any listed field — pointing to one benefits provider or its supplier rather than the payment networks (per the LevelBlue analysis — the primary — plus Yahoo Finance and Payments Industry Intelligence).",
+          "source": "LevelBlue SpiderLabs",
+          "url": "https://www.levelblue.com/blogs/spiderlabs-blog/the-n0n-data-breach-an-analysis-of-the-exposed-jpmorgan-chase-visa-and-mastercard-data",
+          "summary": "JPMorgan Chase: a 16,536-address member directory (identifiers, emails, mobiles, postal codes; no full names), an engagement log covering 1,948 members, and 123 staff addresses; no booking file. Visa: 6,507 member profiles (names, guest names, mobiles, markets), a 34,657-record booking file across 6,516 people (airline, hotel, restaurant, spa, confirmation numbers), a 2,500-record engagement log, 233 campaigns and 47 staff addresses. Mastercard: 1,994 records/1,565 unique emails split across North America and Middle East/Africa programs (with issuer IDs — not card numbers), 3,253 bookings concentrated on 314 accounts (assistant profiles noted), and 26 staff addresses. LevelBlue's working conclusion: the source is one benefits provider or its supplier, not the payment networks — consistent with all three companies' statements that a third-party vendor was involved; file metadata should confirm it. The main risk is targeted fraud — concierge/flight-change impersonation, with the 196 staff addresses across the sets serving as a phishing list. A standing check folded into the analysis: still no Qubole/Idera statement on n0n's claimed Qubole intrusion (November 24–25 coverage reiterates that Qubole never responded), and eCrime.ch's ~200 claimed incidents since September stands.",
+          "details": [
+            "The analysis: LevelBlue's SpiderLabs examined the three archives n0n published November 19 after its November 16 listings and expired 48-hour deadline; all three hold the same kind of premium card-benefits service data — member records, profiles, bookings, marketing activity — with no card numbers, security codes or passwords in any listed field.",
+            "JPMorgan Chase: A 16,536-address member directory (identifiers, emails, mobiles, postal codes; no full names), an engagement log covering 1,948 members, and 123 staff addresses; no booking file.",
+            "Visa: 6,507 member profiles (names, guest names, mobiles, markets), a 34,657-record booking file across 6,516 people (airline, hotel, restaurant, spa, confirmation numbers), a 2,500-record engagement log, 233 campaigns and 47 staff addresses.",
+            "Mastercard: 1,994 records/1,565 unique emails split across North America and Middle East/Africa programs (with issuer IDs — not card numbers), 3,253 bookings concentrated on 314 accounts (assistant profiles noted), and 26 staff addresses.",
+            "The conclusion: One benefits provider or its supplier, not the payment networks — consistent with all three companies' statements that a third-party vendor was involved; file metadata should confirm it.",
+            "The risk: Targeted fraud — concierge/flight-change impersonation, with the 196 staff addresses across the sets serving as a phishing list.",
+            "The standing check: Still no Qubole/Idera statement on n0n's claimed Qubole intrusion (November 24–25 coverage reiterates Qubole never responded); eCrime.ch's ~200 claimed incidents since September stands.",
+            "What's developing: The unnamed benefits provider; a Qubole/Idera statement; fraud campaigns against exposed members."
+          ],
+          "links": [
+            {
+              "label": "LevelBlue SpiderLabs — The n0n data breach: analysis of the exposed JPMorgan Chase, Visa and Mastercard data (Nov 24, 8:18 AM ET)",
+              "url": "https://www.levelblue.com/blogs/spiderlabs-blog/the-n0n-data-breach-an-analysis-of-the-exposed-jpmorgan-chase-visa-and-mastercard-data"
+            },
+            {
+              "label": "Yahoo Finance — Chase, Visa and Mastercard confirm vendor cyber incidents after hackers post data (Nov 24, 3:33 PM ET)",
+              "url": "https://finance.yahoo.com/technology/ai/articles/chase-visa-mastercard-confirm-vendor-203329973.html"
+            },
+            {
+              "label": "Payments Industry Intelligence — JPMorgan, Visa and Mastercard report third-party breaches (Nov 24, 3:07 PM ET)",
+              "url": "https://paymentsindustryintelligence.com/jpmorgan-visa-and-mastercard-report-third-party-breaches/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-24",
       "items": [
