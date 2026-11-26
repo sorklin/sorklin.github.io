@@ -1,7 +1,212 @@
 {
   "version": 3,
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "days": [
+    {
+      "date": "2026-11-26",
+      "items": [
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "1Password breach reached backend systems via an employee's GitHub account — vault data untouched",
+          "tldr": "An attacker gained access to an employee's corporate GitHub account, used it to reach source code, push malicious code to backend services and copy customer names and email addresses — vault contents, item data and encryption keys were never accessed (per 1Password's incident post — the primary — plus TechCrunch).",
+          "source": "1Password",
+          "url": "https://1password.com/blog/update-on-nov-2026-security-incident",
+          "summary": "The password-manager maker says the intrusion was detected November 19 and disclosed November 25. The attacker used the employee's GitHub account to push malicious code to backend services, which downloaded administrative data on a subset of customers: names, sign-in email addresses, account and user identifiers, account-creation and last sign-in times, public keys, Secure Remote Password parameters, tokens present in emailed invitation, provisioning and recovery links, and non-secret internal metadata. Vault contents, item data and encryption keys were never accessed — \"at no point\" — and 1Password says it cannot access customer passwords or secret keys. The attacker also copied source code from private repositories and reached the CI/CD system, which holds infrastructure secrets; 1Password triggered rotation of potentially exposed credentials. A small number of users who were mid-provisioning or mid-recovery were individually notified, invite/recovery email codes were lengthened from 6 digits to 10 alphanumeric characters, the affected GitHub account was disabled and its stolen token revoked, and independent experts were brought in to validate containment. Per TechCrunch, 1Password did not say how many customers were affected, how the employee's account was taken, or whether it has been contacted by the attackers — and 1Password-themed lure emails are an expected follow-up risk.",
+          "details": [
+            "The timeline: Intrusion detected November 19, 2026; 1Password's blog post November 25 (TechCrunch coverage 1:49 PM ET).",
+            "The access path: An attacker gained access to an employee's corporate GitHub account, used it to reach source code and push malicious code to backend services, and the malicious code downloaded administrative data on a subset of customers.",
+            "The data: Names and sign-in email addresses, account/user identifiers, account-creation and last sign-in times, public keys, Secure Remote Password (SRP) parameters, tokens present in emailed invitation/provisioning/recovery links, and non-secret internal metadata.",
+            "What was not touched: Vault contents, item data and encryption keys were never accessed (\"at no point\"); 1Password says it cannot access customer passwords or secret keys.",
+            "The wider access: The attacker also copied source code from private repositories and reached the CI/CD system, which holds infrastructure secrets; 1Password triggered rotation of potentially exposed credentials.",
+            "The mitigations: A small number of users mid-provisioning or mid-recovery were individually notified; invite/recovery email codes were lengthened from 6 digits to 10 alphanumeric characters; the affected GitHub account was disabled and the stolen token revoked; independent experts were brought in to validate containment.",
+            "The open questions (per TechCrunch): 1Password did not say how many customers were affected, how the employee's account was taken, or whether it has been contacted by the attackers.",
+            "The advice: Phishing vigilance — 1Password-themed lure emails are an expected follow-up risk.",
+            "What's developing: The affected-customer count and notification scope; the initial-access path to the employee GitHub account; whether the source-code/CI-CD access yields customer impact; any attacker communication."
+          ],
+          "links": [
+            {
+              "label": "1Password — Update on a security incident involving 1Password's backend systems (Nov 25)",
+              "url": "https://1password.com/blog/update-on-nov-2026-security-incident"
+            },
+            {
+              "label": "TechCrunch — 1Password said hackers broke into its internal systems, but customer passwords are safe (Nov 25, 1:49 PM ET)",
+              "url": "https://techcrunch.com/2026/11/25/1password-said-hackers-broke-into-its-internal-systems-but-customer-passwords-are-safe/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Dragos names MiniMax as the Chinese AI lab behind the AI-prompt canary leaks",
+          "tldr": "HD Moore, Dragos' chief research officer, names MiniMax as the Chinese AI developer behind the November 19 canary study's unnamed lab — with new findings per Reuters: a secret link surfaced weeks later on ByteDance's Feishu, unusual Moscow-region activity was detected, and private code downloads were attempted; MiniMax's statement does not address the new findings.",
+          "source": "Investing.com",
+          "url": "https://www.investing.com/news/economy-news/exclusivedata-from-chinese-ai-firm-minimax-accessed-by-unidentified-parties-researcher-says-5052087",
+          "summary": "Dragos' November 19 canary study planted secret web links in roughly 2 million prompt submissions (July–November) and watched them get accessed by unauthorized parties; the lab behind the traffic had gone unnamed until Moore told Reuters it is MiniMax. New per Reuters: one secret link sent to MiniMax appeared weeks later in a chat channel on Feishu, ByteDance's workplace messaging platform, and was opened by devices in Beijing and Shanghai; researchers detected unusual internet activity from the Moscow region involving links submitted to MiniMax, though the evidence did not establish the links were opened from Russia; and after the secret-link scraping appeared to stop on October 22, researchers observed attempts to download private software collections referenced in MiniMax requests — the initiator is unknown, and whether any code was obtained is unclear. The access pattern appeared only when requests were forwarded to MiniMax's cloud, not when other companies ran its models independently. MiniMax says its security system collected and opened the links to check for threats, did not retain full conversations, deleted addresses and stopped the activity, and says there is no evidence customer conversations or responses were disclosed to third parties — but its statement did not address the code-download attempts or the Feishu incident. Atlas Cloud, the US provider serving MiniMax models, said MiniMax's explanation was consistent with its findings and that it stopped forwarding requests, warning users of its M3/M2.7/M3.1 Flash models to treat submitted secrets as potentially exposed. OpenRouter previously off-boarded three providers and removed 125 endpoints from Zero-Data-Retention eligibility, finding no breach of its own systems; per Reuters, Chinese models were the three most-used on OpenRouter in October as Washington weighs requiring US companies to disclose Chinese-AI use.",
+          "details": [
+            "The naming: HD Moore, Dragos' chief research officer, told Reuters that MiniMax is the Chinese AI developer behind the unnamed lab in Dragos' November 19 canary study (~2 million prompt submissions July–November, in which secret web links submitted to AI services were subsequently accessed by unauthorized parties).",
+            "The Feishu finding: One secret link sent to MiniMax appeared weeks later in a chat channel on Feishu (ByteDance's workplace messaging platform) and was opened by devices in Beijing and Shanghai.",
+            "The Moscow-region activity: Researchers detected unusual internet activity from the Moscow region involving links submitted to MiniMax; the evidence did not establish the links were opened from Russia.",
+            "The code-download attempts: After the secret-link scraping appeared to stop on October 22, researchers observed attempts to download private software collections referenced in MiniMax requests — the initiator is unknown and whether any code was obtained is unclear.",
+            "The pattern: The access appeared only when requests were forwarded to MiniMax's cloud, not when other companies ran its models independently.",
+            "MiniMax's statement: Its security system collected/opened the links to check for threats; full conversations were not retained; addresses were deleted; the activity has stopped; no evidence customer conversations or responses were disclosed to third parties — the statement did not address the code-download attempts or the Feishu incident.",
+            "Atlas Cloud: The US provider serving MiniMax models said MiniMax's explanation was consistent with its findings and that it stopped forwarding requests, warning users of its M3/M2.7/M3.1 Flash models to treat submitted secrets as potentially exposed.",
+            "OpenRouter context: Three providers off-boarded and 125 endpoints removed from Zero-Data-Retention eligibility, with no breach of OpenRouter's own systems found; per Reuters, Chinese models were the three most-used on OpenRouter in October as Washington weighs requiring US companies to disclose Chinese-AI use.",
+            "The sourcing note: Reuters' original URL was not returned by the searches — cited via Investing.com's syndication of the exclusive.",
+            "What's developing: Who accessed the links (Feishu/Moscow attribution); the code-download outcome; any MiniMax response to the new findings."
+          ],
+          "links": [
+            {
+              "label": "Reuters via Investing.com — Exclusive: data from Chinese AI firm MiniMax accessed by unidentified parties, researcher says (Nov 26, ~1:16 AM ET)",
+              "url": "https://www.investing.com/news/economy-news/exclusivedata-from-chinese-ai-firm-minimax-accessed-by-unidentified-parties-researcher-says-5052087"
+            },
+            {
+              "label": "Axios — OpenRouter warns of data exposure involving Chinese AI firm (Nov 23)",
+              "url": "https://www.axios.com/2026/11/23/openrouter-minimax-china-customer-data"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Todoist confirms a breach touching ~6% of customers, including early users' old-method password hashes",
+          "tldr": "Todoist says an attacker used stolen credentials to reach its version-control system and cloud infrastructure on November 22–23 and downloaded credentials of early users whose passwords used an older hashing method, plus API and Slack integration tokens — data on ~6% of customers was stolen (per TechCrunch carrying Todoist's disclosure — the single source returned; Todoist's own blog post did not surface in the searches).",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/11/25/todoist-confirms-6-of-customers-details-were-stolen-in-data-breach/",
+          "summary": "The task-management service (owned by Doist) says the attacker accessed its version-control system and source code on November 22–23, changed employee access controls, and reached cloud infrastructure through an employee's work account. The hacker downloaded credentials of early Todoist users whose passwords were stored with an older hashing method, pulled Todoist API tokens and Slack integration tokens, and for about 0.001% of users searched tasks, comments and attachment names — and the Todoist for Outlook email add-on, where connected — for credentials to other services; no source code was changed. Todoist says the attack path is blocked, affected passwords have been reset, the Outlook add-on is disabled, and its internal access structure and remote-command-execution model have been rebuilt; CEO Amir Salihefendić apologized on X. Whether the old-method hashes are crackable, and where the stolen credentials came from, are open questions — early-vintage account holders should treat password reuse as a live risk.",
+          "details": [
+            "The intrusion: November 22–23, 2026 — an attacker used stolen credentials to access Todoist's version-control system and source code, changed employee access controls, and reached cloud infrastructure via an employee's work account (per TechCrunch carrying Todoist's disclosure — the single source returned in the searches).",
+            "The scale: Data on ~6% of customers was stolen.",
+            "The password hashes: The hacker downloaded credentials of early Todoist users whose passwords were stored with an older hashing method; whether those hashes are crackable under the old method is an open question.",
+            "The tokens: Todoist API tokens and Slack integration tokens were pulled.",
+            "The targeted search: For ~0.001% of users, tasks, comments and attachment names — and the Todoist for Outlook email add-on, where connected — were searched for other services' credentials.",
+            "What was not changed: No source code was changed.",
+            "The mitigations: The attack path is blocked; affected passwords have been reset; the Outlook add-on is disabled; the internal access structure and remote-command-execution model have been rebuilt; CEO Amir Salihefendić apologized on X.",
+            "The disclosure timeline: Todoist disclosed on Tuesday, November 24; TechCrunch's coverage published November 25, 9:20 AM ET. Todoist's own blog post URL was not returned by the searches.",
+            "What's developing: The stolen-credential origin (infostealer? credential reuse?); hash-crackability under the old method; regulatory filings; the Todoist primary URL."
+          ],
+          "links": [
+            {
+              "label": "TechCrunch — Todoist confirms 6% of customers' details were stolen in data breach (Nov 25, 9:20 AM ET)",
+              "url": "https://techcrunch.com/2026/11/25/todoist-confirms-6-of-customers-details-were-stolen-in-data-breach/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            }
+          ],
+          "title": "CISA adds 10 actively exploited vulnerabilities to KEV, most on a November 28 federal clock",
+          "tldr": "CISA added 10 actively exploited vulnerabilities to its Known Exploited Vulnerabilities catalog — CVE-2026-133323/133303/133324/133275/133311 (Mitel MiCollab), CVE-2023-25914/25915 and CVE-2025-41450 (Danfoss AK-SM 800A), CVE-2026-103406 (HPE Juniper Session Smart) and CVE-2026-133469 (Vates Xen Orchestra) — with federal remediation due November 28 for most of the batch (per CISA — the primary — plus three trackers).",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog",
+          "summary": "The batch spans five Mitel MiCollab Audio/Web/Video Conferencing (AWV) flaws — OS command injection (unauthenticated), XML injection, an authentication bypass, unrestricted file upload and weak authentication — under vendor advisory MISA-2026-0012; three Danfoss AK-SM 800A supermarket-refrigeration-controller flaws from 2023 and 2025 (path traversal, improper input validation, improper authentication); an HPE Juniper Session Smart Conductor/Router OS-command-injection flaw that yields remote root via a crafted salt minion ID; and a Vates Xen Orchestra input-validation flaw. Ransomware use is \"unknown\" for all ten, and forensic triage is required on most entries under BOD 26-04. Trackers note the four-day clock on four of the five Mitel flaws and that the alerts themselves give no patch versions. The calendar is tight beyond this batch too: the MONAI and N-able entries added earlier in November fall due November 26, the Drupal, Idunno and Optimizely entries on November 27, most of today's ten on November 28, and the remaining few on December 9.",
+          "details": [
+            "The batch: CISA added 10 actively exploited vulnerabilities to the KEV catalog on November 25, 2026, 7:00 AM ET; ransomware use is \"unknown\" for all ten, and forensic triage is required on most entries under BOD 26-04.",
+            "Mitel MiCollab Audio/Web/Video Conferencing (AWV) — five flaws (vendor advisory MISA-2026-0012): CVE-2026-133323 (OS command injection, unauthenticated), CVE-2026-133303 (XML injection), CVE-2026-133324 (auth bypass / not failing securely), CVE-2026-133275 (unrestricted file upload) and CVE-2026-133311 (weak authentication; due December 9; the others due November 28). Trackers note the four-day clock on four of the five flaws and that no patch versions are given in the alerts themselves.",
+            "Danfoss AK-SM 800A supermarket-refrigeration controllers — three flaws: CVE-2023-25914 (path traversal), CVE-2023-25915 (improper input validation) and CVE-2025-41450 (improper authentication), listed with due dates of November 28/December 9/December 9.",
+            "HPE Juniper Session Smart Conductor/Router: CVE-2026-103406 — OS command injection enabling remote root via a crafted salt minion ID; due November 28.",
+            "Vates Xen Orchestra: CVE-2026-133469 — an improved input-validation failure; due November 28.",
+            "The wider clock: The MONAI and N-able entries added earlier in November fall due November 26; the Drupal, Idunno and Optimizely entries on November 27; most of today's ten on November 28; the remaining entries on December 9.",
+            "What's developing: Patch availability for the Mitel and Danfoss product lines; exploitation telemetry beyond the KEV listing."
+          ],
+          "links": [
+            {
+              "label": "CISA — CISA Adds 10 Known Exploited Vulnerabilities to Catalog (Nov 25, 7:00 AM ET)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/11/25/cisa-adds-10-known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "Five Nines — CISA adds HPE Juniper and Drupal Core RCE flaws (Nov 25, 10:39 AM ET)",
+              "url": "https://www.thefivenines.com/security/cisa-adds-hpe-juniper-and-drupal-core-rce-flaws-to-exploited-catalog"
+            },
+            {
+              "label": "P.K. Sharma — 5 Mitel MiCollab flaws hit KEV, 4 on a 3-day clock (Nov 25, 4:25 PM ET)",
+              "url": "https://www.pk-sharma.com/briefing/mitel-micollab-misa-2026-0012-five-cisa-kev-cves"
+            },
+            {
+              "label": "Daily CISO — KEV additions Nov 24–25 (Nov 26, 8:03 AM ET)",
+              "url": "https://www.dailyciso.com/guides/cisa-kev-additions-nov-24-to-nov-25-2026-the-ten-new-nov-25-entries-an"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "31-33",
+              "name": "Manufacturing"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            }
+          ],
+          "title": "n0n lists its largest single-day batch of claimed victims; benefits-provider naming still open",
+          "tldr": "The AI-agents-and-stolen-credentials extortion group n0n listed 22 victims in one drop — its largest single-day batch yet per trackers — including Mattel, Gannett Co. (USA TODAY Network), Next plc, hmv, Torrid and Day One Biopharmaceuticals, all \"pending exposure\" and none company-confirmed (per Ransomnews, QPulse and Dark Eye — leak-site trackers; claims only) — and still no provider has been named in the group's Chase/Visa/Mastercard data case.",
+          "source": "Ransomnews",
+          "url": "https://ransomnews.com/ransomware-attacks-today/",
+          "summary": "The listings went up around 6:00 PM ET November 25 (per Ransomnews' November 26 snapshot). Every named entry is a claim: none of the companies has confirmed, and the entries are treated as \"pending exposure.\" The batch's breadth — toy and media companies, retailers, insurers, wealth managers, fintech, telecom and biotech across the US, Mexico and the Philippines — is why trackers call it n0n's largest single-day drop: Ransomnews counts 22 n0n listings in 24 hours and ~299 over 30 days, leading all operators, while Dark Eye counts 469 tracked victims (191 leaked, 278 pending) since mid-September. A separate same-day listing names a US \"Company #278,\" an in-building wireless network services provider. On the group's November 16 Chase/Visa/Mastercard case, LevelBlue's SpiderLabs still concludes the three published archives are extracts from one premium card-benefits service — no card numbers, security codes or passwords — and says the single-benefits-provider (or its supplier) conclusion \"remains the working conclusion until file dates, metadata or the provider confirm\"; no provider has been named and no new company statements had surfaced as of the November 26 compile. Next plc's listing is separate from the supplier breach the company confirmed earlier in November — different incidents, not to be conflated.",
+          "details": [
+            "The batch: Listings posted ~6:00 PM ET November 25, 2026 (per Ransomnews' November 26, 9:08 AM ET snapshot) name 22 victims in the group's largest single-day drop yet per trackers: Mattel, Gannett Co. (USA TODAY Network), Next plc, hmv, The Diamond Store, Torrid, Scrapbook.com, Primary Arms, Signet Pacific Insurance, American Business, Atlantis Financial, ClearPath Wealth Management, Generations Wealth, Buyers Advisors, PayClip (Mexico), Mobility ADO (Mexico), OSS Telco, Scanbuy, Uplight, ETemplate Systems, Day One Biopharmaceuticals and Ramcar Group (Philippines).",
+            "The status: All entries are \"pending exposure,\" none company-confirmed — every name is a claim, not a confirmed breach.",
+            "The separate listing: A same-day n0n listing names US \"Company #278,\" an in-building wireless network services provider (per QPulse/ransomware.live).",
+            "The scale per trackers: Ransomnews counts 22 n0n listings in 24 hours and ~299 over 30 days, leading all operators; Dark Eye counts 469 tracked victims (191 leaked, 278 pending) since mid-September.",
+            "The Chase/Visa/Mastercard case: LevelBlue (SpiderLabs) still concludes the three archives are extracts from one premium card-benefits service — no card numbers, security codes or passwords — and says the single-benefits-provider (or its supplier) conclusion \"remains the working conclusion until file dates, metadata or the provider confirm\"; no provider has been named, and no new company statements had surfaced as of the November 26 compile.",
+            "The Next plc caution: Next's listing is separate from the supplier breach the company confirmed earlier in November — two different incidents.",
+            "What's developing: Benefits-provider naming via file metadata; responses from Mattel, Gannett and Next; batch leak deadlines; whether any batch entries produce company confirmations."
+          ],
+          "links": [
+            {
+              "label": "Ransomnews — daily leak-site table, 66 victims/17 operators (snapshot Nov 26, 9:08 AM ET; tracker)",
+              "url": "https://ransomnews.com/ransomware-attacks-today/"
+            },
+            {
+              "label": "QPulse — N0n claims US wireless network services provider (Nov 25, 9:30 AM ET; tracker summary)",
+              "url": "https://qpulse.quasarcybertech.com/news/9174/ransomware-group-n0n-claims-breach-of-us-based-wireless-network-services-provider"
+            },
+            {
+              "label": "Dark Eye — n0n group page, 469 victims (read Nov 26; tracker)",
+              "url": "https://crawler.darkeye.io/groups/n0n"
+            },
+            {
+              "label": "LevelBlue SpiderLabs — analysis of the exposed JPMorgan Chase, Visa, Mastercard data (Nov 24)",
+              "url": "https://www.levelblue.com/blogs/spiderlabs-blog/the-n0n-data-breach-an-analysis-of-the-exposed-jpmorgan-chase-visa-and-mastercard-data"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-25",
       "items": [
