@@ -1,7 +1,277 @@
 {
   "version": 3,
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "days": [
+    {
+      "date": "2026-11-27",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "Air Force Cloud One breach pauses migrations and blocks patches",
+          "tldr": "Hackers breached Cloud One, the US Air Force's flagship cloud platform, and the discovery has paused migrations and blocked updates to already-running applications while Cyber Command assesses the damage (per Reuters).",
+          "source": "Investing.com",
+          "url": "https://www.investing.com/news/stock-market-news/exclusivehackers-breach-us-air-force-flagship-cloud-one-computing-platform-5053314",
+          "summary": "Three people familiar with the matter told Reuters hackers breached Cloud One, the Air Force's flagship cloud platform — initiated in 2017, combining Microsoft, Amazon, Oracle and Alphabet resources, and running scores of applications including Cloud-Based Command and Control and the Theater Integrated Combat Munitions System, which tracks bombs and missiles across 200+ locations. The intrusion was discovered within the past month during upgrade work, and the discovery \"has led to disruption across the platform\": migrations of back-office applications are paused, updates to already-running applications were blocked — leaving personnel unable to apply fixes amid a batch of newly disclosed serious vulnerabilities — and some users had administrator rights revoked. One source said the intruders exploited a software vulnerability to reach the control plane, \"a universal remote\" that in theory could show aircraft operational status or spare-parts movement (it is unclear whether it was used that way, and the specific vulnerability is not identified). Cyber Command has been called in to assess damage. Reuters could not establish the attacker's identity, the full scope, or whether data was stolen.",
+          "details": [
+            "Platform: Cloud One, initiated 2017; combines Microsoft, Amazon, Oracle and Alphabet resources; runs scores of applications including Cloud-Based Command and Control and the Theater Integrated Combat Munitions System, which tracks bombs and missiles across 200+ locations.",
+            "Discovery: the intrusion was found within the past month during upgrade work.",
+            "Disruption: migrations of back-office applications paused; updates to already-running applications blocked amid a batch of newly disclosed serious vulnerabilities; some users' administrator rights revoked.",
+            "Access method: per one source, the intruders exploited a software vulnerability to reach the control plane (\"a universal remote\" that in theory could show aircraft operational status or spare-parts movement); the specific vulnerability is not identified, and it is unclear whether it was exploited that way.",
+            "Assessment: Cyber Command has been called in to assess damage.",
+            "Unknowns: attacker identity, full scope and any data theft are unestablished; the Air Force declined comment on specific systems; SAIC (prime until 2025) did not respond; Leidos (prime since 2025) referred questions to the Air Force."
+          ],
+          "links": [
+            {
+              "label": "Investing.com — Reuters exclusive by Mike Stone and Raphael Satter",
+              "url": "https://www.investing.com/news/stock-market-news/exclusivehackers-breach-us-air-force-flagship-cloud-one-computing-platform-5053314"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "SAP confirms a security incident tied to its GitHub environment",
+          "tldr": "SAP confirmed a security incident after Der Spiegel reported a breach of its GitHub environment — employee authentication tokens stolen and source code copied and modified; SAP says it has found no evidence of unauthorized access to customer business data.",
+          "source": "BleepingComputer",
+          "url": "https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/",
+          "summary": "Der Spiegel — citing an internal SAP memo — reported that the software giant was hit by a cyberattack tracked under the code name \"Project Granite,\" and reported per insider sources that attackers breached SAP's GitHub environment, possibly with help from AI tools, stole authentication tokens from SAP employees, and used them to copy and also modify SAP source code on GitHub. SAP confirmed it \"identified suspicious activity and promptly implemented the necessary measures to protect its customers and preserve the security of its services,\" adding that \"based on our investigation to date, we have found no evidence of unauthorized access to customer business data.\" SAP did not specify which environments were involved, whether the token theft and source-code modification are confirmed, or whether customers downloading code from its GitHub repositories should take action. The report is distinct from an unverified October leak-site claim naming SAP's Latin America and Caribbean business — no connection between that claim and this incident has been established.",
+          "details": [
+            "Report: Der Spiegel cited an internal SAP memo and insider sources; the attack is tracked under the code name \"Project Granite,\" and employees were asked to keep details confidential.",
+            "Alleged actions: a breach of SAP's GitHub environment, possibly with help from AI tools; authentication tokens stolen from SAP employees; source code copied and also modified on GitHub.",
+            "SAP statement: \"identified suspicious activity and promptly implemented the necessary measures to protect its customers and preserve the security of its services\"; \"no evidence of unauthorized access to customer business data\" based on the investigation to date.",
+            "Open questions: SAP did not specify which environments were involved, confirm the token theft or source-code modification, or say whether customers downloading code from its GitHub repositories should take action; it declined further comment.",
+            "Separate claim: an unverified October leak-site claim (thegentlemen) named SAP's Latin America and Caribbean business — no connection between that claim and this incident has been established."
+          ],
+          "links": [
+            {
+              "label": "BleepingComputer — SAP confirms security incident after suspicious GitHub activity",
+              "url": "https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "71",
+              "name": "Arts, Entertainment, and Recreation"
+            }
+          ],
+          "title": "FIFA confirms a criminal cyberattack as Handsome Boy Hacking Club claims 12 GB",
+          "tldr": "FIFA confirmed a criminal cyber-attack that reached personal and business information through staff impersonation — not a systems breach — as the Handsome Boy Hacking Club claims 12 GB of FIFA files.",
+          "source": "BBC Sport",
+          "url": "https://www.bbc.com/sport/football/articles/crd61nvg4d84o",
+          "summary": "FIFA confirmed it \"has been the victim of a criminal cyber-attack resulting in unauthorised access to a limited set of personal and business information\" and is working with authorities including law enforcement. Per BBC Sport, the breach was not a systems or technology failure — criminals gained access \"by impersonating and taking advantage of staff\" — and the affected data is less than 0.1% of FIFA's data, excluding documents on the controversial FIFA Forward Enterprise proposal. The Handsome Boy Hacking Club (HBHC), a new extortion group whose activity trackers first logged Nov 14, claims the theft of ~12 GB from FIFA's Microsoft environment — identity and immigration documents, executive information, financial and legal records, and internal governance records — saying it is \"purely financially motivated\"; per Punto Informatico (citing The Record and The Athletic), after a failed extortion demand the data was published on a dark-web forum in a password-protected ~12.2 GB archive — the extortion-failure narrative and archive contents are reported, not confirmed. SecurityAffairs adds HBHC's X account is now suspended and its Tor leak site unreachable, and IT Pro notes UCHealth reportedly notified 129,000 people over a Microsoft Cloud account compromise for two employees.",
+          "details": [
+            "FIFA confirmation: \"unauthorised access to a limited set of personal and business information\"; working with authorities including law enforcement.",
+            "Method: impersonation and taking advantage of staff — not a systems or technology failure (per BBC Sport).",
+            "Scale: the affected data is less than 0.1% of FIFA's data; FIFA Forward Enterprise proposal documents were not included (FA chair Debbie Hewitt was granted access to those files this week under NDA).",
+            "Claim: HBHC claims ~12 GB from FIFA's Microsoft environment — identity and immigration documents, executive information, financial and legal records, internal governance records — \"purely financially motivated.\"",
+            "Publication claim: after a failed extortion demand the data was published on a dark-web forum in a password-protected ~12.2 GB archive (per Punto Informatico, citing The Record and The Athletic — reported, not confirmed).",
+            "Group profile: trackers first logged HBHC Nov 14; its leak site appeared Nov 19; the first listings were Smith & Wesson, UCHealth and Frontier Communications (Nov 19), with FIFA added Nov 20; the X account is now suspended and the Tor leak site is unreachable (per SecurityAffairs).",
+            "UCHealth: reportedly notified 129,000 people over a Microsoft Cloud account compromise for two employees (per IT Pro)."
+          ],
+          "links": [
+            {
+              "label": "IT Pro — FIFA hit by data breach after suspected account compromise; HBHC profile (Nov 27)",
+              "url": "https://www.itpro.com/cyber-resilience/data-breaches/fifa-hit-by-data-breach-after-suspected-account-compromise"
+            },
+            {
+              "label": "SecurityAffairs — FIFA confirms a cyberattack; 12 GB claim (Nov 27, 3:48 AM ET)",
+              "url": "https://securityaffairs.com/204100/data-breach/fifa-confirms-a-cyberattack-hackers-claim-12-gb-of-internal-files.html"
+            },
+            {
+              "label": "BBC Sport — FIFA confirms internal data stolen",
+              "url": "https://www.bbc.com/sport/football/articles/crd61nvg4d84o"
+            },
+            {
+              "label": "AP — FIFA cyberattack report (Nov 26, 6:52 AM ET)",
+              "url": "https://apnews.com/article/fifa-cyberattack-hack-6de93d5f8bcc655c774e2e41e2dfea1f"
+            },
+            {
+              "label": "Telegraph — FIFA files stolen in Handsome Boys Hacking Club cyberattack (Nov 26, 7:36 AM ET)",
+              "url": "https://www.telegraph.co.uk/football/2026/11/26/fifa-files-stolen-in-handsome-boys-hacking-club-cyberattack/"
+            },
+            {
+              "label": "Punto Informatico — FIFA confirms attack, extortion attempt (Nov 27, 3:32 AM ET)",
+              "url": "https://www.punto-informatico.it/fifa-conferma-attacco-hacker-tentata-estorsione/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "22",
+              "name": "Utilities"
+            }
+          ],
+          "title": "WhiteArmor claims 54,557 Eversource records and 16 million grid records for $10M",
+          "tldr": "The WhiteArmor group claims 54,557 Eversource customer and landowner records plus 16 million grid-infrastructure records for a $10M bitcoin demand — a gang claim only, unconfirmed by the utility (per Skylance).",
+          "source": "Skylance",
+          "url": "https://skylancesecurity.com/briefings/global-2026-11-26-whitearmor-claims-eversource-customer-grid-gis-data-10m-ransom",
+          "summary": "The WhiteArmor data-theft group (appeared October 2026; 49 listings per Dark Radar) claims it holds addresses, phone numbers, consent and payment records for 54,557 named Eversource customers and landowners in Connecticut, Massachusetts and New Hampshire, plus 97,000 GPS-tagged field photos, 16 million grid-infrastructure records and full ArcGIS dev/staging environments, demanding $10 million in bitcoin — per Skylance, evidence level 3: a gang claim only. ThreatCluster's capture shows 56 files and a publication countdown to Dec 15, 2026; Eversource — a regulated electric, gas and water utility with $13.55B in 2025 revenue — has not confirmed, and no mainstream report was found. Skylance separately flags a confirmed April 2026 Eversource incident (employee accounts used to access 3.6M+ files, with 2,592 Connecticut customers exposed per the state OCC's Nov 13 report) — any link to the new claim is unknown. In a separate listing, the group marked its Unilever data (claimed Nov 4, $15M demand) as \"RELEASED\" on Nov 25 with a 2 GB archive attached — contents unverified, and Unilever has not confirmed.",
+          "details": [
+            "Claim: addresses, phone numbers, consent and payment records for 54,557 named Eversource customers and landowners in Connecticut, Massachusetts and New Hampshire; plus 97,000 GPS-tagged field photos, 16 million grid-infrastructure records and full ArcGIS dev/staging environments.",
+            "Demand: $10 million in bitcoin; evidence level 3 — gang claim only (per Skylance).",
+            "Leak-site capture: 56 files with a publication countdown to Dec 15, 2026 (per ThreatCluster).",
+            "Company status: Eversource — a regulated electric, gas and water utility with $13.55B in 2025 revenue — has not confirmed; no mainstream report was found.",
+            "Distinct incident: a confirmed April 2026 Eversource incident — employee accounts used to access 3.6M+ files, with 2,592 Connecticut customers exposed per the state OCC's Nov 13 report; any link to the new claim is unknown.",
+            "Group profile: WhiteArmor appeared October 2026; 49 listings per Dark Radar.",
+            "Unilever listing: claimed Nov 4 with a $15M demand; marked \"RELEASED\" on Nov 25 with a 2 GB archive attached — contents unverified, and Unilever has not confirmed."
+          ],
+          "links": [
+            {
+              "label": "Skylance — WhiteArmor claims Eversource customer, grid and GIS data, $10M ransom (Nov 26)",
+              "url": "https://skylancesecurity.com/briefings/global-2026-11-26-whitearmor-claims-eversource-customer-grid-gis-data-10m-ransom"
+            },
+            {
+              "label": "ThreatCluster — Eversource victim page with countdown (captured Nov 26, 6:33 PM ET)",
+              "url": "https://threatcluster.io/dark-web/victim/eversource-8f5d40d92f9a9672"
+            },
+            {
+              "label": "Dark Radar — WhiteArmor actor page, 49 listings (read Nov 27)",
+              "url": "https://investigation.darkradar.com/threat-actors/whitearmor"
+            },
+            {
+              "label": "Cyber Threat Intelligence — Eversource/WhiteArmor listing record (updated Nov 27, 4:00 UTC)",
+              "url": "https://cyberthreatintelligence.net/ransomware-victim/eversource-whitearmor-2026"
+            },
+            {
+              "label": "Breach House (haveibeenransom) — Unilever data marked RELEASED (Nov 25, 11:48 AM ET)",
+              "url": "https://blog.haveibeenransom.com/post/whitearmor-unilever-data-released-leak-site-dcf7ce920fbf"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "72",
+              "name": "Accommodation and Food Services"
+            }
+          ],
+          "title": "Inception claims 293 GB stolen from McDonald's AWS storage and internal tools",
+          "tldr": "The Inception group claims 293 GB — 605,230 files — stolen from McDonald's AWS S3 buckets, GitHub, Confluence and Jira, including 938,667 unique emails; no samples provided and McDonald's has not confirmed (per Cybernews).",
+          "source": "Cybernews",
+          "url": "https://cybernews.com/security/mcdonalds-amazon-servers-data-breach/",
+          "summary": "The Inception group listed McDonald's on its leak site, claiming 605,230 files totaling 293 GB from the fast-food giant's AWS S3 buckets, GitHub, Confluence spaces and Jira projects — including 938,667 unique email addresses (about 370,000 tied to employees) and customer records with names, loyalty IDs, phone numbers, birth dates and partial payment card details (last four digits, card type, expiry, billing ZIP), plus PAN tokens and gift-card records. Cybernews reports no data samples have been provided, a 24-hour contact deadline was set, and McDonald's has not confirmed; Cybernews has contacted the company. Skylance's earlier Nov 24 capture of the same listing counted 781,014 customer master records and card last-4/expiry data for ~39,29X customers with a Nov 27 deadline — figures differ between captures, and all figures are the gang's own unverified claims. The same group's claim against RBI (Burger King, Tim Hortons, Popeyes, Firehouse — roughly 800K files, no proof provided) also remains unconfirmed.",
+          "details": [
+            "Claim: 605,230 files totaling 293 GB from AWS S3 buckets, GitHub, Confluence spaces and Jira projects.",
+            "Data claimed: 938,667 unique email addresses (about 370,000 tied to employees); customer records with names, loyalty IDs, phone numbers, birth dates and partial payment card details (last four digits, card type, expiry, billing ZIP); PAN tokens and gift-card records.",
+            "Proof status: no data samples provided; a 24-hour contact deadline was set; McDonald's has not confirmed (Cybernews has contacted the company).",
+            "Earlier capture: Skylance's Nov 24 capture of the same listing counted 781,014 customer master records and card last-4/expiry data for ~39,29X customers with a Nov 27 deadline — figures differ between captures; all figures are the gang's own claims.",
+            "Context: the same group's claim against RBI (Burger King, Tim Hortons, Popeyes, Firehouse — roughly 800K files) remains unconfirmed."
+          ],
+          "links": [
+            {
+              "label": "Cybernews — McDonald's AWS servers attacked (Nov 27, 6:34 AM ET)",
+              "url": "https://cybernews.com/security/mcdonalds-amazon-servers-data-breach/"
+            },
+            {
+              "label": "Skylance — briefings index; earlier Inception/McDonald's capture (Nov 24)",
+              "url": "https://skylancesecurity.com/briefings"
+            },
+            {
+              "label": "Cybernews — RBI claim context (Nov 26, 3:59 AM ET)",
+              "url": "https://cybernews.com/security/burger-king-owner-ransomware-claims/"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "Chroma discloses unauthorized read access to billing metadata",
+          "tldr": "Chroma, the AI-native vector-database company, disclosed unauthorized read access to its billing metadata and took its service down overnight, with restoration scheduled for 9 AM ET Friday (per the company's status page — the single source returned).",
+          "source": "Chroma status page",
+          "url": "https://status.trychroma.com/cmwyj38t504rw0wpda1zcg9a4",
+          "summary": "Chroma posted on its status page that it \"identified a security incident where we observed unauthorized read access to our billing metadata\"; it says it \"identified and revoked that access and implemented additional safeguards and checks\" and does \"not believe that any payment data or customer data was accessed.\" The exposed metadata is limited to team-level fields (team UUID, name, slug, billing state) and database-level billing telemetry (data-plane database ID, tenant UUID, and the size/commit-log positions used by Orb to calculate bills). The service was taken down overnight, with restoration scheduled for 9 AM ET Friday, Nov 27; no customer action is required. Per the company's status page — the single source returned; no independent coverage was found.",
+          "details": [
+            "Incident: \"unauthorized read access to our billing metadata\" — the access was identified and revoked, with additional safeguards and checks implemented (per the status post).",
+            "Data exposed: team-level fields (team UUID, name, slug, billing state) and database-level billing telemetry (data-plane database ID, tenant UUID, and size/commit-log positions used by Orb to calculate bills).",
+            "Not affected: the company does not believe any payment data or customer data was accessed.",
+            "Service status: the service was taken down overnight, with restoration scheduled for 9 AM ET Friday, Nov 27; no customer action required.",
+            "Source note: the company's status page is the single source returned; no independent coverage was found."
+          ],
+          "links": [
+            {
+              "label": "Chroma status page — \"Security Incident: Service down until tomorrow morning\"",
+              "url": "https://status.trychroma.com/cmwyj38t504rw0wpda1zcg9a4"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Zodia Custody discloses breach exposing client and employee contact information",
+          "tldr": "Zodia Custody, Standard Chartered's crypto custodian, says unauthorized access exposed contact information for some clients and employees, with no unauthorized transactions found (per CoinDesk — the single source returned).",
+          "source": "CoinDesk",
+          "url": "https://www.coindesk.com/tech/2026/11/26/standard-chartered-s-zodia-custody-suffers-data-breach-exposing-client-information",
+          "summary": "Zodia Custody — the crypto custodian owned by Standard Chartered — disclosed that unauthorized access exposed information about some clients and employees. Chief executive Richard Clark said probing of the platform was detected Nov 23 and the B2B API was taken offline as a precaution; on Nov 24 that was followed by unauthorized access to company details, business contact names and email addresses. The company says no unauthorized transactions were found, and affected clients and regulators have been notified. Per CoinDesk — the single source returned.",
+          "details": [
+            "What was accessed: company details, business contact names and email addresses for some clients and employees (Nov 24).",
+            "Timeline: probing of the platform was detected Nov 23; the B2B API was taken offline as a precaution; unauthorized access followed Nov 24.",
+            "Not affected: no unauthorized transactions were found.",
+            "Response: affected clients and regulators have been notified.",
+            "Source note: per CoinDesk (Nov 26, 7:38 AM ET) — the single source returned; no secondary coverage was found."
+          ],
+          "links": [
+            {
+              "label": "CoinDesk — Standard Chartered's Zodia Custody suffers data breach exposing client information",
+              "url": "https://www.coindesk.com/tech/2026/11/26/standard-chartered-s-zodia-custody-suffers-data-breach-exposing-client-information"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            }
+          ],
+          "title": "Samsung Securities raises its hack-leak count to 12,168 customers",
+          "tldr": "Samsung Securities raised its hack-leak count from 8,241 to 12,168 customers after a second review of files stolen from its customer-complaint system in the Nov 21 hack (per Digital Today Korea — the single source returned).",
+          "source": "Digital Today Korea",
+          "url": "https://www.digitaltoday.co.kr/en/view/131967/samsung-securities-customer-data-breach-rises-to-12168-after-additional-3,927-confirmed",
+          "summary": "Samsung Securities said a second detailed review of files leaked in the Nov 21 hack of its voice-of-customer (VOC) system confirmed personal and credit information of 3,927 additional people, lifting the total to 12,168 from the initially reported 8,241; it has reported the additional leak and will notify affected customers individually. Earlier confirmed leak categories spanned 13 items, including names, account numbers, addresses, contact details and driver's license numbers (varying by customer). The company said it applied firewall blocking immediately upon detection and reported the incident to the Financial Supervisory Service and KISA. Per Digital Today Korea — the single source returned.",
+          "details": [
+            "Revised count: 12,168 total, up from the initially reported 8,241 — 3,927 additional people confirmed in a second detailed review of the leaked files.",
+            "Incident: the Nov 21 hack of Samsung Securities' voice-of-customer (VOC) system.",
+            "Data: the additional 3,927 involve personal and credit information; earlier confirmed categories spanned 13 items including names, account numbers, addresses, contact details and driver's license numbers (varying by customer).",
+            "Response: firewall blocking applied immediately upon detection; reported to the Financial Supervisory Service and KISA; affected customers will be notified individually.",
+            "Source note: per Digital Today Korea (Nov 27, 6:51 AM ET) — the single source returned; the company statement is cited within."
+          ],
+          "links": [
+            {
+              "label": "Digital Today Korea — Samsung Securities customer data breach rises to 12,168 (Nov 27, 6:51 AM ET)",
+              "url": "https://www.digitaltoday.co.kr/en/view/131967/samsung-securities-customer-data-breach-rises-to-12168-after-additional-3,927-confirmed"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-26",
       "items": [
