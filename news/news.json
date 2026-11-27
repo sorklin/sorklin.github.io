@@ -6,6 +6,32 @@
       "date": "2026-11-27",
       "items": [
         {
+          "type": "deep-dive",
+          "slug": "n0n-extortion-group-2026",
+          "category": "security",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "44-45",
+              "name": "Retail Trade"
+            },
+            {
+              "code": "52",
+              "name": "Finance and Insurance"
+            },
+            {
+              "code": "62",
+              "name": "Health Care and Social Assistance"
+            }
+          ],
+          "title": "The n0n extortion group: a comprehensive profile (September 17 – November 27, 2026)",
+          "tldr": "the n0n extortion group — \"no js | no mercy\" on a leak site that deliberately runs without JavaScript — grew from a first victim listing on September 21, 2026 to 469 tracked entries by November 26 (per Dark Eye, whose ~299 listings over the prior 30 days were the most of any operator tracked), powered not by software exploits but by credential stuffing against FortiGate VPNs, weak RDP/WinRM logins and exposed AWS keys, with an AI coding agent running 154 models including safety-removed \"abliterated\" tiers at over $7,216 of documented spend (per SOCRadar's recovery of the operator's own workspace); its best-known claims are only partly real — JPMorgan Chase, Visa and Mastercard each confirmed third-party vendor incidents (with no card data in the dumps), Expedia confirmed a supply-chain attack without confirming n0n, Starbucks cleared itself, Eli Lilly denied, and no ransom payment, attribution or confirmed in-incident encryption has ever been verified.",
+          "source": "Sorklin Research"
+        },
+        {
           "category": "security",
           "industry": [
             {
