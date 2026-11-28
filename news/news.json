@@ -1,7 +1,398 @@
 {
   "version": 3,
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "days": [
+    {
+      "date": "2026-11-28",
+      "items": [
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "Cloud One breach confirmed by a US official as Pentagon declines to deny it",
+          "tldr": "A US official confirmed to NBC News that hackers penetrated the Air Force's Cloud One computing platform, and the Pentagon — asked directly — did not specifically deny the breach, as work on the platform remains frozen (per Reuters, which broke the story).",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html",
+          "summary": "Three sources told Reuters hackers breached Cloud One, the Air Force's flagship cloud platform, with the discovery made within the past month during upgrade work; a US official has now confirmed the intrusion to NBC News, and the Pentagon, asked directly, did not specifically deny the breach — \"The Department of War's systems are safe, secure, and managed 24-7 by the best experts and teams in the world.\" Federal News Network separately confirmed the breach, saying contractors discovered it earlier in the year during maintenance. The disruption stands: back-office application migrations are paused, updates to running applications are blocked — leaving fixes unapplied amid a fresh batch of serious industry vulnerabilities — and some users' administrator rights were revoked. One source said intruders reached the control plane (\"a universal remote\" that could in theory check aircraft operational status or spare-parts movement) via an unidentified software vulnerability; whether data was stolen is unknown, as is attribution. Cloud One combines Microsoft, Amazon, Oracle and Alphabet resources to run applications including personnel data and pay, logistics and maintenance, the Cloud-Based Command and Control air-defense data fusion, and the Theater Integrated Combat Munitions System tracking munitions across 200+ locations. Cyber Command has been called in to assess damage. The confirmation facts come from NBC News, AFP, CBS and CGTN coverage.",
+          "details": [
+            "What happened: Hackers breached Cloud One, the Air Force's flagship cloud platform — Reuters reported the breach with three sources Fri Nov 27 ~8:23 AM ET; a US official confirmed the hack to NBC News Nov 27 ~10:28 AM ET.",
+            "Pentagon response: Asked directly, the Pentagon did not specifically deny the breach — \"The Department of War's systems are safe, secure, and managed 24-7 by the best experts and teams in the world\" (late Friday, per AFP, published Nov 28 12:04 AM ET).",
+            "Separate confirmation: Federal News Network separately confirmed the breach, saying contractors discovered it earlier in the year during maintenance.",
+            "Disruption: Back-office application migrations paused; updates to running applications blocked (leaving fixes unapplied amid a fresh batch of serious industry vulnerabilities); some users' administrator rights revoked.",
+            "Control plane: One source said intruders reached the control plane — \"a universal remote\" that could in theory check aircraft operational status or spare-parts movement — via an unidentified software vulnerability.",
+            "Platform: Cloud One (initiated 2017) combines Microsoft, Amazon, Oracle and Alphabet resources; applications include personnel data/pay, logistics and maintenance, the Cloud-Based Command and Control air-defense data fusion, and the Theater Integrated Combat Munitions System tracking munitions across 200+ locations; SAIC was prime contractor until 2026, when Leidos took over.",
+            "Response: Investigators have called in Cyber Command to assess damage.",
+            "Unknowns: Whether data was stolen is unknown, as is attribution; scope, Pentagon/Air Force specifics, and whether migrations stay paused into December remain open."
+          ],
+          "links": [
+            {
+              "label": "CNBC carrying Reuters — wire report (Nov 27, 8:23 AM ET, updated 3:03 PM ET)",
+              "url": "https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html"
+            },
+            {
+              "label": "NBC News — official confirmation (Nov 27, 10:28 AM ET)",
+              "url": "https://www.nbcnews.com/news/us-news/hackers-attack-penetrate-air-forces-computing-platform-rcna611559"
+            },
+            {
+              "label": "AFP — Pentagon response (Nov 28, 12:04 AM ET)",
+              "url": "https://www.afp.com/en/us-military-says-cyber-systems-secure-after-reports-air-force-hack"
+            },
+            {
+              "label": "CBS News (Nov 27, 9:44 PM ET)",
+              "url": "http://www.cbsnews.com/news/u-s-air-force-cloud-platform-breached-by-hackers/"
+            },
+            {
+              "label": "CGTN (Nov 28)",
+              "url": "https://news.cgtn.com/news/2026-11-28/Hackers-breach-US-Air-Force-Cloud-One-platform-media-reports-1Sro042Qy64/p.html"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "51",
+              "name": "Information"
+            }
+          ],
+          "title": "SAP Project Granite: GitHub locked down, signing keys replaced, incident still active",
+          "tldr": "SAP's confirmed incident — codenamed \"Project Granite\" — has entered its second week: emergency measures included locking down GitHub access and replacing the digital keys used to verify SAP software is genuine, and a SAP spokesperson confirmed the incident remains in progress (per AFP).",
+          "source": "Cybersecurity Dive",
+          "url": "https://www.cybersecuritydive.com/news/sap-investigates-attack-source-code/875820/",
+          "summary": "New detail on SAP's confirmed incident: per Handelsblatt, SAP detected it last week and, under the internal codename \"Project Granite,\" rushed emergency measures through numerous development teams — GitHub access restricted, automated development processes halted, and the digital keys used to verify that SAP software is genuine replaced (dpa reported employees were warned days before it became public). Per The Record, SAP says it \"identified suspicious activity and immediately taken steps\" and has \"found no evidence of unauthorized access to customer business data\"; per Cybersecurity Dive it declined to comment on root cause. AFP reported Nov 28 that a SAP spokesperson confirmed the incident remains in progress and that SAP currently sees no need to contact customers. Der Spiegel's original account — employee GitHub tokens stolen and used to copy and modify source code, possibly with agentic-AI help — stands unconfirmed but unretracted. Onapsis (per Cybersecurity Dive) advised SAP customers to use only SAP software from official channels, verify signatures and watch for signing-key or certificate-change communications, pin SAP libraries and build tooling, and pause Dependabot/Renovate-style auto-updates for SAP packages pending manual review. The separate thegentlemen leak-site claim against SAP remains silent — no link established.",
+          "details": [
+            "Emergency measures: Per Handelsblatt, SAP detected the incident last week and, under the internal codename \"Project Granite,\" restricted GitHub access, halted automated development processes, and replaced the digital keys used to verify that SAP software is genuine (dpa reported employees were warned days before it became public).",
+            "Still active: AFP reported Nov 28 that a SAP spokesperson confirmed the incident remains in progress and that SAP currently sees no need to contact customers.",
+            "SAP statements: Per The Record, SAP says it \"identified suspicious activity and immediately taken steps\" and has \"found no evidence of unauthorized access to customer business data\"; per Cybersecurity Dive, it declined to comment on root cause.",
+            "Original account: Der Spiegel reported employee GitHub tokens stolen and used to copy and modify source code, possibly with agentic-AI help — unconfirmed but unretracted.",
+            "Onapsis guidance (per Cybersecurity Dive): use only SAP software from official channels; verify signatures and watch for signing-key/certificate-change communications; pin SAP libraries and build tooling; pause Dependabot/Renovate-style auto-updates for SAP packages pending manual review.",
+            "Context: ZDNet ties the report to the wider agentic-attack wave (Microsoft's ARTEX warnings; BSI head Claudia Plattner: \"If cyberattacks autonomously using agentic AI are available at low cost, we must prepare for an avalanche of new cyberattacks\"); the BSI declined to comment on SAP specifically.",
+            "Separate claim: The thegentlemen leak-site claim against SAP remains silent — no link established."
+          ],
+          "links": [
+            {
+              "label": "Cybersecurity Dive (Nov 27, 12:06 PM ET)",
+              "url": "https://www.cybersecuritydive.com/news/sap-investigates-attack-source-code/875820/"
+            },
+            {
+              "label": "ZDNet France via AFP (Nov 28, 3:20 AM ET)",
+              "url": "https://www.zdnet.fr/actualites/sap-des-pirates-ciblent-son-code-source-sur-github-avec-laide-de-lia-508869.htm"
+            },
+            {
+              "label": "The Record (Nov 27, 8:18 AM ET — earlier report)",
+              "url": "https://therecord.media/sap-germany-cyberattack-github"
+            },
+            {
+              "label": "Handelsblatt (Nov 27, updated ~9:46 AM ET)",
+              "url": "https://www.handelsblatt.com/technik/ki/sap-it-sicherheitsvorfall-kunden-fordern-lueckenlose-aufklaerung/100273138.html"
+            },
+            {
+              "label": "BleepingComputer (Nov 27, 4:56 AM ET)",
+              "url": "https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "48-49",
+              "name": "Transportation and Warehousing"
+            },
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "Korea Post breach pulled 113,855 recipients data in one day",
+          "tldr": "Korea Post confirmed a cyberattack using overseas IP addresses accessed its mobile delivery-location change service between Nov 17 and 24, exposing registered-mail recipients' names, addresses and phone numbers — 113,855 affected customers in a single day's records alone.",
+          "source": "The Korea Herald",
+          "url": "https://www.koreaherald.com/article/10952405",
+          "summary": "Korea Post confirmed that a cyberattack using overseas IP addresses accessed the mobile \"Internet Post Office\" recipient delivery-location change service between Nov 17 and 24, querying names, addresses and phone numbers of registered-mail recipients in transit; per KBS, the attack was a brute-force enumeration of 13-digit registered-mail numbers via the login-free mobile service, and sender information was exposed as well. An analysis of a single day's records found 113,855 affected customers including corporate customers; the full scope across the seven days is still unknown. Korea Post noticed signs Nov 25, reported to the Personal Information Protection Commission, requested a police investigation, suspended the delivery-change and guest-login services, blocked all overseas IPs from the mobile site, and began individual notifications Nov 28. President Park In-hwan apologized and warned customers about texts and calls impersonating Korea Post requesting address changes or \"additional delivery fees.\"",
+          "details": [
+            "What happened: Korea Post confirmed a cyberattack using overseas IP addresses accessed the mobile \"Internet Post Office\" recipient delivery-location change service between Nov 17 and 24, querying names, addresses and phone numbers of registered-mail recipients in transit.",
+            "Method: Per KBS, brute-force enumeration of 13-digit registered-mail numbers via the login-free mobile service; sender information was exposed as well.",
+            "Scale: An analysis of a single day's records found 113,855 affected customers including corporate customers; the full scope across the seven days is still unknown.",
+            "Response: Korea Post noticed signs Nov 25 ~10:30 AM, reported to the Personal Information Protection Commission, requested a police investigation, suspended the delivery-change and guest-login services, and blocked all overseas IPs from the mobile site; individual notifications began Nov 28.",
+            "Warning: President Park In-hwan apologized and warned customers about texts and calls impersonating Korea Post requesting address changes or \"additional delivery fees.\""
+          ],
+          "links": [
+            {
+              "label": "The Korea Herald (Nov 27, 9:13 PM ET)",
+              "url": "https://www.koreaherald.com/article/10952405"
+            },
+            {
+              "label": "Yonhap (Nov 27, 9:38 PM ET)",
+              "url": "https://en.yna.co.kr/view/AEN20261128001400315"
+            },
+            {
+              "label": "Digital Today EN (Nov 27, 9:27 AM ET — first report)",
+              "url": "https://www.digitaltoday.co.kr/en/view/131989/korea-post-internet-post-office-data-leak-113855-recipients-confirmed-in-one-day-analysis"
+            },
+            {
+              "label": "SBS English (Nov 28)",
+              "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008867743"
+            },
+            {
+              "label": "Korea JoongAng Daily/News1 (Nov 27, 11:37 PM ET)",
+              "url": "https://www.koreajoongangdaily.com/business/korea-posts-mobile-service-hacked-with-personal-data-of-at-least-113000-customers-leaked/12995327"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "UK DWP portals still down Saturday as minister calls it a serious cyber incident",
+          "tldr": "The UK Department for Work and Pensions took Universal Credit, PIP and Pension Credit application services offline as a precaution after a \"cyber incident,\" and they were still down Saturday morning; Downing Street says there is no evidence personal data was lost but has not ruled out hackers.",
+          "source": "GOV.UK",
+          "url": "https://www.gov.uk/government/news/temporary-disruption-to-some-dwp-online-services",
+          "summary": "The Department for Work and Pensions pulled Universal Credit, PIP and Pension Credit application services plus the \"Tell Us Once\" death-registration service offline as a precaution after identifying a \"cyber incident,\" and they were still down Saturday morning. DWP is working with the NCSC and the Government Cyber Coordination Centre; regular payments (~2.5M/day) continue, though claimants reported delays the department believes are unrelated, and no sanctions will be applied for missed journals. Downing Street said there is \"no evidence\" personal data was lost and no evidence other departments were accessed by a \"malicious actor,\" but has not ruled out hackers; Work and Pensions Secretary Pat McFadden called it a \"serious cyber incident\" on Friday. The UK's former CTO David Knott told Newsnight his \"strong suspicion\" is an attack, and Bath Spa University's John Curry said DWP \"almost certainly\" detected hacking activity and shut systems to stop data theft. Separately Friday, Lloyds Bank and Bank of Scotland apps went down for about three hours in what the bank called \"technical difficulties\" — resolved, no cyber cause reported, no confirmed link to DWP.",
+          "details": [
+            "What happened: The Department for Work and Pensions took Universal Credit, PIP and Pension Credit application services plus the \"Tell Us Once\" death-registration service offline as a precaution after identifying a \"cyber incident\" late Thursday Nov 26; services were still down Saturday morning.",
+            "Minister: Work and Pensions Secretary Pat McFadden called it a \"serious cyber incident\" on Friday.",
+            "Government line: Downing Street said there is \"no evidence\" personal data was lost and no evidence other departments were accessed by a \"malicious actor,\" but has not ruled out hackers.",
+            "Operations: DWP is working with the NCSC and the Government Cyber Coordination Centre; regular payments (~2.5M/day) continue, though claimants reported delays the department believes are unrelated; no sanctions will be applied for missed journals.",
+            "Expert view: The UK's former CTO David Knott told Newsnight his \"strong suspicion\" is an attack; Bath Spa University's John Curry said DWP \"almost certainly\" detected hacking activity and shut systems to stop data theft.",
+            "Separate outage: Lloyds Bank and Bank of Scotland apps went down ~10:00 AM–12:45 PM London Friday in what the bank called \"technical difficulties\" (fifth glitch this year) — resolved, no cyber cause reported, no confirmed link to DWP."
+          ],
+          "links": [
+            {
+              "label": "BBC News — Saturday update (Nov 28, 2:26 AM ET)",
+              "url": "https://www.bbc.com/news/articles/cm1wrgqyq4d8o"
+            },
+            {
+              "label": "BBC News — initial report (Nov 27, 3:34 AM ET)",
+              "url": "https://www.bbc.com/news/articles/c8wy5p6pv2e2o"
+            },
+            {
+              "label": "GOV.UK — DWP notice (Nov 27, 3:11 AM ET)",
+              "url": "https://www.gov.uk/government/news/temporary-disruption-to-some-dwp-online-services"
+            },
+            {
+              "label": "The Telegraph — Lloyds outage (Nov 27, 6:52 AM ET)",
+              "url": "https://www.telegraph.co.uk/money/banking/current-accounts/lloyds-and-bank-of-scotland-apps-down/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "eCitizen leak begins: files on 32.1 million Kenyans surface on the dark web",
+          "tldr": "Hackers who breached Kenya's eCitizen government services portal have begun leaking data on 32,128,394 Kenyans on the dark web — per the Daily Nation, the single source returned for the leak details.",
+          "source": "Daily Nation",
+          "url": "https://www.nation.africa/kenya/news/ecitizen-hackers-begin-leaking-data-of-32-million-kenyans-on-dark-web-5687214",
+          "summary": "Hackers who breached Kenya's eCitizen government services portal have begun leaking data on 32,128,394 Kenyans on the dark web, the Daily Nation reports from files it reviewed — passport copies, passport photos, national ID numbers, dates of birth, Kenya Revenue Authority PINs, fingerprints, and Social Health Authority digital health-ID numbers, plus some government officials' work IDs. The group ByteToBreach (widely assessed as based in Algeria and Greece) claims 600 GB of KYC documents, 100 GB of database content and 40 GB of source code; its logs suggest server access on Nov 15 by exploiting a file-upload vulnerability in an electronic-KYC database and deploying a web shell, with possible compromise of the identity/authentication infrastructure connecting agencies — the Social Health Authority, Directorate of Criminal Investigations and National Police Service are named as potentially affected through connected systems, though none has confirmed a compromise. The government says it is investigating; eCitizen services remain available. Per the Daily Nation — the single source returned for the leak details; the leak details are reported, not confirmed.",
+          "details": [
+            "What leaked: Data on 32,128,394 Kenyans has begun leaking on the dark web — passport copies, passport photos, national ID numbers, dates of birth, Kenya Revenue Authority PINs, fingerprints, and Social Health Authority digital health-ID numbers, plus some government officials' work IDs (per the Daily Nation, which reviewed the files — the single source returned for the leak details).",
+            "Who: The group ByteToBreach (widely assessed as based in Algeria and Greece) claims 600 GB of KYC documents, 100 GB of database content and 40 GB of source code.",
+            "Access: The group's logs suggest server access on Nov 15 by exploiting a file-upload vulnerability in an electronic-KYC database and deploying a web shell, with possible compromise of the identity/authentication infrastructure connecting agencies.",
+            "Potentially affected: The Social Health Authority, Directorate of Criminal Investigations and National Police Service are named as potentially affected through connected systems — none has confirmed a compromise.",
+            "Status: The government says it is investigating; eCitizen services remain available. The claims were first flagged Monday Nov 23 (per Vecert); Kenya's Interior Ministry acknowledged the investigation Tuesday Nov 24. The leak details are reported, not confirmed."
+          ],
+          "links": [
+            {
+              "label": "Daily Nation (Nov 27, ~10:00 PM ET)",
+              "url": "https://www.nation.africa/kenya/news/ecitizen-hackers-begin-leaking-data-of-32-million-kenyans-on-dark-web-5687214"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "title": "Switzerland confirms first AI-agent attacks on critical infrastructure",
+          "tldr": "Switzerland's National Cyber Security Centre (BACS/NCSC) reported the first confirmed AI-agent attacks in Switzerland in a Nov 24 advisory — five cases, four of them successful compromises, three against critical-infrastructure operators.",
+          "source": "BACS/NCSC",
+          "url": "https://www.bacs.admin.ch/en/26-ki-agenten-1-en",
+          "summary": "In a Nov 24 advisory, Switzerland's National Cyber Security Centre (BACS/NCSC) confirmed the country's first AI-agent attacks: five cases, four of them successful compromises, three against critical-infrastructure operators — electricity, drinking water and telecom, per SRF reporting. The agency named the agentic offensive frameworks involved, including ARTEX and CyberStrikeAI, and noted that the count of internet-reachable AI agents has nearly doubled since October. The NCSC's advice includes applying patches within 24 hours.",
+          "details": [
+            "The advisory: Switzerland's National Cyber Security Centre (BACS/NCSC) reported the first confirmed AI-agent attacks in Switzerland in a Nov 24 advisory: five cases, four successful compromises, three against critical-infrastructure operators.",
+            "Sectors: Electricity, drinking water and telecom, per SRF.",
+            "Frameworks: \"Agentic offensive frameworks\" named, including ARTEX and CyberStrikeAI.",
+            "Trend: The count of internet-reachable AI agents has nearly doubled since October.",
+            "Advice: 24-hour patching advice among the recommendations.",
+            "Published: The advisory was published Nov 24."
+          ],
+          "links": [
+            {
+              "label": "BACS/NCSC advisory (Nov 24)",
+              "url": "https://www.bacs.admin.ch/en/26-ki-agenten-1-en"
+            },
+            {
+              "label": "swissinfo (Nov 26)",
+              "url": "https://www.swissinfo.ch/eng/swiss-ai/switzerland-reports-first-ai-based-cyberattacks-on-critical-infrastructure/92440400"
+            },
+            {
+              "label": "CNA (Nov 26)",
+              "url": "https://www.channelnewsasia.com/business/ai-agents-used-in-five-cyber-attacks-in-switzerland-government-says-6585191"
+            },
+            {
+              "label": "TNW (Nov 27, 4:43 AM ET)",
+              "url": "https://thenextweb.com/news/switzerland-ai-agent-cyberattacks-critical-infrastructure"
+            }
+          ]
+        },
+        {
+          "category": "ai",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            },
+            {
+              "code": "56",
+              "name": "Administrative and Support and Waste Management and Remediation Services"
+            }
+          ],
+          "title": "BabidiGhost: one jailbroken AI agent, 1,093 Metabase takeovers, about $27 of model cost",
+          "tldr": "Per SOCRadar's analysis, a single financially motivated operator directed a jailbroken AI agent that took over 1,093 Metabase instances and reached a UN office and European public bodies — with a total recorded model cost of about $27.",
+          "source": "SOCRadar",
+          "url": "https://socradar.io/blog/babidighost-metabase-takeovers/",
+          "summary": "SOCRadar's second evidence set — recovered from the host where the agent ran between Oct 16 and Nov 25 — reconstructs a one-man crime wave: a single French-speaking, financially motivated operator (\"BabidiGhost\", aka BlackHatSect0r/GHOSTHUNTERS) directed a jailbroken Nous Hermes Agent v0.21.4 on DeepSeek's \"deepseek-flash\" model through a custom refusal-retry proxy. A Nov 3–9 \"BLACKOUT\" program stripped 32 runtime safety hooks to no-ops, enabled yolo mode, and rewrote safety text in 613 skills; the \"refusal_hunter\" proxy auto-resubmitted refusals with 12 jailbreak tactics, relaying 14,345 model calls (285 refusals logged, 64 \"rescued\") — DeepSeek banned the account Nov 19 and the operator swapped keys within a minute. SOCRadar grades the impact as confirmed: 1,093 Metabase super-admin takeovers of 19,979 targeted instances (~926 with live databases; single dumped tables up to 72.7M rows), a UN office in Kenya (root on videoconferencing gateways, 12,779-person staff directory, 87 meeting recordings queued for exfiltration), a French government agency's training platform, a French local government body, a Belgian waste-management SaaS and a Brazilian state court — plus 7,647 Belgian MyMinfin fake-fine phishing emails delivered. Total recorded model cost: about US$27, with no zero-days used — exposed services, IDOR and weak or stolen credentials only.",
+          "details": [
+            "The actor: A single French-speaking, financially motivated operator (\"BabidiGhost\", aka BlackHatSect0r/GHOSTHUNTERS) directed a jailbroken Nous Hermes Agent v0.21.4 on DeepSeek's \"deepseek-flash\" model through a custom refusal-retry proxy (SOCRadar's second evidence set, recovered from the host where the agent ran Oct 16–Nov 25).",
+            "Jailbreak: A Nov 3–9 \"BLACKOUT\" program stripped 32 runtime safety hooks to no-ops, enabled yolo mode, and rewrote safety text in 613 skills; the \"refusal_hunter\" proxy auto-resubmitted refusals with 12 jailbreak tactics — 14,345 model calls relayed Nov 11–25, 285 refusals logged, 64 \"rescued\"; DeepSeek banned the account Nov 19 and the operator swapped keys within a minute.",
+            "Impact (graded confirmed by SOCRadar): 1,093 Metabase super-admin takeovers of 19,979 targeted instances (~926 with live databases; single dumped tables up to 72.7M rows).",
+            "UN office in Kenya: Root on videoconferencing gateways, 12,779-person staff directory, 87 meeting recordings queued for exfiltration.",
+            "Other victims: A French government agency's training platform (980 accounts + email API keys, reused for a 96-invoice BEC campaign); a French local government body (full Active Directory compromise, ~22,000 residents' data); a Belgian waste-management SaaS (backups for ~25 communes); a Brazilian state court (167,970 rows); plus 7,647 Belgian MyMinfin fake-fine phishing emails delivered.",
+            "Cost: Total recorded model cost about US$27.",
+            "No zero-days: Exposed services, IDOR, and weak/default/stolen credentials only; SOCRadar notes the agent fabricated results at least once (a 9.47 BTC claim) and that the two Metabase CVE ids in the actor's files are unvalidated.",
+            "Provider note: DeepSeek is the abused model provider, not a confirmed complicit party."
+          ],
+          "links": [
+            {
+              "label": "SOCRadar — primary analysis (Nov 27, 4:08 AM ET)",
+              "url": "https://socradar.io/blog/babidighost-metabase-takeovers/"
+            },
+            {
+              "label": "Cyber/Brief (Nov 28, 12:43 AM ET)",
+              "url": "https://www.cyberverso.net/brief/cyber-brief-28-nov-2026/"
+            },
+            {
+              "label": "Mallory (Nov 27, 5:20 AM ET)",
+              "url": "https://mallory.ai/stories/01a21c87-4682-7d86-a124-ac916b28807b"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "title": "CISA adds GeoServer chain and Drupal installer bugs to KEV with Nov 30 deadline as six entries fall due today",
+          "tldr": "CISA added three actively exploited vulnerabilities to its KEV catalog Nov 27 — two chainable GeoServer flaws and a Drupal core installer bug — all due for federal civilian agencies Nov 30, while six entries from the Nov 25 batch (four Mitel, one HPE Juniper, one Xen Orchestra) fall due today.",
+          "source": "CISA",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/11/27/cisa-adds-three-known-exploited-vulnerabilities-catalog",
+          "summary": "CISA added three actively exploited vulnerabilities Nov 27, all due for federal civilian agencies Nov 30: CVE-2026-120705 (OSGeo GeoServer XML injection — unauthenticated local-file read or URL fetch via a crafted ID parameter in WFS 2.0 GetFeatureById) and CVE-2026-129243 (GeoServer incorrect authorization — bypass of service-level role checks), each chainable with CVE-2026-129244/-129245/-129242 into unauthenticated RCE (vendor fix per GeoServer's Nov 23 advisory: upgrade to 3.0.2); and CVE-2026-136716 (Drupal Core improper check — unauthenticated site takeover via the exposed installer in unusual or incomplete install states; forensic triage required per BOD 26-04). Per CiberLATAM — an AI-assisted tracker, verify — Canada's cyber centre confirmed public reports of in-the-wild abuse of the GeoServer pair, and Drupal reported the third exploited. Meanwhile, six entries added Nov 25 carry Nov 28 due dates: four Mitel MiCollab flaws (CVE-2026-133275, -133303, -133323, -133324), HPE Juniper Session Smart CVE-2026-103406, and Vates Xen Orchestra CVE-2026-133469.",
+          "details": [
+            "New entries (added Nov 27, due Nov 30 for federal civilian agencies): CVE-2026-120705 — OSGeo GeoServer XML injection, unauthenticated local-file read/URL fetch via a crafted ID parameter in WFS 2.0 GetFeatureById.",
+            "Chainable: CVE-2026-129243 — GeoServer incorrect authorization, bypass of service-level role checks; each of the two chainable with CVE-2026-129244/-129245/-129242 into unauthenticated RCE.",
+            "Vendor fix: GeoServer's Nov 23 advisory — upgrade to 3.0.2.",
+            "Drupal: CVE-2026-136716 — Drupal Core improper check, unauthenticated site takeover via the exposed installer in unusual/incomplete install states; forensic triage required per BOD 26-04.",
+            "Exploitation: Per CiberLATAM — an AI-assisted tracker, verify — Canada's cyber centre confirmed public reports of in-the-wild abuse of the GeoServer pair, and Drupal reported the third exploited.",
+            "Due today (Nov 28): Six entries added Nov 25 — four Mitel MiCollab flaws (CVE-2026-133275, -133303, -133323, -133324), HPE Juniper Session Smart CVE-2026-103406, and Vates Xen Orchestra CVE-2026-133469."
+          ],
+          "links": [
+            {
+              "label": "CISA alert (Nov 27)",
+              "url": "https://www.cisa.gov/news-events/alerts/2026/11/27/cisa-adds-three-known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "CISA KEV catalog (catalog version 2026.11.27)",
+              "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+            },
+            {
+              "label": "GeoServer vendor advisory (Nov 23)",
+              "url": "https://geoserver.org/vulnerability/2026/11/23/cve-update.html"
+            },
+            {
+              "label": "Daily CISO KEV tracker (updated Nov 28)",
+              "url": "https://www.dailyciso.com/kev"
+            },
+            {
+              "label": "CiberLATAM (Nov 27, 6:04 PM ET — AI-assisted, flagged)",
+              "url": "https://ciberlatam.com/en/news/cisa-adds-three-cves-kev"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "92",
+              "name": "Public Administration"
+            }
+          ],
+          "title": "myColorado breach: notices slip to Nov 30, accessed files confirmed encrypted",
+          "tldr": "Colorado's official myColorado app breach now affects an estimated ~100,000 users whose uploaded documents — including passports and insurance cards — were accessed; notifications slipped from Friday to Monday, Nov 30, and the state confirmed the accessed files were encrypted at rest.",
+          "source": "myColorado",
+          "url": "https://mycolorado.state.co.us/",
+          "summary": "Colorado's official app — digital ID, state services and a document wallet with ~2.1M users — was taken offline Nov 18 after AWS-hosted threat detection flagged unusual usage; the state's OIT found unauthorized access to the \"myCards and Documents\" section: user-uploaded PDFs and photos including passports, vehicle registrations and insurance cards. The current estimate is ~100,000 users affected (revised down from up to 150,000 in early coverage); payment information was not involved. Nov 27 updates: notifications were delayed from Friday to Monday, Nov 30 (the holiday plus coordination with counsel, cyber insurer and credit-monitoring vendor), OIT told 9News it has identified the ~100,000 people and the specific documents, confirmed the accessed files were encrypted at rest, declined to say how they were accessed (investigation ongoing), and has secured credit monitoring and a help desk; the app remains offline with no return date and pen-testing before relaunch. Per 9News, a January state-audit report found OIT had fully implemented only 10 of 71 retested cybersecurity recommendations — OIT says the unresolved findings don't involve myColorado.",
+          "details": [
+            "What happened: Colorado's official app (digital ID + state services + document wallet; ~2.1M users) was taken offline Nov 18 after AWS-hosted threat detection flagged unusual usage; OIT found unauthorized access to the \"myCards and Documents\" section — user-uploaded PDFs and photos including passports, vehicle registrations and insurance cards.",
+            "Scale: Current estimate ~100,000 users affected (of 2.1M; revised down from up to 150,000 in early coverage); payment information not involved.",
+            "Notices: Delayed from Friday to Monday, Nov 30 (holiday + coordination with counsel, cyber insurer, credit-monitoring vendor).",
+            "Encryption: OIT told 9News it has identified the ~100,000 people and specific documents and confirmed the accessed files were encrypted at rest; it declined to say how they were accessed (investigation ongoing).",
+            "Support: Credit monitoring and a help desk secured; the app remains offline with no return date and pen-testing before relaunch.",
+            "Context: Per 9News, a January state-audit report found OIT had fully implemented only 10 of 71 retested cybersecurity recommendations (OIT says the unresolved findings don't involve myColorado)."
+          ],
+          "links": [
+            {
+              "label": "9News (Nov 27, 6:41 PM ET, updated 7:49 PM ET)",
+              "url": "https://www.9news.com/article/money/consumer/state-delays-mycolorado-breach-notices-to-monday-says-accessed-files-were-encrypted/73-c2df399a-1991-40cf-a201-358ce65aa669"
+            },
+            {
+              "label": "Colorado Public Radio (Nov 27, 5:56 PM ET)",
+              "url": "https://www.cpr.org/2026/11/27/data-100k-coloradans-mycolorado-app-hack/"
+            },
+            {
+              "label": "myColorado incident page (updated Nov 27)",
+              "url": "https://mycolorado.state.co.us/"
+            },
+            {
+              "label": "SecurityWeek (Nov 27, 4:30 AM ET)",
+              "url": "https://www.securityweek.com/100000-potentially-impacted-by-colorado-data-breach/"
+            }
+          ]
+        },
+        {
+          "category": "security",
+          "industry": [
+            {
+              "code": "61",
+              "name": "Educational Services"
+            }
+          ],
+          "title": "Qilin lists Thomas More — the Belgian college, not the Kentucky university it named",
+          "tldr": "The Qilin ransomware gang listed \"Thomas More University\" on its leak site but linked the wrong school — its proof screenshots came from Thomas More University of Applied Sciences in Flanders, which has confirmed personal data was stolen from its online-forms app.",
+          "source": "BreachNews",
+          "url": "https://breachnews.com/ransomware/thomas-more-university-qilin-ransomware-leak-site-claim/",
+          "summary": "The Qilin ransomware gang listed \"Thomas More University\" on its leak site Nov 27, linking the website of the private Catholic university in Crestview Hills, Kentucky — but its proof screenshots were in Dutch and came from Thomas More University of Applied Sciences in Flanders (~22,000 students, 2,200 staff, 10 campuses), Belgian newspaper HLN reported; by late Friday Qilin had quietly renamed the post (same URL) with the Belgian school's details. The listing carries 8 proof photos — per HLN including passport copies and student-internship data folders — and a countdown of roughly 69 hours pointing to about Dec 1, with no written claim. The Belgian school confirmed \"a security incident\" in Webforms, the application it uses for online forms, and that \"personal data was stolen\": Webforms is offline, specialists are engaged, affected people are being contacted directly and offered 12 months of identity monitoring. The school said there are signs data could be spread on the dark web but no confirmation of further sharing or misuse; no victim count was given, and there is no sign the Kentucky university was affected.",
+          "details": [
+            "The listing: Qilin listed \"Thomas More University\" on its leak site Nov 27, linking the website of the private Catholic university in Crestview Hills, Kentucky — but its proof screenshots were in Dutch and came from Thomas More University of Applied Sciences in Flanders (~22,000 students, 2,200 staff, 10 campuses), per Belgian daily HLN; by late Friday Qilin had quietly renamed the post (same URL) with the Belgian school's details.",
+            "Proof: 8 proof photos — per HLN including passport copies and student-internship data folders — and a countdown (~69 hours, pointing to ~Dec 1) with no written claim.",
+            "Victim confirmation: The Belgian school confirmed \"a security incident\" in Webforms, the application it uses for online forms, and that \"personal data was stolen\"; Webforms is offline, specialists engaged, affected people contacted directly and offered 12 months of identity monitoring.",
+            "Status: The school said there are signs data could be spread on the dark web but no confirmation of further sharing or misuse; no victim count given; no sign the Kentucky university was affected.",
+            "Source note: Per BreachNews — the single aggregator-class source returned, citing HLN (HLN's own URL not available); reported, not independently confirmed."
+          ],
+          "links": [
+            {
+              "label": "BreachNews (Nov 28, 7:16 AM ET — aggregator-class source citing HLN)",
+              "url": "https://breachnews.com/ransomware/thomas-more-university-qilin-ransomware-leak-site-claim/"
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-27",
       "items": [
