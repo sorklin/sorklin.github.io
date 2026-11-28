@@ -242,6 +242,16 @@
               "label": "TNW (Nov 27, 4:43 AM ET)",
               "url": "https://thenextweb.com/news/switzerland-ai-agent-cyberattacks-critical-infrastructure"
             }
+          ],
+          "industry": [
+            {
+              "code": "22",
+              "name": "Utilities"
+            },
+            {
+              "code": "51",
+              "name": "Information"
+            }
           ]
         },
         {
